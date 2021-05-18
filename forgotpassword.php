@@ -42,7 +42,7 @@
                 $BDD= new PDO('mysql:host=localhost;dbname=dbsite;charset=utf8','root','root');
                 if(isset($_POST['mail'])){
                   $token=uniqid();
-                  $url="http://localhost/Projet/token?token=$token";
+                  $url="http://localhost/Projet/token=$token";
                   $message="Voici le lien de réinitialisation de votre mot de passe : $url";
                   $headers='Content-Type: text/plain; charset="utf-8"'." ";
 
