@@ -20,5 +20,8 @@ challenge.php : ensemble des challenges disponibles sur le site.
 
 style.css : fichier de style. 
 
+verif-form.php : page du site recherche de cours
+
+
 
 
