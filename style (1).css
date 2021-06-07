@@ -1,0 +1,25 @@
+body{
+	background: #191970;
+}
+
+.bg-light{
+	background-color: #191970 !important;
+	box-shadow: 0 2px 2px #ffeaa7;
+}
+
+.navbar-light .navbar-nav .nav-link{
+	color:#87ceeb;
+}
+
+.navbar-light .navbar-nav .nav-link:hover,.nav-link:focus {
+	color:#87ceeb;
+	border-bottom : 2px solid black;
+	padding-bottom: 3px;
+}
+
+.cadre-inscription{
+	background: #87ceeb;
+	padding:5px 10px;
+	margin:20px;
+	box-shadow: 0 0 15px #000000;
+}
