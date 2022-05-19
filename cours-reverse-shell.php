@@ -148,7 +148,7 @@
                <!-- <div class="col-lg-9 blog-post-single"> -->
                     <div class="blog-item">
 					<!--	<div class="image-blog">-->
-							<img src="images/john-logo.png" alt="" class="img-fluid">
+							<img src="images/metasploit.png" alt="" class="img-fluid">
 						</div>
 						<div class="post-content">
 							<div class="post-date">
