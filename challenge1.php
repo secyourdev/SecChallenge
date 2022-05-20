@@ -1,5 +1,5 @@
 <?php
-$BDD=new PDO('mysql:host=localhost;dbname=dbsite;charset=utf8','root','root');
+$BDD=new PDO('mysql:host=localhost;dbname=dbsite;charset=utf8','test','test');
 ?>
 <?php
 	session_start();
