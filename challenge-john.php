@@ -1,7 +1,6 @@
 <?php
 	session_start();
-	$BDD= new PDO('mysql:host=localhost;dbname=dbsite;charset=utf8','test','test');
- 	$BDD1= new PDO('mysql:host=localhost;dbname=challenge;charset=utf8','test','test');
+	$BDD= new PDO('mysql:host=localhost;dbname=dbsite;charset=utf8','root','root');
 ?>
 <!DOCTYPE html>
 <html lang="en">
