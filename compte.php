@@ -2,7 +2,19 @@
   session_start();
 ?>
 <?php
-include("bdd/acces_BDD.php");
+include('bdd/acces_BDD.php');
+$id=$_SESSION['id'];
+$q=$BDD->prepare('SELECT * FROM utilisateur WHERE id=?');
+$q->execute(array($id));
+$result=$q->fetch();
+$pseudo=$result['pseudo'];
+$mail=$result['mail'];
+$name=$result['name'];
+$firstname=$result['firstname'];
+$challenge1=$result['challenge1'];
+$challenge2=$result['challenge2'];
+$challenge3=$result['challenge3'];
+
 ?>
 
 
@@ -48,19 +60,19 @@ include("bdd/acces_BDD.php");
 </head>
 <body class="host_version"> 
 
-	
+  
 
     <!-- LOADER -->
-	<div id="preloader">
-		<div class="loader-container">
-			<div class="progress-br float shadow">
-				<div class="progress__item"></div>
-			</div>
-		</div>
-	</div>
-	<!-- END LOADER -->	
-	
-	<?php require_once('nav2.php') ?>
+  <div id="preloader">
+    <div class="loader-container">
+      <div class="progress-br float shadow">
+        <div class="progress__item"></div>
+      </div>
+    </div>
+  </div>
+  <!-- END LOADER --> 
+  
+  <?php require_once('nav2.php') ?>
     <div class="all-title-box">
         <div class="container text-center">
             <h1>Mon compte<span class="m_1"></span></h1>
@@ -84,7 +96,7 @@ include("bdd/acces_BDD.php");
               </div>
             <div class="col-lg-8 col-md-12 col-sm-12">
               <div class="challenge-title mb-3">
-                <h6><?php echo $_SESSION['name'];  ?></h6>
+                <h6><?php echo $name;  ?></h6>
               </div>
               </div>
             </div>
@@ -99,7 +111,7 @@ include("bdd/acces_BDD.php");
               </div>
             <div class="col-lg-8 col-md-12 col-sm-12">
               <div class="challenge-title mb-3">
-                <h6><?php echo $_SESSION['firstname'];  ?></h6>
+                <h6><?php echo $firstname;  ?></h6>
               </div>
               </div>
             </div>
@@ -114,7 +126,7 @@ include("bdd/acces_BDD.php");
               </div>
             <div class="col-lg-8 col-md-12 col-sm-12">
               <div class="challenge-title mb-3">
-                <h6><?php echo $_SESSION['pseudo'];  ?></h6>
+                <h6><?php echo $pseudo;  ?></h6>
               </div>
               </div>
             </div>
@@ -129,7 +141,7 @@ include("bdd/acces_BDD.php");
               </div>
             <div class="col-lg-8 col-md-12 col-sm-12">
               <div class="challenge-title mb-3">
-                <h6><?php echo $_SESSION['mail'];  ?></h6>
+                <h6><?php echo $mail;  ?></h6>
               </div>
               </div>
             </div>
@@ -149,9 +161,6 @@ include("bdd/acces_BDD.php");
         </div>
 
 
-    <div class="blog-button2">
-                            <a class="hover-btn-new orange" href="connexion.php"><span>Actualiser les résultats</span></a>
-                        </div>
 <section class="cours-disponibles">
         <h2 class="cours">Résultats des challenges</h2>
 </section>
@@ -181,7 +190,7 @@ include("bdd/acces_BDD.php");
               </div>
             <div class="col-lg-8 col-md-12 col-sm-12">
               <div class="challenge-title mb-3">
-                <h6><?php echo $_SESSION['challenge1']?></h6>
+                <h6><?php echo $challenge1;?></h6>
               </div>
               </div>
             </div>
@@ -196,7 +205,7 @@ include("bdd/acces_BDD.php");
               </div>
             <div class="col-lg-8 col-md-12 col-sm-12">
               <div class="challenge-title mb-3">
-                <h6><?php echo $_SESSION['challenge2']?></h6>
+                <h6><?php echo $challenge2;?></h6>
               </div>
               </div>
             </div>
@@ -206,12 +215,12 @@ include("bdd/acces_BDD.php");
           <div class="row main-row p-2">
             <div class="col-lg-4 col-md-12 col-sm-12">
               <div class="challenge-title mb-3">
-                <h6>Challenge 3 : Lorem ipsum dolor sit amer</h6>
+                <h6>Challenge 3 : Pourras tu decrypter le message ?</h6>
               </div>
               </div>
             <div class="col-lg-8 col-md-12 col-sm-12">
               <div class="challenge-title mb-3">
-                <h6><?php echo $_SESSION['challenge3']?></h6>
+                <h6><?php echo $challenge3; ?></h6>
               </div>
               </div>
             </div>
@@ -226,7 +235,7 @@ include("bdd/acces_BDD.php");
               </div>
             <div class="col-lg-8 col-md-12 col-sm-12">
               <div class="challenge-title mb-3">
-                <h6><?php echo $_SESSION['challenge3']+$_SESSION['challenge2']+$_SESSION['challenge1'] ?>/15</h6>
+                <h6><?php echo $challenge3+$challenge2+$challenge1; ?>/15</h6>
               </div>
               </div>
             </div>
@@ -261,7 +270,7 @@ include("bdd/acces_BDD.php");
                             <li><a href="course-grid-3.php">Cours</a></li>
                             <li><a href="blog.php">Tutoriels</a></li>
                             <li><a href="pricing.php">Challenges</a></li>
-                            <li><a href="#">Cyber Prevention</a></li>
+                            <li><a href="cyberprevention.php">Cyber Prevention</a></li>
                         </ul><!-- end links -->
                     </div><!-- end clearfix -->
                 </div><!-- end col -->

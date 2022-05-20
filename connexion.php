@@ -42,12 +42,9 @@ include("bdd/acces_BDD.php");
           $_SESSION['mail']=$mail;
           $_SESSION['password']=$password;
           $result=$q->fetch();
+          $_SESSION['id']=$result['id'];
           $_SESSION['pseudo']=$result['pseudo'];
           $_SESSION['name']=$result['name'];
-          $_SESSION['firstname']=$result['firstname'];
-          $_SESSION['challenge1']=$result['challenge1'];
-          $_SESSION['challenge2']=$result['challenge2'];
-          $_SESSION['challenge3']=$result['challenge3'];
           header('Location: compte.php');
           exit;
 
@@ -65,11 +62,6 @@ include("bdd/acces_BDD.php");
                   <div class="form-group">
                     <input class="form-control" type="password" name="password" placeholder="Mot de passe" value="<?php if (isset($password)) echo $password; ?>" required="required">
                   </div>
-                  <div class="col-sm-12">
-                  <span class>
-                    <a href="forgotpassword.php">Mot de passe oublié</a>
-                  </span>
-                </div>
                 <input type="submit" name="connexion" value="Se connecter">
             </form>
             </div>

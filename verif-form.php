@@ -1,5 +1,5 @@
 <?php
-	$bdd= new PDO('mysql:host=localhost;dbname=recherche;charset=utf8','root','root');
+	include("bdd/acces_BDD.php");
 
 	if(isset($_GET["search"]) AND $_GET["search"]=="Rechercher"){
 		$_GET["terme"]=htmlspecialchars($_GET["terme"]);
@@ -9,7 +9,7 @@
 	if(isset($terme)){
 		$terme=strtolower($terme);
 		$terme=strtr($terme,'àáâãäçèéêëìíîïñòóôõöùúûüýÿÀÁÂÃÄÇÈÉÊËÌÍÎÏÑÒÓÔÕÖÙÚÛÜÝ','aaaaaceeeeiiiinooooouuuuyyAAAAACEEEEIIIINOOOOOUUUUY');
-		$select_terme=$bdd->prepare("SELECT lien,titre, contenu,cour FROM cours WHERE titre LIKE ? OR contenu LIKE?");
+		$select_terme=$BDD->prepare("SELECT lien,titre, contenu,cour FROM cours WHERE titre LIKE ? OR contenu LIKE?");
 		$select_terme->execute(array("%".$terme."%","%".$terme."%"));
 	}
 	else{
@@ -36,13 +36,20 @@
       session_start();
       require_once('nav2.php');
      ?>
-    <h2 class="cours">Résultat de la recherche</h2>
+   <div class="all-title-box">
+    <div class="container text-center">
+      <h1>Résultats de la recherche<span class="m_1"></span></h1>
+    </div>
+  </div>
     <?php
       while($terme_trouve=$select_terme->fetch()){
       	$image=$terme_trouve['lien'];
 
       $cour=$terme_trouve['cour'];
     ?>
+      <div id="overviews" class="section wb">
+        <div class="container">
+          <hr class="invis"> 
       	<div class="row"> 
                 <div class="col-lg-4 col-md-6 col-12">
                     <div class="course-item">
@@ -80,6 +87,8 @@
     	
  		 </div>
 		</div>
+  </div>
+  
     <?php  
 	}
 	?>

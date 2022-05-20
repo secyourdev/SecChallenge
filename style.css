@@ -190,6 +190,14 @@ body{
 	line-height:2;
 }
 
+
+.rep{
+  text-align:center;
+  margin:auto;
+  margin-bottom:20px;
+  display:block;
+}
+
 .btn-primar{
 	background-color:black;
 	color:white;

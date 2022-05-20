@@ -1,7 +1,9 @@
 <?php
+$BDD=new PDO('mysql:host=localhost;dbname=dbsite;charset=utf8','root','root');
+?>
+
+<?php
 	session_start();
-	$BDD= new PDO('mysql:host=localhost;dbname=dbsite;charset=utf8','root','root');
- 	$BDD1= new PDO('mysql:host=localhost;dbname=challenge;charset=utf8','root','root');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -273,7 +275,7 @@
     if(!empty($_POST['answer'])){
       $answer = htmlspecialchars($_POST['answer']);
 
-      $q=$BDD1->query('SELECT answer2 FROM reponse');
+      $q=$BDD->query('SELECT answer2 FROM reponse');
       $res=$q->fetch();
       if($res['answer2']==$answer){
       	  $nvscore='5';
@@ -281,17 +283,23 @@
           $req=$BDD -> prepare('UPDATE utilisateur SET challenge2=:nvscore WHERE mail=:nmail');
           $req->execute(array('nvscore'=>$nvscore,'nmail'=>$mail));
           $result=$req->fetch();
-          $_SESSION['challenge2']=$result['challenge2'];
-          echo 'La réponse est juste. ';
-      	  echo 'Score : 5/5';
+       ?>
+   		<div class="rep">
+   			<h1>La réponse est juste. Score 5/5</h1>
+   		</div>
 
-
+   	<?php
       }else{
-        echo 'La réponse est fausse, réessayez.';
+    ?>
+    <div class="rep">
+   			<h1>La réponse est fausse, réessayez.</h1>
+   	</div>
+    <?php
       }
     }
   }
 ?>
+
           	<form method="post">
                   <div class="form-group">
                     <input class="form-control" type="text" name="answer" placeholder="Réponse" value="<?php if (isset($answer)) echo $answer; ?>" required="required">
@@ -542,7 +550,7 @@
                             <li><a href="course-grid-3.php">Cours</a></li>
                             <li><a href="blog.php">Tutoriels</a></li>
 							<li><a href="pricing.php">Challenges</a></li>
-							<li><a href="#">Cyber Prevention</a></li>
+							<li><a href="cyberprevention.php">Cyber Prevention</a></li>
                         </ul><!-- end links -->
                     </div><!-- end clearfix -->
                 </div><!-- end col -->
