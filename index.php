@@ -27,7 +27,7 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <!-- Site CSS -->
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style.css">
     <!-- ALL VERSION CSS -->
     <link rel="stylesheet" href="css/versions.css">
     <!-- Responsive CSS -->
@@ -58,7 +58,7 @@
 	</div>
 	<!-- END LOADER -->	
 	
-	<?php require_once('nav2.php') ?>
+	<?php require_once('php/utils/nav-index.php') ?>
 
 	
 	<div id="carouselExampleControls" class="carousel slide bs-slider box-slider" data-ride="carousel" data-pause="hover" data-interval="false" >
@@ -85,9 +85,9 @@
             						<?php
             							}else{
             						?>
-											<a href="inscription.php" class="hover-btn-new"><span>Inscription</span></a>
+											<a href="php/inscription.php" class="hover-btn-new"><span>Inscription</span></a>
 											&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-											<a href="connexion.php" class="hover-btn-new"><span>Connexion</span></a>
+											<a href="php/connexion.php" class="hover-btn-new"><span>Connexion</span></a>
 									<?php
 										}
 									?>
@@ -585,19 +585,19 @@
                             <h3>Liens</h3>
                         </div>
                         <ul class="footer-links">
-                            <li><a href="index.php">Accueil</a></li>
+                            <li><a href="CyberSecuriTeach/index.php">Accueil</a></li>
                             <?php
               if(isset($_SESSION['pseudo'])){
             ?>
-                            <li><a href="course-grid-3.php">Cours</a></li>
-                            <li><a href="blog.php">Tutoriels</a></li>
-							<li><a href="pricing.php">Challenges</a></li>
-							<li><a href="#">Cyber Prevention</a></li>
-							<li><a href="compte.php">Mon Compte</a></li>
+                            <li><a href="php/course-grid-3.php">Cours</a></li>
+                            <li><a href="php/blog.php">Tutoriels</a></li>
+							<li><a href="php/pricing.php">Challenges</a></li>
+							<li><a href="php/cyberprevention.php">Cyber Prevention</a></li>
+							<li><a href="php/compte.php">Mon Compte</a></li>
 						<?php
 					}else{
 				?>
-							<li><a href="#">Cyber Prevention</a></li>
+							<li><a href="php/cyberprevention.php">Cyber Prevention</a></li>
 						<?php
 							}
 						?>
