@@ -1,7 +1,6 @@
 <?php
 	session_start();
 	$BDD= new PDO('mysql:host=localhost;dbname=dbsite;charset=utf8','test','test');
- 	$BDD1= new PDO('mysql:host=localhost;dbname=challenge;charset=utf8','test','test');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -157,9 +156,7 @@
 						<div class="post-content">
 							<div class="post-date">
 							
-							<div class="blog-title">
-								
-								
+							<div class="blog-title">						
 
 	 <div id="overviews" class="section wb">
         <div class="container">
@@ -254,27 +251,32 @@
                 <div class="col-md-8 offset-md-2">
 
           <div class="row">
-          	 <?php
+<?php
   if(isset($_POST['valider'])){
     extract($_POST);
     if(!empty($_POST['answer'])){
       $answer = htmlspecialchars($_POST['answer']);
 
-      $q=$BDD1->query('SELECT "answer-john" FROM reponse');
+      $q=$BDD->query('SELECT answer4 FROM reponse');
       $res=$q->fetch();
-      if($res['answer-john']==$answer){
+      if($res['answer4']==$answer){
       	  $nvscore='5';
       	  $mail=$_SESSION['mail'];
-          $req=$BDD -> prepare('UPDATE utilisateur SET challenge1=:nvscore WHERE mail=:nmail');
+          $req=$BDD -> prepare('UPDATE utilisateur SET challenge4=:nvscore WHERE mail=:nmail');
           $req->execute(array('nvscore'=>$nvscore,'nmail'=>$mail));
           $result=$req->fetch();
-          $_SESSION['challenge-john']=$result['challenge-john'];
-          echo 'La réponse est juste. ';
-      	  echo 'Score : 5/5';
-
-
+ 
+       ?>
+   		<div class="rep">
+   			<h1>La réponse est juste. Score 5/5</h1>
+   		</div>
+   	<?php
       }else{
-        echo 'La réponse est fausse, réessayez.';
+    ?>
+    <div class="rep">
+   			<h1>La réponse est fausse, réessayez.</h1>
+   		</div>
+    <?php
       }
     }
   }
