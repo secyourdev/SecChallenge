@@ -1,6 +1,10 @@
 <?php
 	session_start();
+<<<<<<< HEAD:challenge4.php
 	$BDD= new PDO('mysql:host=localhost;dbname=dbsite;charset=utf8','test','test');
+=======
+	$BDD= new PDO('mysql:host=localhost;dbname=dbsite;charset=utf8','root','root');
+>>>>>>> c573580ea97881c65a873499acb5aba42109e4ad:challenge-john.php
 ?>
 <!DOCTYPE html>
 <html lang="en">
