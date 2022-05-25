@@ -259,9 +259,9 @@
     if(!empty($_POST['answer'])){
       $answer = htmlspecialchars($_POST['answer']);
 
-      $q=$BDD1->query('SELECT "answer-john" FROM reponse');
+      $q=$BDD1->query('SELECT "answerjohn" FROM reponse');
       $res=$q->fetch();
-      if($res['answer-john']==$answer){
+      if($res['answerjohn']==$answer){
       	  $nvscore='5';
       	  $mail=$_SESSION['mail'];
           $req=$BDD -> prepare('UPDATE utilisateur SET challenge1=:nvscore WHERE mail=:nmail');
