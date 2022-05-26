@@ -19,7 +19,7 @@
               if(isset($_SESSION['pseudo'])){
             ?>
 						<li class="nav-item dropdown">
-							<a class="nav-link" href="course-grid-3.php">Cours </a>
+							<a class="nav-link" href="coursPage.php">Cours </a>
 							<!--<div class="dropdown-menu" aria-labelledby="dropdown-a">
 								<a class="dropdown-item" href="course-grid-2.html">Cours 1 </a>
 								<a class="dropdown-item" href="course-grid-3.html">Cours 2 </a>
@@ -31,9 +31,9 @@
 							<a class="nav-link" href="blog.php">Tutoriels </a>
 						</li>
 						<li class="nav-item"><a class="nav-link" href="pricing.php">Challenges</a></li>
-						<li class="nav-item"><a class="nav-link" href="">Cyber Prevention</a></li>
+						<li class="nav-item"><a class="nav-link" href="cyberprevention.php">Cyber Prevention</a></li>
 						<li class="nav-item"><a class="nav-link" href="compte.php">Mon Compte</a></li>
-						<li class="nav-item"><a class="nav-link" href="">Contactez-nous</a></li>
+						<li class="nav-item"><a class="nav-link" href="contact2.php">Contactez-nous</a></li>
 					</ul>
 					<ul class="nav navbar-nav navbar-right">
                         <li><a class="hover-btn-new log orange" href="deconnexion.php"><span>Deconnexion</span></a></li>
