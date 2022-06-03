@@ -192,8 +192,11 @@ $q=$BDD->prepare('SELECT `challenge`.`IdChallenge`,`NomChallenge`, `Score` FROM 
                   ON `utilisateur`.`Id` = `rela_challenge_utilisateur`.`IdUtilisateur`
                   WHERE `utilisateur`.`Id`= ?; ');
 $q->execute(array($id));
+$total=0;
+$compteur=0;
 foreach ($q as $ligne){
-
+$total = $total + $ligne['Score'];
+$compteur+=5;
 ?>
     <div class="container">
       <div class="row main-row p-2">
@@ -221,7 +224,7 @@ foreach ($q as $ligne){
         </div>
         <div class="col-lg-8 col-md-12 col-sm-12">
           <div class="challenge-title mb-3">
-            <h6><?php echo $challenge3+$challenge2+$challenge1; ?>/15</h6>
+            <h6><?php echo $total; ?>/<?php echo $compteur; ?></h6>
           </div>
         </div>
       </div>

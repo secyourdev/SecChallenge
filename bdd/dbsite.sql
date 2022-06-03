@@ -137,6 +137,8 @@ INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Emplacement`, `Image`, `Descript
 (5, 'Comment avoir accès à l\'ordinateur d\'un autre ? (trouver un autre titre et image)', 'Tutoriel/tuto-post.html', 'images/tuto2.png', 'Voici un tutoriel afin d\'avoir accès au PC d\'un autre en exploitant la faille PostgreSQL', NULL),
 (6, 'Comment cacher un message secret dans une image ?', 'Tutoriel/tuto-steg.html', 'images/tutosteg.jpg', 'Voici un tutoriel afin de s\'initier à la stéganographie sur une image', NULL),
 (7, 'Comment avoir accès à l\'ordinateur d\'un autre ? (trouver un autre nom/image)', 'Tutoriel/tuto-apache.html', 'images/tuto2.png', 'Voici un tutoriel afin d\'avoir accès au PC d\'un autre en exploitant la faille Apache Tomcat', NULL);
+INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Emplacement`, `Image`, `Description`, `Reponse`) VALUES (NULL, 'Reverse engineering android : les bases', 'Tutoriel/tuto-reverse.html', 'images/tuto2.png', 'Ce tuto va vous apprendre à utiliser les outils jadx et apktool ', '636e2d6a4e34cf74146572ec64442cee');
+INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Emplacement`, `Image`, `Description`, `Reponse`) VALUES (NULL, 'Comment bruteforce des fichiers zippés', 'Tutoriel/tuto-fcrackzip.html', 'images/tuto2.png', 'Présentation de l\'outil fcrackzip et utilisation de bruteforce', '67bfc546ff9a58b63d9f08e2123c3e94');
 
 -- --------------------------------------------------------
 

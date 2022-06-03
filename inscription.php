@@ -80,24 +80,23 @@ include("bdd/acces_BDD.php");
       if($password==$confirmpassword){
         if($valid){
           $password=hash('sha256',$password);
-          $chal1='0';
-          $chal2='0';
-          $chal3='0';
           
         
-        $req = $BDD -> prepare("INSERT INTO utilisateur (name,firstname,pseudo,mail,password,challenge1,challenge2,challenge3) VALUES(?,?,?,?,?,?,?,?)");
-        $req->execute(array($name,$firstname,$pseudo,$mail,$password,$chal1,$chal2,$chal3));
-        
-        $chall = prepare('SELECT * FROM Challenge');
-        $chall->execute();
-        echo 3;
+        $req = $BDD -> prepare("INSERT INTO utilisateur (name,firstname,pseudo,mail,password) VALUES(?,?,?,?,?)");
+        $req->execute(array($name,$firstname,$pseudo,$mail,$password));
+    
+        $chall = $BDD -> prepare("SELECT * FROM challenge");
+        $chall->execute(array());
+
+        $id = $BDD -> prepare('SELECT MAX(id) FROM utilisateur');
+        $id->execute(array());
+        $maxid = $id->fetch();
         foreach ($chall as $ligne){
           
-          $id = $BDD -> prepare("SELECT MAX(id) FROM utilisateur");
-          $id->execute();
-
-          $req = $BDD -> prepare("INSERT INTO Rela_Challenge_Utilisateur (IdChallenge,IdUtilisateur) VALUES(?,?)");
-          $req->execute(array($ligne['IdChallenge'],$id));
+          $req = $BDD -> prepare("INSERT INTO rela_challenge_utilisateur (IdChallenge,IdUtilisateur,Score) VALUES(?,?,?)");
+          
+          $req->execute(array($ligne['IdChallenge'],$maxid['MAX(id)'], 0));
+          
         }
         header('Location: connexion.php');
         exit;
