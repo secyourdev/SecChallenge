@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body class="host_version"> 
+
+	<div class="all-title-box">
+		<div class="container text-center">
+			<h1>Un outil osint simple : CUPP<span class="m_1"></span></h1>
+		</div>
+	</div>
+	
+		<!-- Basic -->
+	<div class="container pt-5 align-items-center">
+		<div class="row align-items-center ">
+			<div class="col-8 offset-2">
+	
+				<h2 class="mb-3">1. Objectif</h2>
+				<p >
+					L'objectif de ce tutoriel est de vous présenter l'outil CUPP. 
+					</br>
+					CUPP (common user passwords profiler) est un outil qui permet de lister des mots de passe d'une personne en fonction des ses centres d'intérêt.
+					</br>
+					
+					</br>
+					Vous pourrez trouver plus d'informations ici :</br> <a  class="link-primary" href="https://github.com/Mebus/cupp">https://github.com/Mebus/cupp</a>
+				    </br>
+					
+				
+				</p>    
+				
+				<h2 class="mb-3">2. Configuration</h2>
+				<p >
+					Pour ce tutoriel, nous utiliserons un docker.
+					</br>
+					Pour récuperer l'image et la lancer :
+				    </br>
+					<kbd class="ms-3">bash> docker pull cybersecuriteachg2/tutocupp</kbd>
+					</br>
+					<kbd class="ms-3">docker run -it cybersecuriteachg2/tutocupp</kbd>
+					</br>
+					
+				</p>   
+
+				<h2 class="mb-3">3. Les étapes</h2>
+				<p >
+					
+					Pour installer CUPP il faut taper la commande :
+					</br>
+					<kbd class="ms-3">bash> git clone https://github.com/Mebus/cupp.git</kbd>
+					</br>
+					<img src="images/cupp/cupp1.png" alt="" class="img-fluid">
+					Nous avons alors un dossier cupp dans notre dossier courant.
+					</br>
+					Nous pouvons lancer cupp avec la commande suivante :
+					</br>
+
+					<kbd class="ms-3">bash> ./cupp/cupp.py -i</kbd>
+					<img src="images/cupp/cupp2.png" alt="" class="img-fluid">
+					</br>
+					Il faut alors saisir les informations connues de la personne.
+					</br>
+					Ici nous allons vous allez faire un exemple avec : Baudelaire Charles, né le 9 avril 1821 qui aime la poésie.
+					</br>
+					Voici ce que vous devriez entrer :
+					<img src="images/cupp/cupp3.png" alt="" class="img-fluid">
+					<img src="images/cupp/cupp4.png" alt="" class="img-fluid">
+					</br>
+					Attention pour l'Hyperspeed print : Il n'est pas utile.
+					</br>
+					Vous pourrez utiliser la commande cat une fois le fichier créé pour voir le résultat.
+					</br>
+					<img src="images/cupp/cupp5.png" alt="" class="img-fluid">
+					</br>
+					On obtient alors un fichier baudelaire.txt qui contient une liste de mot de passe possible.
+					</br>
+					<img src="images/cupp/cupp6.png" alt="" class="img-fluid">
+					
+					
+				</p> 
+
+
+
+				<h2 class="mb-3">4. Bonus : vidéo du tutoriel</h2>
+				<p>
+					Vous trouverez ci-dessous un tutoriel vidéo :
+					</br>
+					<iframe width="560" height="315" src="videos/cupp.mp4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</p> 
+
+				<h2 class="mb-3">5. Validation</h2>
+				<p>
+					Pour valider le tutoriel, il faut récupérer le hash en sha-256 du fichier baudelaire.txt créé par cupp. Pour cela :
+					</br>
+					<kbd class="ms-3">bash> sha256sum baudelaire.txt</kbd>
+					</br>
+					<img src="images/cupp/cupp7.png" alt="" class="img-fluid">
+					</br>
+				</p> 
+			</div> <!-- end of col -->
+		</div> <!-- end of row -->
+</body>
+</html>

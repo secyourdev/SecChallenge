@@ -47,7 +47,7 @@ INSERT INTO `challenge` (`IdChallenge`, `Emplacement`, `Reponse`, `NomChallenge`
 (3, 'Challenge/Challenge3.html', 'salut tout le monde', 'Pourras-tu décrypter le message ?', 'Chiffrement : Code César', 'Decryptage', 'Langage Python'),
 (4, 'Challenge/Challenge-mitm.html', 'ILoveChocolate', 'Man in the middle', 'arp poisoning', '', NULL),
 (5, 'Challenge/Challenge-osint.html', '6718709afea3accd6415832982f15e13', 'OSINT', 'OSINT', 'Brute force', NULL);
-
+INSERT INTO `challenge` (`IdChallenge`, `Emplacement`, `Reponse`, `NomChallenge`, `Competence1`, `Competence2`, `Competence3`) VALUES (NULL, 'Challenge/Challenge-ssh.html', '50617461746F725353484E6574636174', 'SSH', 'patator', 'ssh', 'netcat');
 -- --------------------------------------------------------
 
 --
@@ -78,6 +78,9 @@ INSERT INTO `cours` (`Id`, `LienImage`, `Titre`, `Description`, `EmplacementCour
 (9, 'images/sudo.jpg', 'Faille sudo baron samedit', 'Qu\'est ce que la faille sudo Baron samedit ? Que permet elle d\'exploiter ?', 'Cours/cours-sudo.html'),
 (10, 'images/log4shell.jpg', 'Log4shell', 'Qu\'est ce que la faille log4shell ? Que permet elle d\'exploiter ?', 'Cours/cours-log4shell.html'),
 (11, 'images/osint.jpg', 'OSINT', 'L\'OSINT est de plus en plus répendu de nos jours, mais qu\'est ce que l\'OSINT ?', 'Cours/cours-osint.html');
+INSERT INTO `cours` (`Id`, `LienImage`, `Titre`, `Description`, `EmplacementCours`) VALUES (NULL, 'images/honeypot.png', 'Honeypot', 'honeypot ? Comment se protéger ?', 'Cours/cours-honeypot.html');
+INSERT INTO `cours` (`Id`, `LienImage`, `Titre`, `Description`, `EmplacementCours`) VALUES (NULL, 'images/reverse.jpg', 'Reverse Engineering', 'Reverse engineering : l\'art de déconstruire ', 'Cours/cours-reverse.html');
+INSERT INTO `cours` (`Id`, `LienImage`, `Titre`, `Description`, `EmplacementCours`) VALUES (NULL, 'images/mitm.png', 'Man in the middle', 'Ici nous allons voir une des attaques les plus connues', 'Cours/cours-mitm.html');
 
 -- --------------------------------------------------------
 
@@ -139,7 +142,7 @@ INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Emplacement`, `Image`, `Descript
 (7, 'Comment avoir accès à l\'ordinateur d\'un autre ? (trouver un autre nom/image)', 'Tutoriel/tuto-apache.html', 'images/tuto2.png', 'Voici un tutoriel afin d\'avoir accès au PC d\'un autre en exploitant la faille Apache Tomcat', NULL);
 INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Emplacement`, `Image`, `Description`, `Reponse`) VALUES (NULL, 'Reverse engineering android : les bases', 'Tutoriel/tuto-reverse.html', 'images/tuto2.png', 'Ce tuto va vous apprendre à utiliser les outils jadx et apktool ', '636e2d6a4e34cf74146572ec64442cee');
 INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Emplacement`, `Image`, `Description`, `Reponse`) VALUES (NULL, 'Comment bruteforce des fichiers zippés', 'Tutoriel/tuto-fcrackzip.html', 'images/tuto2.png', 'Présentation de l\'outil fcrackzip et utilisation de bruteforce', '67bfc546ff9a58b63d9f08e2123c3e94');
-
+INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Emplacement`, `Image`, `Description`, `Reponse`) VALUES (NULL, 'CUPP', 'Tutoriel/tuto-cupp.html', 'images/tuto2.png', 'Un outil osint simple pour commencer l\'osint', 'c6f46767fa75cc27accee0bb85ffa23abe6fdd94d16387218fed3b311b38f38e'); 
 -- --------------------------------------------------------
 
 --
