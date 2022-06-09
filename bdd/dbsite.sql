@@ -47,7 +47,7 @@ INSERT INTO `challenge` (`IdChallenge`, `Emplacement`, `Reponse`, `NomChallenge`
 (3, 'Challenge/Challenge3.html', 'salut tout le monde', 'Pourras-tu décrypter le message ?', 'Chiffrement : Code César', 'Decryptage', 'Langage Python'),
 (4, 'Challenge/Challenge-mitm.html', 'ILoveChocolate', 'Man in the middle', 'arp poisoning', '', NULL),
 (5, 'Challenge/Challenge-osint.html', '6718709afea3accd6415832982f15e13', 'OSINT', 'OSINT', 'Brute force', NULL);
-INSERT INTO `challenge` (`IdChallenge`, `Emplacement`, `Reponse`, `NomChallenge`, `Competence1`, `Competence2`, `Competence3`) VALUES (NULL, 'Challenge/Challenge-ssh.html', '50617461746F725353484E6574636174', 'SSH', 'patator', 'ssh', 'netcat');
+(6, 'Challenge/Challenge-ssh.html', '50617461746F725353484E6574636174', 'SSH', 'patator', 'ssh', 'netcat');
 -- --------------------------------------------------------
 
 --
