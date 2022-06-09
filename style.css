@@ -39,8 +39,6 @@ p{
 
 .navbar-light .navbar-nav .nav-link:hover,.nav-link:focus {
 	color:white;
-	border-bottom : 2px solid white;
-	padding-bottom: 3px;
 }
 
 .cadre-inscription{
@@ -2064,7 +2062,7 @@ a img.aligncenter {
 .message-box h1 {
     font-size: 30px;
     font-weight: 400;
-    padding: 0 0 10px;
+    padding: 0 0 5vh;
     margin: 0;
     line-height: 62px;
     margin-top: 0;
@@ -3101,7 +3099,7 @@ select.mobile-device {
     margin: 0;
     font-weight: 300;
     padding: 4px 0 0;
-    line-height: 1 !important:
+    line-height: 1 !important;
 }
 
 #preloader {
@@ -3267,7 +3265,9 @@ span.m_1 {
   font-weight: 600;
 }
 
-
+.block{
+    display: block;
+}
 
 .pricingTable{
     text-align: center;
@@ -4254,14 +4254,51 @@ main {
 }
 
 
+.code{
+	color: rgb(224, 224, 224);
+	background-color: black;
+	padding: 5px;
+	padding-left: 10px; 
+	border-radius: 10px;
+	font-family: 'Courier New','Calibri', 'Trebuchet MS', sans-serif;
+}
 
+.code::selection{
+	background-color: blue;
+	color: rgb(255, 255, 255);
+}
 
+.listeCategories{
+    margin-bottom: 6vh;
+    text-align: center;
+    display:flex;
+    flex-wrap: wrap;
+    width: 70%;
+    margin-right:auto;
+    margin-left:auto;
+    justify-content: center;
+}
 
+.categorie{
+    padding:1.5vh 3vw;
+    background-color: white;
+    color:#333333;
+    font-size: 1vw;
+}
 
+.selected{
+    background-color: #333333;
+    color : white;
+}
 
+.menuDeroulant{
+    background-color: black;
+    color:white;
+}
 
-
-
+.menuDeroulantItem:hover{
+    background-color: #333333 !important;
+}
 
 
 

@@ -1,0 +1,93 @@
+<h1><b>Nessus</b></h1>
+
+<h2>I) Qu’est-ce que Nessus ?</h2>
+
+<p>
+    Nessus est un logiciel créé par la société Tenable Network
+    Security permettant d’évaluer la sécurité générale d’une machine ciblée.
+    Ce logiciel est réputé pour sa performance et surtout pour son taux de faux positif
+    qui est un atout majeur lors de la maintenance du réseau.
+</p>
+
+<h2>II) Comment Nessus fonctionne-t-il ?</h2>
+
+<p>
+    Tout d'abord, le logiciel va détecter les machines présentes sur le réseau recherché.
+    Ensuite, il va en analyser les ports qui peuvent être choisis selon divers critères
+    fournis par l’auteur de l’analyse pour après coup adapter le type d’attaque selon les
+    versions des services actifs sur la machine. De plus, il est recommandé d’effectuer
+    chaque scan en utilisant un compte utilisateur local avec les droits les plus importants
+    ce qui va permettre de détecter la majeure partie des vulnérabilités.<br><br>
+    Néanmoins, cela implique que Nessus fonctionne sur un système à double tranchant.
+    Ce logiciel procède en effectuant de réelles attaques dictées à l’aide de plugins
+    fournis lors de l’installation où bien par la personne voulant analyser le réseau.
+    C'est-à-dire que l’équipe de sécurité d’une entreprise à donc autant de pouvoir sur
+    son réseau qu’un membre extérieur à celle-ci si le réseau n’est pas assez bien sécurisé
+    et que les clés d'authentification sont obtenables.<br><br>
+    Une fois le scan terminé, un retour des différents types de vulnérabilités sera effectué
+    et trié selon la criticité des failles trouvées. Il y aura donc les vulnérabilités Critiques,
+    Hautes, Moyennes, Basses et les potentielles vulnérabilités présentes dans la catégorie Info.
+    Chaque vulnérabilité possède une description sur sa provenance, ce qu’elle fait et comment peut-elle
+    être corrigée. Sa criticité est aussi déterminée par le Common Vulnerability Scoring System qui
+    est un système d'évaluation standardisé de la criticité des vulnérabilités selon des critères
+    objectifs et mesurables.
+</p>
+
+<h2>III) Comment utilise-t-on Nessus ? </h2>
+
+<p>
+    En général, l’utilisation d’un scan Nessus est intuitif et facile à utiliser ce qui en fait
+    un atout majeur lors de la maintenance d’un réseau. Comme dit précédemment, il est recommandé
+    de commencer par une découverte des hôtes dans le cas où l’infrastructure n’est pas connue,
+    cela permettra de faciliter les prochains scans. <br><br>
+
+    Pour ce faire, il suffit de démarrer un nouveau scan en utilisant l’un des modèles par défaut :
+    Host Discovery. Celui-ci permet en même temps de terminer le système d’exploitation utilisé par
+    la machine (à choisir dans la catégorie “Discovery”) ce qui limitera donc le nombre de plugins à
+    utiliser lors du scan de vulnérabilités. Afin de démarrer le scan, il suffit de rentrer la plage du
+    réseau à identifier dans la catégorie “Targets”.<br><br>
+
+    Il suffit donc de démarrer un nouveau scan en choisissant le type de vulnérabilité à découvrir.
+    Néanmoins, la plupart des scans sont recommandés d’être effectués en tant que Basic Network Scan
+    et Advanced Scan afin de balayer l’ensemble des vulnérabilités connues par le logiciel et les plugins
+    fournis. <br><br>
+
+    Prenons le cas où l’on cherche à analyser une machine de votre réseau présentant un serveur.
+    Vous avez découvert que le port 80 est ouvert sur votre pc présent à l’ip 192.168.1.69
+    et qu’il s’agit du dit serveur.
+</p>
+
+<img src="images/nessus1.png" alt="" class="img-fluid">
+
+<p>
+    Comme vous savez que vous ne voulez pas scanner l’ensemble du pc mais seulement le port 80,
+    il vous suffit de rentrer cette information dans l’onglet Discovery en sélectionnant le mode Custom.
+    Ensuite, rentrer le port a scanner dans la catégorie Port Scanning
+</p>
+
+<img src="images/nessus2.png" alt="" class="img-fluid">
+
+<p>
+    Ensuite, dans l’onglet Credentials, vous pouvez entrer les informations de connexion
+    de la machine afin de trouver l'intégralité des vulnérabilités ou bien laissez cette partie
+    vide afin de comprendre quelles sont les vulnérabilités en tant que visiteur.
+    Si vous décidez d'effectuer un scan en tant qu’administrateur, il suffit de sélectionner
+    le système d’exploitation adapté à la machine (SSH pour Linux et Windows pour… Windows !)
+    puis vous enregistrez ensuite vos informations de connexions.
+</p>
+
+<img src="images/nessus3.png" alt="" class="img-fluid">
+
+<p>
+    Vous pouvez désormais démarrer votre scan ! <br>
+    Une fois le scan terminé, il est possible de trier les vulnérabilités trouvées afin
+    de faciliter la maintenance en choisissant uniquement une certaine catégorie de vulnérabilité
+    telle que celles liées au système d’exploitation. <br>
+    Il vous est désormais possible d’exporter le scan sous format PDF afin de le faire parvenir au service compétent
+    ! <br><br>
+
+    Néanmoins, il existe sur Nessus des centaines de paramètres divers et variés permettant d’adapter
+    à la perfection le type de scan effectué ce qui en fait un atout de taille pour ce logiciel.
+    Pour plus d’informations, je vous conseille d’expérimenter les multiples possibilités qu’offre Nessus
+    et de vous renseigner sur divers outils fournis.
+</p>

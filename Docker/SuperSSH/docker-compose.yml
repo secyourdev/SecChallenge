@@ -1,0 +1,21 @@
+version: "3.7"
+
+services: 
+  server:
+    build: ./server/.
+    image: server_ssh
+    container_name: server
+    restart: always
+    networks: 
+      - "SSH_Net"
+  kali:
+    build: ./kali/.
+    image: kali
+    container_name: kali
+    command: tail -F anything
+    
+    networks:
+      - "SSH_Net"
+
+networks:
+  SSH_Net:

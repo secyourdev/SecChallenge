@@ -1,6 +1,7 @@
 <?php
   session_start();
   include('bdd/acces_BDD.php');
+  $categorie = $_GET["categorie"]
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -79,6 +80,20 @@
 	</div>
 
 	<div id="overviews" class="section wb">
+
+	<div class ="listeCategories">
+        <a class ='categorie <?php if ($categorie=='tous'){?> selected <?php } ?>' href="coursPage.php?categorie=tous"> Tous </a>
+			<?php
+				$q=$BDD->prepare('SELECT DISTINCT(Categorie) FROM cours');
+				$q->execute(array());
+				foreach($q as $ligne){
+			?>
+					<a class ='categorie' href="coursPage.php?categorie=<?php echo $ligne['Categorie'] ?>"> <?php echo $ligne['Categorie']; ?> </a>
+			<?php
+				}
+			?>
+		</div>
+
 		<div class="container">
 
 			<hr class="invis">
@@ -89,6 +104,7 @@
                     $q->execute(array());
 					$compteur = 0;
                     foreach ($q as $ligne){
+						if ($categorie==$ligne['Categorie'] || $categorie=='tous'){
 						?>
 
 				<div class="col-lg-4 col-md-6 col-12">
@@ -117,6 +133,7 @@
 					<?php
 				}
 				$compteur++;
+			}
 			}
                     ?>
 

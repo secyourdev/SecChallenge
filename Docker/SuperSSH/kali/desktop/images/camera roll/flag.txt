@@ -1,0 +1,5 @@
+Congratulations!
+
+The following message is the flag that you must write in the answer field:
+
+{50617461746F725353484E6574636174}
