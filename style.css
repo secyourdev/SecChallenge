@@ -4274,6 +4274,13 @@ main {
     font-size: 1vw;
 }
 
+.categorie:hover{
+    padding:1.5vh 3vw;
+    background-color: #333333;
+    color : white;
+    font-size: 1vw;
+}
+
 .selected{
     background-color: #333333;
     color : white;
