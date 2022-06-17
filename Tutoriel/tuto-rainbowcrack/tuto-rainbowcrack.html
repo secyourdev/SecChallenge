@@ -1,0 +1,57 @@
+<h1><b>RainbowCrack</b></h1>
+
+<p><U><b>I) Qu’est-ce que RainbowCrack ?</b></U> <br><br>
+
+    RainbowCrack est un logiciel permettant de décrypter des fonctions de hachages principalement
+    dans le but de corrompre des mots de passe. Ce logiciel se base sur le principe des Rainbow Tables. <br><br>
+
+    <b><U>II) Comment utilise-t-on RainbowCrack ?</b></U> <br><br>
+
+    RainbowCrack (rcrack_gui.exe) est un logiciel simple d’utilisation, il suffit d’ajouter le hash
+    à décrypter ou bien un fichier texte comportant des hashs.
+    Ensuite, il faut choisir une Rainbow Table qui va nous permettre de le décrypter. <br>
+    Pour ce faire, il est d’abord nécessaire de créer une rainbow table et ce processus est très coûteux
+    en termes d’utilisation du processeur et de stockage. C’est pour cela que nous allons utiliser
+    une table peu efficace mais accessible à tous pour ce challenge.<br>
+    La première étape consiste simplement à ouvrir un terminal et de
+    se positionner dans le répertoire dans lequel vous avez installé rainbowcrack. <br><br>
+
+    D’abords, la création d’une rainbow table se base sur cette commande :<br>
+    rtgen hash_algorithm charset plaintext_len_min plaintext_len_max table_index chain_len chain_num part_index<br><br>
+
+    Afin de mieux comprendre comment fonctionne cette commande et ses paramètres, je vous invite à visiter le site
+    officiel :<br>
+    <a
+        href="http://project-rainbowcrack.com/generate.htm"><U>http://project-rainbowcrack.com/generate.htm</U></a><br><br>
+
+    Premièrement, nous voulons décoder un hash en md5. Nous savons aussi que le texte à décoder possède
+    6 caractères qui sont uniquement des lettres minuscules. Il y a donc 321 272 406 combinaisons possibles.
+    Pour être sûr de toutes les générées, nous allons effectuer la commande suivante :<br>
+    <kbd class="ms-3">rtgen md5 loweralpha 1 6 0 2 32127206 0 </kbd><br><br>
+
+    La génération de la table peut durer jusqu’à 5 minutes.
+    Une fois terminé, il est nécessaire de la trier afin de la rendre utilisable par rainbowcrack.
+    Cela se fait avec la commande suivante : <br>
+    <kbd class="ms-3">rtsort . </kbd><br>
+    L’exécution de cette commande peut durer jusqu’à 5 minutes. <br><br>
+
+    Une fois terminé, vous allez obtenir votre fichier .rt dans votre répertoire courant, il s’agit de votre Rainbow
+    Table.<br><br>
+
+    Vous pouvez désormais ouvrir le logiciel RainbowCrack via rcrack_gui.exe,
+    ajouter votre hash via file > load Hashes from File.. et y insérer le fichier fourni. <br><br>
+
+    Une fois ajouté, vous pourrez apercevoir 5 hash différents. Ils peuvent désormais être décryptés à l’aide
+    de votre table que vous sélectionnerez à partir de “Rainbow Table” > “Search Rainbow Table”
+    (Votre rainbow table est votre fichier .rt).<br><br>
+
+    Tutoriel vidéo : 
+</p>
+
+<video controls width="560" height="315">
+    <source src="Tutoriel/tuto-rainbowcrack/Tutoriel_RainbowCrack.mp4" type="video/mp4">
+
+    Désolé, votre navigateur ne supporte pas ce format vidéo.
+</video>
+
+      

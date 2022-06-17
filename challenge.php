@@ -1,7 +1,9 @@
 <?php
     include("bdd/acces_BDD.php");
 	session_start();
+	if (isset($_SESSION['id'])){
     $id = $_GET["challenge"]
+	
 ?>
 
 <!DOCTYPE html>
@@ -112,13 +114,8 @@
 				<div class="col-md-8 offset-md-2">
 
 					<!--<p class="lead">BARRE DE RECHERCHE</p>-->
-					<section class="cours-disponibles">
-						<div class="container">
 
-							<div class="col-md-8 offset-md-2">
-
-								<div class="row">
-									<?php
+					<?php
 
 										if(isset($_POST['valider'])){
 
@@ -133,22 +130,23 @@
 												$result=$q->fetch();
 												$nvscore=0;
 												if($result['Reponse']==$answer){
+													
 													$nvscore='5';
 												$utilisateur=$_SESSION['id'];
-												$req=$BDD -> prepare('UPDATE rela_challenge_utilisateur SET Score=$nvscore WHERE IdChallenge = ? AND IdUtilisateur = ?');
-												$req->execute(array($id,$utilisateur));
+												$req=$BDD -> prepare('UPDATE rela_challenge_utilisateur SET Score=? WHERE IdChallenge = ? AND IdUtilisateur = ?');
+												$req->execute(array($nvscore,$id,$utilisateur));
 												$result=$req->fetch();?>
 
-									<div class="rep">
-										<h1>La réponse est juste. Score 5/5</h1>
-									</div>
-									<?php
+					<div class="rep">
+						<h1>La réponse est juste. Score 5/5</h1>
+					</div>
+					<?php
 											}else{
 											?>
-									<div class="rep">
-										<h1>La réponse est fausse, réessayez.</h1>
-									</div>
-									<?php
+					<div class="rep">
+						<h1>La réponse est fausse, réessayez.</h1>
+					</div>
+					<?php
       										}
     										}
 
@@ -156,110 +154,35 @@
     										}
   										}
 										?>
-									<form method="post">
-										<div class="form-group">
-											<input class="form-control" type="text" name="answer" placeholder="Réponse"
-												value="<?php if (isset($answer)) echo $answer; ?>" required="required">
-										</div>
-										<input type="submit" name="valider" value="Valider la réponse">
-									</form>
-
-								</div>
-
-							</div>
+					<form method="post">
+						<div class="form-group">
+							<input class="form-control" type="text" name="answer" placeholder="Réponse"
+								value="<?php if (isset($answer)) echo $answer; ?>" required="required">
 						</div>
+						<input type="submit" name="valider" value="Valider la réponse">
+					</form>
+
 				</div>
+			</div>
 		</section>
 	</div><!-- end media -->
-	</div><!-- end col -->
 
 
-	</div><!-- end row -->
-	</div><!-- end container -->
-	</div><!-- end section -->
-
-	<section class="section lb page-section">
-
-		</div><!-- end title -->
-		</div>
+	<?php
+        require_once('footer.php');
+    ?>
 
 
-		</div>
-		</div>
-		</form>
-		</div>
-		</div>
 
-		</div><!-- end col -->
-
-		</div><!-- end container -->
-		</div><!-- end section -->
-
-		<footer class="footer">
-			<div class="container">
-				<div class="row">
-					<div class="col-lg-4 col-md-4 col-xs-12">
-						<div class="widget clearfix">
-							<div class="widget-title">
-								<h3>CyberSecuriTeach</h3>
-							</div>
-							<p> </p>
-							<div class="footer-right">
-								<ul class="footer-links-soi">
-
-
-								</ul><!-- end links -->
-							</div>
-						</div><!-- end clearfix -->
-					</div><!-- end col -->
-
-					<div class="col-lg-4 col-md-4 col-xs-12">
-						<div class="widget clearfix">
-							<div class="widget-title">
-								<h3>Liens</h3>
-							</div>
-							<ul class="footer-links">
-								<li><a href="index.php">Accueil</a></li>
-								<li><a href="course-grid-3.php">Cours</a></li>
-								<li><a href="blog.php">Tutoriels</a></li>
-								<li><a href="pricing.php">Challenges</a></li>
-								<li><a href="cyberprevention.php">Cyber Prevention</a></li>
-							</ul><!-- end links -->
-						</div><!-- end clearfix -->
-					</div><!-- end col -->
-
-					<div class="col-lg-4 col-md-4 col-xs-12">
-						<div class="widget clearfix">
-							<div class="widget-title">
-								<h3></h3>
-							</div>
-
-
-						</div><!-- end clearfix -->
-					</div><!-- end col -->
-
-				</div><!-- end row -->
-			</div><!-- end container -->
-		</footer><!-- end footer -->
-
-		<div class="copyrights">
-			<div class="container">
-				<div class="footer-distributed">
-					<div class="footer-center">
-						<p class="footer-company-name">All Rights Reserved. &copy; 2021 <a href="#">CyberSecuriTeach</a>
-						</p>
-					</div>
-				</div>
-			</div><!-- end container -->
-		</div><!-- end copyrights -->
-
-		<a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
-
-		<!-- ALL JS FILES -->
-		<script src="js/all.js"></script>
-		<!-- ALL PLUGINS -->
-		<script src="js/custom.js"></script>
+	<!-- ALL JS FILES -->
+	<script src="js/all.js"></script>
+	<!-- ALL PLUGINS -->
+	<script src="js/custom.js"></script>
 
 </body>
 
 </html>
+<?php }
+else{
+	header('Location: index.php');
+}

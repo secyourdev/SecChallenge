@@ -1,0 +1,75 @@
+<h1><b>Faille XXE</b></h1>
+
+<p>
+    Une XXE (XML External Entities) est une vulnérabilité touchant les programmes interprétant le XML.
+    <br>
+    <br>
+    Elle se caractérise par la possibilité de lire des fichiers sur le serveur cible. Elle peut ainsi mettre en danger
+    celui-ci, en accédant, par exemple, à un fichier de configuration contenant des mots de passe, en copiant les
+    fichiers de la base de données ou en récupérant le code source d’une application.
+    <br>
+</p>
+
+<h2><b>XML et entités</b></h2>
+
+<p>
+    Le XML (eXtensible Markup Language) est un métalangage de balisage, autrement dit, un moyen de formaliser du texte.
+    Il est reconnaissable par son utilisation des chevrons et son extensibilité, permettant ainsi d’ajouter de nouvelles
+    balises dès que voulu.
+    <br>
+    <br>
+    <img src="Cours/cours-xxe/images/failleXEE1.png" alt="">
+    <br>
+    <br>
+    Une des fonctionnalités du XML nous intéresse particulièrement dans notre cas : les entités.
+    <br>
+    <br>
+    Une entité est, globalement, l’équivalent XML d’une variable et permet de définir des éléments que l’on pourra
+    placer ensuite ailleurs. Une particularité des entités est qu’il est possible de faire référence à une entité dite «
+    externe » (c’est-à-dire externe au document, un fichier soit local, soit situé sur un serveur distant) en rajoutant
+    « SYSTEM » lors de la définition de l’entité.
+
+    <br><br>Et c'est là que se situe le coeur du problème.
+
+</p>
+
+<h2><b>Fonctionnement d’une XXE</b></h2>
+
+<p>
+    Il est commun que certains sites web se servent de données utilisateurs pour créer des fichiers XML (ou reposant sur
+    du XML, tel que des PDF), avant de renvoyer ceux-ci à l’utilisateur.
+    <br>
+    <br>
+    Il est donc possible pour un utilisateur malveillant d’essayer d’injecter dans le code XML des références à des
+    entités externes, notamment des fichiers sensibles se situant sur le serveur. Puisque c’est le serveur qui va lire
+    le XML, il va essayer de résoudre les entités externes avant de les incorporer au document final, qui sera ainsi
+    renvoyé au client en contenant des données sensibles.
+    <br>
+    <br>
+    Par example le document généré par le code XML suivant incorporera le fichier /etc/passwd du serveur l’ayant exécuté
+    (si celui-ci est vulnérable aux XXE, bien évidemment).
+    <br>
+    <br>
+    <img src="Cours/cours-xxe/images/failleXEE2.png" alt="">
+    <br>
+</p>
+
+<h2><b>Comment se protéger des attaques XXE ?</b></h2>
+
+<p>
+    On est vulnérable aux attaques XXE lorsque les trois conditions suivantes sont réunies :
+    L'utilisateur peut manipuler du contenu XML qui sera ensuite parsé par le serveur
+    (cela peut se faire via un upload de fichier, un éditeur de texte,...).
+    Le parseur XML autorise la définition et l'utilisation d'entité.
+    Le parseur XML parse et interprète les références externes dans les entités.
+    </br></br>
+    On peut donc pour se protéger : Ne pas
+    utiliser de données utilisateurs dans les documents XML et faire en sorte que le code XML ne transite jamais par le
+    client.
+
+    Interdire la définition d'entités ou d'entités externes.
+
+    Enfin on peut essayer de nettoyer les données utilisateurs avant de les utiliser mais cette solution est bien moins
+    efficace car il est difficile de prendre en compte tous les cas d'utilisations.
+
+</p>

@@ -1,0 +1,94 @@
+<h1>
+    <b>
+        Vulnérabilité Baron Samedit : une vulnérabilité permettant une élévation de privilèges se cachait dans Sudo
+        depuis 10 ans
+    </b>
+</h1>
+
+<p>
+    Ce n’est que très récemment, il y a un peu plus d’un an, qu’a été découverte une importante faille de sécurité dans
+    Sudo.
+    Cette faille permet à n’importe quel utilisateur de récupérer les privilèges root, même s'il ne devrait pas pouvoir
+    y avoir accès.
+</p>
+
+<h2><b>Sudo, c’est quoi ?</b></h2>
+
+<p>
+    Sudo est une commande utilisée sous Linux permettant à un administrateur système d’octroyer le privilège
+    à d’autres utilisateurs de lancer des commandes comme s’ils étaient eux-mêmes administrateurs.
+    Si un utilisateur peut effectuer des tâches administratives, il peut facilement obtenir les privilèges via la
+    commande sudo.
+    Dans le cas contraire, il ne pourra pas obtenir ces privilèges. Ces privilèges administrateurs, également appelés
+    privilèges root,
+    permettent notamment d’effectuer des tâches sensibles sur la machine.
+    <br>Pour obtenir ces privilèges root, il faut utiliser la commande sudo, puis entrer un mot de passe
+    d’administrateur.
+    La commande pourra par la suite être utilisée sans avoir besoin du mot de passe administrateur pendant 15 minutes,
+    après quoi ce dernier devra être entré une nouvelle fois.
+</p>
+
+<h2><b>Une vulnérabilité était dissimulée sur une commande aussi importante depuis 10 ans ?</b></h2>
+
+<p>
+    Comme expliqué précédemment, pour pouvoir accéder aux privilèges root via la commande sudo il est nécessaire
+    d’utiliser un mot de passe d’administrateur,
+    ce qui est logique puisque ces privilèges octroient un contrôle “total” sur la machine.
+    Cependant, il a été découvert très récemment qu’il était possible d’obtenir ces privilèges sans avoir besoin
+    d’utiliser de mot de passe d’administrateur.
+    <br>Bien que découverte récemment, cette vulnérabilité que l’on nomme “Baron Samedit” est présente dans Sudo depuis
+    2011,
+    ce qui implique que beaucoup de versions de Sudo sont concernées par cette faille de sécurité : les versions 1.8.2 à
+    1.8.31p2 et 1.9.0 à 1.9.5p1.
+</p>
+
+<h2><b>Comment une telle faille de sécurité a pu rester incognito si longtemps dans une commande si utilisée ?</b></h2>
+
+<p>
+    Cette vulnérabilité combine en réalité deux failles présentes dans Sudo.
+    En les exploitant correctement, avec la commande sudoedit (commande permettant de modifier des fichiers uniquement
+    modifiables avec les privilèges root)
+    il est possible de créer un buffer overflow, ce qui va mener à l’obtention des privilèges root.
+    <br>La façon dont est gérée le slash inversé “\” est à l’origine de Baron Samedit qui, lorsque la commande sudoedit
+    est exécutée en mode shell,
+    ne fonctionne pas comme prévu et produit ce fameux buffer overflow.
+    <br>Ce n’est pas la première fois qu’une faille de sécurité est détectée dans sudo,
+    il y a par exemple deux autres failles très connues qui ont été détectées 2 ans auparavant.
+    Cependant, c’est bien la première fois qu’une de ces vulnérabilités s’est révélée aussi critique.
+</p>
+
+<h2><b>En tant qu’utilisateur de Linux, que dois-je faire pour éviter cette faille ?</b></h2>
+
+<p>
+    La première étape est de savoir si votre configuration est vulnérable à cette faille.
+    Théoriquement, les machines d’aujourd’hui devraient toutes être sur une version où la vulnérabilité a été corrigée,
+    mais si vous voulez vraiment être sur, il est possible de taper la commande suivante pour savoir si votre machine
+    est vulnérable ou non :
+</p>
+
+<kbd class="ms-3">sudoedit -s '\' `perl -e 'print "A" x 65536'`</kbd>
+
+<p>
+    Si un “segmentation fault” est retourné par cette commande, alors la machine est vulnérable à Baron Samedit.
+    Dans ce cas, la seule solution est de mettre à jour Sudo vers une version ultérieure aux versions vulnérables.
+</p>
+
+<p>Pour les intéressés, le fonctionnement de l'exploitation de la faille en détails :
+    <a
+        href="https://blog.qualys.com/vulnerabilities-threat-research/2021/01/26/cve-2021-3156-heap-based-buffer-overflow-in-sudo-baron-samedit">
+        <U>
+            https://blog.qualys.com/vulnerabilities-threat-research/2021/01/26/cve-2021-3156-heap-based-buffer-overflow-in-sudo-baron-samedit
+        </U>
+    </a>
+</p>
+
+<h2><b>Sources :</b></h2>
+
+<p>
+    Une faille dans Sudo vieille de 10 ans touche Linux :
+    <br><a
+        href="https://www.it-connect.fr/une-faille-dans-sudo-vieille-de-10-ans-touche-linux/"><U>https://www.it-connect.fr/une-faille-dans-sudo-vieille-de-10-ans-touche-linux/</U></a>
+    <br><br>Baron Samedit : à double faille dans Sudo, doubles dégâts ? :
+    <br><a
+        href="https://www.silicon.fr/baron-samedit-faille-sudo-360355.html"><U>https://www.silicon.fr/baron-samedit-faille-sudo-360355.html</U></a>
+</p>

@@ -1,5 +1,6 @@
 <?php
 	session_start();
+	if (isset($_SESSION['id'])){
 	include("bdd/acces_BDD.php");
 	$id = $_GET["cours"]; 
 
@@ -103,50 +104,9 @@
 
 
 
-	<footer class="footer">
-		<div class="row row_footer">
-
-			<div class="col-lg-6 col-md-6 col-xs-12">
-				<div class="widget clearfix">
-					<div class="widget-title">
-						<h3>CyberSecuriTeach</h3>
-					</div>
-				</div><!-- end clearfix -->
-			</div><!-- end col -->
-
-			<div class="col-lg-6 col-md-6 col-xs-12">
-				<div class="widget clearfix">
-					<div class="widget-title">
-						<h3>Liens</h3>
-					</div>
-					<ul class="footer-links">
-						<li><a href="index.php">Accueil</a></li>
-						<li><a href="cours.php">Cours</a></li>
-						<li><a href="blog.php">Tutoriels</a></li>
-						<li><a href="pricing.php">Challenges</a></li>
-						<li><a href="cyberprevention.php">Cyber Prevention</a></li>
-					</ul><!-- end links -->
-				</div><!-- end clearfix -->
-			</div><!-- end col -->
-						
-		</div><!-- end row -->
-
-		<div class="copyrights">
-			<div class="container">
-				<div class="footer-distributed">
-					<div class="footer-center">
-						<p class="footer-company-name">All Rights Reserved. &copy; 2021 <a href="#">CyberSecuriTeach</a>
-						</p>
-					</div>
-				</div>
-			</div><!-- end container -->
-		</div><!-- end copyrights -->
-
-		
-		<a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
-
-	</footer><!-- end footer -->
-		
+	<?php
+        require_once('footer.php');
+    ?>
 
 	<!-- ALL JS FILES -->
 	<script src="js/all.js"></script>
@@ -156,3 +116,8 @@
 </body>
 
 </html>
+
+<?php }
+else{
+	header('Location: index.php');
+}

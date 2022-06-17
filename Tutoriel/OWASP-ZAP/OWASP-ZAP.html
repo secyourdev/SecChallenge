@@ -1,0 +1,48 @@
+<h1><b>OWASP ZAP</b></h1>
+
+<h2>Qu’est-ce que OWASP ZAP ?</h2>
+
+<p>
+    OWASP ZAP est le scanner Web de vulnérabilités le plus utilisé au monde,
+    il est entièrement gratuit et open source, vous pouvez donc l'adapter à vos besoins.
+    Ce programme est activement maintenu par une communauté internationale de volontaires,
+    qui travaillent à améliorer petit à petit l'outil et incorporent également de nouvelles
+    fonctionnalités.
+</p>
+
+<h2>Comment OWASP ZAP fonctionne-t-il ?</h2>
+
+<p>
+    ZAP crée un serveur proxy et fait passer le trafic du site Web via le serveur.
+    L'utilisation de scanners automatiques dans ZAP permet d'intercepter les vulnérabilités
+    sur le site Web.
+</p>
+
+<h2>Comment se servir de OWASP ZAP ? </h2>
+
+<p>
+    Tout d'abord, il faut s'assurer que Java 7 soit installé sur sa machine,
+    sinon ZAP ne se lancera pas.<br><br>
+
+    Ensuite, en s'assurant que toutes les fenetres firefox sont fermés, il faut lancer l'outil Zap,
+    aller dans le menu Outils, sélectionner les options, sélectionner les proxys locaux.
+    Nous pouvons voir ici l'adresse en tant que localhost (127.0.0.1) et le port
+    en tant que 8080, nous pouvons passer à un autre port, a 8099 par exemple.<br><br>
+
+    Maintenant, il faut ouvrir Mozilla Firefox et aller dans les paramètres. Dans l'onglet "général",
+    il faut aller dans les paramètres réseau, puis cocher "configuration manuelle du proxy", et mettre
+    le port qu'on a précédement mis dans ZAP, soit 8099 dans notre cas.<br>
+
+    Il faut maintenant essayer de se connecter a une applicaation, instagram par exemple.
+    En essayant, un fentre apparait pour dire que la connexion n'est pas sécurisé, il faut donc ajouté
+    une exception pour ce site. Pour ce faire, il suffit de cliquer sur "avancée" et de cliquer sur
+    "accepter le risque et poursuivre".<br><br>
+
+    En se connectant a la page instagram, on remarque dans l'onglet historique de ZAP qu'un dossier
+    instagram vient d'apparaitre. Nous pouvons donc faire un clique droit dessus, aller dans "attaquer"
+    et lancer un balayage actif. ZAP va donc effectuer une analyse active puis affichera les résultats.<br><br>
+
+    Une fois l'analyse terminée, nous pouvons générer des rapports. Pour cela, nous allons dans l'onglet "rapport",
+    puis generate report, puis nous n'avons plus qu'a entrer le chemin d'acces de l'endroit ou on rangera
+    le rapport html.<br><br>
+</p>

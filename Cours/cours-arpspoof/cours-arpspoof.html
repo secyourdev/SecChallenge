@@ -1,0 +1,44 @@
+<h1><b>ARP Spoofing</b></h1>
+
+<h2><b>Qu’est ce que le protocole de résolution d’adresse ARP ?</b></h2>
+
+<p>
+    C’est l’un des protocoles les plus importants de la couche réseau dans le modèle OSI. Il traduit l’adresse logique (IP) d’un appareil en adresse physique (MAC) et vice-versa.
+    <br>
+    <br>
+    Ce protocole permet aux appareils de communiquer entre eux sur un réseau local en mappant l’adresse IP d’un appareil à son adresse MAC.
+    <br>
+    <br>
+    (Par exemple les appareils sur un réseau communiquent avec le point d’accès comme un routeur ou une passerelle en utilisant ARP pour se connecter a internet.)
+
+</p>
+
+<h2><b>Fonctionnement de l’ARP ?</b></h2>
+
+<p>
+    Pour transmettre des données à PC2, PC1 doit connaitre l’adresse mac de PC2. Il envoie alors une requête sur le réseau pour demander qui possède l’adresse ip2. Tout les peripheriques recoivent cette requête. Seul l’ordinateur concerné est censé répondre avec son adresse mac. 
+    <br>
+    <br>
+    Pour répondre à PC1, PC2 créer un cache ARP avec les données transmis par PC1 (ip1 et mac1). Dès que PC1 a reçu une réponse il met son cache ARP à jour (il associe ip2 et mac2). 
+    <br>
+    <br>
+    PC1 peut alors envoyer son message a PC2.
+
+</p>
+
+<h2><b>Qu’est ce que l’ARP Spoofing ?</b></h2>
+
+<p>
+    C’est un type d’attaque dans lequel un attaquant envoie de faux messages ARP sur un réseau local afin de lier son adresse mac à l’adresse ip d’un appareil sur un réseau local (à l'aide d'un outil d'usurpation tel que arpspoof ou bettercap) pour accomplir une tâche malveillante. 
+    <br>
+    <br>
+    Cette liaison falsifiée place l'attaquant en tant qu'homme au milieu de  la communication (Man In The Middle Attack) et permet d'effectuer plusieurs tâches malveillantes telles que l'interception du trafic réseau, modifier, voire arrêter les données en transit.
+
+</p>
+
+<h2><b>Pourquoi fonctionne l'ARP Spoofing</b></h2>
+
+<p>
+    Le protocole ARP n'a pas été conçu pour la sécurité, c'est pourquoi ce protocole est faible en termes de sécurité.  Comme il ne vérifie pas l'authenticité des périphériques qui envoient la réponse d'une requête ARP, il permet également au périphérique hôte d'accepter 
+    les réponses ARP même s'il n'a jamais envoyé de requête ARP. C’est pour cette raison que l’usurpation d'ARP est possible.
+</p>

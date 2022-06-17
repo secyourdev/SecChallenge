@@ -1,6 +1,7 @@
 <?php
   session_start();
   include('bdd/acces_BDD.php');
+  if (isset($_SESSION['id'])){
   $categorie = $_GET["categorie"]
 ?>
 <!DOCTYPE html>
@@ -75,20 +76,23 @@
 
 	<div class="all-title-box">
 		<div class="container text-center">
-			<h1>Cours<span class="m_1"></span></h1>
+			<h1>Cours</h1>
 		</div>
 	</div>
 
 	<div id="overviews" class="section wb">
 
-	<div class ="listeCategories">
-        <a class ='categorie <?php if ($categorie=='tous'){?> selected <?php } ?>' href="coursPage.php?categorie=tous"> Tous </a>
+		<div class="listeCategories">
+			<a class='categorie <?php if ($categorie=='tous'){?> selected <?php } ?>'
+				href="coursPage.php?categorie=tous"> Tous </a>
 			<?php
-				$q=$BDD->prepare('SELECT DISTINCT(Categorie) FROM cours');
+				$q=$BDD->prepare('SELECT DISTINCT(Categorie) FROM cours WHERE Categorie IS NOT NULL');
 				$q->execute(array());
 				foreach($q as $ligne){
 			?>
-					<a class ='categorie' href="coursPage.php?categorie=<?php echo $ligne['Categorie'] ?>"> <?php echo $ligne['Categorie']; ?> </a>
+			<a class='categorie<?php if ($categorie==$ligne['Categorie']){?> selected <?php } ?>'
+				href="coursPage.php?categorie=<?php echo $ligne['Categorie'] ?>"> <?php echo $ligne['Categorie']; ?>
+			</a>
 			<?php
 				}
 			?>
@@ -102,7 +106,6 @@
 				<?php
                     $q=$BDD->prepare('SELECT * FROM cours');         
                     $q->execute(array());
-					$compteur = 0;
                     foreach ($q as $ligne){
 						if ($categorie==$ligne['Categorie'] || $categorie=='tous'){
 						?>
@@ -111,7 +114,7 @@
 					<div class="course-item">
 						<div class="image-blog">
 							<a href="cours.php?cours=<?php echo $ligne['Id'] ?>">
-							<img src=<?php echo $ligne['LienImage'] ?> alt="" class="img-fluid">
+								<img src=<?php echo $ligne['LienImage'] ?> alt="" class="img-fluid">
 						</div>
 						<div class="course-br">
 							<div class="course-title">
@@ -123,16 +126,11 @@
 							</div>
 
 						</div>
-						
+
 					</div>
 				</div><!-- end col -->
 				<?php
-				if ($compteur%3==2){
-					?>
-					<hr class="hr3"> 
-					<?php
-				}
-				$compteur++;
+				
 			}
 			}
                     ?>
@@ -144,18 +142,9 @@
 	</div><!-- end container -->
 	</footer><!-- end footer -->
 
-	<div class="copyrights">
-		<div class="container">
-			<div class="footer-distributed">
-				<div class="footer-center">
-					<p class="footer-company-name">All Rights Reserved. &copy; 2021 <a href="#">CyberSecuriTeach</a>
-					</p>
-				</div>
-			</div>
-		</div><!-- end container -->
-	</div><!-- end copyrights -->
-
-	<a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+	<?php
+        require_once('footer.php');
+    ?>
 
 	<!-- ALL JS FILES -->
 	<script src="js/all.js"></script>
@@ -163,3 +152,10 @@
 	<script src="js/custom.js"></script>
 
 </body>
+
+</html>
+
+<?php }
+else{
+	header('Location: index.php');
+}

@@ -1,7 +1,8 @@
 <?php
 	session_start();
-    require_once('nav2.php');
+    if (isset($_SESSION['id'])){
     include("bdd/acces_BDD.php");
+    $categorie = $_GET["categorie"]
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +52,9 @@
 
 <body class="host_version">
 
-
+    <?php
+    require_once('nav2.php');
+    ?>
     <!-- LOADER 
 	<div id="preloader">
 		<div class="loader-container">
@@ -62,97 +65,69 @@
 	</div>
 	 END LOADER -->
 
-    <div class="all-title-box">
+     <div class="all-title-box">
         <div class="container text-center">
             <h1>Tutoriels</h1>
         </div>
     </div>
 
     <div id="overviews" class="section wb">
-        <div class="container">
-            <hr class="invis">
-            <div class="row">
+        <div class="listeCategories">
+            <a class='categorie <?php if ($categorie=='tous'){?> selected <?php } ?>'
+                href="tutoPage.php?categorie=tous"> Tous </a>
             <?php
+				$q=$BDD->prepare('SELECT DISTINCT(Categorie) FROM tutoriel WHERE Categorie IS NOT NULL');
+				$q->execute(array());
+
+				foreach($q as $ligne){
+			?>
+            <a class='categorie<?php if ($categorie==$ligne['Categorie']){?> selected <?php } ?>'
+                href="tutoPage.php?categorie=<?php echo $ligne['Categorie'] ?>"> <?php echo $ligne['Categorie']; ?> </a>
+            <?php
+				}
+			?>
+        </div>
+        <div class="container">
+            
+            <div class="row">
+                <?php
                     $q=$BDD->prepare('SELECT * FROM tutoriel');         
                     $q->execute(array());
 					$compteur = 0;
                     foreach ($q as $ligne){
+                        if ($categorie==$ligne['Categorie'] || $categorie=='tous'){
 						?>
 
                 <div class="col-lg-4 col-md-6 col-12">
                     <div class="blog-item">
                         <div class="image-blog">
-                            <a href="tuto.php?tuto=<?php echo $ligne['IdTutoriel']; ?>"><img src=<?php echo $ligne['Image']; ?> alt="" class="img-fluid">
+                            <a href="tuto.php?tuto=<?php echo $ligne['IdTutoriel']; ?>"><img
+                                    src=<?php echo $ligne['Image']; ?> alt="" class="img-fluid">
                         </div>
                         <div class="blog-title">
-                            <h2><a href="tuto.php?tuto=<?php echo $ligne['IdTutoriel'] ;?>" title=""><?php echo $ligne['Titre']; ?></a></h2>
+                            <h2><a href="tuto.php?tuto=<?php echo $ligne['IdTutoriel'] ;?>"
+                                    title=""><?php echo $ligne['Titre']; ?></a></h2>
                         </div>
                         <div class="blog-desc">
                             <p><?php echo $ligne['Description']; ?> </p>
                         </div>
                         <div class="blog-button">
-                            <a class="hover-btn-new orange" href="tuto.php?tuto=<?php echo $ligne['IdTutoriel']; ?>"><span>En savoir plus<span></a>
+                            <a class="hover-btn-new orange"
+                                href="tuto.php?tuto=<?php echo $ligne['IdTutoriel']; ?>"><span>En savoir plus<span></a>
                         </div>
                     </div>
                 </div><!-- end col -->
                 <?php 
+                        }
                     }
                 ?>
-    </div><!-- end container -->
-    </div><!-- end section -->
+            </div><!-- end container -->
+        </div><!-- end section -->
+    </div>
 
-    <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-xs-12">
-                    <div class="widget clearfix">
-                        <div class="widget-title">
-                            <h3>CyberSecuriTeach</h3>
-                        </div>
-                        <p> </p>
-                        <div class="footer-right">
-                            <ul class="footer-links-soi">
-
-                            </ul><!-- end links -->
-                        </div>
-                    </div><!-- end clearfix -->
-                </div><!-- end col -->
-
-                <div class="col-lg-4 col-md-4 col-xs-12">
-                    <div class="widget clearfix">
-                        <div class="widget-title">
-                            <h3>Liens</h3>
-                        </div>
-                        <ul class="footer-links">
-                            <li><a href="index.php">Accueil</a></li>
-                            <li><a href="course-grid-3.php">Cours</a></li>
-                            <li><a href="blog.php">Tutoriels</a></li>
-                            <li><a href="pricing.php">Challenges</a></li>
-                            <li><a href="cyberprevention.php">Cyber Prevention</a></li>
-                        </ul><!-- end links -->
-                    </div><!-- end clearfix -->
-                </div><!-- end col -->
-
-            </div><!-- end clearfix -->
-        </div><!-- end col -->
-
-        </div><!-- end row -->
-        </div><!-- end container -->
-    </footer><!-- end footer -->
-
-    <div class="copyrights">
-        <div class="container">
-            <div class="footer-distributed">
-                <div class="footer-center">
-                    <p class="footer-company-name">All Rights Reserved. &copy; 2021 <a href="#">CyberSecuriTeach</a>
-                    </p>
-                </div>
-            </div>
-        </div><!-- end container -->
-    </div><!-- end copyrights -->
-
-    <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
-
+    <?php
+        require_once('footer.php');
+    ?>
     <!-- ALL JS FILES -->
     <script src="js/all.js"></script>
     <!-- ALL PLUGINS -->
@@ -161,3 +136,8 @@
 </body>
 
 </html>
+
+<?php }
+else{
+	header('Location: index.php');
+}

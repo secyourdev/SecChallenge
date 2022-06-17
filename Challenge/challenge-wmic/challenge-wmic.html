@@ -1,0 +1,46 @@
+<h1>Challenge John the Ripper</h1>
+
+<p>
+    Pour voir si vous avez bien compris le cours, nous allons simplement essayer de vous faire retrouver une commande en
+    utilisant la commande help de wmic.
+</p>
+
+<h2 class="mb-3">Que devez-vous faire ?</h2>
+
+<h3>Étape 1 : Ouvrir le logiciel invité de commandes</h3>
+
+<p>
+    Pour faire celà il vous suffit comme expliqué dans le cours d'aller dans la barre de recherche Windows si vous êtes
+    sur une machine Windows et de trouver une des deux applications.
+    Sinon vous devez télécharger une machine Windows virtuelle.
+    <br>
+    Il faut d'abord se procurer une machine windows virtuel si vous posséder une machine Linux : <a
+        href="https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/"><U>machine-virt.yml</U></a>
+</p>
+
+<h3>Étape 2 : Création et supression du compte Windows</h3>
+
+<p>Voilà ! Vous venez de lancer le logiciel invité de commandes.
+    <br>
+    Pour Ajouter un compte Windows :
+    <br>
+    <kbd class="ms-3">net user nomutilisateur motdepasse /add</kbd>
+    <br>
+    Pour voir les utilisateurs windows:
+    <br>
+    <kbd class="ms-3">wmic useraccount list full</kbd>
+    <br>
+    Pour Enlever un compte Windows :
+    <br>
+    <kbd class="ms-3">net user nomutilisateur motdepasse /delete</kbd>
+</p>
+
+<h2 class="mb-3">Situation</h2>
+
+<p>
+    Votre compte Windows a eu dernièrement un léger soucis et vous souhaitez ajouter un utilisateur Windows pour pouvoir
+le remplacer mais sans passer par le menu de gestion des comptes Windows.
+Vous allez donc devoir passer par la fonction Wmic de Windows.
+La réponse que vous devrez donner sera sous forme de haché sha1 (utilisez cette adresse) :<a
+    href="https://www.sha1.fr/"><U>sha-1.yml</a>
+</p>

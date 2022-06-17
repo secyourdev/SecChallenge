@@ -60,6 +60,20 @@
 									?>
 							</ul>
 					</li>
+					<li class="nav-item dropdown">
+						<a class="nav-link " href="presentationPage.php?categorie=tous" data-bs-toggle="dropdown"> Présentations  </a>
+							<ul class="dropdown-menu menuDeroulant">
+								<?php
+									$cat=$BDD->prepare('SELECT DISTINCT(Categorie) FROM presentation WHERE Categorie IS NOT NULL');
+									$cat->execute(array());
+									foreach($cat as $ligne){
+										?>
+										<li><a class="dropdown-item menuDeroulantItem" href="presentationPage.php?categorie=<?php echo $ligne['Categorie']; ?>"> <?php echo $ligne['Categorie']; ?></a></li>
+										<?php
+									}
+									?>
+							</ul>
+					</li>
 					<li class="nav-item"><a class="nav-link" href="cyberprevention.php">Cyber Prevention</a></li>
 					<li class="nav-item"><a class="nav-link" href="compte.php">Mon Compte</a></li>
 					<li class="nav-item"><a class="nav-link" href="contact2.php">Contactez-nous</a></li>

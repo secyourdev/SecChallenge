@@ -1,0 +1,136 @@
+<h1>Tutoriels : Explications de CyberChef<span class="m_1"></span></h1>
+
+<h2 class="mb-3">1. Objectif/Présentation</h2>
+<p>
+    L'objectif de ce tutoriel est d’utiliser et de comprendre CyberChef.
+    </br>
+    CyberChef est une application web full JS / HTML qui vous permet d’effectuer une opération ou une suite d’opérations
+    sur un texte.
+    </br>
+    En effet, CyberChef propose une très longue liste de fonctions qui permettent de coder, de décoder, de chiffrer, de
+    déchiffrer,
+    de convertir des formats, de la compression, décompression, du calcul de hash et j’en passe.
+    </br>
+    C’est un outil très complet et très utile surtout lorsque l’on ne connaît pas encore tous les rouages de la cyber.
+    </br>
+    Je vais lister avec vous les différentes catégories du site web qui est accessible ici : <a
+        href="https://gchq.github.io/CyberChef/"><U>CyberChef</U></a>
+</p>
+
+<h2 class="mb-3">2. Les catégories</h2>
+
+<h3>Catégorie 1 : <b>Data format </b> </h3>
+<p>
+    Cette catégorie permet donc <b>de changer le format de données</b> de votre texte.
+    </br>
+    Vous avez par exemple le passage en hexadécimal, en binaire, en base32, 64 mais aussi le passage de caractères en
+    format HTML,
+    la normalisation de code, et la conversion de fichier, du format CSV à JSON par exemple.
+    </br>
+</p>
+
+<h3>Catégorie 2 : <b>Encryption/Encoding </b></h3>
+<p>
+    Elle permet de <b>chiffrer/déchiffrer des messages</b> par différents algorithmes comme AES, DES, ROT, XOR, et même
+    enigma.
+    </br>
+    Elle est très utilisée pour <b>déchiffrer</b> des hash de mots de passe par exemple.
+    </br>
+</p>
+
+<h3>Catégorie 3 : <b>Public Key </b></h3>
+<p>
+    Cette catégorie permet entre autres de <b>gérer des clés PGP</b>, les générer, les chiffrer, déchiffrer, les
+    vérifier,
+    les signer, ainsi que <b>gérer les clés RSA.</b>
+    </br>
+</p>
+
+<h3>Catégorie 4 : <b>Arithmetic / Logic</b></h3>
+<p>
+    Elle permet de <b>gérer des calculs mathématiques et logiques</b> comme la somme, la différence, la multiplication,
+    le XOR, le OR, NOT, AND
+    ainsi que des rotations.
+    </br>
+    Il existe même un bruteforce XOR en indiquant un texte déjà connu, comme l’énoncé d’un flag par exemple.
+    </br>
+</p>
+
+<h3>Catégorie 5 : <b>Networking</b></h3>
+<p>
+    Elle est utilisée pour des <b>requêtes HTTP, de l’analyse d’IP </b> v4 ou v6, ou encore des <b>regroupements</b>
+    d’adresses IP.
+    </br>
+    <h3>Catégorie 6 & 7 : <b>Language & Utils </b></h3>
+    Language permet de <b>coder, décoder du texte </b> ou réaliser des <b>conversions</b> de texte.
+    </br>
+    Utils permet de faire des <b>modifications sur le texte</b>, mettre en majuscules, appliquer des filtres,
+    mais aussi <b>convertir</b> des unités, des aires, des vitesses.</b>
+    </br>
+</p>
+
+<h3>Catégorie 8 : <b>Date / Time </b></h3>
+<p>
+    Elle permet <b>d’analyser des dates</b>, des Timestamp qui sont des codes utilisés pour traduire une date à une
+    heure précise.
+    </br>
+</p>
+
+<h3>Catégorie 9 & 10 : <b>Extractors & Compression</b></h3>
+<p>La première permet <b>d’extraire toutes sortes de données</b> comme des emails, des IP, des adresses MAC ou encore
+des fichiers.
+</br>
+La seconde permet de <b>compresser, zipper </b> des fichiers.
+</br>
+</p>
+
+<h3>Catégorie 11 : <b>Hashing </b></h3>
+<p>
+Elle permet <b>d’analyser des hash</b>, ou encore de <b>convertir un texte</b> en hash à l’aide des différents
+algorithmes proposés
+comme MD2,4,5, SHA0,1,2,3 etc..
+</br>
+</p>
+<h3>Catégorie 12 : <b>Code tidy</b></h3>
+<p>
+Elle permet de <b>nettoyer du code</b> en JS, JSON, XML, SQL, CSS, PHP.
+</br>
+</p>
+
+<h3>Catégorie 13 & 14 : <b>Forensics & Multimédia</b></h3>
+<p>
+Elles permettent <b>d’extraire des fichiers</b>, extraire <b>les EXIF</b> d’une image, ou encore les
+<b>LSB</b>(Least significant bit) mais aussi
+de modifier l’image, la redimensionner, la tourner, l’inverser, réduire l’opacité ou modifier le contraste.
+</br>
+</p>
+
+<h3>Catégorie 15 & 16 : <b>Other & Flow control</b></h3>
+<p>
+La fonction <b>Magic</b> dans Flow control est très utile car elle tente de détecter diverses propriétés des données
+d’entrée et
+suggère les différentes opérations qui pourraient aider à leur donner plus de sens.
+</p>
+<h2 class="mb-3">3. Comment l'utiliser</h2>
+<p>
+    Nous allons résoudre pas à pas un exemple de challenge pour que vous puissez prendre en main CyberChef.
+    </br>
+    Nous allons donc partir de ce texte :
+    </br>
+    <kbd>U+l5dnB2Z25ndmJhZiBjYmhlIG5pYnZlIHN2YXYgeXIgZ2hnYiAhIA==</kbd>
+    </br>
+    </br>
+    Pour ce faire, nous remarquons le double "=" qui est souvent synonyme de l'utilisation de base64.
+    </p>
+    <img src="images_tutocyb/base64.JPG" alt="" class="img-fluid">
+    <p>
+    Nous obtenons donc quelque chose de logique car on remarque un point d'exclamation, et en fouillant
+    un peu CyberChef ou en réflechissant par rapport au positionnement des lettres, on décide d'utiliser
+    un bruteforce de ROT.
+    </p>
+    <img src="images_tutocyb/rot.JPG" alt="" class="img-fluid">
+    <p>
+    Ainsi en testant les différents ROT, on obtient finalement le bon résultat qui est :
+    </br>
+    <kbd>Félicitations pour avoir fini le tuto ! </kbd>
+</p>

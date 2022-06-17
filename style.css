@@ -307,7 +307,7 @@ a:hover{
 	background-color:#2f3542;
 	
 	color:white;
-	width:500px;
+
 }
 
 .btn-primar{
@@ -400,7 +400,7 @@ h6 {
     font-weight: normal;
     line-height: 120% !important;
     color: #1f1f1f;
-    margin: 0
+    padding : 3vh 0;
 }
 
 h1 {
@@ -2807,8 +2807,8 @@ select.mobile-device {
 }
 
 .footer {
-    margin-top: 7vh;
-    padding: 90px 0 0 !important;
+    margin-top: 3vh;
+    padding: 5vh 0 0 ;
     color: #cccccc;
 	background:#4c5a7d url('images/world-map.png') no-repeat center; 
 }
@@ -3729,6 +3729,7 @@ span.m_1 {
 .blog-item {
     background: #f1f1f1;
     padding: 20px;
+    margin: 2vh 0;
 }
 .image-blog img{
 	padding: 0 !important;
@@ -4202,6 +4203,7 @@ a.link-style3 {
 
 .course-item{
 	background: #ffffff;
+    margin: 2vh 0;
 }
 .course-item{}
 .course-title > h2 {
@@ -4254,20 +4256,6 @@ main {
 }
 
 
-.code{
-	color: rgb(224, 224, 224);
-	background-color: black;
-	padding: 5px;
-	padding-left: 10px; 
-	border-radius: 10px;
-	font-family: 'Courier New','Calibri', 'Trebuchet MS', sans-serif;
-}
-
-.code::selection{
-	background-color: blue;
-	color: rgb(255, 255, 255);
-}
-
 .listeCategories{
     margin-bottom: 6vh;
     text-align: center;
@@ -4300,6 +4288,36 @@ main {
     background-color: #333333 !important;
 }
 
+.separation{
+    padding: 1vh 1vw;
+}
 
+.bouton-modifie-profil{
+    margin: 0;
+    width: 8vw;
+}
 
+.classe-rond{
+    border-radius: 50%;
+    width: 11vw;
+}
 
+.div-rond{
+    margin-right: auto;
+    margin-left: auto;
+    padding: 0;
+}
+
+.info-compte{
+    background-color: #f8f9fa;
+    padding: 2vh 2vw;
+}
+
+.profil{
+    font-size: 1.2vw;
+}
+
+.align-profil-text{
+    margin-top: auto;
+    margin-bottom: auto;
+}

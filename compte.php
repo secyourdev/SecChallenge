@@ -1,6 +1,6 @@
 <?php
   session_start();
-
+  if (isset($_SESSION['id'])){
 include('bdd/acces_BDD.php');
 $id=$_SESSION['id'];
 $q=$BDD->prepare('SELECT * FROM utilisateur WHERE id=?');
@@ -81,200 +81,78 @@ $challenge3=$result['challenge3'];
   </div>
 
   <main>
-    
-    <div class="row align-items-center">
+
+    <div class="container">
       <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-        <div class="message-box" style="margin-left:100px; margin-top:50px">
-          <h4></h4>
-          <h2><b>Informations du compte</b></h2>
-        </div>
+        <h2><b>Informations du compte</b></h2>
       </div>
-    </div>
-    <div class="container">
-      <div class="row main-row p-2">
-        <div class="col-lg-4 col-md-12 col-sm-12">
-          <div class="challenge-title mb-3">
-            <h6>Nom</h6>
-          </div>
-        </div>
-        <div class="col-lg-8 col-md-12 col-sm-12">
-          <div class="challenge-title mb-3">
-            <h6><?php echo $name;  ?></h6>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-    <div class="container">
-      <div class="row main-row p-2">
-        <div class="col-lg-4 col-md-12 col-sm-12">
-          <div class="challenge-title mb-3">
-            <h6>Prénom</h6>
-          </div>
-        </div>
-        <div class="col-lg-8 col-md-12 col-sm-12">
-          <div class="challenge-title mb-3">
-            <h6><?php echo $firstname;  ?></h6>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-    <div class="container">
-      <div class="row main-row p-2">
-        <div class="col-lg-4 col-md-12 col-sm-12">
-          <div class="challenge-title mb-3">
-            <h6>Pseudo</h6>
-          </div>
-        </div>
-        <div class="col-lg-8 col-md-12 col-sm-12">
-          <div class="challenge-title mb-3">
-            <h6><?php echo $pseudo;  ?></h6>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-    <div class="container">
-      <div class="row main-row p-2">
-        <div class="col-lg-4 col-md-12 col-sm-12">
-          <div class="challenge-title mb-3">
-            <h6>Mail</h6>
-          </div>
-        </div>
-        <div class="col-lg-8 col-md-12 col-sm-12">
-          <div class="challenge-title mb-3">
-            <h6><?php echo $mail;  ?></h6>
-          </div>
-        </div>
-      </div>
-    </div>
-    </div>
-    <div class="blog-button2">
-      <a class="hover-btn-new orange" href="modification.php"><span>Modifier mes informations</span></a>
-    </div>
 
-    <div class="row align-items-center">
-      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-        <div class="message-box" style="margin-left:100px; margin-top:50px;">
-          <h4></h4>
-          <h2><b>Historique du compte</b></h2>
+      <div class="info-compte d-flex flex-row">
+        <div class="p-2 col-lg-5 col-12 flex-column">
+          <div class="col-4 div-rond align-item-center">
+            <img class="classe-rond" src="images/icon.png">
+          </div>
+          <p class="col-4 align-item-center div-rond text-center profil"> <?php echo $pseudo; ?> </p>
+        </div>
+        <div class="p-2 col-lg-7 col-12 align-profil-text">
+          <p class="profil">Nom : <?php echo $name; ?></p>
+          <p class="profil">Prénom : <?php echo $firstname; ?></p>
+          <p class="profil">Mail : <?php echo $mail; ?></p>
+          <div class="blog-button2">
+            <a class="hover-btn-new orange bouton-modifie-profil align-items-end" href="modification.php"><span>Modifier</span></a>
+          </div>
         </div>
       </div>
-    </div>
 
 
-    <section class="cours-disponibles">
-      <h2 class="cours">Résultats des challenges</h2>
-    </section>
 
-    <div class="container">
-      <div class="row main-row2 p-2">
-        <div class="col-lg-4 col-md-12 col-sm-12">
-          <div class="challenge-title mb-3">
-            <h6>Challenges</h6>
-          </div>
+
+      <div class="container">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+          <h2><b>Résultats des challenges</b></h2>
         </div>
-        <div class="col-lg-8 col-md-12 col-sm-12">
-          <div class="challenge-title mb-3">
-            <h6>Points (/5)</h6>
-          </div>
-        </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Challenges</th>
+              <th scope="col">Nombre de points</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php 
+
+        $q=$BDD->prepare('SELECT `challenge`.`IdChallenge`,`NomChallenge`, `Score`,`challenge`.`ScoreMax` FROM `challenge`
+                          INNER JOIN `rela_challenge_utilisateur`
+                          ON `rela_challenge_utilisateur`.`IdChallenge` = `challenge`.`IdChallenge`
+                          INNER JOIN `utilisateur`
+                          ON `utilisateur`.`Id` = `rela_challenge_utilisateur`.`IdUtilisateur`
+                          WHERE `utilisateur`.`Id`= ?; ');
+        $q->execute(array($id));
+        $total=0;
+        $compteur=0;
+        foreach ($q as $ligne){
+          $total = $total + $ligne['Score'];
+          $compteur+=$ligne['ScoreMax'];
+        ?>
+            <tr>
+              <td scope="row">Challenge <?php echo $ligne['IdChallenge'] ?> : <?php echo $ligne['NomChallenge'] ?> </td>
+              <td><?php echo $ligne['Score'] ?>/<?php echo $ligne['ScoreMax'] ?></td>
+            </tr>
+            <?php } ?>
+            <tr>
+              <th scope="row">Total</th>
+              <th><?php echo $total; ?>/<?php echo $compteur; ?></th>
+          </tbody>
+        </table>
       </div>
-    </div>
 
-    <?php 
 
-$q=$BDD->prepare('SELECT `challenge`.`IdChallenge`,`NomChallenge`, `Score` FROM `challenge`
-                  INNER JOIN `rela_challenge_utilisateur`
-                  ON `rela_challenge_utilisateur`.`IdChallenge` = `challenge`.`IdChallenge`
-                  INNER JOIN `utilisateur`
-                  ON `utilisateur`.`Id` = `rela_challenge_utilisateur`.`IdUtilisateur`
-                  WHERE `utilisateur`.`Id`= ?; ');
-$q->execute(array($id));
-$total=0;
-$compteur=0;
-foreach ($q as $ligne){
-$total = $total + $ligne['Score'];
-$compteur+=5;
-?>
-    <div class="container">
-      <div class="row main-row p-2">
-        <div class="col-lg-4 col-md-12 col-sm-12">
-          <div class="challenge-title mb-3">
-            <h6>Challenge <?php echo $ligne['IdChallenge'] ?> : <?php echo $ligne['NomChallenge'] ?></h6>
-          </div>
-        </div>
-        <div class="col-lg-8 col-md-12 col-sm-12">
-          <div class="challenge-title mb-3">
-            <h6><?php echo $ligne['Score'] ?></h6>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <?php } ?>
-
-    <div class="container">
-      <div class="row main-row2 p-2">
-        <div class="col-lg-4 col-md-12 col-sm-12">
-          <div class="challenge-title mb-3">
-            <h6>Total</h6>
-          </div>
-        </div>
-        <div class="col-lg-8 col-md-12 col-sm-12">
-          <div class="challenge-title mb-3">
-            <h6><?php echo $total; ?>/<?php echo $compteur; ?></h6>
-          </div>
-        </div>
-      </div>
-    </div>
 
   </main>
 
-  <footer class="footer">
-    <div class="row row_footer">
-
-      <div class="col-lg-6 col-md-6 col-xs-12">
-        <div class="widget clearfix">
-          <div class="widget-title">
-            <h3>CyberSecuriTeach</h3>
-          </div>
-        </div><!-- end clearfix -->
-      </div><!-- end col -->
-
-      <div class="col-lg-6 col-md-6 col-xs-12">
-        <div class="widget clearfix">
-          <div class="widget-title">
-            <h3>Liens</h3>
-          </div>
-          <ul class="footer-links">
-            <li><a href="index.php">Accueil</a></li>
-            <li><a href="cours.php">Cours</a></li>
-            <li><a href="blog.php">Tutoriels</a></li>
-            <li><a href="pricing.php">Challenges</a></li>
-            <li><a href="cyberprevention.php">Cyber Prevention</a></li>
-          </ul><!-- end links -->
-        </div><!-- end clearfix -->
-      </div><!-- end col -->
-
-    </div><!-- end row -->
-
-    <div class="copyrights">
-      <div class="container">
-        <div class="footer-distributed">
-          <div class="footer-center">
-            <p class="footer-company-name">All Rights Reserved. &copy; 2021 <a href="#">CyberSecuriTeach</a>
-            </p>
-          </div>
-        </div>
-      </div><!-- end container -->
-    </div><!-- end copyrights -->
-
-
-    <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
-
-  </footer><!-- end footer -->
+  <?php
+        require_once('footer.php');
+    ?>
 
 
   <script src="js/all.js"></script>
@@ -284,3 +162,8 @@ $compteur+=5;
 </body>
 
 </html>
+
+<?php }
+else{
+	header('Location: index.php');
+}

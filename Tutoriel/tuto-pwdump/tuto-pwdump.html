@@ -1,0 +1,64 @@
+<h1><b>PwDump</b></h1>
+
+<h2>1. Présentation de l'outil </h2>
+
+<p>
+	PwDump est un nom regroupant tous les programmes permettant de récupérer les hash des mots de passe des utilisateurs
+	sous Windows.<br>
+	Les hash d'utilisateurs Windows sont stockés au format LM ou NTLM.<br>
+	<br>
+	Les premières versions de PwDump n'étaient que des améliorations fonctionnant toutes sous Windows NT et 2000,
+	<b>PwDump5</b> introduit la compatibilité XP et
+	Windows Server 2003, <b>PwDump6</b> et <b>PwDump7</b> ajoutent la compatibilité avec Windows Vista et enfin
+	<b>PwDump8</b> cumule Windows 2000, XP,
+	Vista, 7, 8, 8.1, 10 ainsi que Windows Server 2008, 2012, 2016 et 2019.<br>
+	</br>
+	Il existe également des versions alternatives telles que <b>Quarks PwDump</b>. Cette version peut être vue comme le
+	pont entre
+	PwDump7 et PwDump8 puisqu'elle est compatible avec Windows 7 et 8 mais pas avec Windows 10.
+</p>
+
+<h2>2. INSTALLATION </h2>
+
+<p>
+	Lorsque vous téléchargez un programme PwDump, vous obtenez un fichier exécutable qu'il vous suffit de placer
+	dans votre system32.
+	Vous pouvez dès lors utiliser les commandes pwdump dans votre invite de commandes.
+</p>
+
+<img src="Tutoriel/tuto-pwdump/pwdump2.png">
+
+
+<h2><br><br>3. UTILISATION </h2>
+
+<p>
+	Tout d'abord il est très important de savoir que pwdump nécessite des <b>droits d'administrateur</b> pour être
+	utilisé, si vous ne les avez pas déjà,
+	vous devrez dans un premier temps faire en sorte de les obtenir. Ensuite cela devient devient trivial, il vous
+	suffit de taper
+</p>
+
+<kbd class="ms-3">pwdump</kbd>
+
+<p>
+	dans l'invite de commande afin d'obtenir les hash des mots de passe de tous les utilisateurs de la machine. La
+	commande peut néamoins légèrement
+	changer selon la version de pwdump, par exemple si vous utilisez PwDump v8.2, la commande à taper sera </p>
+
+<kbd class="ms-3">pwdump8</kbd>.
+
+<kbd class="ms-3">pwdump -f</kbd>
+
+<p>
+	suivi d'un nom de fichier vous permettra de récupérer les hash de mots de passe contenus dans un fichier SAM,
+	pwdump -h vous affichera
+	la page d'aide de la commande.
+</p>
+
+<h2>4. POUR ALLER PLUS LOIN </h2>
+
+<p>
+	C'est bien beau d'avoir récupéré tous ces hash, mais seuls ils ne servent à rien. Pour savoir comment récupérer
+	les mots de passe des utilisateurs
+	à partir des hash, je vous redirige vers le tutoriel sur <b>John the Ripper</b>.
+</p>

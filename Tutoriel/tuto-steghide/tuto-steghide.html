@@ -1,0 +1,67 @@
+<!-- Titre : La stéganographie avec StegHide -->
+<!-- Description : Voici un tutoriel afin de connaître un outil utile à la stéganographie sur une image : StegHide -->
+<!-- FLAG du tutoriel : Tuto-Steghide -->
+
+<h2><b>ZSTEG : OUTIL DE STEGANOGRAPHIE</b></h2>
+
+<h2 class="mb-3"></br>1. Introduction</h2>
+
+<p>
+    StegHide est un outil permettant de cacher des données dans des fichiers à l’aide d’un mot de passe.
+    Cela permet de dissimuler une image dans une image par exemple.
+    Il s’agit de stéganographie.
+</p>
+
+
+<h2 class="mb-3">2. Installation et Application</h2>
+
+<p>
+    Avant de commencer, il nous faut installer StegHide.
+    Cet outil est installé par défaut sur les distributions Kali Linux mais peut aussi être télécharger sur <b><a
+            href="https://github.com/StefanoDeVuono/steghide"><U>github</U></a></b>.
+    <br><br>
+    Ensuite, afin de cacher un message dans un image il nous faut une image et un message à cacher.
+</p>
+
+<img src="Tutoriel/tuto-steghide/images/steghide-tuto-0.png">
+
+<p>
+    Lorsque l'on va cacher le message dans l'image avec StegHide, l'outil nous demande de rentrer un mot de passe.
+    Il est important de choisir un mot de passe complexe afin d'assurer au maximum la confidentialité du message.
+    Un mot de passe simple à deviner pourrait rendre le message caché détéctable facilement.
+</p>
+
+<img src="Tutoriel/tuto-steghide/images/steghide-tuto-1.png">
+
+<p>
+    Afin d'extraire le message caché, le destinataire utilise le mode <i>extract</i> de StegHide et renseigne le mot de
+    passe.
+</p>
+
+<img src="Tutoriel/tuto-steghide/images/steghide-tuto-2.png">
+
+
+<h2 class="mb-3">3. Pour aller plus loin</h2>
+
+<p>
+    Comme dit plus tôt, il est important de choisir un mot de passe complexe afin d'assurer la confidentialité du
+    message.<br>
+    En effet, bien que StegHide soit un outil très simple d’utilisation, il existe d’autres outils permettant de de
+    forcer le mot de passe qui protège les fichiers cachés afin de les récupérer.<br>
+    Dans notre cas nous utiliserons l'outil <b><a href="https://github.com/R4yGM/stegbrute"><U>StegBrute</U></a></b>.<br>
+    Afin de bruteforcer les mots de passe, nous utiliserons la liste <i>rockyou.txt</i> livrée avec Kali Linux.
+</p>
+
+<img src="Tutoriel/tuto-steghide/images/steghide-tuto-3.png">
+
+<p>
+    Comme nous pouvons le constater, le mot de passe a été trouvé et le fichier a été extrait.
+</p>
+
+<h2 class="mb-3"></br>Fin du tutoriel</h2>
+
+<p>
+    Le tutoriel est terminé, et vous savez maintenant comment manipuler Steghide.
+    </br>
+    Pour valider ce tutoriel, il vous suffira de rentrer "Tuto-Steghide" dans la case de validation.
+</p>

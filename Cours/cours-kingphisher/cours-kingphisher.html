@@ -1,0 +1,114 @@
+<!-- Titre : King-Phisher -->
+<!-- Description : Vous trouverez ici une introduction sur une boîte à outils pour les campagnes de phishing -->
+
+<img src="Cours/cours-kingphiser/kingphisher-cours.jpg" alt="" class="img-fluid" width="800" height="280">
+
+<h2 class="mb-3"><b>KING-PHISHER : BOITE A OUTILS POUR LES CAMPAGNES DE PHISHING</b></h2>
+
+<h2 class="mb-3"></br>1. Introduction</h2>
+
+<p>
+    King-Phisher est un outil permettant de tester et de promouvoir la sensibilisation des utilisateurs en simulant des
+    attaques de phishing réelles.
+
+    Il est doté d'une architecture facile à utiliser, mais très flexible, permettant un contrôle total des e-mails et du
+    contenu du serveur.
+
+    Grâce à cette boîte à outils, nous pouvons tester les utilisateurs en leur envoyant un lien malveillant par e-mail
+    via un serveur SMTP et en volant leurs informations d'identification.
+
+    Cet outil, construit sur le langage python, a une interface conviviale et facile à utiliser pour de multiples
+    campagnes.
+    <br><br>
+    King-Phisher peut être utilisé pour mener des campagnes allant d'une simple formation à des scénarios plus complexes
+    dans lesquels un contenu adapté aux besoins de l'utilisateur est utilisé pour récolter des informations
+    d'identification.
+</p>
+
+<h2 class="mb-3">2. Caractéristiques</h2>
+
+<p>
+    King-Phisher possède de nombreuses caractéristiques et permet de réaliser les actions suivantes :
+    <ul>
+        <li>Exécution de plusieurs campagnes de phishing simultanément;</li>
+        <li>Envoi d'un e-mail avec des images intégrées pour une apparence plus légitime;</li>
+        <li>Authentification à deux facteurs en option;</li>
+        <li>Récupération d'informations d'identification sur les pages de destination;</li>
+        <li>Alertes SMS concernant le statut de la campagne;</li>
+        <li>Capacité de clonage de pages Web;</li>
+        <li>Vérifications intégrées du Sender Policy Framework (SPF);</li>
+        <li>Géolocalisation des visiteurs de phishing;</li>
+        <li>Envoi d'un e-mail avec des invitations de calendrier;</li>
+    </ul>
+</p>
+
+<h2 class="mb-3">3. Installation de King-Phisher</h2>
+
+<p>
+    Au niveau de la documentation, il faut savoir que King-Phisher utilise Sphinx pour la documentation technique
+    interne.
+    Sphinx est un outil qui permet de créer facilement une documentation intelligente et esthétique.
+    </br>
+    <kbd class="ms-3">sphinx-build -b html docs/source docs/html</kbd>
+    <br><br>
+    Nous utilisons Linux, nous allons donc installer King-Phisher pour Linux.
+    </br>
+    Il existe également une version Windows de King-Phisher, mais il s'agit d'une version client uniquement.
+    La version Linux contient à la fois le client et le serveur.
+    </br>
+    Ouvrez un terminal de commande et entrez les commandes ci-dessous pour obtenir et installer King-Phisher pour Linux
+    :
+    </br>
+    <kbd class="ms-3">mkdir king-phisher</kbd>
+    </br>
+    <kbd class="ms-3">cd king-phisher</kbd>
+    </br>
+    <kbd class="ms-3">wget -q https://github.com/securestate/king-phisher/raw/master/tools/install.sh</kbd>
+    </br>
+    <kbd class="ms-3">sudo bash ./install.sh</kbd>
+</p>
+
+<h2 class="mb-3"></br>4. Variables des modèles de messages</h2>
+
+<p>
+    Les modèles de messages du client sont formatés à l'aide du moteur de modèles de Jinja2 et prennent en charge un
+    certain nombre de variables.
+    </br>
+    Consultez la <a class="link-primary" href="https://github.com/rsmusllp/king-phisher/wiki/Templates"><U>page
+            wiki</U></a> des modèles pour une documentation complète.
+    </br>
+    Vous pourrez en trouver quelques uns ci-dessous :
+    </br>
+    <ul>
+        <li><b>client.email_adress</b> : l'adresse e-mail de la cible;</li>
+        <li><b>client.first_name</b> : le prénom de la cible;</li>
+        <li><b>client.last_name</b> : le nom de la cible;</li>
+        <li><b>client.company_name</b> : le nom de la compagnie de la cible;</li>
+        <li><b>client.message_id</b> : l'identifiant unique de suivi de la cible (aussi appelé uid);</li>
+        <li><b>sender.email</b> : l'adresse e-mail de la source;</li>
+        <li><b>sender.reply_to</b> : la valeur de à qui on répond;</li>
+        <li><b>url.tracking_dot</b> : l'URL d'une image utilisée pour le suivi des messages;</li>
+        <li><b>url.webserver</b> : l'URL du serveur de phishing avec le paramètre uid;</li>
+        <li><b>tracking_dot_image_tag</b> : l'image de suivi dans une balise <img /> préformatée;</li>
+
+    </ul>
+    </br>
+    L'uid (identifiant unique de suivi) est le plus important et doit être présent dans les liens que les messages
+    contiennent.
+</p>
+
+<h2 class="mb-3"></br>5. Conclusion</h2>
+
+<p>
+    Maintenant que vous avez installé King-Phisher, vous pouvez commencer à créer des campagnes de phishing.
+    <br><br>
+    Lorsque vous utilisez King-Phisher, vous devez configurer vous-mêmes les protocoles SSH et SSL.
+    </br>
+    <kbd class="ms-3">sudo apt-get install certbot</kbd>
+    </br>
+    <kbd class="ms-3">sudo apt-get install openssh-server</kbd>
+    <br><br>
+    Pour lancer King-Phisher, ouvrez un terminal de commande et entrez la commande ci-dessous :
+    </br>
+    <kbd class="ms-3">/opt/king-phisher/KingPhisher</kbd>
+</p>
