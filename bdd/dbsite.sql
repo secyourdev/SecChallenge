@@ -98,7 +98,7 @@ INSERT INTO `cours` (`Id`, `LienImage`, `Titre`, `Description`, `EmplacementCour
 (21, 'Cours/cours-log4shell/log4shell.jpg', 'Log4shell', '\'Qu\'est ce que la faille log4shell ? Que permet-elle d\'exploiter ?', 'Cours/cours-log4shell/cours-log4shell.html', 'Faille'),
 (22, 'Cours/cours-msfvenom/virus.png', 'msfvenom : tromper l\'antivirus ?', 'Ce cours vous permettra de connaître les différentes méthodes ainsi que leur limites pour créer un virus indétectable d\'un antivirus', 'Cours/cours-msfvenom/cours-msfvenom.html', 'Outil'),
 (23, 'Cours/cours-hachage/Image_hach.jpg', 'Les Fonctions de Hachage', 'Comment faire pour s\'assurer qu\'un message n\'ait pas été modifié ?', 'Cours/cours-hachage/cours-hachage.html', 'Notion'),
-(24, 'Cours/cours-kingphisher/', 'King-Phisher', 'Vous trouverez ici une introduction sur une boîte à outils pour les campagnes de phishing', 'Cours/cours-kingphisher/cours-kingphisher.html', 'Outil'),
+(24, 'Cours/cours-kingphisher/image-premiere-page.jpg', 'King-Phisher', 'Vous trouverez ici une introduction sur une boîte à outils pour les campagnes de phishing', 'Cours/cours-kingphisher/cours-kingphisher.html', 'Outil'),
 (25, 'Cours/cours-xxe/images/image.png', 'Faille XXE', 'Qu\'est-ce que la faille XXE ? Que permet-elle de réaliser ?', 'Cours/cours-xxe/cours-failleXXE.html', 'Faille');
 
 -- --------------------------------------------------------
