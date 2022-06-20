@@ -135,7 +135,7 @@
 												$utilisateur=$_SESSION['id'];
 												$req=$BDD -> prepare('UPDATE rela_challenge_utilisateur SET Score=? WHERE IdChallenge = ? AND IdUtilisateur = ?');
 												$req->execute(array($nvscore,$id,$utilisateur));
-												?>
+												$result=$req->fetch();?>
 
 					<div class="rep">
 						<h1>La réponse est juste. Score 5/5</h1>
