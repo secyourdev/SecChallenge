@@ -2052,7 +2052,7 @@ a img.aligncenter {
 .message-box h2 {
     font-size: 22px;
     font-weight: 400;
-    padding: 0 0 10px;
+    padding: 5vh 0;
     margin: 0;
     line-height: 62px;
     margin-top: 0;
@@ -2807,7 +2807,7 @@ select.mobile-device {
 }
 
 .footer {
-    margin-top: 3vh;
+    
     padding: 5vh 0 0 ;
     color: #cccccc;
 	background:#4c5a7d url('images/world-map.png') no-repeat center; 
@@ -3616,23 +3616,6 @@ span.m_1 {
 
 
 
-.img-bg-01{
-	background: url(images/img-01.jpg) no-repeat center;
-	background-size: cover;
-}
-.img-bg-02{
-	background: url(images/img-02.jpg) no-repeat center;
-	background-size: cover;
-}
-.img-bg-03{
-	background: url(images/img-03.jpg) no-repeat center;
-	background-size: cover;
-}
-.img-bg-04{
-	background: url(images/img-04.jpg) no-repeat center;
-	background-size: cover;
-}
-
 
 .our-team{
     text-align: center;
@@ -4269,8 +4252,16 @@ main {
 
 .categorie{
     padding:1.5vh 3vw;
-    background-color: white;
+    margin: 1%;
+    background-color: #f8f9fa;
     color:#333333;
+    font-size: 1vw;
+}
+
+.categorie:hover{
+    padding:1.5vh 3vw;
+    background-color: #333333;
+    color : white;
     font-size: 1vw;
 }
 
@@ -4320,4 +4311,8 @@ main {
 .align-profil-text{
     margin-top: auto;
     margin-bottom: auto;
+}
+
+.centrer-img{
+    margin:auto;
 }

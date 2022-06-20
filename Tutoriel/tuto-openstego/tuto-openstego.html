@@ -1,0 +1,274 @@
+<!-- Titre : La stéganographie avec OpenStego -->
+<!-- Description : Voici un tutoriel afin de connaître un outil utile à la stéganographie : OpenStego -->
+<!-- FLAG du tutoriel : Tuto-OpenStego -->
+
+<h2><b>OPENSTEGO : OUTIL DE STEGANOGRAPHIE</b></h2>
+
+<h2 class="mb-3"></br>1. Introduction</h2>
+
+<p>
+    OpenStego est une application de stéganographie qui offre deux fonctionnalités :
+    <ul>
+        <li>il peut cacher n'importe quelle donnée dans un fichier image;</li>
+        <li>il permet de filigraner les fichiers image avec une signature invisible;</li>
+    </ul>
+    Cet outil peut donc être utilisé pour cacher ou récupérer des données dans une image,
+    mais aussi pour détecter la copie non autorisée de fichiers.
+</p>
+
+
+<h2 class="mb-3"></br>2. Installation</h2>
+
+<p>
+    Pour installer OpenStego sur Kali Linux, il faudra tout d'abord vous rendre sur ce <a class="link-primary"
+        href="https://github.com/syvaidya/openstego/releases"><U>GitHub.</U></a>
+    </br>
+    Téléchargez ensuite le fichier .deb de la page, que l'on peut voir sur l'image ci-dessous :
+</p>
+
+<img src="Tutoriel/tuto-openstego/tuto-openstego-0.jpg" alt="" class="img-fluid" width="800" height="400">
+
+<p>
+    Une fois le fichier téléchargé, situez vous à l'endroit où le fichier a été téléchargé et rentrez la commande
+    suivante dans le terminal :
+    </br>
+    <kbd class="ms-3">sudo su</kbd>
+    </br></br>
+
+    Tapez ensuite la commande suivante pour installer OpenStego, n'oubliez pas d'adapter l'exemple ci-dessous en
+    fonction de la version téléchargée du fichier.
+    </br>
+    Pour notre exemple, nous prendrons la même version que celle qui était sur l'image précédemment, à savoir la version
+    0.8.4-1 :
+    </br>
+    <kbd class="ms-3">dpkg -i openstego_0.8.4-1_all.deb</kbd>
+    </br></br>
+
+    OpenStego est maintenant installé sur votre Kali Linux. Vous devriez pouvoir retrouver l'outil sur votre machine
+    sans trop de problèmes :
+</p>
+
+<img src="Tutoriel/tuto-openstego/tuto-openstego-1.jpg" alt="" class="img-fluid">
+
+
+<h2 class="mb-3"></br>3. Fonctionnement et mise en pratique</h2>
+
+<p>
+    Comme nous l'avons cité précédemment, l'utilisation d'OpenStego est assez simple avec ses deux modes de
+    fonctionnement : le masquage des données et le filigrane.
+</p>
+
+<h3 class="mb-3"></br>3.1 Cacher et extraire des données</h3>
+
+<p>
+    Dans ce premier mode, vous pouvez soit cacher des données à l'intérieur d'une image, soit extraire les données d'une
+    image.
+</p>
+
+<h4 class="mb-3"></br>a) Cacher des données</h4>
+
+<p>
+    Pour ce faire il faudra donc vous munir d'un fichier contenant des données, et d'une image dans laquelle on
+    souhaitera dissimuler les données du fichier.
+    </br></br>
+
+    Voici l'image dans laquelle on cherchera à dissimuler les données :
+</p>
+
+<img src="Tutoriel/tuto-openstego/tuto-openstego-hide.jpg" alt="" class="img-fluid">
+
+<p>
+    Si vous voulez aussi réaliser le tutoriel de votre côté, téléchargez l'image en <a class="link-primary"
+        href="Tutoriel/tuto-openstego/tuto-openstego-hide.jpg" download="tuto-openstego-hide.jpg"><U>cliquant
+            ici.</U><a>
+            </br></br>
+
+            Il faut maintenant se munir d'un fichier avec des données à cacher. Nous ferons cette manipulation avec le
+            fichier texte suivant :
+</p>
+
+<img src="Tutoriel/tuto-openstego/tuto-openstego-1.jpg" alt="" class="img-fluid">
+
+<p>
+    Si vous voulez aussi télécharger le fichier texte, <a class="link-primary"
+        href="Tutoriel/tuto-openstego/tuto-openstego.txt" download="tuto-openstego.txt"><U>cliquez ici.</U><a></a>
+        </br></br>
+
+        Nous pouvons alors utiliser OpenStego pour dissimuler le fichier texte au sein de notre image.
+        Pour cela, il va falloir se rendre dans la catégorie "Hide data" d'OpenStego et remplir les champs de la manière
+        suivante :
+</p>
+
+<img src="Tutoriel/tuto-openstego/tuto-openstego-2.jpg" alt="" class="img-fluid">
+
+<p>
+    <ul>
+        <li><b>Message file</b> : mettre le fichier contenant les données à dissimuler;</li>
+        <li><b>Cover file</b> : mettre le ou les fichiers dans lesquels on souhaite dissimuler le message;</li>
+        <li><b>Output stego file</b> : mettre l'emplacement et le nom du fichier dans lequel on souhaite avoir le
+            résultat;</li>
+    </ul>
+    Il y aussi des options pour choisir l'algorithme de chiffrement ainsi que si l'on souhaite utiliser un mot de passe
+    pour réaliser la manipulation.
+    Ici, le mot de passe rentré que nous avons décidé de rentrer était "openstego".
+    </br></br>
+
+    Il ne reste alors plus qu'à cliquer sur le bouton "Hide data" en bas à droite pour confirmer.
+    </br>
+    On pourra alors observer la création de notre nouvelle image contenant les données, qui est au format .bmp :
+</p>
+
+<img src="Tutoriel/tuto-openstego/tuto-openstego-3.jpg" alt="" class="img-fluid">
+
+
+<h4 class="mb-3"></br>b) Extraire des données</h4>
+
+<p>
+    Pour extraire des données, le processus est assez simple et similaire à la partie a) expliquée juste au-dessus.
+    </br>
+    Pour cette partie, nous allons travailler avec l'image suivante, obtenue grâce à la réalisation de la partie
+    précédente :
+</p>
+
+<img src="Tutoriel/tuto-openstego/tuto-openstego-extract.bmp" alt="" class="img-fluid">
+
+<p>
+    Si vous n'avez pas réalisé la partie a) et que vous souhaitez réaliser le tutoriel à partir d'ici,
+    vous pouvez récupérer l'image en <a class="link-primary" href="Tutoriel/tuto-openstego/tuto-openstego-extract.bmp"
+        download="tuto-openstego-extract.bmp"><U>cliquant ici.</U><a></a>
+        </br></br>
+
+        Nous pouvons maintenant utiliser OpenStego pour extraire les données dissimulées dans l'image.
+        Pour cela, il va falloir se rendre dans la catégorie "Extract data" d'OpenStego et remplir les champs de la
+        manière suivante :
+</p>
+
+<img src="Tutoriel/tuto-openstego/tuto-openstego-4.jpg" alt="" class="img-fluid">
+
+<p>
+    <ul>
+        <li><b>Input stego file</b> : mettre le fichier contenant les données dissimulées</li>
+        <li><b>Output folder for message file</b> : mettre le répertoire dans lequel on souhaite obtenir le fichier
+            contenant le résultat;</li>
+        <li><b>Password</b> : mettre le mot de passe utilisé pour cacher les données dans le fichier ("openstego" pour
+            l'image du tutoriel);</li>
+    </ul>
+    Il ne reste alors plus qu'à cliquer sur le bouton "Extract data" en bas à droite pour confirmer la manipulation.
+    </br>
+    Vous pourrez alors regarder l'endroit où votre fichier texte a été créé, et vérifier qu'il contient bien les mêmes
+    données que celles utilisées dans la partie a).
+</p>
+
+
+<h3 class="mb-3"></br>3.2 Cacher et extraire des données</h3>
+
+<p>
+    Dans ce second mode, vous pouvez filigraner et vérifier des images avec votre signature.
+</p>
+
+<h4 class="mb-3"></br>a) Générer le fichier de signature</h4>
+<p>
+    Dans cette partie, nous chercherons à générer un fichier de signature.
+    </br>
+    Il faudra donc se rendre dans la catégorie "Generate signature" et remplir les champs de la manière suivante :
+</p>
+
+<img src="Tutoriel/tuto-openstego/tuto-openstego-5.jpg" alt="" class="img-fluid">
+
+<p>
+    <ul>
+        <li><b>Passphrase to be used to generate signature</b> : mettre la phrase souhaitée pour la génération de la
+            signature</li>
+        <li><b>Output signature file</b> : mettre le nom et l'emplacement du fichier .sig qui va être créé;</li>
+    </ul>
+    Il ne reste alors plus qu'à cliquer sur le bouton "Generate signature" en bas à droite pour confirmer la
+    manipulation.
+    </br>
+    Vous pourrez alors vérifier que votre fichier .sig a bien été créé.
+</p>
+
+<h4 class="mb-3"></br>b) Intégration du filigrane</h4>
+
+<p>
+    Une fois notre fichier .sig créé à l'aide de la partie a), nous pouvons maintenant l'intégrer dans une image.
+    </br>
+    Si vous souhaitez télécharger le fichier .sig de la partie précédente, <a class="link-primary"
+        href="Tutoriel/tuto-openstego/CyberSecuriTeach.sig" download="CyberSecuriTeach.sig"><U>cliquez ici.</U><a></a>
+        </br>
+        Pour cette partie, nous travaillerons sur l'image suivante :
+</p>
+
+<img src="Tutoriel/tuto-openstego/tuto-openstego-watermark.jpg" alt="" class="img-fluid">
+
+<p>
+    Si vous souhaitez travailler avec la même image afin de suivre le tutoriel à la lettre,
+    vous pouvez récupérer l'image en <a class="link-primary" href="Tutoriel/tuto-openstego/tuto-openstego-watermark.jpg"
+        download="tuto-openstego-watermark.jpg"><U>cliquant ici.</U><a></a>
+        </br></br>
+
+        Rendez-vous ensuite dans la catégorie "Embed watermark" d'OpenStego et remplissez les champs de la manière
+        suivante :
+</p>
+
+<img src="Tutoriel/tuto-openstego/tuto-openstego-6.jpg" alt="" class="img-fluid">
+
+<p>
+    <ul>
+        <li><b>File to be watermarked</b> : mettre le fichier contenant dans lequel on souhaite intégrer le filigrane
+        </li>
+        <li><b>Signature file</b> : mettre le fichier de signature;</li>
+        <li><b>Output watermarked file</b> : mettre le nom et l'emplacement du fichier dans lequel on obtiendra le
+            résultat;</li>
+    </ul>
+    Il ne reste alors plus qu'à cliquer sur le bouton "Embed watermark" en bas à droite pour confirmer la manipulation.
+    </br>
+    Vous pourrez alors vérifier qu'un fichier .bmp a été créé au bon endroit et avec le bon nom.
+</p>
+
+
+<h4 class="mb-3"></br>c) Vérification du filigrane</h4>
+
+<p>
+    Dans cette dernière partie, nous allons voir comment vérifier si un fichier contient notre signature.
+    Nous allons ici travailler avec l'image créée durant la partie b):
+</p>
+
+<img src="Tutoriel/tuto-openstego/tuto-openstego-water-verif.bmp" alt="" class="img-fluid">
+
+<p>
+    Si vous souhaitez réaliser le tutoriel avec exactement la même image,
+    vous pouvez la télécharger en <a class="link-primary" href="Tutoriel/tuto-openstego/tuto-openstego-water-verif.bmp"
+        download="tuto-openstego-water-verif.bmp"><U>cliquant ici.</U><a></a>
+        </br></br>
+
+        Il suffit ensuite de cliquer sur la catégorie "Verify watermark" d'OpenStego et de remplir les champs de la
+        manière suivante :
+</p>
+
+<img src="Tutoriel/tuto-openstego/tuto-openstego-7.jpg" alt="" class="img-fluid">
+
+<p>
+    <ul>
+        <li><b>File to be checked for watermark</b> : mettre le fichier dont l'on veut vérifier la présence de la
+            signature;</li>
+        <li><b>Original signature file</b> : mettre le fichier de signature dont l'on souhaite vérifier sa présence;
+        </li>
+    </ul>
+    Cliquez finalement sur le bouton "Verify watermark" en bas à droite pour confirmer la manipulation.
+    </br></br>
+
+    Vous obtiendrez alors le résultat suivant, qui indique à quel pourcentage votre signature doit probablement se
+    situer dans le fichier :
+</p>
+
+<img src="Tutoriel/tuto-openstego/tuto-openstego-8.jpg" alt="" class="img-fluid">
+
+
+<h2 class="mb-3"></br>Fin du tutoriel</h2>
+
+<p>
+    Le tutoriel est maintenant terminé, et vous devriez être capable de pouvoir utiliser les différents modes que
+    OpenStego met à disposition.
+    </br>
+    Pour valider ce tutoriel, il vous suffira de rentrer "Tuto-OpenStego" dans la case de validation.
+</p>

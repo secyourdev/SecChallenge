@@ -1,0 +1,35 @@
+<h2 class="mb-3">1. Qu’est-ce que c’est ?</h2>
+<p>
+	Un pare-feu – ou firewall en anglais – est une technologie qui permet de filtrer les connexions entrantes et
+	sortantes sur le réseau. Cela permet d’autoriser ou non les différentes communications et ainsi réguler le trafic.
+	Il est communément admis que le pare-feu est un must lorsque l'on parle de sécurisation du réseau de l'entreprise
+	(ou du domicile).
+</p>
+<h2 class="mb-3">2. Et concrètement ?</h2>
+<p>
+	Par défaut, il est fort probable que votre ordinateur ou que votre box internet possède un pare-feu configurable.
+	Cependant dans notre cas nous allons prendre l'exemple d'un pare-feu <b>iptables</b> installable grâce à la commande
+	<i>sudo apt-get install iptables</i>.<br>
+	Afin de configurer notre pare-feu, il faut comprendre que ce dernier fonctionne sur la base de règles
+	prédéfinies.<br><br>
+	Voici quelques exemples de règles : <br>
+	<br>
+	Par défaut nous demandons à notre pare-feu de refuser toutes les connexions pour ensuite accepter les connexions au
+	cas par cas.<br><br>
+	<kbd class='ms-3'> iptables -P INPUT DROP</kbd><br>
+	<kbd class='ms-3'>	iptables -P FORWARD DROP</kbd><br>
+	<kbd class='ms-3'>	iptables -P OUTPUT DROP</kbd><br>
+	<br><br>
+	On autorise ensuite les connexions SSH, en l'occurence le port 22, port par défaut du SSH. Cela nous permettera de
+	nous connecter à notre machine à distance.<br><br>
+	<kbd class='ms-3'>iptables -A INPUT -p tcp -m state --state NEW,ESTABLISHED --dport 22 -j ACCEPT</kbd><br>
+	<kbd class='ms-3'>	iptables -A OUTPUT -p tcp -m state --state ESTABLISHED --sport 22 -j ACCEPT</kbd>
+	<br><br>
+	Pour finir, nous acceptions les connexions à destination du port 80 et du port 443 afin d'assurer la liaison avec un
+	potentiel serveur web.<br><br>
+	<kbd class='ms-3'>iptables -A OUTPUT -p tcp -m state --state NEW,ESTABLISHED --dport 80 -j ACCEPT</kbd><br>
+	<kbd class='ms-3'>iptables -A OUTPUT -p tcp -m state --state NEW,ESTABLISHED --dport 443 -j ACCEPT</kbd>
+</p>
+<p>L'interêt de traiter les connexions au cas par cas est d'assurer la granularité de la protection. Si l'on limite les
+	connexions au nécessaire et qu'on les maîtrises, alors on réduira considérablement la surface d'attaque potentielle.
+</p>

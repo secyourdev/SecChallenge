@@ -1,27 +1,29 @@
 <h1>Challenge RainbowCrack</h1>
 
-
 <h2 class="mb-3">Que devez-vous faire ?</h2>
 
-<h3>Installer RainbowCrack sur votre machine</h3>
+<h3>Étape 1 : récupérer le docker proposé</h3>
 
 <p>
-    Il suffit de se rendre sur le site <a
-        href="http://project-rainbowcrack.com/"><U>http://project-rainbowcrack.com/</U></a>
-    et de choisir la version la version du logiciel en fonction de votre machine.
+    Pour cela, il vous faut docker d'installé (il existe tout un tas de tutoriels
+    qui vous expliquerons comment le télécharger) quand docker est installé sur votre machine, vous pouvez commencer.
+    <br>
+    Il vous suffit de taper la commande suivante afin de récupérer l'image nécessaire au challenge : <br>
+    <kbd class="ms-3">docker pull tomdcn/rainbowcrack</kbd>
+</p>
+
+<h3>Étape 2 : lancer la machine</h3>
+
+<p>
+    Voilà ! Vous venez de télécharger la machine, il faut maintenant la lancer. <br>
+    Pour lancer la machine, tapez la commande suivante :
+    <kbd class="ms-3">docker run -it tomdcn/rainbowcrack</kbd>
+    <br>
 </p>
 
 <h2 class="mb-3">Situation</h2>
 
 <p>
-    Un hacker d’une grande renommée à réussi à intercepter ce fichier lors d’une session exceptionnel
-    du conseil intergalactique de l’UGE. Le fichier est tellement confidentiel qu’il ne peut se permettre
-    de prendre le risque de connaître son contenu et vous le délègue ainsi. Néanmoins, il laisse sous-entendre
-    que l’algorithme de hachage est intégralement lié à la station mère de l’UGE, l’ESIEE ! Il s’agirait d’un
-    algorithme nommé par les initiales du plus grand amphi de la station mère suivie du nombre de lettres de cette même
-    station.
-    Une info de source sûr vous informe aussi qu’il a été prouvé que l’ESIEE ne communique qu’en mot de 6 lettres
-    minuscules au maximum. <br>
-    Le fichier est le suivant : <a href="./secret.hashes"><U> Cliquez-ci </U></a>
-
+    Vous avez désormais toutes les cartes entre vos mains pour déchiffrer le code d'accès que vous avez récupéré sous le
+    fichier mdp.txt.
 </p>

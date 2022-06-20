@@ -30,25 +30,25 @@
     installé)
     <br>
     Télécharger le fichier <a class="link-primary"
-        href="Docker/Challenge_john/docker-compose.yml" download="Docker/Challenge_john/docker-compose.yml"><U>docker-compose.yml</U></a>
+        href="Docker/Challenge_john/docker-compose.yml" download="docker-compose.yml"><U>docker-compose.yml</U></a>
     <br>
     Tapez les commandes suivantes :
 </p>
 
-<p class='code'>docker-compose up -d</p>
+<kbd class="ms-3">docker-compose up -d</kbd>
 
 <p>
     Pour utiliser la machine de martin (vulnérable) tapez :
 </p>
 
-<p class='code'>docker exec -it martin /bin/bash</p>
+<kbd class="ms-3">docker exec -it martin /bin/bash</kbd>
 
 <p>
     Pour utiliser la machine attaquante (avec john) tapez :
 </p>
 
-<p class='code'>docker exec -it john /bin/bash</p>
-
+<kbd class="ms-3">docker exec -it john /bin/bash</kbd>
+<br><br>
 <h2>3. Lancer l’attaque brute force avec John</h2>
 
 <p>
@@ -56,7 +56,7 @@
     Pour afficher le contenu du fichier, tapez la commande :
 </p>
 
-<p class='code'>cat /etc/shadow</p>
+<kbd class="ms-3">cat /etc/shadow</kbd>
 
 <p>
     Vous voyez s'afficher le contenu du fichier dans la console.
@@ -72,17 +72,16 @@
     le fichier : 
 </p>
 
-<div class="code">Ctrl+X</div>
-<div class="code">Y</div>
-<div class="code">ENTRER</div>
+<kbd class="ms-3">Ctrl+X</kbd>+
+<kbd class="ms-3">Y</kbd>+
+<kbd class="ms-3">ENTRER</kbd>
 
 <p>
     Il ne vous reste plus qu'à lancer john pour cracker le ou les mots de passes du fichier. Tapez :
 </p>
 <kbd class="ms-3">john -w=rockyou.txt mdp.hashes</kbd>
-
+<br><br>
 <img src="Tutoriel/tuto-john/johncommand.png" alt="">
-
 <p>
     Ainsi cette ligne demande à john de calculer tous les hash des mots contenus dans liste.txt et de le comparer au
     hash de la session.
@@ -91,8 +90,10 @@
     <br>
     Vous ne devrez pas attendre plus de 5 minutes pour que John trouve le ou les mots de passes.
 </p>
+<br>
+<h2>4. Bonus : Tutoriel Vidéo</h2>
 <video controls width="560" height="315">
-    <source src="Tutoriel/tuto-rainbowcrack/Tutoriel_RainbowCrack.mp4"
+    <source src="Tutoriel/tuto-john/John_the_Ripper_tutoriel.mp4"
             type="video/mp4">
 
         Désolé, votre navigateur ne supporte pas ce format vidéo.

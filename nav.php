@@ -1,4 +1,4 @@
- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
+ <link rel="stylesheet" ><!--href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">-->
  <nav class="navbar navbar-expand-lg navbar-light bg-light">
       <div class="container-fluid">
          <a class="navbar-brand" href="index.php"> 
@@ -11,24 +11,7 @@
          <ul class="navbar-nav me-auto mb-2 mb-lg-0">
           <?php
               if(isset($_SESSION['pseudo'])){
-            ?>
-            <li class="nav-item">
-                <form class="nav-item">
-                   <a class="nav-link" href="cours.php">Cours</a>
-                </form>
-            </li>
-            <li class="nav-item">
-                <form class="nav-item">
-                   <a class="nav-link" href="challenge.php">Challenge</a>
-                </form>
-            </li>
-          </ul>
-          <ul class="navbar-nav ml-md-auto">
-            <li class="nav-item">
-               <a class="nav-link" href="deconnexion.php">Déconnexion</a>
-            </li>
-          </ul>
-            <?php 
+            header('Location: index.php');
               }else{
             ?>
           <ul class="navbar-nav ml-md-auto">

@@ -20,35 +20,10 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<!-- Site Icons -->
-<link rel="shortcut icon" href="images/Capture.jpg" type="image/x-icon" />
-<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+<?php
+		require_once('link.php');
+?>
 
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<!-- Site CSS -->
-<link rel="stylesheet" href="style.css">
-<!-- ALL VERSION CSS -->
-<link rel="stylesheet" href="css/versions.css">
-<!-- Responsive CSS -->
-<link rel="stylesheet" href="css/responsive.css">
-<!-- Custom CSS -->
-<link rel="stylesheet" href="css/custom.css">
-
-<!-- Bootstrap CSS -->
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/css/bootstrap.min.css" rel="stylesheet"
-	integrity="sha384-wEmeIV1mKuiNpC+IOBjI7aAzPcEZeedi5yW5f2yOq55WWLwNGmvvx4Um1vskeMj0" crossorigin="anonymous">
-<link href="style.css" rel="stylesheet">
-
-
-
-<!-- Modernizer for Portfolio -->
-<script src="js/modernizer.js"></script>
-
-<!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
 

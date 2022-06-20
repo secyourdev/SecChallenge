@@ -22,9 +22,6 @@ if (isset($_SESSION['id'])){
     <title>Projet</title>
   </head>
   <body>
-    <?php
-      session_start();
-    ?>
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-2 col-lg-3"></div>
