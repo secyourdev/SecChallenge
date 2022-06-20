@@ -15,7 +15,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
  
      <!-- Site Metas -->
-    <title>CyberSecuriTeach</title>  
+     <title><?php if($categorie=='Tous'){echo 'Challenges';} else{ ?> Challenges/<?php echo $categorie; } ?></title>
     <meta name="keywords" content="">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -56,7 +56,7 @@
     <div id="pricing-box" class="section wb">
 
 		<div class ="listeCategories">
-        <a class ='categorie <?php if ($categorie=='tous'){?> selected <?php } ?>' href="pricing.php?categorie=tous"> Tous </a>
+        <a class ='categorie <?php if ($categorie=='Tous'){?> selected <?php } ?>' href="pricing.php?categorie=Tous"> Tous </a>
 			<?php
 				$q=$BDD->prepare('SELECT DISTINCT(Categorie) FROM challenge WHERE Categorie IS NOT NULL');
 				$q->execute(array());
@@ -78,7 +78,7 @@
                     $q->execute(array());
                     
                     foreach ($q as $ligne){
-                        if ($categorie==$ligne['Categorie'] || $categorie=='tous'){
+                        if ($categorie==$ligne['Categorie'] || $categorie=='Tous'){
                             $compteur++;
                     ?>
                         <div class="col-md-4 col-sm-6 block separation">

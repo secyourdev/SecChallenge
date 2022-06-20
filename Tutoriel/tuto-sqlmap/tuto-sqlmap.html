@@ -1,0 +1,98 @@
+<h2 class="mb-3">1. Objectif</h2>
+<p>
+    L'objectif de ce tutoriel est de vous présenter l'outil sqlmap.
+    </br>
+    Cet outil permet d'effectuer des injections sql automatisées.
+    </br></br>
+    Vous pourrez trouver plus d'informations ici : <a class="link-primary"
+        href="https://sqlmap.org/"><U>https://sqlmap.org/</U></a>
+    </br>
+</p>
+
+<h2 class="mb-3">2. Configuration</h2>
+
+<p>
+    Ce tuto met à disposition par le biais de l'application Docker et docker-compose, une machine attaquante et un site
+    web vulnérable.
+    </br></br>
+    Il est nécessaire de récuperer le fichier <b>docker-compose.yml</b> qui permet de lancer les machines.<br><br>
+
+    Téléchargez le <a class="link-primary" href="./Downloads/sqlmap/docker-compose.yml" download="docker-compose.yml">docker-compose.yml</a><br><br>
+
+    Les commandes qui permettent de lancer les machines sont les suivantes: <br><br>
+    <kbd class="ms-3">bash> docker-compose up -d</kbd>
+    <br><br>
+    Nous avons besoin de nous connecter à la machine attaquante via la commande :
+    <br><br>
+    <kbd class="ms-3">bash> docker exec -it kali /bin/bash</kbd><br>
+
+</p>
+
+<h2 class="mb-3">3. Les étapes</h2>
+<p>
+    On tape dans un navigateur pour accéder au site web : http://localhost:3000
+    on peut essayer de se connecter avec des identifiants incorrects.
+    On remarque alors dans la console du navigateur que le site a fait une requête à l'adresse suivante :
+    http://localhost:3000/rest/user/login
+    <img src="Tutoriel/tuto-sqlmap/images/sqlmap/sqlmap1.png" alt="" class="img-fluid">
+    En essayant maintenant de se connecter avec ' pour email on remarque une erreur dans l'onglet network qui nous
+    indique le type de base de données utilisée.
+    <img src="Tutoriel/tuto-sqlmap/images/sqlmap/sqlmap2.png" alt="" class="img-fluid">
+    ici il s'agit de sqlite.
+
+    <br><br>
+    Il faut maintenant installer sqlmap :
+    <br><br>
+    Pour cela : <kbd class="ms-3">bash> git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev
+    </kbd>
+    <br><br>
+    On a maintenant le projet en local.
+    <br><br>
+    <img src="Tutoriel/tuto-sqlmap/images/sqlmap/sqlmap3.png" alt="" class="img-fluid">
+    <br><br>
+    On peut se placer dans le dossier sqlmap-dev/
+    <br><br>
+    Il faut maintenant exécuter sqlmap avec la commande suivante :
+    <br><br>
+    <kbd class="ms-3">bash> python3 sqlmap.py -u 'http://shop:3000/rest/user/login'
+        --data="email=test@test.com&password=test" --level 5 --risk 3 --ignore-code 401 --dbms='sqlite' --technique=B
+    </kbd>
+    <br>
+    Ici il le site est à l'addresse shop car la machine qui l'heberge s'appelle shop.
+    <br>
+    On utilise --data pour signifier que l'on veut injecter ce type de donnée.
+    <br>
+    --level et --risk indique globalement le nombre d'éssais pour l'injection.
+    <br>
+    --ignore-code 401 indique que l'on ignore les codes 401.
+    <br>
+    --dbms='sqlite' indique que l'on utilise la base de données sqlite. Cela va permettre de reduire le nombre d'éssais.
+    <br>
+    --technique=B indique que l'on utilise la technique binaire.
+    <br>
+    On peut maintenant voir dans la console du navigateur que l'on a bien injecté le mot de passe.
+    <br><br>
+    <img src="Tutoriel/tuto-sqlmap/images/sqlmap/sqlmap4.png" alt="" class="img-fluid">
+    <br><br>
+    Ici il faut donc insérer dans id : 3654 et password : -5628' OR 2470=2470 AND 'msaf'='msaf
+    <br><br>
+    On a donc :
+    <br><br>
+    <img src="Tutoriel/tuto-sqlmap/images/sqlmap/sqlmap5.png" alt="" class="img-fluid">
+    <br><br>
+    Nous somme donc connecté à notre site.
+
+
+</p>
+
+<h2 class="mb-3">4. Bonus : vidéo démonstration</h2>
+<p>
+    Vous trouverez ci-dessous une vidéo de démonstration:
+</p>
+<video controls width="560" height="315">
+    <source src="Tutoriel/tuto-sqlmap/sqlmap.mp4" type="video/mp4">
+
+    Désolé, votre navigateur ne supporte pas ce format vidéo.
+</video>
+
+

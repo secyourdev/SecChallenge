@@ -11,27 +11,29 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Basic -->
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<head>
 
-<!-- Mobile Metas -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Basic -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<!-- Site Metas -->
-<title>
-<?php 
+	<!-- Mobile Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- Site Metas -->
+	<title>
+		<?php 
 		$q=$BDD->prepare('SELECT Titre FROM cours WHERE Id=?');
 		$q->execute(array($id));
 		$res=$q->fetch();
 		echo $res['Titre'];
 	?>
 	</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta name="author" content="">
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-<?php
+	<?php
 		require_once('link.php');
 ?>
 
@@ -64,24 +66,24 @@
 
 	<div id="overviews" class="section wb">
 		<div class="container">
-		<div class="row">
+			<div class="row">
 
-			<div class="blog-item">
+				<div class="blog-item">
 
-				<img src="<?php echo $result['LienImage'] ?>" alt="" class="img-fluid images_cours">
+					<img src="<?php echo $result['LienImage'] ?>" alt="" class="img-fluid images_cours">
 
-				<div class="post-content">
+					<div class="post-content">
 
-					<div class="row align-items-center">
-						<div class="message-box">
+						<div class="row align-items-center">
+							<div class="message-box">
 
-			<?php				
+								<?php				
 				$myfile = fopen($result['EmplacementCours'], "r") or die("Cours introuvable");
 			 	echo fread($myfile,filesize($result['EmplacementCours']));
 				fclose($myfile);
 
 			?>
-			                </div>
+							</div>
 						</div>
 					</div>
 				</div>

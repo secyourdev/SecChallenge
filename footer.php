@@ -29,9 +29,10 @@
 								<?php
               					if(isset($_SESSION['pseudo'])){
             					?>
-								<li><a href="coursPage?categorie=tous.php">Cours</a></li>
-								<li><a href="coursPage?categorie=tous.php">Tutoriels</a></li>
-								<li><a href="pricing.php?categorie=tous">Challenges</a></li>
+								<li><a href="coursPage.php?categorie=Tous">Cours</a></li>
+								<li><a href="tutoPage.php?categorie=Tous">Tutoriels</a></li>
+								<li><a href="pricing.php?categorie=Tous">Challenges</a></li>
+								<li><a href="presentationPage.php?categorie=Tous">Présentations</a></li>
 								<li><a href="compte.php">Mon Compte</a></li>
 								<?php
 								}

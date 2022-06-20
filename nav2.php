@@ -21,7 +21,7 @@
               			if(isset($_SESSION['pseudo'])){
             		?>
 					<li class="nav-item dropdown">
-					<a class="nav-link " href="coursPage.php?categorie=tous" data-bs-toggle="dropdown"> Cours  </a>
+					<a class="nav-link " href="coursPage.php?categorie=Tous" data-bs-toggle="dropdown"> Cours  </a>
 					<?php
 									$cat=$BDD->prepare('SELECT DISTINCT(Categorie) FROM cours WHERE Categorie IS NOT NULL');
 									$cat->execute(array());
@@ -40,7 +40,7 @@
 							<?php } ?>
 					</li>
 					<li class="nav-item dropdown">
-					<a class="nav-link " href="tutoPage.php?categorie=tous" data-bs-toggle="dropdown"> Tutoriels  </a>
+					<a class="nav-link " href="tutoPage.php?categorie=Tous" data-bs-toggle="dropdown"> Tutoriels  </a>
 					<?php
 									$cat=$BDD->prepare('SELECT DISTINCT(Categorie) FROM tutoriel WHERE Categorie IS NOT NULL');
 									$cat->execute(array());
@@ -58,7 +58,7 @@
 							<?php } ?>
 					</li>
 					<li class="nav-item dropdown">
-						<a class="nav-link " href="pricing.php?categorie=tous" data-bs-toggle="dropdown"> Challenges  </a>
+						<a class="nav-link " href="pricing.php?categorie=Tous" data-bs-toggle="dropdown"> Challenges  </a>
 						<?php
 									$cat=$BDD->prepare('SELECT DISTINCT(Categorie) FROM challenge WHERE Categorie IS NOT NULL');
 									$cat->execute(array());
@@ -76,7 +76,7 @@
 							<?php } ?>
 					</li>
 					<li class="nav-item dropdown">
-						<a class="nav-link " href="presentationPage.php?categorie=tous" data-bs-toggle="dropdown"> Présentations  </a>
+						<a class="nav-link " href="presentationPage.php?categorie=Tous" data-bs-toggle="dropdown"> Présentations  </a>
 						<?php
 									$cat=$BDD->prepare('SELECT DISTINCT(Categorie) FROM presentation WHERE Categorie IS NOT NULL');
 									$cat->execute(array());

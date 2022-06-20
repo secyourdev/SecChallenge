@@ -20,20 +20,21 @@ $challenge3=$result['challenge3'];
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Basic -->
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<!-- Mobile Metas -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Site Metas -->
-<title>CyberSecuriTeach</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta name="author" content="">
+  <!-- Site Metas -->
+  <title>Mon compte</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-<?php
+  <?php
 		require_once('link.php');
 ?>
 
@@ -81,7 +82,8 @@ $challenge3=$result['challenge3'];
           <p class="profil">Prénom : <?php echo $firstname; ?></p>
           <p class="profil">Mail : <?php echo $mail; ?></p>
           <div class="blog-button2">
-            <a class="hover-btn-new orange bouton-modifie-profil align-items-end" href="modification.php"><span>Modifier</span></a>
+            <a class="hover-btn-new orange bouton-modifie-profil align-items-end"
+              href="modification.php"><span>Modifier</span></a>
           </div>
         </div>
       </div>

@@ -4,20 +4,21 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Basic -->
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<head>
+	<!-- Basic -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<!-- Mobile Metas -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Mobile Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Site Metas -->
-<title>CyberSecuriTeach</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta name="author" content="">
+	<!-- Site Metas -->
+	<title>Cyberprévention</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-<?php
+	<?php
 		require_once('link.php');
 ?>
 

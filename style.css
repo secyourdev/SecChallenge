@@ -344,32 +344,6 @@ body {
     line-height: 1.80857;
 }
 
-body.demos .section {
-    background: url(images/bg.png) repeat top center #f2f3f5;
-}
-
-body.demos .section-title img {
-    max-width: 280px;
-    display: block;
-    margin: 10px auto;
-}
-
-body.demos .service-widget h3 {
-    border-bottom: 1px solid #ededed;
-    font-size: 18px;
-    padding: 20px 0;
-    background-color: #ffffff;
-}
-
-body.demos .service-widget {
-    margin: 0 0 30px;
-    padding: 30px;
-    background-color: #fff
-}
-
-body.demos .container-fluid {
-    max-width: 1080px
-}
 
 html, body{
 	height: 100%;
@@ -1664,6 +1638,7 @@ a img.aligncenter {
 }
 #testimonials{
 	position: relative;
+    height: 80vh;
 }
 #testimonials:before{
 	background: rgba(0,0,0,0.8);
@@ -2769,9 +2744,6 @@ select.mobile-device {
     color: #bcbcbc;
 }
 
-#contact {
-    background: url(images/bg.png) no-repeat center center #fff;
-}
 
 .map-box{
 	margin-left: -15px;

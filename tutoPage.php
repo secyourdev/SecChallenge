@@ -7,20 +7,22 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Basic -->
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<head>
 
-<!-- Mobile Metas -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<!-- Site Metas -->
-<title>CyberSecuriTeach</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta name="author" content="">
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<?php
+    <!-- Site Metas -->
+    <title><?php if($categorie=='Tous'){echo 'Tutoriels';} else{ ?> Tutoriels/<?php echo $categorie; } ?></title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <?php
 		require_once('link.php');
 ?>
 
@@ -42,7 +44,7 @@
 	</div>
 	 END LOADER -->
 
-     <div class="all-title-box">
+    <div class="all-title-box">
         <div class="container text-center">
             <h1>Tutoriels</h1>
         </div>
@@ -50,8 +52,8 @@
 
     <div id="overviews" class="section wb">
         <div class="listeCategories">
-            <a class='categorie <?php if ($categorie=='tous'){?> selected <?php } ?>'
-                href="tutoPage.php?categorie=tous"> Tous </a>
+            <a class='categorie <?php if ($categorie=='Tous'){?> selected <?php } ?>'
+                href="tutoPage.php?categorie=Tous"> Tous </a>
             <?php
 				$q=$BDD->prepare('SELECT DISTINCT(Categorie) FROM tutoriel WHERE Categorie IS NOT NULL');
 				$q->execute(array());
@@ -65,14 +67,14 @@
 			?>
         </div>
         <div class="container">
-            
+
             <div class="row">
                 <?php
                     $q=$BDD->prepare('SELECT * FROM tutoriel');         
                     $q->execute(array());
 					$compteur = 0;
                     foreach ($q as $ligne){
-                        if ($categorie==$ligne['Categorie'] || $categorie=='tous'){
+                        if ($categorie==$ligne['Categorie'] || $categorie=='Tous'){
 						?>
 
                 <div class="col-lg-4 col-md-6 col-12">

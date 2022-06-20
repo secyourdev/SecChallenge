@@ -13,27 +13,28 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Basic -->
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<!-- Mobile Metas -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Site Metas -->
-<title>
-<?php 
+    <!-- Site Metas -->
+    <title>
+        <?php 
 		$q=$BDD->prepare('SELECT Titre FROM tutoriel WHERE IdTutoriel=?');
 		$q->execute(array($id));
 		$res=$q->fetch();
 		echo $res['Titre'];
 	?>
-</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta name="author" content="">
+    </title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<?php
+    <?php
 		require_once('link.php');
 ?>
 

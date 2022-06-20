@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<body class="host_version"> 
+
+	<div class="all-title-box">
+		<div class="container text-center">
+			<h1>Tutoriels : Reverse engineering android<span class="m_1"></span></h1>
+		</div>
+	</div>
+	
+		<!-- Basic -->
+	<div class="container pt-5 align-items-center">
+		<div class="row align-items-center ">
+			<div class="col-8 offset-2">
+	
+				<h2 class="mb-3">1. Objectif</h2>
+				<p >
+					L'objectif de ce tutoriel est de vous présenter les outils jadx et apktool. 
+					</br>
+					Jadx est un outil de reverse engineering qui permet de décoder les fichiers d'apk et de les extraire en format .java.
+					</br>
+					Apktool est lui un outil qui permet de décoder les fichiers d'apk et de les extraire en format smali.
+					</br>
+					Vous pourrez trouver plus d'informations ici :</br> <a  class="link-primary" href="https://www.kali.org/tools/jadx/">https://www.kali.org/tools/jadx/</a>
+				    </br>
+					<a  class="link-primary" href="https://doc.ubuntu-fr.org/apktool">https://doc.ubuntu-fr.org/apktool</a>
+					</br>
+				
+				</p>    
+				
+				<h2 class="mb-3">2. Configuration</h2>
+				<p >
+					Pour ce tutoriel, nous utiliserons une machine d'attaque qui contien déjà un apk.
+					</br>
+					Pour cela:
+				    </br>
+					<kbd class="ms-3">bash> docker pull cybersecuriteachg2/tutoreverse</kbd>
+					</br>
+					<kbd class="ms-3">docker run -it cybersecuriteachg2/tutorverse</kbd>
+					</br>
+					
+				</p>   
+
+				<h2 class="mb-3">3. Jadx</h2>
+				<p >
+					
+					Nous allons d'abord essayer de décoder l'apk avec jadx.
+					</br>
+					<kbd class="ms-3">bash> jadx -d /home/Reverse/Java /home/reverse/hello.apk</kbd>
+					</br>
+					Ici nous avons un dossier /home/Reverse/Java qui contient tous les fichiers décodés de l'apk hello.apk.
+					</br>
+					Nous allons maintenant devoir chercher les fichier intéressants dans ce dossier. Ici nous pouvons regarder le fichier MainActivity.java.
+					</br>
+
+					<kbd class="ms-3">bash> cd Java/sources/com/example/tutoreverse</kbd>
+					</br>
+					On peut observer le ficher avec nano
+					</br>
+					<kbd class="ms-3">bash> nano MainActivity.java</kbd>
+					</br>
+					Ici nous pouvons voir le code de la classe MainActivity mais malheureusement il n'y a pas de chose intéressante dans ce fichier.
+					</br>
+					
+				</p> 
+
+				<h2 class="mb-3">4. Apktool</h2>
+				<p >
+					
+
+					Voyons maintenant apktool.
+					</br>
+					<kbd class="ms-3">bash> apktool d hello.apk</kbd>
+					</br>
+					Ici nous allons déconstuire l'apk en code smali.
+					</br>
+					Nous allons encore devoir chercher les fichier intéressants dans ce dossier. Ici nous pouvons regarder le fichier MainActivity.smali.
+					</br>
+
+					<kbd class="ms-3">bash> cd hello/smali_classes3/com/example/tutoreverse</kbd>
+					</br>
+					On peut observer le ficher avec nano
+					</br>
+					<kbd class="ms-3">bash> nano MainActivity.smali</kbd>
+					</br>
+					Ici on peut voir une ligne de code qui contient une chaine de caractères avec un code. il s'agit de la réponse.
+					</br>
+
+
+				</p> 
+
+				<h2 class="mb-3">5. Bonus : vidéo du tutoriel</h2>
+				<p>
+					Vous trouverez ci-dessous un tutoriel vidéo :
+					</br>
+					<iframe width="560" height="315" src="videos/reverse.mp4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				</p> 
+
+				<h2 class="mb-3">6. Validation</h2>
+				<p>
+					Pour valider le tutoriel, il faut récupérer le flag dans le code de l'apk.
+					</br>
+				</p> 
+			</div> <!-- end of col -->
+		</div> <!-- end of row -->
+</body>
+</html>

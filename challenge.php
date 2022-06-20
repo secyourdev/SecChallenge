@@ -9,38 +9,30 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Basic -->
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<head>
+	<!-- Basic -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<!-- Mobile Metas -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
+	<!-- Mobile Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Site Metas -->
-<title>CyberSecuriTeach</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta name="author" content="">
+	<!-- Site Metas -->
+	<title>
+		<?php 
+		$q=$BDD->prepare('SELECT NomChallenge FROM challenge WHERE IdChallenge=?');
+		$q->execute(array($id));
+		$res=$q->fetch();
+		echo $res['NomChallenge'];
+	?>
+	</title>
+	<meta name="keywords" content="">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-<!-- Site Icons -->
-<link rel="shortcut icon" href="images/Capture.jpg" type="image/x-icon" />
-<link rel="apple-touch-icon" href="images/apple-touch-icon.png">
-
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="css/bootstrap.min.css">
-<!-- Site CSS -->
-<link rel="stylesheet" href="style.css">
-<!-- ALL VERSION CSS -->
-<link rel="stylesheet" href="css/versions.css">
-<!-- Responsive CSS -->
-<link rel="stylesheet" href="css/responsive.css">
-<!-- Custom CSS -->
-<link rel="stylesheet" href="css/custom.css">
-
-
-
-<!-- Modernizer for Portfolio -->
-<script src="js/modernizer.js"></script>
+	<?php
+		require_once('link.php');
+?>
 
 
 </head>
@@ -72,12 +64,9 @@
 	<div id="overviews" class="section wb">
 		<div class="container">
 			<div class="row">
-				<!-- <div class="col-lg-9 blog-post-single"> -->
-				<div class="blog-item">
-					<!--	<div class="image-blog">-->
 
-					<img src="images/challenge1.jpg" alt="" class="img-fluid">
-				</div>
+				<img src="images/challenge1.jpg" alt="" class="img-fluid centrer-img">
+
 				<div class="post-content">
 					<div class="post-date">
 
@@ -135,7 +124,8 @@
 												$utilisateur=$_SESSION['id'];
 												$req=$BDD -> prepare('UPDATE rela_challenge_utilisateur SET Score=? WHERE IdChallenge = ? AND IdUtilisateur = ?');
 												$req->execute(array($nvscore,$id,$utilisateur));
-												?>
+												
+						?>
 
 					<div class="rep">
 						<h1>La réponse est juste. Score 5/5</h1>

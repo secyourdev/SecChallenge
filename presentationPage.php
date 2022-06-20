@@ -7,20 +7,22 @@
 <!DOCTYPE html>
 <html lang="en">
 
-<!-- Basic -->
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<head>
+    <!-- Basic -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-<!-- Mobile Metas -->
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Mobile Metas -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<!-- Site Metas -->
-<title>CyberSecuriTeach</title>
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta name="author" content="">
+    <!-- Site Metas -->
+    <title><?php if($categorie=='Tous'){echo 'Présentations';} else{ ?> Présentations/<?php echo $categorie; } ?>
+    </title>
+    <meta name="keywords" content="">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-<?php
+    <?php
 		require_once('link.php');
 ?>
 
@@ -58,8 +60,8 @@
     <div id="overviews" class="section wb">
 
         <div class="listeCategories">
-            <a class='categorie <?php if ($categorie=='tous'){?> selected <?php } ?>'
-                href="presentationPage.php?categorie=tous"> Tous </a>
+            <a class='categorie <?php if ($categorie=='Tous'){?> selected <?php } ?>'
+                href="presentationPage.php?categorie=Tous"> Tous </a>
             <?php
 				$q=$BDD->prepare('SELECT DISTINCT(Categorie) FROM presentation WHERE Categorie IS NOT NULL');
 				$q->execute(array());
@@ -83,7 +85,7 @@
                        
                     $q->execute(array());
                     foreach ($q as $ligne){
-						if ($categorie==$ligne['Categorie'] || $categorie=='tous'){
+						if ($categorie==$ligne['Categorie'] || $categorie=='Tous'){
 						?>
 
                 <div class="col-lg-4 col-md-6 col-12">

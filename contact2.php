@@ -15,7 +15,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
 	<!-- Site Metas -->
-	<title>CyberSecuriTeach</title>
+	<title>Contact</title>
 	<meta name="keywords" content="">
 	<meta name="description" content="Contactez les réalisateurs de ce site pour n'importe quelle question">
 	<meta name="author" content="">
