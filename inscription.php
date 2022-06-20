@@ -107,7 +107,7 @@ include("bdd/acces_BDD.php");
                       $req->execute(array($ligne['IdChallenge'],$maxid['MAX(id)'], 0));
                       
                     }
-                    header('Location: connexion.php');
+                    echo "<script> location.href='connexion.php'; </script>";
                     exit;
                   }
                 }else{
