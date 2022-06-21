@@ -1,79 +1,98 @@
 <h1><b>Vulnérabilité ROCA : une importante faille de sécurité au sein de la génération de clé RSA</b></h1>
 
 <p>
-	En 2017 a été découverte une faille de sécurité dans la génération de certaines clés RSA. 
-	Cette vulnérabilité permet de cracker l’algorithme RSA en récupérant la clé privée à partir de la clé publique très rapidement, 
+	En 2017 a été découverte une faille de sécurité dans la génération de certaines clés RSA.
+	Cette vulnérabilité permet de cracker l’algorithme RSA en récupérant la clé privée à partir de la clé publique très
+	rapidement,
 	là où cela est normalement impossible dû au temps que cela prend.
 </p>
 
 <h2><b>RSA ? Clé publique / privée ? Késako ?</b></h2>
 
 <p>
-	Si ces concepts vous sont inconnus ou que vous n’en avez que vaguement entendu parler, pas de panique ! Voici un petit résumé des choses que vous devez savoir pour la suite.
+	Si ces concepts vous sont inconnus ou que vous n’en avez que vaguement entendu parler, pas de panique ! Voici un
+	petit résumé des choses que vous devez savoir pour la suite.
 	<br>Afin de chiffrer une information, il existe deux types d’algorithmes : symétriques et asymétriques.
-	<br>Les algorithmes symétriques utilisent la même clé de chiffrement pour chiffrer et déchiffrer un message (la clé doit rester secrète), 
-	et les algorithmes asymétriques utilisent deux clés différentes : l’une pour chiffrer le message (la clé publique, peut être partagée avec n’importe qui) 
+	<br>Les algorithmes symétriques utilisent la même clé de chiffrement pour chiffrer et déchiffrer un message (la clé
+	doit rester secrète),
+	et les algorithmes asymétriques utilisent deux clés différentes : l’une pour chiffrer le message (la clé publique,
+	peut être partagée avec n’importe qui)
 	et l’autre pour le déchiffrer (la clé privée, doit rester secrète).
-	<br>L’algorithme RSA est un algorithme de chiffrement asymétrique des données qui se base principalement sur la décomposition d’un nombre en facteurs premiers, 
-	il crée donc un jeu de clés privée / publique afin de déchiffrer / chiffrer un message.
-	<br><br>Pour plus d’informations sur l'algorithme RSA, vous pouvez vous référer à notre cours sur le sujet 
+	<br>L’algorithme RSA est un algorithme de chiffrement asymétrique des données qui se base principalement sur la
+	décomposition d’un nombre en facteurs premiers,
+	il crée donc un jeu de clés privées / publique afin de déchiffrer / chiffrer un message.
+	<br><br>Pour plus d’informations sur l'algorithme RSA, vous pouvez vous référer à notre cours sur le sujet
 	(vous n'aurez pas besoin de plus d'informations pour comprendre la suite de ce cours).
 </p>
 
-<h2><b>Ok mais du coup, en quoi la vulnérabilité ROCA consiste-t-elle ?</b></h2>
+<h2><b>Ok, mais du coup, en quoi la vulnérabilité ROCA consiste-t-elle ?</b></h2>
 
 <p>
-	Comme expliqué précédemment, la clé privée ne doit pas être communiquée, elle doit à tout pris rester secrète. 
-	On doit pouvoir retrouver la clé publique facilement à partir de la clé privée, mais absolument pas l’inverse. 
-	C’est donc là que réside la potentielle faille de cette méthode de chiffrement : 
+	Comme expliqué précédemment, la clé privée ne doit pas être communiquée, elle doit à tout pris rester secrète.
+	On doit pouvoir retrouver la clé publique facilement à partir de la clé privée, mais absolument pas l’inverse.
+	C’est ainsi là que réside la potentielle faille de cette méthode de chiffrement :
 	pouvoir trouver la clé privée à partir de la clé publique permettrait de totalement casser le chiffrement.
-	<br>C’est ce en quoi consiste la vulnérabilité ROCA : 
-	les clés publiques concernées par cette vulnérabilité possèdent ce qu’elles ne doivent absolument pas posséder : 
+	<br>C’est ce en quoi consiste la vulnérabilité ROCA :
+	les clés publiques concernées par cette vulnérabilité possèdent ce qu’elles ne doivent absolument pas posséder :
 	des motifs récurrents permettant de trouver beaucoup plus rapidement qu’habituellement la clé privée associée.
-	<br>Là où une clé publique ne possédant pas cette vulnérabilité demanderait un temps absolument titanesque pour être cassée 
-	(pour une clé d’une taille de 2048 bits par exemple, cela se compte en milliards de milliards de milliards d’années), 
-	une clé possédant cette vulnérabilité pourrait dans le pire des cas être cassée en seulement quelques semaines, 
+	<br>Là où une clé publique ne possédant pas cette vulnérabilité demanderait un temps absolument titanesque pour être
+	cassée
+	(pour une clé d’une taille de 2048 bits par exemple, cela se compte en milliards de milliards de milliards
+	d’années),
+	une clé possédant cette vulnérabilité pourrait dans le pire des cas être cassée en seulement quelques semaines,
 	même si l'on considère une puissance de calcul identique dans les deux cas.
-	<br>Si on mesure en termes de coût de la puissance de calcul, 
-	on passe d’un coût totalement irréaliste pour une clé ne possédant pas la vulnérabilité à une somme estimée entre 20000 et 40000 dollars 
+	<br>Si on mesure en termes de coût de la puissance de calcul,
+	on passe d’un coût totalement irréaliste pour une clé ne possédant pas la vulnérabilité à une somme estimée entre
+	20000 et 40000 dollars
 	(pour une clé de 2048 bits) pour une clé possédant la vulnérabilité.
-	<br>Pire encore, il est possible de savoir si une clé publique donnée possède la vulnérabilité ROCA, 
+	<br>Pire encore, il est possible de savoir si une clé publique donnée possède la vulnérabilité ROCA,
 	un attaquant peut donc savoir à la simple vue de cette clé qu’il peut exploiter cette faille.
 </p>
 
 <h2><b>Quelles sont les conséquences qu’apporte une telle faille ?</b></h2>
 
 <p>
-	Cette vulnérabilité transforme un chiffrage extrêmement solide, incassable en pratique en un chiffrage très faible, facilement cassable. 
-	Cela peut donc se révéler désastreux car très nombreuses sont les utilisations de cette méthode de chiffrement dans le monde.
-	<br>Pouvoir casser le chiffrement RSA permettrait de récupérer un nombre incommensurable de données privées, 
-	allant de clés d’authentification pour des logiciels ou équipements en tout genre, jusqu’à des informations ou conversations privées ou secrètes, 
-	mais cela permettrait également de modifier ces même logiciels ou équipements pour les rendre malveillants, et bien d’autres choses encore.
-	<br>Devoir attendre seulement quelques semaines et payer seulement 40000 dollars ne découragera absolument pas certaines organisations 
-	comme les gouvernements par exemple, qui pourraient bien vouloir obtenir certaines informations confidentielles voire secret défense.
-	<br>Fort heureusement, comme évoqué précédemment, la vulnérabilité ROCA ne concerne que les clés générées par un certain algorithme. 
-	Cependant, cet algorithme génère des clés RSA depuis 2012 et la vulnérabilité n’a été découverte qu’en 2017, 
-	un grand nombre de clés vulnérables se sont donc retrouvées dans la nature durant ces 5 années. 
-	Mais puisqu’il est possible de détecter les clés publiques vulnérables, la grande majorité des clés vulnérables ont, 
-	aussitôt que ROCA a été découverte, été modifiées par des clés ne possédant pas la vulnérabilité. 
-	De plus, on peut s’estimer heureux que ROCA ait été découvert par des gens ne possédant pas de mauvaises intentions, 
-	et ont donc caché les détails de cette faille jusqu’à ce que les clés vulnérables soient toutes remplacées.
+	Cette vulnérabilité transforme un chiffrage extrêmement solide, incassable en pratique en un chiffrage très faible,
+	facilement cassable.
+	Cela peut alors se révéler désastreux, car très nombreuses sont les utilisations de cette méthode de chiffrement
+	dans le monde.
+	<br>Pouvoir casser le chiffrement RSA permettrait de récupérer un nombre incommensurable de données privées,
+	allant de clés d’authentification pour des logiciels ou équipements en tout genre, jusqu’à des informations ou
+	conversations privées ou secrètes,
+	mais cela permettrait également de modifier ces mêmes logiciels ou équipements pour les rendre malveillants, et bien
+	d’autres choses encore.
+	<br>Devoir attendre seulement quelques semaines et payer uniquement 40000 dollars ne découragera absolument pas
+	certaines organisations
+	comme les gouvernements par exemple, qui pourraient bien vouloir obtenir certaines informations confidentielles,
+	voire secrètes défenses.
+	<br>Fort heureusement, comme évoqué précédemment, la vulnérabilité ROCA ne concerne que les clés générées par un
+	certain algorithme.
+	Cependant, cet algorithme génère des clés RSA depuis 2012 et la vulnérabilité n’a été découverte qu’en 2017,
+	un grand nombre de clés vulnérables se sont donc retrouvées dans la nature durant ces cinq années.
+	Mais puisqu’il est possible de détecter les clés publiques vulnérables, la grande majorité des clés vulnérables ont,
+	aussitôt que ROCA a été découverte, été modifiées par des clés ne possédant pas la vulnérabilité.
+	De plus, on peut s’estimer heureux que ROCA ait été découvert par des gens ne possédant pas de mauvaises intentions
+	et ont de ce fait caché les détails de cette faille jusqu’à ce que les clés vulnérables soient toutes remplacées.
 </p>
 
 <h2><b>Quelles sont les leçons à tirer de cet évenement ?</b></h2>
 
-<p>La découverte de la vulnérabilité ROCA a mis en avant à quel point des techniques de protection des données pouvant paraître incassables 
+<p>La découverte de la vulnérabilité ROCA a mis en avant à quel point des techniques de protection des données pouvant
+	paraître incassables
 	peuvent du jour au lendemain devenir de véritables passoires.
-	<br>Il faut redoubler de vigilance et toujours continuer de chercher des failles de sécurité, 
+	<br>Il faut redoubler de vigilance et toujours continuer de chercher des failles de sécurité,
 	sous peine qu’un jour une personne mal intentionnée en découvre une et l’utilise à ses fins personnelles.
 </p>
 
 <h2><b>Sources :</b></h2>
 <p>
 	ROCA, une vulnérabilité de génération de clés RSA au sein des composants produits par Infineon Technologies :
-	<br><a href="https://blog.xmco.fr/roca-une-vulnerabilite-de-generation-de-cles-rsa-au-sein-des-composants-produits-par-infineon-technologies/"><U>https://blog.xmco.fr/roca-une-vulnerabilite-de-generation-de-cles-rsa-au-sein-des-composants-produits-par-infineon-technologies/</U></a>
+	<br><a
+		href="https://blog.xmco.fr/roca-une-vulnerabilite-de-generation-de-cles-rsa-au-sein-des-composants-produits-par-infineon-technologies/"><U>https://blog.xmco.fr/roca-une-vulnerabilite-de-generation-de-cles-rsa-au-sein-des-composants-produits-par-infineon-technologies/</U></a>
 	<br><br>ROCA: Vulnerable RSA generation (CVE-2017-15361) :
-	<br><a href="https://crocs.fi.muni.cz/public/papers/rsa_ccs17"><U>https://crocs.fi.muni.cz/public/papers/rsa_ccs17</U></a>
+	<br><a
+		href="https://crocs.fi.muni.cz/public/papers/rsa_ccs17"><U>https://crocs.fi.muni.cz/public/papers/rsa_ccs17</U></a>
 	<br><br>ROCA : la vulnérabilité qui menace les clés de nombreux appareils :
-	<br><a href="https://www.lemagit.fr/actualites/450428952/ROCA-la-vulnerabilite-qui-menace-les-cles-de-nombreux-appareils"><U>https://www.lemagit.fr/actualites/450428952/ROCA-la-vulnerabilite-qui-menace-les-cles-de-nombreux-appareils</U></a>
+	<br><a
+		href="https://www.lemagit.fr/actualites/450428952/ROCA-la-vulnerabilite-qui-menace-les-cles-de-nombreux-appareils"><U>https://www.lemagit.fr/actualites/450428952/ROCA-la-vulnerabilite-qui-menace-les-cles-de-nombreux-appareils</U></a>
 </p>

@@ -16,43 +16,45 @@
 <h2 class="mb-3">2. Configuration</h2>
 
 <p>
-    Ce tuto met à disposition par le biais de l'application Docker et docker-compose, 3 machines connectées sur un même
+    Ce tuto met à disposition, par le biais de l'application Docker et docker-compose, trois machines connectées sur un
+    même
     réseau local.
     </br>
-    Il est nécessaire de récuperer le fichier <b>docker-compose.yml</b> qui permet de lancer les 3 machines.<br>
+    Il est nécessaire de récupérer le fichier <b>docker-compose.yml</b> qui permet de lancer les trois machines.<br>
 
-    Téléchargez le <a class="link-primary" href="./Downloads/mitmproxy/docker-compose.yml"><U></Y>docker-compose.yml</U></a><br>
+    Téléchargez le <a class="link-primary" href="./Downloads/mitmproxy/docker-compose.yml"><U></Y>
+            docker-compose.yml</U></a><br>
 
-    Les commandes qui permettent de lancer les 3 machines sont les suivantes: <br>
+    Les commandes qui permettent de lancer les 3 machines sont les suivantes : <br>
     <kbd class="ms-3">bash> docker-compose up -d</kbd><br>
 
-    Nous avons besoin de nous connecter à celle de Eve via la commande :
+    Nous avons besoin de nous connecter à celle d'Eve via la commande :
     <br>
     <kbd class="ms-3">bash> docker exec -it mitm_eve /bin/bash</kbd><br>
 </p>
 
 <h2 class="mb-3">3. Les étapes</h2>
 <p>
-    Ici nous avons déjà une machine qui à effectué un arp-poisoning des victimes. Pour en savoir plus : <a
+    Ici nous avons déjà une machine qui a effectué un arp-poisoning des victimes. Pour en savoir plus : <a
         class="link-primary" href="./tuto.php?tuto=16"><U>Voici notre tuto</U></a><br>
     Avant tout il est nécessaire de connaitre le nom de notre interface réseau pour cela on peut taper la commande :
     </br>
     <kbd class="ms-3">bash> ifconfig</kbd>
 </p>
-    <img src="Tutoriel/tuto-mitmproxy/mitmproxy1.png" alt="" class="img-fluid">
-    <p>
+<img src="Tutoriel/tuto-mitmproxy/mitmproxy1.png" alt="" class="img-fluid">
+<p>
     Dans notre cas l'interface est eth0.
     </br>
     Il faut maintenant rediriger les requêtes http de notre victime vers la source souhaitée.
     </br>
-    On va utiliser la commade iptables de la facon suivante :
+    On va utiliser la commande iptables de la façon suivante :
     </br>
     <kbd class="ms-3">bash> iptables -t nat -A PREROUTING -i eth0 -p tcp --dport 80 -j REDIRECT --to-port 8080</kbd>
     </br>
-    Cette commande indique que l'on va router les requêtes tcp recues par l'interface eth0 sur le port 80 vers le port
+    Cette commande indique que l'on va router les requêtes tcp reçues par l'interface eth0 sur le port 80 vers le port
     8080.
     </br>
-    Ainsi tout les requêtes émises par Alice seront bien envoyées à Bob.
+    Ainsi toutes les requêtes émises par Alice seront bien envoyées à Bob.
     </br>
 
     On peut maintenant lance le mitmproxy en utilisant la commande suivante :
@@ -60,14 +62,14 @@
     <kbd class="ms-3">bash> mitmproxy -m transparent</kbd>
 
 </p>
-    <img src="Tutoriel/tuto-mitmproxy/mitmproxy2.png" alt="" class="img-fluid">
-    <p>
-    On a alors une interface qui s'ouvre. Pour naviger vous pouvez utiliser les flèches du clavier. Pour sélectionner,
+<img src="Tutoriel/tuto-mitmproxy/mitmproxy2.png" alt="" class="img-fluid">
+<p>
+    On a alors une interface qui s'ouvre. Pour naviguer vous pouvez utiliser les flèches du clavier. Pour sélectionner,
     la touche entrée et pour sortir d'une page ou du programme la touche q.
     </br>
-    On peut maintenant analyser les requêtes http de Alice et peut être trouver son mot de passe.
+    On peut maintenant analyser les requêtes http d'Alice et peut être trouver son mot de passe.
 </p>
-    <img src="Tutoriel/tuto-mitmproxy/mitmproxy3.png" alt="" class="img-fluid">
+<img src="Tutoriel/tuto-mitmproxy/mitmproxy3.png" alt="" class="img-fluid">
 
 
 
@@ -82,4 +84,3 @@
 
     Désolé, votre navigateur ne supporte pas ce format vidéo.
 </video>
-

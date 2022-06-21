@@ -10,19 +10,19 @@
 
 <h2 class="mb-3">2. Configuration</h2>
 <p>
-	Pour suivre ce tutoriel vous aurez besoin d'une machine d'attaque qui comporte le framework Metasploit.
-	MetaSploit est fourni de base avec les distributions linux orientées pentest (Kali, Parrot).
-	Cependant si vous disposez d’une distribution plus « classique » ou
-	bien si vous êtes sous Windows alors il vous faudra vous rendre sur ce site et suivre la procédure d’installation
+	Pour suivre ce tutoriel, vous aurez besoin d'une machine d'attaque qui comporte le framework Metasploit.
+	MetaSploit est fourni de base avec les distributions Linux orientées pentest (Kali, Parrot).
+	Cependant, si vous disposez d’une distribution plus « classique » ou
+	bien si vous êtes sous Windows, alors il vous faudra vous rendre sur ce site et suivre la procédure d’installation
 	qui y est décrite : <a
 		href="https://docs.metasploit.com/docs/using-metasploit/getting-started/nightly-installers.html"><u>Installation</u></a>
-	Pour la machine cible nous utiliserons un docker qui contient le service vulnérable.
+	Pour la machine cible, nous utiliserons un docker qui contient le service vulnérable.
 	<br />
-	Pour récupérer l'image correspondante au tutoriel tapez la commande suivante :
+	Pour récupérer l'image correspondante au tutoriel, tapez la commande suivante :
 	<br />
 	<kbd>docker pull [kgoucy]/challenge-vnc</kbd>
 	<br />
-	Ensuite pour lancer le docker tapez la commande suivante :
+	Ensuite pour lancer le docker, tapez la commande suivante :
 	<br />
 	<kbd>docker run -it target sh -c "/bin/services.sh && bash"</kbd>
 	<br />
@@ -32,11 +32,11 @@
 
 <h2 class="mb-3">3. Bruteforce du mot de passe avec Metasploit</h2>
 <p>
-	Sur votre machine d'attaque il est temps de lancer le framework Metasploit avec la commande suivante:
+	Sur votre machine d'attaque, il est temps de lancer le framework Metasploit avec la commande suivante :
 	<br />
 	<kbd>msfconsole</kbd>
 	<br />
-	Ensuite nous allons spécifier à Metasploit le module que nous souhaitons utiliser avec la commande suivante:
+	Ensuite nous allons spécifier à Metasploit le module que nous souhaitons utiliser avec la commande suivante :
 	<br />
 	<kbd>use auxiliary/scanner/vnc/vnc_login</kbd>
 </p>
@@ -62,23 +62,23 @@
 </p>
 <img src="Tutoriel/tuto-vnc-bruteforcing/images/5.png" style="width: 100%;" />
 <p>
-	Normalement le scanner est assez rapide est retourne dans le terminal le mot de passe trouvé pour la connexion au
+	Normalement le scanner est assez rapide et retourne dans le terminal le mot de passe trouvé pour la connexion au
 	service VNC.
 	Il est maintenant temps d'exploiter l'accès que nous venons de trouver avec un outil tel que VNC ou Remmina pour se
 	connecter à l'ordinateur cible
-	et en extraire les informations qui nous intéresse.
+	et en extraire les informations qui nous intéressent.
 </p>
 
 <h2 class="mb-3">4. Exploitation avec Remmina</h2>
 <p>
 
 
-	Pour avoir un accès à cette machine distante nous allons utiliser un outil qui s'appelle Remmina.
-	Pour l'intaller il vous suffit de taper dans votre terminal sous kali la commande suivante :
+	Pour avoir un accès à cette machine distante, nous allons utiliser un outil qui s'appelle Remmina.
+	Pour l'installer il vous suffit de taper dans votre terminal sous kali la commande suivante :
 	<br />
 	<kbd>sudo apt-get install remmina</kbd>
 	<br />
-	Une fois installer vous pouvez le lancer en mode graphique.
+	Une fois installé vous pouvez le lancer en mode graphique.
 </p>
 <img src="Tutoriel/tuto-vnc-bruteforcing/images/6.png" style="width: 100%;" />
 <p>
@@ -86,12 +86,12 @@
 </p>
 <img src="Tutoriel/tuto-vnc-bruteforcing/images/7.png" style="width: 100%;" />
 <p>
-	VNC puis à renseigner dans le champ à côté l'adresse ip de la machine cible. Appuyez sur la touche entrer pour la
+	VNC puis à renseigner dans le champ à côté l'adresse IP de la machine cible. Appuyez sur la touche entrer pour la
 	valider la connexion.
 </p>
 <img src="Tutoriel/tuto-vnc-bruteforcing/images/8.png" style="width: 100%;" />
 <p>
-	Une fenêtre s'ouvre et vous demande le mote de passe. Renseignez alors le mot de passe trouvé avec metasploit pui
+	Une fenêtre s'ouvre et vous demande le mot de passe. Renseignez alors le mot de passe trouvé avec metasploit puis
 	appuyez sur la touche entrer.
 </p>
 <img src="Tutoriel/tuto-vnc-bruteforcing/images/10.png" style="width: 100%;" />

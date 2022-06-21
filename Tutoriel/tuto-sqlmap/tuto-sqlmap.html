@@ -2,7 +2,7 @@
 <p>
     L'objectif de ce tutoriel est de vous présenter l'outil sqlmap.
     </br>
-    Cet outil permet d'effectuer des injections sql automatisées.
+    Cet outil permet d'effectuer des injections SQL automatisées.
     </br></br>
     Vous pourrez trouver plus d'informations ici : <a class="link-primary"
         href="https://sqlmap.org/"><U>https://sqlmap.org/</U></a>
@@ -12,14 +12,14 @@
 <h2 class="mb-3">2. Configuration</h2>
 
 <p>
-    Ce tuto met à disposition par le biais de l'application Docker et docker-compose, une machine attaquante et un site
+    Ce tuto met à disposition, par le biais de l'application Docker et docker-compose, une machine attaquante et un site
     web vulnérable.
     </br></br>
-    Il est nécessaire de récuperer le fichier <b>docker-compose.yml</b> qui permet de lancer les machines.<br><br>
+    Il est nécessaire de récupérer le fichier <b>docker-compose.yml</b> qui permet de lancer les machines.<br><br>
 
     Téléchargez le <a class="link-primary" href="./Downloads/sqlmap/docker-compose.yml" download="docker-compose.yml">docker-compose.yml</a><br><br>
 
-    Les commandes qui permettent de lancer les machines sont les suivantes: <br><br>
+    Les commandes qui permettent de lancer les machines sont les suivantes : <br><br>
     <kbd class="ms-3">bash> docker-compose up -d</kbd>
     <br><br>
     Nous avons besoin de nous connecter à la machine attaquante via la commande :
@@ -38,7 +38,7 @@
     En essayant maintenant de se connecter avec ' pour email on remarque une erreur dans l'onglet network qui nous
     indique le type de base de données utilisée.
     <img src="Tutoriel/tuto-sqlmap/images/sqlmap/sqlmap2.png" alt="" class="img-fluid">
-    ici il s'agit de sqlite.
+    ici il s'agit de SQLite.
 
     <br><br>
     Il faut maintenant installer sqlmap :
@@ -58,15 +58,15 @@
         --data="email=test@test.com&password=test" --level 5 --risk 3 --ignore-code 401 --dbms='sqlite' --technique=B
     </kbd>
     <br>
-    Ici il le site est à l'addresse shop car la machine qui l'heberge s'appelle shop.
+    Ici il le site est à l'adresse shop car la machine qui l'heberge s'appelle shop.
     <br>
     On utilise --data pour signifier que l'on veut injecter ce type de donnée.
     <br>
-    --level et --risk indique globalement le nombre d'éssais pour l'injection.
+    --level et --risk indique globalement le nombre d'essais pour l'injection.
     <br>
     --ignore-code 401 indique que l'on ignore les codes 401.
     <br>
-    --dbms='sqlite' indique que l'on utilise la base de données sqlite. Cela va permettre de reduire le nombre d'éssais.
+    --dbms='sqlite' indique que l'on utilise la base de données SQLite. Cela va permettre de réduire le nombre d'éssais.
     <br>
     --technique=B indique que l'on utilise la technique binaire.
     <br>
@@ -80,14 +80,14 @@
     <br><br>
     <img src="Tutoriel/tuto-sqlmap/images/sqlmap/sqlmap5.png" alt="" class="img-fluid">
     <br><br>
-    Nous somme donc connecté à notre site.
+    Nous sommes donc connecté à notre site.
 
 
 </p>
 
 <h2 class="mb-3">4. Bonus : vidéo démonstration</h2>
 <p>
-    Vous trouverez ci-dessous une vidéo de démonstration:
+    Vous trouverez ci-dessous une vidéo de démonstration :
 </p>
 <video controls width="560" height="315">
     <source src="Tutoriel/tuto-sqlmap/sqlmap.mp4" type="video/mp4">

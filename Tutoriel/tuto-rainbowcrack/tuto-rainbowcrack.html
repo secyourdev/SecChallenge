@@ -1,103 +1,126 @@
 <h1><b>RainbowCrack</b></h1>
 <p><U><b>I) Qu’est-ce que RainbowCrack ?</b></U> <br><br>
 
-RainbowCrack est un logiciel permettant de décrypter des fonctions de hachages principalement 
-dans le but de corrompre des mots de passe. Ce logiciel utilise le principe des Rainbow Tables 
-qui se base sur la technique de compromis temps-mémoire. <br><br>
+        RainbowCrack est un logiciel permettant de décrypter des fonctions de hachages principalement
+        dans le but de corrompre des mots de passe. Ce logiciel utilise le principe des Rainbow Tables
+        qui se base sur la technique de compromis temps-mémoire. <br><br>
 
 
 
 
 
-<b><U>II) Comment fonctionne RainbowCrack ?</b></U> <br><br>
+        <b><U>II) Comment fonctionne RainbowCrack ?</b></U> <br><br>
 
-Comme dis précédemment, ce logiciel se base sur la technique de compromis temps-mémoire.<br>
-Contrairement à une attaque brute force qui va d'abord générer tous les textes possibles puis 
-qui les crypte afin de les comparer au hash à analyser, une attaque utilisant la technique de compromis 
-temps-mémoire va quant à elle procéder inversement. En effet, cette méthode va générer tous les textes 
-possibles et leur hash équivalent puis va comparer chaque hash avec celui à analyser jusqu’à trouver celui correspondant. <br>
-C’est ainsi que rentrent en jeu les rainbow tables qui vont s’occuper de stocker les couples de texte / hash 
-afin de diminuer considérablement le temps lors d’un craquage de hash car le principe de brute force est évité. <br>
-On parle ici d’un gain de plusieurs jours, voire semaines pour un décryptage utilisant cette méthode 
-plutôt qu’une simple technique de brute force. <br><br>
+        Comme dis précédemment, ce logiciel se base sur la technique de compromis temps-mémoire.<br>
+        Contrairement à une attaque brute force qui va d'abord générer tous les textes possibles puis
+        qui les crypte afin de les comparer au hash à analyser, une attaque utilisant la technique de compromis
+        temps-mémoire va quant à elle procéder inversement. En effet, cette méthode va générer tous les textes
+        possibles et leur hash équivalent, puis va comparer chaque hash avec celui à analyser jusqu’à trouver celui
+        correspondant. <br>
+        C’est ainsi que rentrent en jeu les rainbow tables qui vont s’occuper de stocker les couples de texte / hash
+        afin de diminuer considérablement le temps lors d’un craquage de hash car le principe de brute force est évité.
+        <br>
+        On parle ici d’un gain de plusieurs jours, voire semaines pour un décryptage utilisant cette méthode
+        plutôt qu’une simple technique de brute force. <br><br>
 
-Néanmoins, cela implique un problème majeur : il est nécessaire de générer intégralement la rainbow table 
-afin de pouvoir l’utiliser ce qui en fait son principal défaut. En effet, pour générer une table pouvant décrypter un hash 
-comportant tous les caractères ASCII avec une précision de 99,9%, il est nécessaire de prévoir un stockage supérieur à 1 To
- et un temps de création qui peut s’étendre sur plusieurs jours. <br><br>
+        Néanmoins, cela implique un problème majeur : il est nécessaire de générer intégralement la rainbow table
+        afin de pouvoir l'utiliser, ce qui en fait son principal défaut. En effet, pour générer une table pouvant
+        décrypter un hash
+        comportant tous les caractères ASCII avec une précision de 99,9 %, il est nécessaire de prévoir un stockage
+        supérieur à 1 To
+        et un temps de création qui peut s’étendre sur plusieurs jours. <br><br>
 
-De plus, il s’agit ici uniquement du fonctionnement d’une Rainbow Table qui n’utilise pas de fonction de réduction. 
-Lorsque nous faisons appel à son plein potentiel, une Rainbow Table ne stockera plus des couples de texte / hash mais 
-seulement des couples de texte.<br>
-Il existera alors dans chaque couple un texte de départ et un texte d'arrivée. Ces couples de texte sont alors liés 
-par une suite de réduction et de hachage impliquant que plusieurs milliers d'empreintes peuvent être retrouvées via ce couple. 
-En effet, il est possible de récupérer chaque empreinte de la chaîne en partant du texte d’arrivée via la fonction appropriée 
-(réduction ou hachage en fonction de ce que nous voulons retrouver). <br><br>
+        De plus, il s’agit ici uniquement du fonctionnement d’une Rainbow Table qui n’utilise pas de fonction de
+        réduction.
+        Lorsque nous faisons appel à son plein potentiel, une Rainbow Table ne stockera plus des couples de texte / hash
+        mais
+        seulement des couples de texte.<br>
+        Il existera alors dans chaque couple un texte de départ et un texte d'arrivée. Ces couples de texte sont ainsi
+        liés
+        par une suite de réduction et de hachage impliquant que plusieurs milliers d'empreintes peuvent être retrouvé
+        via ce couple.
+        En effet, il est possible de récupérer chaque empreinte de la chaîne en partant du texte d’arrivée via la
+        fonction appropriée
+        (réduction ou hachage en fonction de ce que nous voulons retrouver). <br><br>
 
-Il suffit désormais de créer des Rainbow Tables avec une configuration où la longueur d’une chaîne est largement
- supérieure à 2 (Valeur minimale) afin de créer une table qui ne possède pas toutes les combinaisons possibles mais plutôt
- toutes les combinaisons les plus probables ce qui en fait une option de qualité lorsque l’on doit limiter la place prise
- par l'une de ces tables.<br><br>
- 
- Le processus de fonctionnement est alors bien différent lorsque l'on utilise les fonctions de réduction :<br>
- On commence par calculer la dernière réduction utilisée dans la table puis on regarde si le texte trouvé correspond à l’un des textes d’arrivées. <br>
- Si aucune correspondance n’est possible, alors on calcule avec les deux dernières réductions et ainsi de suite jusqu’à ce qu’il y ait une correspondance. <br>
- Dans le cas où une correspondance est faite, on part du texte de départ (lié au texte d’arrivée retrouvé par correspondance)
- puis on recrée la procédure permettant d’obtenir notre texte d’arrivée. On s'arrête une fois que l’on retrouve le hash à 
- craquer puis on retourne simplement le texte qui l’a engendré. <br>
- Dans le cas où aucune correspondance n’a pu être faite, le décryptage a échoué.<br><br>
+        Il suffit désormais de créer des Rainbow Tables avec une configuration avec laquelle la longueur d’une chaîne
+        est largement
+        supérieure à 2 (Valeur minimale) afin de créer une table qui ne possède pas toutes les combinaisons possibles,
+        mais plutôt
+        toutes les combinaisons les plus probables ce qui en fait une option de qualité lorsque l’on doit limiter la
+        place prise
+        par l'une de ces tables.<br><br>
+
+        Le processus de fonctionnement est alors bien différent quand l'on utilise les fonctions de réduction :<br>
+        On commence par calculer la dernière réduction utilisée dans la table puis on regarde si le texte trouvé
+        correspond à l’un des textes d’arrivées. <br>
+        Si aucune correspondance n’est possible, ensuite on calcule avec les deux dernières réductions et ainsi de suite
+        jusqu’à ce qu’il y ait une correspondance. <br>
+        Dans le cas où une correspondance est faite, on part du texte de départ (lié au texte d’arrivée retrouvé par
+        correspondance)
+        puis on recrée la procédure permettant d’obtenir notre texte d’arrivée. On s'arrête une fois que l’on retrouve
+        le hash à
+        craquer puis on retourne simplement le texte qui l’a engendré. <br>
+        Dans le cas où aucune correspondance n’a pu être faite, le décryptage a échoué.<br><br>
 
 
 
 
 
-<b><U>III) Comment utilise-t-on RainbowCrack ?</b></U> <br><br>
+        <b><U>III) Comment utilise-t-on RainbowCrack ?</b></U> <br><br>
 
-RainbowCrack est un logiciel simple d’utilisation, il suffit de disposer d'une machine ayant rainbowcrack d'intallé et d'un hash.
-Ensuite, il faut choisir une Rainbow Table qui va nous permettre de décrypter cet hash. <br>
-Pour ce faire, il est d’abord nécessaire de créer une rainbow table et ce processus peut-être très coûteux 
-en termes d’utilisation du processeur et de stockage. C’est pour cela que nous allons utiliser 
-une table peu efficace mais accessible à tous pour ce challenge.<br>
-La première étape consiste simplement à ouvrir un terminal et de 
-se positionner dans le répertoire dans lequel vous avez installé rainbowcrack ou bien d'utiliser le docker fourni. <br><br>
+        RainbowCrack est un logiciel simple d’utilisation, il suffit de disposer d'une machine ayant rainbowcrack
+        d'installé et d'un hash.
+        Ensuite, il faut choisir une Rainbow Table qui va nous permettre de décrypter ce hash. <br>
+        Pour ce faire, il est d’abord nécessaire de créer une rainbow table et ce processus peut-être très coûteux
+        en termes d’utilisation du processeur et de stockage. C’est pour cela que nous allons utiliser
+        une table peu efficace, mais accessible à tous pour ce challenge.<br>
+        La première étape consiste simplement à ouvrir un terminal et de
+        se positionner dans le répertoire dans lequel vous avez installé rainbowcrack ou bien d'utiliser le docker
+        fourni. <br><br>
 
-D’abords, la création d’une rainbow table se base sur cette commande :<br>
-<code>rtgen hash_algorithm charset plaintext_len_min plaintext_len_max table_index chain_len chain_num part_index</code><br><br>
+        D’abords, la création d’une rainbow table se base sur cette commande :<br>
+        <code>rtgen hash_algorithm charset plaintext_len_min plaintext_len_max table_index chain_len chain_num
+                part_index</code><br><br>
 
-Afin de mieux comprendre comment fonctionne cette commande et ses paramètres, je vous invite à visiter le site officiel :<br>
-<U><a href="http://project-rainbowcrack.com/generate.htm">http://project-rainbowcrack.com/generate.htm</a></U><br><br>
+        Afin de mieux comprendre comment fonctionne cette commande et ses paramètres, je vous invite à visiter le site
+        officiel :<br>
+        <U><a
+                        href="http://project-rainbowcrack.com/generate.htm">http://project-rainbowcrack.com/generate.htm</a></U><br><br>
 
-Premièrement, nous voulons décoder un hash en md5. Nous savons aussi que le texte à décoder possède 
-4 caractères pouvant être des lettres ou des chiffres. Il y a donc 1 727 604 combinaisons possibles. 
-Pour être sûr de toutes les générées, nous allons effectuer la commande suivante :<br>
-<code>rtgen md5 loweralpha-numeric 4 4 0 2 3000000 0 </code><br>
+        Premièrement, nous voulons décoder un hash en md5. Nous savons aussi que le texte à décoder possède
+        six caractères qui sont uniquement des lettres minuscules. Il y a donc 321 272 406 combinaisons possibles.
+        Pour être sûr de toutes les générées, nous allons effectuer la commande suivante :<br>
+        <code>rtgen md5 loweralpha 4 4 0 2 3000000 0 </code><br>
 
-</p><img src="images/rainbowcrack1.png" alt="" class="img-fluid"> <br><p>
+</p><img src="images/rainbowcrack1.png" alt="" class="img-fluid"> <br>
+<p>
 
-La génération de la table peut varier selon la machine utilisée. <br>
-Une fois terminé, il est nécessaire de la trier afin de la rendre utilisable par rainbowcrack. 
-Cela se fait avec la commande suivante : <br>
-<code>rtsort . </code><br>
+        La génération de la table peut varier selon la machine utilisée. <br>
+        Une fois terminé, il est nécessaire de la trier afin de la rendre utilisable par rainbowcrack.
+        Cela se fait avec la commande suivante : <br>
+        <code>rtsort . </code><br>
 
-</p><img src="images/rainbowcrack2.png" alt="" class="img-fluid"> <br><p>
+</p><img src="images/rainbowcrack2.png" alt="" class="img-fluid"> <br>
+<p>
 
-L’exécution de cette commande peut varier selon la machine utilisée. <br><br>
+        L’exécution de cette commande peut varier selon la machine utilisée. <br><br>
 
-Une fois terminé, vous allez obtenir votre fichier .rt dans votre répertoire courant, il s’agit de votre Rainbow Table.<br><br>
+        Une fois terminé, vous allez obtenir votre fichier .rt dans votre répertoire courant, il s’agit de votre Rainbow
+        Table.<br><br>
 
-Vous pouvez désormais l'utiliser via la commande suivante : <br>
-<code>rcrack . -h HASH </code><br><br>
+        Vous pouvez désormais l'utiliser via la commande suivante : <br>
+        <code>rcrack . -h HASH </code><br><br>
 
- Et voila ! Vous avez réussi à effectuer une attaque brute force sur le fichier mdp.txt !<br>
- 
- </p><img src="images/rainbowcrack3.png" alt="" class="img-fluid"> <br><p>
- 
- Tutoriel vidéo : <br>
- <video controls width="560" height="315">
-    <source src="Tutoriel/tuto-rainbowcrack/tuto-rainbowcrack.mp4"
-            type="video/mp4">
+        Et voilà ! Vous avez réussi à effectuer une attaque brute force sur le fichier mdp.txt !<br>
 
-        Désolé, votre navigateur ne supporte pas ce format vidéo.
-</video>
+</p><img src="images/rainbowcrack3.png" alt="" class="img-fluid"> <br>
+<p>
+
+        Tutoriel vidéo : <br>
+        <video controls width="560" height="315">
+                <source src="Tutoriel/tuto-rainbowcrack/tuto-rainbowcrack.mp4" type="video/mp4">
+
+                Désolé, votre navigateur ne supporte pas ce format vidéo.
+        </video>
 </p>
-

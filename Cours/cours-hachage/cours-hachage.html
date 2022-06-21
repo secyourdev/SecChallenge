@@ -5,7 +5,7 @@
     caractère de taille définie.
 </p>
 
-<h2 class="mb-3"><b>Qu’est ce que la cryptologie et pourquoi est-elle si importante aujourd’hui ?</b></h2>
+<h2 class="mb-3"><b>Qu’est-ce que la cryptologie et pourquoi est-elle si importante aujourd’hui ?</b></h2>
 
 <p>
     La cryptologie permet d’assurer trois propriétés fondamentales de nos jours aux messages que l’on souhaite envoyer :
@@ -28,20 +28,21 @@
 <p>
     Lorsque l’on applique une fonction de hachage sur un fichier, cette fonction va retourner une chaine de caractère de
     taille définie, appelée empreinte, qui dépend de la fonction de hachage utilisée. La taille de l’empreinte retournée
-    reste la même peu importe la taille du fichier sur lequel on a utilisé la fonction de hachage.
-    <br><br>L’objectif de l’utilisation du hachage est de vérifier qu’un message n’aie pas été modifié. Si vous recevez
+    reste la même, peu importe la taille du fichier sur lequel on a utilisé la fonction de hachage.
+    <br><br>L’objectif de l’utilisation du hachage est de vérifier qu’un message n’ait pas été modifié. Si vous recevez
     un message ainsi que l’empreinte de ce message qui a été calculée par la personne qui a envoyé le message, vous
-    pouvez vous même calculer l’empreinte du message que vous avez reçu avec la même fonction de hachage : si les deux
-    empreintes diffèrent alors le message a été modifié, puisque deux messages strictement identique ont obligatoirement
+    pouvez vous-même calculer l’empreinte du message que vous avez reçu avec la même fonction de hachage : si les deux
+    empreintes diffèrent, alors le message a été modifié, puisque deux messages strictement identiques ont
+    obligatoirement
     la même empreinte.
     <br>Cela signifie également que chaque différent message doit posséder une empreinte différente : c’est la plus
-    importante propriété que doit avoir une fonction de hachage. En effet il serait fâcheux qu’un message soit modifié,
+    importante propriété que doit avoir une fonction de hachage. En effet, il serait fâcheux qu’un message soit modifié,
     mais que l’on trouve tout de même une empreinte identique pour le message avant et après modification. Cette
-    propriété est la raison pour laquelle certains algorithmes de hachage ont été abandonnés car considérés comme “pas
+    propriété est la raison pour laquelle certains algorithmes de hachage ont été abandonnés, car considérés comme “pas
     assez sécurisés” : par exemple les algorithmes <b>MD5</b> et <b>SHA1</b>.
     <br>Théoriquement, il existe forcément plusieurs entrées différentes qui généreront exactement la même empreinte,
     peu importe la fonction de hachage utilisée : cela est dû au fait que la sortie a une taille limitée, contrairement
-    à l’entrée (en réalité, l’entrée doit également avoir une taille limitée, mais cette taille est titanesque, c’est
+    à l’entrée (en réalité, l’entrée doit aussi avoir une taille limitée, mais cette taille est titanesque, c’est
     comme si elle n’existait pas : 264 bits soit environ 2,3 millions de téraoctets).
     <br><br>Pour améliorer au maximum l’efficacité de ces fonctions de hachage, il faut pouvoir éviter au maximum que
     deux entrées puissent produire la même empreinte. C’est parce que la probabilité que deux entrées aient la même
@@ -50,10 +51,11 @@
     <br>Pour diminuer au maximum cette probabilité, on peut par exemple augmenter la taille de l’empreinte : c’est ce
     qui a été fait pour l’algorithme <b>SHA-256</b>, encore utilisé aujourd’hui, qui génère une empreinte de 256 bits
     contre seulement 160 bits pour <b>SHA-1</b>.
-    <br>Une autre propriété importante des fonctions de hachage est est que ce sont des fonctions à sens unique, c’est à
-    dire qu’il doit être impossible de retrouver le message d’origine à partir de l’empreinte correspondante. Il est
+    <br>Une autre propriété importante des fonctions de hachage est que ce sont des fonctions à sens unique,
+    c'est-à-dire qu’il doit être impossible de retrouver le message d’origine à partir de l’empreinte correspondante. Il
+    est
     théoriquement toujours possible de le faire, peu importe la fonction de hachage, grâce à certains logiciels, comme
-    par exemple <i>John The Ripper</i>. Pour plus d’informations sur le fonctionnement de ce logiciel, vous pouvez aller
+    <i>John The Ripper</i>. Pour plus d’informations sur le fonctionnement de ce logiciel, vous pouvez aller
     voir le tutoriel que nous avons fait dessus.
     <br>L’objectif pour rendre ces fonctions les plus performantes possible est donc de faire en sorte que ce calcul
     prenne le plus de temps possible, jusqu’à ce qu’il soit absolument irréalisable en pratique.

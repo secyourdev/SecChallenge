@@ -1,12 +1,13 @@
 <div class="section-title row text-center">
     <div class="col-md-8 offset-md-2">
-        <h3>Challenge John the Ripper</h3> <!--Titre-->
+        <h3>Challenge John the Ripper</h3>
+        <!--Titre-->
     </div>
 </div>
 
 
 <p>
-    Pour voir si vous avez bien compris le cours, je vous propose de vous entrainer sur un docker que j’ai créé
+    Pour voir si vous avez bien compris le cours, je vous propose de vous entraîner sur un docker que j’ai créé
     spécialement pour cela.
 </p>
 
@@ -15,14 +16,14 @@
 <h3>Étape 1 : récupérer le docker proposé</h3>
 
 <p>
-    Pour cela, il vous faut docker installé (il existe tout un tas de tutoriels qui vous expliquerons comment le
-    télécharger) quand docker
+    Pour cela, il vous faut Docker installé (il existe tout un tas de tutoriels qui vous expliqueront comment le
+    télécharger.) quand Docker
     et docker-compose sont installés sur votre machine, vous pouvez commencer.
     <br>
     Il faut d'abord télécharger le fichier <a href="Downloads/Challenge_john/docker-compose.yml"
         download="docker-compose.yml"><U>docker-compose.yml</U></a>
     <br>
-    Ensuite il vous suffit de taper la commande (en étant dans le bon répertoire où se trouve le fichier que vous venez
+    Ensuite, il vous suffit de taper la commande (en étant dans le bon répertoire où se trouve le fichier que vous venez
     de télécharger):
 </p>
 
@@ -33,13 +34,13 @@
 <p>
     Voilà ! Vous venez de télécharger les deux machines, il faut maintenant les lancer.
     <br>
-    Pour lancer la machine de martin :
+    Pour lancer la machine de Martin :
 </p>
 
 <kbd class="ms-3">docker exec -it martin /bin/bash</kbd>
 
 <p>
-    Pour lancer la machine attaquante avec john installé :
+    Pour lancer la machine attaquante avec John installé :
 </p>
 
 <kbd class="ms-3">docker exec -it john /bin/bash</kbd>
@@ -47,10 +48,11 @@
 <h2>Situation</h2>
 
 <p>
-    Martin veut lire le contenu du fichier flag.txt présent sur sa machine, mais pour cela il doit être root sur sa
-    machine. Malheureusement il ne connait pas
-    son mot de passe administrateur car c’est son ami Jeremy qui a configuré sa machine ! Ce dernier ne se souvient plus
+    Martin veut lire le contenu du fichier flag.txt présent sur sa machine, mais pour cela, il doit être root sur sa
+    machine. Malheureusement, il ne connaît pas
+    son mot de passe administrateur, car c’est son ami Jeremy qui a configuré sa machine ! Ce dernier ne se souvient
+    plus
     du tout du mot de passe non
-    plus :( Arriverez-vous à trouver le mot de passe administrateur de cette machine pour que martin puisse accéder au
+    plus :( Arriverez-vous à trouver le mot de passe administrateur de cette machine pour que Martin puisse accéder au
     contenu du fichier flag.txt ?
 </p>

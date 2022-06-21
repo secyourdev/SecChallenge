@@ -19,9 +19,9 @@
 <h2 class="mb-3">2. Configuration</h2>
 
 <p>
-    Pour ce tutoriel, nous utiliserons une machine d'attaque qui contien déjà un apk.
+    Pour ce tutoriel, nous utiliserons une machine d'attaque qui contient déjà un apk.
     </br>
-    Pour cela:
+    Pour cela :
     </br>
     <kbd class="ms-3">bash> docker pull cybersecuriteachg2/tutoreverse</kbd>
     </br>
@@ -39,13 +39,13 @@
     </br>
     Ici nous avons un dossier /home/Reverse/Java qui contient tous les fichiers décodés de l'apk hello.apk.
     </br>
-    Nous allons maintenant devoir chercher les fichier intéressants dans ce dossier. Ici nous pouvons regarder le
+    Nous allons maintenant devoir chercher les fichiers intéressants dans ce dossier. Ici, nous pouvons regarder le
     fichier MainActivity.java.
     </br>
 
     <kbd class="ms-3">bash> cd Java/sources/com/example/tutoreverse</kbd>
     </br>
-    On peut observer le ficher avec nano
+    On peut observer le fichier avec nano
     </br>
     <kbd class="ms-3">bash> nano MainActivity.java</kbd>
     </br>
@@ -63,13 +63,13 @@
     </br>
     Ici nous allons déconstuire l'apk en code smali.
     </br>
-    Nous allons encore devoir chercher les fichier intéressants dans ce dossier. Ici nous pouvons regarder le fichier
+    Nous allons encore devoir chercher les fichiers intéressants dans ce dossier. Ici, nous pouvons regarder le fichier
     MainActivity.smali.
     </br>
 
     <kbd class="ms-3">bash> cd hello/smali_classes3/com/example/tutoreverse</kbd>
     </br>
-    On peut observer le ficher avec nano
+    On peut observer le fichier avec nano
     </br>
     <kbd class="ms-3">bash> nano MainActivity.smali</kbd>
     </br>

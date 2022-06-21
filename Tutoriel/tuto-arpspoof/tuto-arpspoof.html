@@ -19,18 +19,19 @@
 <h2>2. Configuration</h2>
 
 <p>
-    Ce tuto met à disposition par le biais de l'application Docker et docker-compose, 3 machines connectées sur un même
+    Ce tuto met à disposition, par le biais de l'application Docker et docker-compose, trois machines connectées sur un
+    même
     réseau local.
     </br>
-    Il est nécessaire de récuperer le fichier <b>docker-compose.yml</b> qui permet de lancer les 3 machines.<br>
+    Il est nécessaire de récupérer le fichier <b>docker-compose.yml</b> qui permet de lancer les trois machines.<br>
 
     Téléchargez le <a class="link-primary"
         href="./Downloads/arpspoof/docker-compose.yml"><U>docker-compose.yml</U></a><br>
 
-    Les commandes qui permettent de lancer les 3 machines sont les suivantes: </p>
+    Les commandes qui permettent de lancer les 3 machines sont les suivantes : </p>
 <kbd class="ms-3">bash> docker-compose up -d</kbd><br>
 
-Nous avons besoin de nous connecter à celle de Eve via la commande :
+Nous avons besoin de nous connecter à celle d'Eve via la commande :
 <br>
 <kbd class="ms-3">bash> docker exec -it mitm_eve /bin/bash</kbd><br>
 <br>
@@ -44,7 +45,7 @@ Il faut ensuite installer nmap et net-tools.
 <h2 class="mb-3">3. Les étapes</h2>
 
 <p>
-    Avant tout il est nécessaire de connaitre son adresse ip pour cela on peut taper la commande :
+    Avant tout il est nécessaire de connaitre son adresse IP pour cela on peut taper la commande :
     </br>
     <kbd class="ms-3">bash> ifconfig</kbd>
     </br>
@@ -52,7 +53,7 @@ Il faut ensuite installer nmap et net-tools.
     </br>
     Dans notre cas l'adresse ip de notre machine est 172.21.0.2
     </br>
-    On va maintenant réaliser un scan du réseau local grâce a nmap.
+    On va maintenant réaliser un scan du réseau local grâce à nmap.
     </br>
     <kbd class="ms-3">bash> nmap -sP 172.21.0.0/24</kbd>
     </br>
@@ -61,20 +62,20 @@ Il faut ensuite installer nmap et net-tools.
     Le scan nous indique que deux machines sont connectées sur le même réseau local que notre machine.
     </br>
     </br>
-    On relève leur adresse ip pour réaliser la commande suivante :
+    On relève leur adresse IP pour réaliser la commande suivante :
     </br>
     <kbd class="ms-3">bash> arpspoof -i eth0 -r -t 172.21.0.3 172.21.0.4</kbd>
     </br>
     <img src="images/arpspoof/arpspoof3.png" alt="" class="img-fluid">
     </br>
-    arpspoof commence alors a envoyer de faux messages ARP permettant d'usurper les adresses ip et mac des autres pc.
-    Permettant de rediriger le trajet des paquets que échange les deux machines pour les faire passer par notre machine.
+    arpspoof commence alors à envoyer de faux messages ARP permettant d'usurper les adresses ip et mac des autres pc.
+    Permettant de rediriger le trajet des paquets qu'échange les deux machines pour les faire passer par notre machine.
 </p>
 
 
 <h2 class="mb-3">4. Bonus : vidéo démonstration</h2>
 <p>
-    Vous trouverez ci-dessous une vidéo de démonstration:
+    Vous trouverez ci-dessous une vidéo de démonstration :
 </p>
 <video controls width="560" height="315">
     <source src="Tutoriel/tuto-arpspoof/arpspoof.mp4" type="video/mp4">

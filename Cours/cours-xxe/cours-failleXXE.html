@@ -13,7 +13,7 @@
 <h2><b>XML et entités</b></h2>
 
 <p>
-    Le XML (eXtensible Markup Language) est un métalangage de balisage, autrement dit, un moyen de formaliser du texte.
+    Le XML (eXtensible Markup Language) est un métalangage de balisage, autrement dit un moyen de formaliser du texte.
     Il est reconnaissable par son utilisation des chevrons et son extensibilité, permettant ainsi d’ajouter de nouvelles
     balises dès que voulu.
     <br>
@@ -29,7 +29,7 @@
     externe » (c’est-à-dire externe au document, un fichier soit local, soit situé sur un serveur distant) en rajoutant
     « SYSTEM » lors de la définition de l’entité.
 
-    <br><br>Et c'est là que se situe le coeur du problème.
+    <br><br>Et c'est là que se situe le cœur du problème.
 
 </p>
 
@@ -46,7 +46,7 @@
     renvoyé au client en contenant des données sensibles.
     <br>
     <br>
-    Par example le document généré par le code XML suivant incorporera le fichier /etc/passwd du serveur l’ayant exécuté
+    Par exemple le document généré par le code XML suivant incorporera le fichier /etc/passwd du serveur l’ayant exécuté
     (si celui-ci est vulnérable aux XXE, bien évidemment).
     <br>
     <br>
@@ -59,7 +59,7 @@
 <p>
     On est vulnérable aux attaques XXE lorsque les trois conditions suivantes sont réunies :
     L'utilisateur peut manipuler du contenu XML qui sera ensuite parsé par le serveur
-    (cela peut se faire via un upload de fichier, un éditeur de texte,...).
+    (cela peut se faire via un upload de fichier, un éditeur de texte, ...).
     Le parseur XML autorise la définition et l'utilisation d'entité.
     Le parseur XML parse et interprète les références externes dans les entités.
     </br></br>
@@ -69,7 +69,8 @@
 
     Interdire la définition d'entités ou d'entités externes.
 
-    Enfin on peut essayer de nettoyer les données utilisateurs avant de les utiliser mais cette solution est bien moins
-    efficace car il est difficile de prendre en compte tous les cas d'utilisations.
+    Enfin, on peut essayer de nettoyer les données utilisateurs avant de les utiliser, mais cette solution est bien
+    moins
+    efficace, car il s'avère difficile de prendre en compte tous les cas d'utilisations.
 
 </p>

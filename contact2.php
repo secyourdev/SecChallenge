@@ -45,7 +45,7 @@
 	?>
 	<!-- End header -->
 
-	<div id="testimonials" class="parallax section db parallax-off" style="background-image:url('images/contact.png');">
+	<div id="testimonials" class="parallax section db parallax-off" style="background-image:url('images/contact.jpg');">
 		<div class="container">
 			<div class="section-title text-center">
 				<h3>CONTACTEZ-NOUS</h3>

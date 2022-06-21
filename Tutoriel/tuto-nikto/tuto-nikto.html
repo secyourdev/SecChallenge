@@ -2,20 +2,23 @@
 
 <h2 class="mb-3">1. Objectifs</h2>
 <p>
-    Nikto est une application open source créée en 2001 qui permet de scanner des serveurs web. Il permettra de donner des informations sur de potentielle vulnérabilités par exemple.
+    Nikto est une application open source créée en 2001 qui permet de scanner des serveurs web. Il permettra de donner
+    des informations sur de potentielles vulnérabilités par exemple.
 </p>
 <h2 class="mb-3">2. Configuration</h2>
 <p>
-    Pour ce tutoriel nous utiliserons docker pour avoir un serveur web et une machine attaquante (ayant nikto installé)
+    Pour ce tutoriel, nous utiliserons docker pour avoir un serveur web et une machine attaquante (ayant nikto installé)
     <br>
-    Télécharger le fichier <a class="link-primary" href="Docker/Challenge_nikto/docker-compose.yml">docker-compose.yml</a>
+    Télécharger le fichier <a class="link-primary"
+        href="Docker/Challenge_nikto/docker-compose.yml">docker-compose.yml</a>
     <br>
-    Tapez les commandes suivantes : 
+    Tapez les commandes suivantes :
     <kbd class="ms-3">docker-compose up -d</kbd>
     <br>
-    Le serveur web est lancé et est disponible à l'adresse <kbd class="ms-3">10.5.0.2</kbd> (vous pouvez aller à cette adresse dans votre navigateur)
+    Le serveur web est lancé et est disponible à l'adresse <kbd class="ms-3">10.5.0.2</kbd> (vous pouvez aller à cette
+    adresse dans votre navigateur)
     <br>
-    Pour lancer la machine attaquante, tapez la commande : 
+    Pour lancer la machine attaquante, tapez la commande :
     <br>
     <kbd class="ms-3">docker exec -it nikto_machine /bin/bash</kbd>
     <br>
@@ -28,12 +31,13 @@
     <br>
     <kbd class="ms-3">nikto -Help</kbd>
     <br>
-    La manière la plus simple de trouver les potentielles vulnérabilités d'un serveur web est d'utiliser la commande : 
+    La manière la plus simple de trouver les potentielles vulnérabilités d'un serveur web est d'utiliser la commande :
     <kbd class="ms-3">nikto -h 10.5.0.2</kbd>
     <br>
-    Le paramètre -h signifie host. Nous demandons à Nikto d'analyser les vulnérabilités de l'host qu'il trouvera à l'adresse indiquée juste après.
+    Le paramètre -h signifie host. Nous demandons à Nikto d'analyser les vulnérabilités de l'host qu'il trouvera à
+    l'adresse indiquée juste après.
     <br>
-    Cette commande donnera une réponse telle que celle ci dessous :
+    Cette commande donnera une réponse telle que celle-ci dessous :
     <br>
     <img src="Tutoriel/tuto-nikto/images/niktoscan.png" alt="">
     <br>
@@ -42,8 +46,7 @@
 
 <h2 class="mb-3">4. Bonus Tutoriel vidéo</h2>
 <video controls width="560" height="315">
-    <source src="Tutoriel/tuto-nikto/tuto-nikto.mp4"
-            type="video/mp4">
+    <source src="Tutoriel/tuto-nikto/tuto-nikto.mp4" type="video/mp4">
 
-        Désolé, votre navigateur ne supporte pas ce format vidéo.
+    Désolé, votre navigateur ne supporte pas ce format vidéo.
 </video>

@@ -1,4 +1,4 @@
-<h2><b>OUTGUESS : OUTIL DE STEGANOGRAPHIE</b></h2>
+<h2><b>OUTGUESS : OUTIL DE STÉGANOGRAPHIE</b></h2>
 
 <h2 class="mb-3">1. Introduction</h2>
 
@@ -32,37 +32,37 @@
     On peut alors observer toutes les options à notre disposition :
 </p>
 
-<img src="Tutoriel/tuto-outguess/images/outguess-tuto-0.jpg" alt="" class="img-fluid" >
+<img src="Tutoriel/tuto-outguess/images/outguess-tuto-0.jpg" alt="" class="img-fluid">
 
 <p>
     <ul>
         <li> <kbd class="ms-3">-s graine_souhaitee</kbd> : spécifie la graine initiale que l'itérateur
-            utilise pour sélectionner les bits dans les données redondantes;
+            utilise pour sélectionner les bits dans les données redondantes ;
             </br>
             Si aucune limite supérieure n'est spécifiée, l'itérateur utilisera cette graine sans chercher
             une graine plus optimale.
         </li></br>
 
         <li> <kbd class="ms-3">-i limite_souhaitee </kbd> : spécifie la limite supérieure pour trouver une
-            graine d'itérateur optimale;
+            graine d'itérateur optimale ;
             </br>
-            La valeur maximale de la limite est de 65535;
+            La valeur maximale de la limite est de 65535 ;
         </li></br>
 
         <li> <kbd class="ms-3">-k cle_secrete</kbd> : indique la clé secrète utilisée pour crypter et cacher
-            le message dans les données fournies;
+            le message dans les données fournies ;
         </li></br>
 
         <li> <kbd class="ms-3">-d nom_fichier</kbd> : indique le nom du fichier contenant un message à
-            dissimuler dans les données;
+            dissimuler dans les données ;
         </li></br>
 
         <li> <kbd class="ms-3">-e</kbd> : utilise la correction d'erreurs pour le codage et le décodage des
-            données;
+            données ;
         </li></br>
 
         <li> <kbd class="ms-3">-p parametre_souhaite</kbd> : transmet une chaîne de caractères comme
-            paramètre au gestionnaire de données de destination;
+            paramètre au gestionnaire de données de destination ;
             </br>
             Pour le format d'image JPEG il s'agit de la qualité de compression, qui peut prendre des valeurs
             comprises entre 75 et 100.
@@ -71,17 +71,17 @@
             données.
         </li></br>
 
-        <li> <kbd class="ms-3">-r</kbd> : récupère un message à partir d'un objet de données;
+        <li> <kbd class="ms-3">-r</kbd> : récupère un message à partir d'un objet de données ;
             </br>
             Si cette option n'est pas spécifiée, Outguess incorporera les messages.
         </li></br>
 
         <li> <kbd class="ms-3">-x nombre_cles_max</kbd> : si la deuxième clé ne crée pas un itérateur qui
             réussit à l'intégration des données, le programme dérivera jusqu'au nombre spécifié de nouvelles
-            clés;
+            clés ;
         </li></br>
 
-        <li> <kbd class="ms-3">-m</kbd> : marque les pixels qui ont été modifiés;
+        <li> <kbd class="ms-3">-m</kbd> : marque les pixels qui ont été modifiés ;
         </li></br>
 
         <li> <kbd class="ms-3">-t</kbd> : collecte des statistiques sur l'utilisation des bits redondants.
@@ -122,12 +122,14 @@
 <img src="Tutoriel/tuto-outguess/images/outguess-tuto-base.jpg" alt="" class="img-fluid">
 
 <p>
-    Si vous voulez aussi réaliser le tutoriel de votre côté, téléchargez l'image en <a class="link-primary" href="Tutoriel/tuto-outguess/images/outguess-tuto-base.jpg" download="outguess-tuto-base.jpg"><u>cliquant ici</u><a>.
-    </br></br>
+    Si vous voulez aussi réaliser le tutoriel de votre côté, téléchargez l'image en <a class="link-primary"
+        href="Tutoriel/tuto-outguess/images/outguess-tuto-base.jpg" download="outguess-tuto-base.jpg"><u>cliquant
+            ici</u><a>.
+            </br></br>
 
-    En parallèle, il vous faudra aussi un fichier texte qui contient le message à dissimuler.
-    </br>
-    Voici celui avec lequel nous allons travailler :
+            En parallèle, il vous faudra aussi un fichier texte qui contient le message à dissimuler.
+            </br>
+            Voici celui avec lequel nous allons travailler :
 </p>
 
 <img src="Tutoriel/tuto-outguess/images/outguess-tuto-1.jpg" alt="" class="img-fluid">
@@ -169,16 +171,17 @@
 <p>
     Si jamais vous ne l'avez pas déjà (grâce à l'exemple précédent) et que vous souhaitez réaliser le
     tutoriel de votre côté à partir d'ici, téléchargez l'image en
-    <a class="link-primary" href="Tutoriel/tuto-outguess/images/outguess-tuto-new.jpg" download="outguess-tuto-new.jpg"><u>cliquant ici</u><a>.
-    </br></br>
+    <a class="link-primary" href="Tutoriel/tuto-outguess/images/outguess-tuto-new.jpg"
+        download="outguess-tuto-new.jpg"><u>cliquant ici</u><a>.
+            </br></br>
 
-    Pour extraire le fichier texte dissimulé dans l'image (en supposant ici que le mot de passe
-    précédent est connu), nous pouvons taper la commande suivante :
-    </br>
-    <kbd class="ms-3">outguess -k "MotDePasse_connu" -r image_entree nom_fichier_txt_sortie</kbd>
-    </br></br>
+            Pour extraire le fichier texte dissimulé dans l'image (en supposant ici que le mot de passe
+            précédent est connu), nous pouvons taper la commande suivante :
+            </br>
+            <kbd class="ms-3">outguess -k "MotDePasse_connu" -r image_entree nom_fichier_txt_sortie</kbd>
+            </br></br>
 
-    Nous obtiendrons alors le résultat suivant :
+            Nous obtiendrons alors le résultat suivant :
 </p>
 
 <img src="Tutoriel/tuto-outguess/images/outguess-tuto-4.jpg" alt="" class="img-fluid">
@@ -197,7 +200,7 @@
 <h2 class="mb-3"></br>Fin du tutoriel</h2>
 
 <p>
-    Le tutoriel est terminé, et vous savez maintenant comment manipuler Outguess.
+    Le tutoriel est terminé, et vous savez désormais comment manipuler Outguess.
     </br>
     Pour valider ce tutoriel, il vous suffira de rentrer "Tuto-Outguess" dans la case de validation.
 </p>

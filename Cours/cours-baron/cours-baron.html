@@ -12,7 +12,7 @@
     y avoir accès.
 </p>
 
-<h2><b>Sudo, c’est quoi ?</b></h2>
+<h2><b>Sudo, qu'est-ce que c'est ?</b></h2>
 
 <p>
     Sudo est une commande utilisée sous Linux permettant à un administrateur système d’octroyer le privilège
@@ -36,7 +36,8 @@
     ce qui est logique puisque ces privilèges octroient un contrôle “total” sur la machine.
     Cependant, il a été découvert très récemment qu’il était possible d’obtenir ces privilèges sans avoir besoin
     d’utiliser de mot de passe d’administrateur.
-    <br>Bien que découverte récemment, cette vulnérabilité que l’on nomme “Baron Samedit” est présente dans Sudo depuis
+    <br>Bien que découverte dernièrement, cette vulnérabilité que l’on nomme “Baron Samedit” est présente dans Sudo
+    depuis
     2011,
     ce qui implique que beaucoup de versions de Sudo sont concernées par cette faille de sécurité : les versions 1.8.2 à
     1.8.31p2 et 1.9.0 à 1.9.5p1.
@@ -49,11 +50,11 @@
     En les exploitant correctement, avec la commande sudoedit (commande permettant de modifier des fichiers uniquement
     modifiables avec les privilèges root)
     il est possible de créer un buffer overflow, ce qui va mener à l’obtention des privilèges root.
-    <br>La façon dont est gérée le slash inversé “\” est à l’origine de Baron Samedit qui, lorsque la commande sudoedit
+    <br>La façon dont est géré le slash inversé “\” est à l’origine de Baron Samedit qui, lorsque la commande sudoedit
     est exécutée en mode shell,
     ne fonctionne pas comme prévu et produit ce fameux buffer overflow.
     <br>Ce n’est pas la première fois qu’une faille de sécurité est détectée dans sudo,
-    il y a par exemple deux autres failles très connues qui ont été détectées 2 ans auparavant.
+    il y a par exemple deux autres failles très connues qui ont été détectées deux ans auparavant.
     Cependant, c’est bien la première fois qu’une de ces vulnérabilités s’est révélée aussi critique.
 </p>
 
@@ -61,8 +62,9 @@
 
 <p>
     La première étape est de savoir si votre configuration est vulnérable à cette faille.
-    Théoriquement, les machines d’aujourd’hui devraient toutes être sur une version où la vulnérabilité a été corrigée,
-    mais si vous voulez vraiment être sur, il est possible de taper la commande suivante pour savoir si votre machine
+    Théoriquement, les machines d’aujourd’hui devraient toutes être sur une version avec laquelle la vulnérabilité a été
+    corrigée,
+    mais si vous voulez vraiment être sûr, il est possible de taper la commande suivante pour savoir si votre machine
     est vulnérable ou non :
 </p>
 

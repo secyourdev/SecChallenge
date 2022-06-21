@@ -23,9 +23,9 @@
 <p>
     Cette catégorie permet donc <b>de changer le format de données</b> de votre texte.
     </br>
-    Vous avez par exemple le passage en hexadécimal, en binaire, en base32, 64 mais aussi le passage de caractères en
+    Vous avez par exemple le passage en hexadécimal, en binaire, en base32, 64, mais aussi le passage de caractères en
     format HTML,
-    la normalisation de code, et la conversion de fichier, du format CSV à JSON par exemple.
+    la normalisation de code et la conversion de fichier, du format CSV à JSON par exemple.
     </br>
 </p>
 
@@ -78,42 +78,43 @@
 
 <h3>Catégorie 9 & 10 : <b>Extractors & Compression</b></h3>
 <p>La première permet <b>d’extraire toutes sortes de données</b> comme des emails, des IP, des adresses MAC ou encore
-des fichiers.
-</br>
-La seconde permet de <b>compresser, zipper </b> des fichiers.
-</br>
+    des fichiers.
+    </br>
+    La seconde permet de <b>compresser, zipper </b> des fichiers.
+    </br>
 </p>
 
 <h3>Catégorie 11 : <b>Hashing </b></h3>
 <p>
-Elle permet <b>d’analyser des hash</b>, ou encore de <b>convertir un texte</b> en hash à l’aide des différents
-algorithmes proposés
-comme MD2,4,5, SHA0,1,2,3 etc..
-</br>
+    Elle permet <b>d’analyser des hash</b>, ou encore de <b>convertir un texte</b> en hash à l’aide des différents
+    algorithmes proposés
+    comme MD2,4,5, SHA0,1,2,3, …
+    </br>
 </p>
 <h3>Catégorie 12 : <b>Code tidy</b></h3>
 <p>
-Elle permet de <b>nettoyer du code</b> en JS, JSON, XML, SQL, CSS, PHP.
-</br>
+    Elle permet de <b>nettoyer du code</b> en JS, JSON, XML, SQL, CSS, PHP.
+    </br>
 </p>
 
 <h3>Catégorie 13 & 14 : <b>Forensics & Multimédia</b></h3>
 <p>
-Elles permettent <b>d’extraire des fichiers</b>, extraire <b>les EXIF</b> d’une image, ou encore les
-<b>LSB</b>(Least significant bit) mais aussi
-de modifier l’image, la redimensionner, la tourner, l’inverser, réduire l’opacité ou modifier le contraste.
-</br>
+    Elles permettent <b>d’extraire des fichiers</b>, extraire <b>les EXIF</b> d’une image, ou encore les
+    <b>LSB</b>(Least significant bit) mais aussi
+    de modifier l’image, la redimensionner, la tourner, l’inverser, réduire l’opacité ou modifier le contraste.
+    </br>
 </p>
 
 <h3>Catégorie 15 & 16 : <b>Other & Flow control</b></h3>
 <p>
-La fonction <b>Magic</b> dans Flow control est très utile car elle tente de détecter diverses propriétés des données
-d’entrée et
-suggère les différentes opérations qui pourraient aider à leur donner plus de sens.
+    La fonction <b>Magic</b> dans Flow control est très utile, car elle tente de détecter diverses propriétés des
+    données
+    d’entrée et
+    suggère les différentes opérations qui pourraient aider à leur donner plus de sens.
 </p>
 <h2 class="mb-3">3. Comment l'utiliser</h2>
 <p>
-    Nous allons résoudre pas à pas un exemple de challenge pour que vous puissez prendre en main CyberChef.
+    Nous allons résoudre pas à pas un exemple de challenge pour que vous puissiez prendre en main CyberChef.
     </br>
     Nous allons donc partir de ce texte :
     </br>
@@ -121,15 +122,15 @@ suggère les différentes opérations qui pourraient aider à leur donner plus d
     </br>
     </br>
     Pour ce faire, nous remarquons le double "=" qui est souvent synonyme de l'utilisation de base64.
-    </p>
-    <img src="Tutoriel/tuto-cyberchef/base64.JPG" alt="" class="img-fluid">
-    <p>
-    Nous obtenons donc quelque chose de logique car on remarque un point d'exclamation, et en fouillant
-    un peu CyberChef ou en réflechissant par rapport au positionnement des lettres, on décide d'utiliser
+</p>
+<img src="Tutoriel/tuto-cyberchef/base64.JPG" alt="" class="img-fluid">
+<p>
+    Nous obtenons ainsi quelque chose de logique, car on remarque un point d'exclamation, et en fouillant
+    un peu CyberChef ou en réfléchissant par rapport au positionnement des lettres, on décide d'utiliser
     un bruteforce de ROT.
-    </p>
-    <img src="Tutoriel/tuto-cyberchef/rot.JPG" alt="" class="img-fluid">
-    <p>
+</p>
+<img src="Tutoriel/tuto-cyberchef/rot.JPG" alt="" class="img-fluid">
+<p>
     Ainsi en testant les différents ROT, on obtient finalement le bon résultat qui est :
     </br>
     <kbd>Félicitations pour avoir fini le tuto ! </kbd>

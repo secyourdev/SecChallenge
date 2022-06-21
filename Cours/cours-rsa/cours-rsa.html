@@ -6,7 +6,7 @@
 	la décomposition des nombres en facteurs premiers.
 </p>
 
-<h2><b>Qu’est ce que la cryptologie et pourquoi est-elle si importante aujourd’hui ?</b></h2>
+<h2><b>Qu’est-ce que la cryptologie et pourquoi est-elle si importante aujourd’hui ?</b></h2>
 
 <p>
 	La cryptologie permet d’assurer trois propriétés fondamentales de nos jours aux messages que l’on souhaite envoyer :
@@ -19,11 +19,11 @@
 	C’est de cette dernière catégorie que fait partie l’algorithme RSA.
 	<br>À notre époque où la guerre de l’information et du numérique a pris une place centrale, 
 	l’utilisation de la cryptologie lors de la transmission d’informations est devenue obligatoire. 
-	C’est pour cela qu’un algorithme de chiffrement le plus robuste possible est indispensable de nos jours, et l’algorithme RSA correspond totalement à ce besoin.
+	C’est pour cela qu’un algorithme de chiffrement le plus robuste possible est indispensable de nos jours et l’algorithme RSA correspond totalement à ce besoin.
 	<br><br>Pour des détails plus avancés, vous pouvez aller voir notre cours sur la cryptologie.
 </p>
 
-<h2><b>Mais qu’est ce qui rend cet algorithme si puissant ?</b></h2>
+<h2><b>Mais qu’est-ce qui rend cet algorithme si puissant ?</b></h2>
 
 <p>
 	L’extrême robustesse de cette méthode de chiffrement des données repose intégralement sur le fait qu’il est extrêmement difficile 
@@ -41,10 +41,10 @@
 	On choisit tout d’abord deux nombres premiers : prenons par exemple p = 13 et q = 19 
 	(dans les cas pratiques de chiffrement des données, les nombres premiers choisis doivent évidemment être gigantesques). 
 	On va ensuite simplement multiplier ces deux nombres, ce qui nous donne n = 13 * 19 = 247, et calculer la valeur φ(n) = (p - 1)(q - 1) = 12 * 18 = 216.
-	<br>On choisit ensuite e, un nombre qui doit être premier avec φ(n). Pour rappel, 
-	on dit que A est premier avec B si et seulement si ils n’admettent aucun diviseur commun, 
+	<br>On choisit ensuite, un nombre qui doit être premier avec φ(n). Pour rappel, 
+	on dit que A est premier avec B si et seulement s'ils n’admettent aucun diviseur commun, 
 	si ce n’est 1. Pour notre exemple, on peut par exemple prendre e = 23, qui est premier avec 216. 
-	<br>Il a été démontré mathématiquement que si A est premier avec B, 
+	<br>Il a été démontré mathématiquement que si A devient premier avec B, 
 	alors il existe un entier C et un entier D tels que : A * C + B * D = 1 (Théorème de Bézout). 
 	Appliqué à notre cas, cela donne : e * d + φ(n) * k = 1, avec d et k des entiers. On impose également d comme étant positif, 
 	ce qui impose également k comme étant négatif. L’objectif est de trouver d, avec la valeur de k la plus grande possible 
@@ -57,8 +57,8 @@
 	Avec k le plus petit entier <b>positif</b> possible tel que d soit un nombre entier.
 	<br>On peut donc trouver la valeur de d simplement en tâtonnant, ou grâce à un rapide algorithme par exemple. 
 	Si on reprend notre exemple, on regarde si d est entier pour k = 1, puis k = 2, etc. 
-	On trouve au final que la plus petite valeur de k pour laquelle d est entier est k = 5, ce qui nous donne d = 47.
-	<br>Nous avons finalement généré notre biclé RSA ! La clé publique est le couple (n, e), donc <b>(247, 23)</b> 
+	On trouve finalement que la plus petite valeur de k pour laquelle d est entier est k = 5, ce qui nous donne d = 47.
+	<br>Nous avons finalement généré notre biclé RSA ! La clé publique est le couple (n, e), ainsi <b>(247, 23)</b> 
 	et la privée est le couple (n, d), ou plus simplement d, donc <b>47</b>. Ce dernier est le nombre qui ne doit surtout pas être partagé.
 </p>
 

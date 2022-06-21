@@ -1,50 +1,50 @@
 <h1><b>Les antivirus</b></h1>
 
-<h3>Qu'est ce qu'un antivirus ?</h3>
+<h3>Qu'est-ce qu'un antivirus ?</h3>
 
 <p>
-    Un antivirus est un logiciel comprenant un ensemble de fonctions dont le but est de protéger la machine sur laquel
-    il est installé de divers menaces telles que les vers, les ransomwares, les trojans, ...
-    Les antivirus sont les logiciels un peu particuliers puisqu'ils vont être en mesure, grâce à la signatue numérique
-    de la société qui le produit, de s'intaller sur le système avec des privilèges particuliers tels que la possibilité
+    Un antivirus est un logiciel comprenant un ensemble de fonctions dont le but est de protéger la machine sur laquelle
+    il est installé de diverses menaces telles que les vers, les ransomwares, les trojans, ...
+    Les antivirus sont les logiciels un peu particuliers puisqu'ils vont être en mesure, grâce à la signature numérique
+    de la société qui le produit, de s'installer sur le système avec des privilèges particuliers tels que la possibilité
     de
-    démarrer avant les pilotes de périphérique qui gèrent les entrées usb, vidéos, audio, ou encore les pilotes réseaux
+    démarrer avant les pilotes de périphérique qui gèrent les entrées USB, vidéos, audio, ou encore les pilotes réseaux
     mais aussi de pouvoir installer des pilotes filtres qui seront très utiles pour sa mission.
     <br>
     <br />
-    <h3>Quelles sont les méthodes détections mises en oeuvre par les antivirus pour détecter les menaces ?</h3>
+    <h3>Quelles sont les méthodes détections mises en œuvre par les antivirus pour détecter les menaces ?</h3>
     <br />
-    Pour détecter les menaces, il existe différentes méthodes plus ou moins efficaces et contraigantes pour
+    Pour détecter les menaces, il existe différentes méthodes plus ou moins efficaces et contraignantes pour
     l'utilisateur.
     <br />
     <b>Tout d'abord</b>, les antivirus vont utiliser une technique dite d'analyse statique.
     Quand l'utilisateur va vouloir lancer un fichier ou exécuter un programme,
-    l'AV va comparer sa signature (hash unique au fichier) avec des signatures de virus connus contenues dans
+    l'AV va comparer sa signature (hash unique au fichier) avec des signatures de virus connus contenus dans
     une base de données afin de vérifier que le fichier ne soit pas un virus.
     Les signatures peuvent être calculées avec divers algorithmes de hachage tels que MD5 ou encore SHA256.
     <br />
-    <b>Ensuite</b>, les antivirus peuvent aussi user d'une méthode de détection dite dynamique. Dans cette catégorie on
+    <b>Ensuite</b>, les antivirus peuvent aussi user d'une méthode de détection dite dynamique. Dans cette catégorie, on
     peut retrouver trois principales actions :
     <br />
     Les antivirus vont mettre en place une sandbox (bac à sable) qui n'est ni plus ni moins qu'une reconstitution
-    partielle de votre système d'xploitation mais isolée de votre système.
-    Ainsi les antivirus font démarrer le logiciel que vous tentez de lancer dans cette
-    réplque de votre système afin de voir son comportement.
-    Si il n'y a pas d'actions suspecte alors le programme est relancé mais hors de la sandbox cette fois-ci.
+    partielle de votre système d'exploitation mais isolée de votre système.
+    Ainsi, les antivirus font démarrer le logiciel que vous tentez de lancer dans cette
+    réplique de votre système afin de voir son comportement.
+    S'il n'y a pas d'actions suspecte alors le programme est relancé, mais hors de la sandbox cette fois-ci.
     <br />
     Une autre manière d'analyser le comportement du logiciel que vous souhaitez exécuter va être de le décompiler et
     d'analyser son code source à la recherche de suites d'instructions qui pourraient être malveillantes.
     <br />
-    Les antivirus peuvent aussi se baser sur la détection de signatures mais cette fois-ci non pas en analysant les
-    signatures uniques à chaque programme mais plutôt en établissant des signatures par famille de menaces.
+    Les antivirus peuvent aussi se baser sur la détection de signatures, mais cette fois-ci non pas en analysant les
+    signatures uniques à chaque programme, mais plutôt en établissant des signatures par famille de menaces.
     Cette méthode s'appelle la détection de signature générique.
     <br />
-    <b>Enfin</b>, les Antivirus peuvent scanner le comportement d'un porgramme en temps réel. On appel ce type de scan
+    <b>Enfin</b>, les Antivirus peuvent scanner le comportement d'un programme en temps réel. On appelle ce type de scan
     "proactif".
     Une fois le programme lancé, les antivirus vont analyser son comportement à des intervalles de temps pour s'assurer
     qu'aucune action nuisible n'est en cours.
     Ce type d'analyse peut être utile dans le cas où le virus était programmé pour s'activer plus tard pour éviter les
-    autres type de scans.
+    autres types de scans.
 
     <br />
 </p>
@@ -52,7 +52,7 @@
 <h3>Quelles sont les limites d'un antivirus ?</h3>
 
 <p>
-    Malheureusement, les techniques décrites plus haut ne sont pas efficaces à 100% et certaines peuvent être gourmande
+    Malheureusement, les techniques décrites plus haut ne sont pas efficaces à 100 % et certaines peuvent être gourmande
     en temps et en ressources.
     Prenons le cas de l'analyse statique. Une simple modification dans le code source du virus va changer sa signature
     et ainsi il ne sera plus détecté.
@@ -63,8 +63,8 @@
     sont utilisés pour réduire le temps de comparaison.
     <br />
     Concernant les sandbox, comme il serait trop coûteux de reproduire intégralement le système dans une sandbox, les
-    virus sont programmés pour vérifier si ils sont lancées depuis le vrais système ou bien depuis une sandbox et si tel
-    est le cas il restent inactifs le temps nécessaire pour que l'antivirus ne le considère pas comme dangereux.
+    virus sont programmés pour vérifier s'ils sont lancés depuis le vrai système ou bien depuis une sandbox et si tel
+    est le cas ils restent inactifs le temps nécessaire pour que l'antivirus ne le considère pas comme dangereux.
     Pour la décompilation, les concepteurs de virus s'arrangent pour obfusquer au maximum le code source de leurs virus
     afin de rendre très difficile la détection des actions malveillantes en lisant le <code class=""></code>
     <br />
@@ -73,15 +73,15 @@
 <h3>Conclusion :</h3>
 
 <p>
-    Certains antivirus sont capable de détecter une grande partie des menaces auxquelles un utilisateur peut être
+    Certains antivirus sont capables de détecter une grande partie des menaces auxquelles un utilisateur peut être
     confronté
-    durant sa navigation en ligne ou encore son utilisation de votre machine. Cependant aucun
-    antivirus n'est fiable à 100% et si vous êtes expréssement ciblé par un pirate déterminé à vous nuire,
-    l'antivirus ne sera pas un obstacle insurmontable pour lui car, avec des attaque d'ingénierie sociale,
-    il mettra au point un virus personnalisé selon vos habitudes, préférences, ...
+    durant sa navigation en ligne ou encore son utilisation de votre machine. Cependant, aucun
+    antivirus n'est fiable à 100 % et si vous êtes expressément ciblé par un pirate déterminé à vous nuire,
+    l'antivirus ne sera pas un obstacle insurmontable pour lui car, avec des attaques d'ingénierie sociale,
+    il mettra au point un virus personnalisé selon vos habitudes, préférences…,
     qui passera les analyses de l'antivirus.
-    Les antivirus sont de précieux outils mais ils ne peuvent être efficaces
-    que si ils sont accompagnés d'utilisateurs avertis et sensibilisés aux divers dmenaces qui existent.
+    Les antivirus sont de précieux outils, mais ils ne peuvent être efficaces
+    que s'ils sont accompagnés d'utilisateurs avertis et sensibilisés aux divers menaces qui existent.
     <br />
     <br />
 
