@@ -1,0 +1,147 @@
+<h2><b>GOBUSTER : BRUTE FORCE D'URL WEB</b></h2>
+
+<h2 class="mb-3"></br>1. Introduction</h2>
+
+<p>
+    GoBuster est un outil en ligne de commande, disponible dans les dépôts officiels de Kali Linux.
+    </br>
+    C'est un outil à la fois simple d'utilisation et performant, qui permet de brute force :
+    <ul>
+        <li>des répertoires et fichiers d’un site web;</li>
+        <li>des sous domaines d’un domaine principal;</li>
+        <li>des hôtes virtuelles (vhost) d’un serveur web;</li>
+        <li>des buckets Amazon ouverts;</li>
+    </ul>
+</p>
+
+<h2 class="mb-3"></br>2. Installation de GoBuster</h2>
+
+<p>
+    Comme notifié ci-haut, GoBuster étant disponible dans les dépôts officiels de Kali Linux, et son
+    installation est alors très simple.
+    </br>
+    Par sécurité, on télécharge d'abord les informations sur les paquets à partir de toutes les sources
+    configurées.
+    </br>
+    Cela est utile pour obtenir des informations sur une version mise à jour des paquets ou de leurs
+    dépendances.
+    </br>
+    <img src="Tutoriel/tuto-gobuster/tuto-gobuster-0.jpg" alt="" class="img-fluid">
+    </br>
+    Pour l’installer, il suffit ensuite de taper la commande suivante :
+    </br>
+    <img src="Tutoriel/tuto-gobuster/tuto-gobuster-1.jpg" alt="" class="img-fluid">
+</p>
+<p>
+    En tapant la commande <kbd class="ms-3">gobuster</kbd> dans notre terminal, on peut regarder les
+    différentes commandes ainsi que les drapeaux à notre disposition :
+    </br>
+    <img src="Tutoriel/tuto-gobuster/tuto-gobuster-2.jpg" alt="" class="img-fluid">
+    </br>
+    Parmi la liste des commandes que l'on peut voir, voici les quatre commandes les plus importantes:
+    <ul>
+        <li> <b>dir</b> : pour l’énumération des répertoires et fichiers;</li>
+        <li> <b>dns</b> : pour l’énumération des sous domaines;</li>
+        <li> <b>s3</b> : pour l’énumération de aws bucket;</li>
+        <li> <b>vhost</b> : pour l’énumération des vhost;</li>
+    </ul>
+</p>
+
+<h2 class="mb-3"></br>3. Brute force d'URL Web basique</h2>
+<p>
+    Ici, nous expliquerons uniquement la commande <b>dir</b>, qui est nécessaire pour indiquer que l'on
+    souhaite lancer un brute force d'URL Web.
+</p>
+<p>
+    Les drapeaux utiles pour cette manipulation sont les drapeaux -u et -w:
+    </br>
+    Le drapeau -u permet d'indiquer l'URL du site internet que l'on souhaite cibler.
+    </br>
+    Le drapeau -w permet d’indiquer le chemin de la liste de mots que l'on souhaite utiliser.
+</p>
+<p>
+    La commande sera alors du format suivant :
+    </br>
+    <img src="Tutoriel/tuto-gobuster/tuto-gobuster-3.jpg" alt="" class="img-fluid">
+</p>
+<p>
+    Si l'on souhaite rajouter une précision pour spécifier le port dans le schéma de l'URL, il suffit
+    d'écrire la commande de la manière suivante :
+    </br>
+    <img src="Tutoriel/tuto-gobuster/tuto-gobuster-4.jpg" alt="" class="img-fluid">
+    </br>
+    Cette spécification est cependant optionnelle. Par défaut, c'est le port 80 qui est utilisé.
+</p>
+<p>
+    Vous pouvez voir ci-dessous une commande concrète pour vous aider à mieux visualiser:
+    </br>
+    <img src="Tutoriel/tuto-gobuster/tuto-gobuster-5.jpg" alt="" class="img-fluid">
+</p>
+
+<p>
+    Au niveau des résultats, l'affichage se fait en plusieurs parties.
+    </br>
+    Ici, on peut d'abord voir l'URL en question, suivi d'un code de statut et de sa taille.
+    </br>
+    L'information qui va nous intéresser est le code de statut.
+    </br>
+    Chaque code a une signification, libre à vous d'aller regarder sur internet à quoi ils peuvent
+    correspondre.
+    </br>
+    Les 2 principaux codes qui nous intéressent sont les suivants :
+    <ul>
+        <li> <b>200</b> : signifie que le nom d'utilisateur et le mot de passe ont été trouvés, la requête
+            effectuée a abouti;</li>
+        <li> <b>401</b> : signifie que l'on n'est pas authentifié (ou connecté) pour afficher la page, mais
+            qu'une authentification reste possible malgré tout;</li>
+    </ul>
+    Comme on peut le voir, la liste qui est utilisée ici se situe dans le dossier
+    <b>/usr/share/wordlists/</b>.
+    </br>
+    En effet, il y déjà un grand nombre de listes de mots qui sont présents par défaut au sein de Kali grâce
+    à Wordlists.
+    </br>
+    On peut voir un aperçu de son contenu :
+    </br>
+    <img src="Tutoriel/tuto-gobuster/tuto-gobuster-6.jpg" alt="" class="img-fluid">
+</p>
+
+<h2 class="mb-3"></br>4. Brute force d'URL Web avec des extensions</h2>
+
+<p>
+    Nous avons donc pu comprendre comment effectuer un brute force d'URL Web classique.
+    </br>
+    Dans cette partie, nous nous intéresserons maintenant à la réalisation d'un brute force de fichiers.
+    </br>
+    Pour cela, il est nécessaire d'indiquer à GoBuster quels sont les types d'extension que l'on souhaite
+    cibler.
+    </br>
+    <img src="Tutoriel/tuto-gobuster/tuto-gobuster-7.jpg" alt="" class="img-fluid">
+    </br>
+    Le drapeau -x permet de spécifier les extensions que nous recherchons.
+</p>
+<p>
+    GoBuster pourra alors réaliser un brute force de tous les mots de sa liste auquel il ajoutera les noms
+    d'extension.
+    </br>
+    Lorsque l'on recherche plusieurs extensions, il ne faut pas oublier de les séparer par une virgule.
+    </br>
+    On peut voir un exemple concret sur l'image ci-dessous :
+    </br>
+    <img src="Tutoriel/tuto-gobuster/tuto-gobuster-8.jpg" alt="" class="img-fluid">
+</p>
+
+<h2 class="mb-3"></br>5. Validation du tutoriel</h2>
+
+<p>
+    Grâce à ce tutoriel, vous savez maintenant comment réaliser un brute force d'URL Web à l'aide de
+    GoBuster, en spécifiant des extensions ou non.
+    Bien sûr, GoBuster est un outil bien plus complet qui proprose de multiples options non expliquées ici
+    (commandes et drapeaux).
+    </br>
+    Si vous souhaitez en savoir plus, n'hésitez pas à faire des des recherches et à découvrir par vous-même
+    !
+    </br></br>
+
+    Pour valider ce tutoriel, il vous suffira de rentrer "Tuto-GoBuster" dans la case de validation.
+</p>
