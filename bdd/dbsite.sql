@@ -104,7 +104,9 @@ INSERT INTO `cours` (`Id`, `Titre`, `Description`, `EmplacementCours`, `LienImag
 (24, 'King-Phisher', 'Vous trouverez ici une introduction sur une boîte à outils pour les campagnes de phishing', 'Cours/cours-kingphisher/cours-kingphisher.html', 'Cours/cours-kingphisher/image-premiere-page.jpg', 'Outil'),
 (25, 'Faille XXE', 'Qu\'est-ce que la faille XXE ? Que permet-elle de réaliser ?', 'Cours/cours-xxe/cours-failleXXE.html', 'Cours/cours-xxe/images/image.png', 'Faille'),
 (26, 'Les antivirus', 'Dans ce cours nous allons décourvir les méthodes employées pars les antivirus pour analyser les fichiers', 'Cours/cours-av/cours-av.html', 'Cours/cours-av/av.jpeg', 'Outil'),
-(27, 'Foremost', 'Vous trouverez ici une introduction sur un logiciel permettant la récupération de données.', 'Cours/cours-foremost/cours-foremost.html', 'Cours/cours-foremost/image-premiere-page.jpg', 'Outil');
+(27, 'Foremost', 'Vous trouverez ici une introduction sur un logiciel permettant la récupération de données.', 'Cours/cours-foremost/cours-foremost.html', 'Cours/cours-foremost/image-premiere-page.jpg', 'Outil'),
+
+(28, 'NETCAT', 'Un outil permettant de créer une connexion entre deux ou plusieur machines', 'Cours/cours-netcat/cours-netcat.html', 'Cours/cours-netcat/affiche.png', 'Outil');
 
 -- --------------------------------------------------------
 
@@ -376,9 +378,8 @@ INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Description`, `Reponse`, `Emplac
 (36, 'Apprendre à utiliser acunétix', 'Utiliser acunétix pour sécuriser vos platformes internet', NULL, 'Tutoriel/tuto-acunetix/acunetix.html', 'Tutoriel/tuto-acunetix/icon.png', NULL),
 (37, 'Geoint', 'Ce tutoriel vous apprendra les bases du geoint', NULL, 'Tutoriel/tuto-geoint/tuto-geoint.html', 'Tutoriel/tuto-geoint/affiche.png', NULL),
 (38, 'GNU Debugger', 'Apprendre à debugger un programme avec GDB', NULL, 'Tutoriel/tuto-gdb/tuto-gdb.html', 'Tutoriel/tuto-gdb/gdb.png', NULL),
-(39, 'RAT', 'C\'est un software malveillant qui a pour but de prendre contrôle de l\'appareil infecté', NULL, 'Tutoriel/tuto-rat/tuto-rat.html', 'Tutoriel/tuto-rat/affiche.png', NULL),
-(40, 'NETCAT', 'Un outil permettant de créer une connexion entre deux ou plusieur machines', NULL, 'Tutoriel/tuto-netcat/tuto-netcat.html', 'Tutoriel/tuto-netcat/affiche.png', NULL),
-(41, 'Volatility', 'Comment analyser la ram d\'un ordinateur', NULL, 'Tutoriel/tuto-volatility/tuto-volatility.html', 'Tutoriel/tuto-volatility/affiche.png', NULL);
+(39, 'RAT', 'C\'est un software malveillant qui a pour but de prendre contrôle de l\'appareil infecté', NULL, 'Tutoriel/tuto-rat/tuto_rat.html', 'Tutoriel/tuto-rat/affiche.png', NULL),
+(40, 'Volatility', 'Comment analyser la ram d\'un ordinateur', NULL, 'Tutoriel/tuto-volatility/tuto-volatility.html', 'Tutoriel/tuto-volatility/affiche.png', NULL);
 -- --------------------------------------------------------
 
 --
