@@ -1,0 +1,186 @@
+<h1><b>DOCKER</b></h1>
+
+<p>
+    Docker a été créée en 2013 par l’entreprise Dotcloud.<br>
+    “Docker est un logiciel libre permettant de lancer des applications dans des
+    conteneurs logiciels.” <b>Wikipédia</b> </p>
+
+<h2>Qu’est-ce qu’un conteneur ?</h2>
+
+<p>Un conteneur Linux est un <b>processus</b> ou un ensemble de processus isolés du
+    reste du système, tout en étant <b>légers</b>.
+    Le conteneur permet une isolation des processus et une isolation vis-à-vis du
+    système d’exploitation. C’est ce qu’on appelle la virtualisation légère.
+    Donc, on pourra faire tourner une application quel que soit le système
+    d’exploitation.
+    Dans ce conteneur, on peut installer différentes applications et les librairies
+    nécessaires pour faire fonctionner ces applications. <br><br>
+
+
+    <b>Machine virtuelle vs Conteneur</b> </p>
+
+<img src="Cours/cours-docker/docker2.png">
+
+<p> Le conteneur met en avant une virtualisation <b>légère</b> tandis que lorsqu’on
+    utilise une machine virtuelle on parle de virtualisation <b>lourde</b>.
+    Pour la machine virtuelle, on a la machine physique reliée à un système
+    d’exploitation qui va créer d’autres machines virtuelles avec leurs systèmes
+    d’exploitations.
+    Une machine virtuelle est totalement <b>isolée</b> du système hôte, les
+    ressources attribuées à une machine virtuelle lui sont totalement réservées, il
+    y a la possibilité d’installer <b>différents OS</b>
+    Une machine virtuelle utilise donc beaucoup de ressources (CPU RAM)
+    Avec les conteneurs, la structure est simplifiée, car les applications vont
+    pouvoir fonctionner directement avec le système d’exploitation hôte. On ne
+    virtualise plus à partir du matériel physique, mais le système hôte en
+    réutilisant son noyau.
+    Les conteneurs exploitent des ressources beaucoup moins importantes en termes de
+    RAM et CPU auprès de l'hôte qu’une machine virtuelle. <br><br>
+
+    <b>Avantages du conteneur : </b> <br><br>
+
+    <b>-Léger</b> car il est plus efficace en termes de gestion des ressources et
+    utilise beaucoup moins de ram et cpu. <br><br>
+
+    <b>-Rapide</b> parce qu'ils peuvent démarrer beaucoup plus rapidement et plus
+    fréquemment qu'une machine virtuelle sur nos serveurs hôtes, et ainsi réduire
+    encore un peu les frais de l'infrastructure. <br><br>
+
+    <b>-Portable</b> comme contrairement à une machine virtuelle qui demande une
+    installation et une gestion lourde des ressources, un des points forts des
+    conteneurs est sa faculté à pouvoir partager un conteneur à une autre personne
+    qui aura juste à le faire fonctionner de son côté.<br><br>
+
+    Si je travaille sur un projet avec des personnes ayant des systèmes
+    d’exploitations différents, l’utilisation de conteneur va permettre d’avoir un
+    environnement commun. <br><br>
+
+    <b>IMAGE DOCKER</b></p>
+
+<img src="Cours/cours-docker/docker3.png">
+
+<p>
+    Lorsqu’on utilise Docker, on crée une application qu’on a empaquetée dans une
+    image conteneur. Une image est une représentation de l’application de leur
+    configuration et de leurs dépendances. <br><br>
+
+    Pour exécuter l'application, une image de l’application est créée, créant ainsi un
+    conteneur à exécuter sur l’hôte Docker. Les images sont stockées dans un
+    registre, comparable à une bibliothèque d’images. <br><br>
+
+    On peut donc assimiler un registre comme une bibliothèque avec laquelle l’on stocke les
+    images. C’est dans ces registres que l’on extrait les images pour créer des
+    conteneurs afin de mettre en marche une application. <br><br>
+
+    Un registre est un aussi un logiciel qui permet de partager des images à
+    d'autres personnes.
+    Il s’agit du registre Docker Hub qui est le service de partage d’applications
+    puisque ce service permet d’aller récupérer les images et les faire tourner sur
+    notre système.<br> <br>
+
+    <b>CRÉATION D'IMAGES</b>
+</p>
+
+<img src="Cours/cours-docker/docker4.png">
+<p>
+    Pour créer notre image, nous devons créer un fichier <b>Dockerfile</b>. Dans
+    ce fichier Dockerfile, vous trouverez l'ensemble de la recette décrivant
+    l'image Docker dont vous avez besoin pour votre projet. <br><br>
+
+    Chaque instruction que nous allons donner dans notre Dockerfile va créer une
+    nouvelle <b>couche</b> correspondant à chaque étape de la construction de
+    l'image. <br><br>
+
+    Cependant, nous cherchons à limiter le nombre de couches pour que
+    l’application soit légère et performante. <br><br>
+
+    Il est aussi nécessaire de créer un fichier.dockerignore qui va permettre de
+    ne pas copier et télécharger des fichiers indésirables dans notre conteneur. <br><br>
+
+    Une fois que nous avons ces deux fichiers, nous devons exécuter 2 instructions : <br><br>
+
+    Dans un premier temps, la commande docker build <b>va créer un conteneur pour
+        chaque instruction</b>, et le résultat sera sauvegardé dans une couche.
+    Le résultat final étant un ensemble de layers qui construisent une image
+    Docker complète. <br><br>
+
+    Enfin, via la commande docker run on lance le conteneur et on associe un port
+    à l’application. Ainsi, on accèdera à l’application à partir d’un url
+    particulier en fonction du port choisi. <br><br>
+
+    Néanmoins, nous cherchons à limiter le nombre de couches pour que
+    l’application soit légère et performante. <br><br>
+
+    <b>TRANSFERT D'IMAGES</b>
+</p>
+
+<img src="Cours/cours-docker/docker5.JPG">
+
+<p>
+    Pour transférer des images, deux solutions s’offrent à nous. <br><br>
+
+    Soit, on opte pour le partage de notre fichier dockerfile. La personne devra
+    donc créer l’image de son côté. <br><br>
+
+    Soit, on partage notre image via le site Dockerhub en utilisant un registre.
+    Docker Hub répertorie de nombreuses images. On crée notre image sur le
+    dockerhub pour rendre accessible au public notre image. <br><br>
+
+    Pour cela, vous devez vous rendre sur le site <a href="https://hub.docker.com/"><U>https://hub.docker.com/</U></a>
+    et vous
+    connecter avec le compte que vous avez créé lors de l'installation de
+    Docker. <br><br>
+
+    Puis, cliquez sur le lien Create Repository. Vous arrivez alors sur une page
+    où vous devez saisir le nom de votre image, ainsi qu'une description. <br><br>
+
+    Nous avons créé une image Docker via la commande docker build. Nous allons
+    maintenant la publier sur le Docker Hub. Pour cela, nous devons utiliser
+    plusieurs commandes. <br><br>
+
+    <b>docker tag</b> puis <b>docker push</b><br><br>
+
+    Par conséquent, si nous pouvons publier notre image, on peut donc en chercher.
+    Il existe deux types d’images : les officielles et les personnelles.
+    La commande docker search permet de chercher l’image que vous souhaitez. <br><br>
+
+    Pour cela, vous devez vous rendre sur le site <a href="https://hub.docker.com/"><U>https://hub.docker.com/</U></a>
+    et vous
+    connecter avec le compte que vous avez créé lors de l'installation de
+    Docker.<br><br>
+
+    <b>DOCKER est un logiciel gratuit</b><br><br>
+
+    <b>DOCKER Compose</b></p>
+
+<img src="Cours/cours-docker/docker6.png">
+
+<p>
+    Docker Compose est un outil écrit en Python qui permet de décrire, dans un
+    fichier YAML, plusieurs conteneurs comme un ensemble de services
+    interconnectés.
+    En effet, certaines applications ont besoin de plusieurs services (base de
+    données et système de fichier par exemple)
+    En une seule commande, je peux ainsi lancer l’ensemble des conteneurs
+    nécessaires au fonctionnement de l’application. Cet ensemble de conteneurs
+    est appelé une Stack.
+    On parle par exemple de la stack LAMP dans la création de site web. LAMP est
+    un acronyme pour Linux apache MySQL et PHP qui sont les services requis
+    au fonctionnement d’un site web.<br><br>
+
+    <b>Gestion stockage</b><br><br>
+
+    Pour comprendre la gestion du stockage en docker, il faut définir deux notions.
+    Nous avons les conteneurs <b>stateless</b> et <b>stateful</b>.
+    On parle de conteneur <b>stateful</b> notamment pour les bases de données, car elle demande un stockage de données
+    et alors elle stocke un état. Lorsque
+    je redémarre mon application, je dois retrouver mes données.
+    Tandis qu’un conteneur <b>stateless</b> ne stocke pas d'état.
+    Cependant, sur docker, un conteneur est par définition stateless. Il perdra
+    les données.
+    Il existe une solution pour stocker les données en local. On crée un volume
+    pour stocker les données sur le disque hôte
+    Sur la capture d'écran, db_data est un volume créé par Docker directement,
+    qui permet d'écrire les données sur le disque hôte sans spécifier
+    l'emplacement exact.
+</p>

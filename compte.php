@@ -1,312 +1,153 @@
 <?php
   session_start();
-?>
-<?php
-include("bdd/acces_BDD.php");
+  if (isset($_SESSION['id'])){
+include('bdd/acces_BDD.php');
+$id=$_SESSION['id'];
+$q=$BDD->prepare('SELECT * FROM utilisateur WHERE id=?');
+$q->execute(array($id));
+$result=$q->fetch();
+$pseudo=$result['pseudo'];
+$mail=$result['mail'];
+$name=$result['name'];
+$firstname=$result['firstname'];
+$challenge1=$result['challenge1'];
+$challenge2=$result['challenge2'];
+$challenge3=$result['challenge3'];
+
 ?>
 
 
 <!DOCTYPE html>
 <html lang="en">
 
-    <!-- Basic -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">   
-   
-    <!-- Mobile Metas -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
- 
-     <!-- Site Metas -->
-    <title>CyberSecuriTeach</title>  
-    <meta name="keywords" content="">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<head>
+  <!-- Basic -->
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-    <!-- Site Icons -->
-    <link rel="shortcut icon" href="images/Capture.jpg" type="image/x-icon" />
-    <link rel="apple-touch-icon" href="images/apple-touch-icon.png">
+  <!-- Mobile Metas -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <!-- Site CSS -->
-    <link rel="stylesheet" href="style.css">
-    <!-- ALL VERSION CSS -->
-    <link rel="stylesheet" href="css/versions.css">
-    <!-- Responsive CSS -->
-    <link rel="stylesheet" href="css/responsive.css">
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/custom.css">
+  <!-- Site Metas -->
+  <title>Mon compte</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="">
+  <meta name="author" content="">
 
-    <!-- Modernizer for Portfolio -->
-    <script src="js/modernizer.js"></script>
+  <?php
+		require_once('link.php');
+?>
 
-    <!--[if lt IE 9]>
-      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
-      <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
-    <![endif]-->
 
 </head>
-<body class="host_version"> 
 
-	
+<body class="host_version">
 
-    <!-- LOADER -->
-	<div id="preloader">
-		<div class="loader-container">
-			<div class="progress-br float shadow">
-				<div class="progress__item"></div>
-			</div>
-		</div>
-	</div>
-	<!-- END LOADER -->	
-	
-	<?php require_once('nav2.php') ?>
-    <div class="all-title-box">
-        <div class="container text-center">
-            <h1>Mon compte<span class="m_1"></span></h1>
-        </div>
+
+
+  <!-- LOADER 
+  <div id="preloader">
+    <div class="loader-container">
+      <div class="progress-br float shadow">
+        <div class="progress__item"></div>
+      </div>
     </div>
+  </div>
+ END LOADER -->
 
-    <div class="row align-items-center">
-                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                    <div class="message-box" style="margin-left:100px; margin-top:50px">
-                        <h4></h4>
-                        <h2><b>Informations du compte</b></h2>
-                </div>
-            </div>
-        </div>
+  <?php require_once('nav2.php') ?>
+
+  <div class="all-title-box">
+    <div class="container text-center">
+      <h1>Mon compte</h1>
+    </div>
+  </div>
+
+  <main>
+
     <div class="container">
-          <div class="row main-row p-2">
-            <div class="col-lg-4 col-md-12 col-sm-12">
-              <div class="challenge-title mb-3">
-                <h6>Nom</h6>
-              </div>
-              </div>
-            <div class="col-lg-8 col-md-12 col-sm-12">
-              <div class="challenge-title mb-3">
-                <h6><?php echo $_SESSION['name'];  ?></h6>
-              </div>
-              </div>
-            </div>
+      <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+        <h2><b>Informations du compte</b></h2>
+      </div>
+
+      <div class="info-compte d-flex flex-row">
+        <div class="p-2 col-lg-5 col-12 flex-column">
+          <div class="col-4 div-rond align-item-center">
+            <img class="classe-rond" src="images/icon.png">
+          </div>
+          <p class="col-4 align-item-center div-rond text-center profil"> <?php echo $pseudo; ?> </p>
+        </div>
+        <div class="p-2 col-lg-7 col-12 align-profil-text">
+          <p class="profil">Nom : <?php echo $name; ?></p>
+          <p class="profil">Prénom : <?php echo $firstname; ?></p>
+          <p class="profil">Mail : <?php echo $mail; ?></p>
+          <div class="blog-button2">
+            <a class="hover-btn-new orange bouton-modifie-profil align-items-end"
+              href="modification.php"><span>Modifier</span></a>
           </div>
         </div>
-         <div class="container">
-          <div class="row main-row p-2">
-            <div class="col-lg-4 col-md-12 col-sm-12">
-              <div class="challenge-title mb-3">
-                <h6>Prénom</h6>
-              </div>
-              </div>
-            <div class="col-lg-8 col-md-12 col-sm-12">
-              <div class="challenge-title mb-3">
-                <h6><?php echo $_SESSION['firstname'];  ?></h6>
-              </div>
-              </div>
-            </div>
-          </div>
+      </div>
+
+
+
+
+      <div class="container">
+        <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
+          <h2><b>Résultats des challenges</b></h2>
         </div>
-         <div class="container">
-          <div class="row main-row p-2">
-            <div class="col-lg-4 col-md-12 col-sm-12">
-              <div class="challenge-title mb-3">
-                <h6>Pseudo</h6>
-              </div>
-              </div>
-            <div class="col-lg-8 col-md-12 col-sm-12">
-              <div class="challenge-title mb-3">
-                <h6><?php echo $_SESSION['pseudo'];  ?></h6>
-              </div>
-              </div>
-            </div>
-          </div>
-        </div>
-         <div class="container">
-          <div class="row main-row p-2">
-            <div class="col-lg-4 col-md-12 col-sm-12">
-              <div class="challenge-title mb-3">
-                <h6>Mail</h6>
-              </div>
-              </div>
-            <div class="col-lg-8 col-md-12 col-sm-12">
-              <div class="challenge-title mb-3">
-                <h6><?php echo $_SESSION['mail'];  ?></h6>
-              </div>
-              </div>
-            </div>
-          </div>
-        </div>
-    <div class="blog-button2">
-                            <a class="hover-btn-new orange" href="modification.php"><span>Modifier mes informations</span></a>
-                        </div>
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">Challenges</th>
+              <th scope="col">Nombre de points</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php 
 
-      <div class="row align-items-center">
-                <div class="col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                    <div class="message-box" style="margin-left:100px; margin-top:50px;">
-                        <h4></h4>
-                        <h2><b>Historique du compte</b></h2>
-                </div>
-            </div>
-        </div>
+        $q=$BDD->prepare('SELECT `challenge`.`IdChallenge`,`NomChallenge`, `Score`,`challenge`.`ScoreMax` FROM `challenge` 
+                          INNER JOIN `rela_challenge_utilisateur`
+                          ON `rela_challenge_utilisateur`.`IdChallenge` = `challenge`.`IdChallenge`
+                          INNER JOIN `utilisateur`
+                          ON `utilisateur`.`Id` = `rela_challenge_utilisateur`.`IdUtilisateur`
+                          WHERE `utilisateur`.`Id`= ?; ORDER BY `IdChallenge` ASC');
+        $q->execute(array($id));
+        $total=0;
+        $compteur=0;
+        foreach ($q as $ligne){
+          $total = $total + $ligne['Score'];
+          $compteur+=$ligne['ScoreMax'];
+        ?>
+            <tr>
+              <td scope="row">Challenge <?php echo $ligne['IdChallenge'] ?> : <?php echo $ligne['NomChallenge'] ?> </td>
+              <td><?php echo $ligne['Score'] ?>/<?php echo $ligne['ScoreMax'] ?></td>
+            </tr>
+            <?php } ?>
+            <tr>
+              <th scope="row">Total</th>
+              <th><?php echo $total; ?>/<?php echo $compteur; ?></th>
+          </tbody>
+        </table>
+      </div>
 
 
-    <div class="blog-button2">
-                            <a class="hover-btn-new orange" href="connexion.php"><span>Actualiser les résultats</span></a>
-                        </div>
-<section class="cours-disponibles">
-        <h2 class="cours">Résultats des challenges</h2>
-</section>
 
-<div class="container">
-          <div class="row main-row2 p-2">
-            <div class="col-lg-4 col-md-12 col-sm-12">
-              <div class="challenge-title mb-3">
-                <h6>Challenges</h6>
-              </div>
-              </div>
-            <div class="col-lg-8 col-md-12 col-sm-12">
-              <div class="challenge-title mb-3">
-                <h6>Points (/5)</h6>
-              </div>
-              </div>
-            </div>
-          </div>
-        </div>
+  </main>
 
-<div class="container">
-          <div class="row main-row p-2">
-            <div class="col-lg-4 col-md-12 col-sm-12">
-              <div class="challenge-title mb-3">
-                <h6>Challenge 1 : Trouver le fichier secret</h6>
-              </div>
-              </div>
-            <div class="col-lg-8 col-md-12 col-sm-12">
-              <div class="challenge-title mb-3">
-                <h6><?php echo $_SESSION['challenge1']?></h6>
-              </div>
-              </div>
-            </div>
-          </div>
-        </div>
-<div class="container">
-          <div class="row main-row p-2">
-            <div class="col-lg-4 col-md-12 col-sm-12">
-              <div class="challenge-title mb-3">
-                <h6>Challenge 2 : Trouver le message caché sous l'image</h6>
-              </div>
-              </div>
-            <div class="col-lg-8 col-md-12 col-sm-12">
-              <div class="challenge-title mb-3">
-                <h6><?php echo $_SESSION['challenge2']?></h6>
-              </div>
-              </div>
-            </div>
-          </div>
-        </div>
-<div class="container">
-          <div class="row main-row p-2">
-            <div class="col-lg-4 col-md-12 col-sm-12">
-              <div class="challenge-title mb-3">
-                <h6>Challenge 3 : Lorem ipsum dolor sit amer</h6>
-              </div>
-              </div>
-            <div class="col-lg-8 col-md-12 col-sm-12">
-              <div class="challenge-title mb-3">
-                <h6><?php echo $_SESSION['challenge3']?></h6>
-              </div>
-              </div>
-            </div>
-          </div>
+  <?php
+        require_once('footer.php');
+    ?>
 
-<div class="container">
-          <div class="row main-row2 p-2">
-            <div class="col-lg-4 col-md-12 col-sm-12">
-              <div class="challenge-title mb-3">
-                <h6>Total</h6>
-              </div>
-              </div>
-            <div class="col-lg-8 col-md-12 col-sm-12">
-              <div class="challenge-title mb-3">
-                <h6><?php echo $_SESSION['challenge3']+$_SESSION['challenge2']+$_SESSION['challenge1'] ?>/15</h6>
-              </div>
-              </div>
-            </div>
-          </div>
-
-<br>
-<br>
-
-           <footer class="footer">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-xs-12">
-                    <div class="widget clearfix">
-                        <div class="widget-title">
-                            <h3>CyberSecuriTeach</h3>
-                        </div>
-                        <p> </p>
-                        <div class="footer-right">
-                            <ul class="footer-links-soi">
-                                
-                            </ul><!-- end links -->
-                        </div>
-                    </div><!-- end clearfix -->
-                </div><!-- end col -->
-                <div class="col-lg-4 col-md-4 col-xs-12">
-                    <div class="widget clearfix">
-                        <div class="widget-title">
-                            <h3>Liens</h3>
-                        </div>
-                        <ul class="footer-links">
-                            <li><a href="index.php">Accueil</a></li>
-                            <li><a href="course-grid-3.php">Cours</a></li>
-                            <li><a href="blog.php">Tutoriels</a></li>
-                            <li><a href="pricing.php">Challenges</a></li>
-                            <li><a href="#">Cyber Prevention</a></li>
-                        </ul><!-- end links -->
-                    </div><!-- end clearfix -->
-                </div><!-- end col -->
-                
-               <!-- <div class="col-lg-4 col-md-4 col-xs-12">
-                    <div class="widget clearfix">
-                        <div class="widget-title">
-                            <h3>Contact Details</h3>
-                        </div>
-                        <ul class="footer-links">
-                            <li><a href="mailto:#">info@yoursite.com</a></li>
-                            <li><a href="#">www.yoursite.com</a></li>
-                            <li>PO Box 16122 Collins Street West Victoria 8007 Australia</li>
-                            <li>+61 3 8376 6284</li>
-                        </ul><!-- end links -->
-                    </div><!-- end clearfix -->
-                </div><!-- end col -->
-                
-            </div><!-- end row -->
-        </div><!-- end container -->
-    </footer><!-- end footer -->
-
-    <div class="copyrights">
-        <div class="container">
-            <div class="footer-distributed">
-                <div class="footer-center">                   
-                    <p class="footer-company-name">All Rights Reserved. &copy; 2021 <a href="#">CyberSecuriTeach</a> </p>
-                </div>
-            </div>
-        </div><!-- end container -->
-    </div><!-- end copyrights -->
-
-    <a href="#" id="scroll-to-top" class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
 
   <script src="js/all.js"></script>
-    <!-- ALL PLUGINS -->
-    <script src="js/custom.js"></script>
-    <script src="js/timeline.min.js"></script>
-    <script>
-        timeline(document.querySelectorAll('.timeline'), {
-            forceVerticalMode: 700,
-            mode: 'horizontal',
-            verticalStartPosition: 'left',
-            visibleItems: 4
-        });
-    </script>
+  <!-- ALL PLUGINS -->
+  <script src="js/custom.js"></script>
+
 </body>
+
 </html>
+
+<?php }
+else{
+	header('Location: index.php');
+}

@@ -15,6 +15,7 @@
   <body>
     <?php
       require_once('nav.php');
+      session_start();
     ?>
     <div class="container">
       <div class="row">

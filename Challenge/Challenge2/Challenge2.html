@@ -1,0 +1,49 @@
+<div class="section-title row text-center">
+    <div class="col-md-8 offset-md-2">
+        <h3>Trouver le message caché sous l'image</h3>
+    </div>
+</div><!-- end title -->
+
+<h3><b>Outils à installer</b></h3>
+
+<p>
+    Installation de l'application Docker <br>
+    Il est necéssaire de récupérer le fichier Steganographie.zip que vous pourrez
+    récupérer à l'adresse suivante :
+    <a
+        href="https://github.com/secyourdev/SecChallenge/tree/Elies"><U>https://github.com/secyourdev/SecChallenge/tree/Elies</U></a>
+    <br>
+    Rendez-vous sur votre invite de commandes <br>
+    <b>IMPORTANT</b> Avec la commande cd positionnez vous à l'endroit dans lequel
+    vous avez dézippé le fichier Steganographie.zip. <br>
+    (Par exemple cd C:\Users\asus\Documents\Steganographie) <br>
+
+
+    <U>Pour lancer :</U> <br>
+    - docker build -t kali:v0 -f .\Dockerfile.txt . <br>
+    - docker run -it kali0 <br>
+
+    Maintenant déplacer vous dans les fichiers pour vous rendre dans le répertoire
+    home/msfadmin</b>. <br>
+
+
+    Tapez la commande suivante : steghide embed -ef crack.txt -cf Cybersecurity.jpg
+    -sf cybersecret -p mdp <br> </p>
+
+
+<h3><b>Objectifs</b></h3>
+
+<p>
+    Vous disposez maintenant d'une image se nommant cybersecret. L'objectif est de
+    retrouver le message caché sous l'image. <br>
+    Une fois que vous pensez avoir trouvé, verifiez votre réponse ! <br>
+</p>
+
+
+<h3><b>À vous de jouer</b></h3>
+
+<p>
+    Avec nos différents tutoriels et avec vos recherches personnelles, vous devez
+    être en mesure de <br>
+    <b>trouver un message secret !</b>
+</p>

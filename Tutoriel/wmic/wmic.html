@@ -1,0 +1,94 @@
+<h1><b>WMIC</b></h1>
+
+<h2> Objectif</h2>
+<p>
+	Wmic est un logiciel de Microsoft opérant sur Windows.<br>
+	Windows à la base est un système d’exploitation et Wmic est une ligne de commande qui dispose de plusieurs
+	commandes afin de gérer le système d’exploitation Windows (Wmi) en exécutant certaines commandes on peut avoir accès
+	aux différents paramètres et de les modifier.
+</p>
+
+<h2> Configuration</h2>
+
+<p>
+	Le Logiciel est installé de base sur chaque appareil Windows, si vous êtes sur Linux il faut trouver une machine
+	virtuelle Windows nous conseillons ce lien pour cela:
+	<a href="https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/">
+		<U>https://developer.microsoft.com/en-us/microsoft-edge/tools/vms/</U>
+	</a>
+</p>
+
+<h2> Étapes </h2>
+<p>
+	Deux méthodes taper dans la barre de recherche Windows cmd et accéder à l’invité de commande
+	<br>
+	Ou sinon on peut accéder au power shell qui revient à la même chose.
+	<br>
+	Une fois à l’intérieur de l’invité de commande ou du powershell on a accès aux fonctionnalités du logiciel wmic en
+	ajoutant le préfixe wmic / avant notre commande.
+	<br>
+	<br>
+	On peut par exemple identifier le système d’exploitation ainsi que sa version, regarder la liste des périphériques
+	installés sur son ordinateur, connaitre tous les logiciels en cours d’exécution, désinstaller des logiciels présents
+	sur l’ordinateur, démarrer un processus ou modifier leurs fonctionnements en modifiant par exemple leur liste des
+	priorités.
+	Pour avoir accès à tous les éléments sur lesquels le logiciel wmic peut agir, il suffit d’utiliser la commande
+</p>
+<kbd class="ms-3"> wmic /? </kbd>
+<br>
+
+<img src="Tutoriel/wmic/wmic1.png" alt="" class="img-fluid">
+
+<p>
+	Puis si l’on veut avoir accès à toutes les fonctions que l’on peut utiliser sur ce paramètre, il suffit de taper
+</p>
+
+<kbd class="ms-3">
+	Wmic 'nom logiciel' / ? 
+	</kbd>
+
+<p>
+	Par exemple :
+</p>
+
+<kbd class="ms-3"> Wmic os / ? </kbd>
+
+<p>
+	donne
+</p>
+
+<img src="Tutoriel/wmic/wmic2.png" alt="" class="img-fluid">
+
+<p>
+	Et ainsi de suite si on veut avoir plus d’information sur la commande par exemple si ici on veut avoir des
+	informations
+	<br>
+	Sur le paramètre à indiquer dans la commande get on tape
+</p>
+
+<kbd class="ms-3"> Wmic os get / ? </kbd> <br>
+
+<img src="Tutoriel/wmic/wmic3.png" alt="" class="img-fluid">
+
+<p>
+	Exemple pour :
+</p>
+
+<kbd class="ms-3"> Wmic os get status/ ? </kbd> <br>
+
+<img src="Tutoriel/wmic/wmic4.png" alt="" class="img-fluid">
+
+<h2> Vidéo</h2>
+
+<video controls width="560" height="315">
+    <source src="Tutoriel/wmic/wmic_tuto.mp4" type="video/mp4">
+
+    Désolé, votre navigateur ne supporte pas ce format vidéo.
+</video>
+<h2> Source </h2>
+
+<a href="https://www.malekal.com/tutoriel-wmic/">
+	<U>
+		https://www.malekal.com/tutoriel-wmic/
+	</U>
+</a>

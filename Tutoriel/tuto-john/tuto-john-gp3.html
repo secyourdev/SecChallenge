@@ -1,0 +1,89 @@
+<h1>Tutoriels : Utilisation de John The Ripper<span class="m_1"></span></h1>
+<h2 class="mb-3">1. Présentation</h2>
+    <p >
+    John est un logiciel libre de cassage de mot de passe, et est utilisé pour tester la sécurité d’un mot de passe.
+    </br>
+    Ce tool est écrit en C et en assembleur, et c’est l’un des logiciels de cassage de mots de passe les plus populaires 
+    car il inclut l'auto détection des fonctions de hachage utilisées pour stocker les mots de passe.
+    </br>
+    John dispose donc de 4 modes d’actions : 
+        <ul> 
+        <li>Le mode simple</li>
+        <li>L’attaque par dictionnaire</li>
+        <li>Le mode incrémental</li>
+        <li>Le mode Markov</li>
+        </ul>
+    </p>        
+<h2 class="mb-3">2. Les différents modes</h2>
+    <p >
+        <h3>2.1 Le mode simple</h3>  
+            Dans le mode simple, John effectue quelques transformations sur le nom d’utilisateur, 
+            pour casser les mots de passe les plus faibles. Pour l’utilisateur admin, il testera :
+            “AdMin, Admin123, ADMIn123 etc. “.
+            </br>
+            Ce mode est le plus rapide à effectuer, un mot de passe qui serait cassé par cette méthode 
+            est considéré comme très mauvais.
+            </br>
+            Voici un exemple simple : 
+            </br>
+            <kbd>john --single hash.txt</kbd>
+            </br>
+            Le single est le mode à utiliser, hash.txt est le fichier qui contient le hash à craquer.
+            </br> 
+            </br> 
+        <h3>2.2 Attaque par dictionnaire</h3>
+            Pour ce mode, John essaye tous les mots d’une liste donnée de mots de passe potentiels, 
+            en leur appliquant les mêmes transformations que dans le mode précédent.
+            </br>
+            Il est possible de spécifier sa propre liste de mots avec l’option ci-dessous :
+            </br>
+            <kbd>--wordlist=wl.txt</kbd>
+            </br>
+            Le wordlist est la liste de mots de passe que nous possédons. 
+            </br>
+            On peut afficher le mot de passe ainsi que spécifier le format avec les commandes suivantes : 
+            </br>
+            <kbd>--show : permet d’afficher le hash cracké</kbd>
+            </br> 
+            <kbd>--format=X : permet d’indiquer le format du hash</kbd>
+            </br>
+            </br>
+            Je vous propose donc d'essayer ce mode. Pour ce faire, vous allez avoir besoin d'un docker que vous pouvez
+            télécharger avec la commande ci-dessous : 
+            </br>
+            <kbd>docker pull thomasgchd/challenge-john:latest</kbd>
+            </br>
+            Vous aurez ensuite à run le docker, avec la commande ci-dessous : 
+            </br>
+            <kbd>docker run -it thomasgchd/challenge-john bash</kbd>
+            </br>
+            Puis, vous devrez utiliser john pour craquer le mot de passe de secret.zip et obtenir le flag : 
+            </br>
+            <kbd>john --wordlist=/home/rockyou.txt hash.txt secret.zip</kbd>
+            </br> 
+            Le mot de passe apparaît et vous n'avez plus qu'à récupérer le flag ! 
+            </br> 
+            </br> 
+        <h3>2.3 Le mode incrémental</h3>
+            Dans ce mode, John essaye toutes les combinaisons de caractères possibles jusqu’à trouver le mot de passe. 
+            Ce mode est infaillible mais tout dépend de la robustesse du mot de passe, qui va influencer le temps de calcul.
+            </br>
+            <kbd>john --incremental hash.txt</kbd>
+            </br>
+            </br> 
+        <h3>2.4 Mode markov</h3>
+            Ce mode essaie un ensemble limité de permutations basé sur un fichier “stats”. 
+            Comparé au mode incrémental qui garantit de deviner toutes les combinaisons, 
+            le mode markov échange l’exhaustivité contre la rapidité. 
+            </br>
+            Il essaie de deviner les combinaisons qui sont très proches des mots de passe connus 
+            en supposant que les humains choisissent des mots de passe basés sur l’habitude ou des modèles identifiables.
+            </br>
+            <kbd>john --markov hash.txt</kbd>
+            </br>
+            </br> 
+<h2 class="mb-3">3. Vidéo explicative</h2>
+    <p>
+        <iframe width="560" height="315" src="videos/john.mp4" title="YouTube video player" 
+        frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </p>

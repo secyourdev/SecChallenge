@@ -1,0 +1,54 @@
+<h1><b>HONEYPOT</b></h1>
+<p>
+	Dans le jargon de la sécurité informatique, un honeypot est une méthode de défense active qui consiste à attirer,
+	sur des ressources (serveur, programme, service), des adversaires déclarés ou potentiels afin de les identifier et
+	éventuellement de les neutraliser.
+	<br><br>
+	Le but de ce leurre est de faire croire à l'intrus qu'il peut prendre le contrôle d'une véritable machine de
+	production, ce qui va permettre à l'administrateur d'observer les moyens de compromission des attaquants, de se
+	prémunir contre de nouvelles attaques et lui laisser ainsi plus de temps pour réagir.
+
+	<br><br>
+	Un honeypot repose sur trois principes : la surveillance, la collecte d'information, l'analyse d'information.
+
+	<br><br>
+	-La surveillance doit être constante et doit porter au niveau local et distant. Les informations circulant sur le
+	réseau à destination ou non du pot de miel sont importantes. Elle repose sur l'analyse du trafic réseau et la
+	journalisation des événements.
+	<br><br>
+	-On collecte des informations grâce à des outils appelés renifleurs qui étudient les paquets présents sur le réseau
+	et stockent les événements dans des bases de données. On peut également collecter des informations brutes grâce à
+	des analyseurs de trames.
+	<br><br>
+	-Enfin grâce à l'analyse des informations recueillies on va pouvoir découvrir les défaillances du réseau à protéger
+	et les motivations des attaquants.
+
+	<br><br>
+	Il existe deux types de honeypot : ceux à faible interaction et ceux à forte interaction.
+
+	<br><br>
+	1) Les faibles interactions ont pour but de recueillir un maximum d’informations tout en limitant les risques en
+	offrant un minimum de privilèges aux attaquants.
+
+	<br><br>
+	Par exemple la commande netcat peut rentrer dans cette catégorie. Elle permet d'écouter un port particulier et
+	enregistrer dans un journal toutes les connexions, ainsi que les commandes entrées.
+	<br><br>
+	2) Les fortes interactions repose sur le principe de l’accès à de véritables services sur une machine du réseau plus
+	ou moins sécurisée. Les risques sont beaucoup plus importants. Il est donc nécessaire de sécuriser au maximum
+	l’architecture du réseau pour que l’attaquant ne puisse pas rebondir et s’en prendre à d’autres machines.
+
+	<br><br>
+	Un tel honeypot accepte toutes les connexions entrantes et limite les connexions sortantes pour éviter tout
+	débordement sans les interdire pour ne pas alerter l'attaquant. Un bon compromis entre sécurité et risque de
+	découverte du leurre est alors nécessaire.
+
+	<br><br>
+
+	Ensuite, pour capturer des données, l'utilisation d'un pare-feu permet de loguer et de rediriger toutes les
+	tentatives d’attaque aussi bien internes qu’externes. L'utilisation d'un système de détection d'intrusion (SDI)
+	permet quant à lui d’enregistrer tous les paquets circulant pour pouvoir reconstruire la séquence d’attaque. (Il
+	peut permettre également, grâce aux iptables, de rediriger les paquets compromis vers le pot de miel. Il vient donc
+	en complément d’un pare-feu et sert également de sauvegarde au cas où celui-ci tomberait.)
+
+</p>

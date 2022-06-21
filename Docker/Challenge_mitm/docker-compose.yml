@@ -1,0 +1,52 @@
+version: "3.7"
+
+services:
+    alice:
+        build: ./Alice/.
+        image: mitm_alice
+        container_name: mitm_alice
+        restart: always
+        volumes:
+            - ./Alice/request.py:/usr/src/app/request.py
+        ports:
+            - "5800:5800"
+        networks:
+            - mitm
+    web:
+        image: jlesage/firefox
+        container_name: web
+        restart: always
+        volumes:
+            - /dev/shm:/dev/shm
+        ports:
+            - "5801:5800"
+        networks:
+            - mitm
+    bob:
+        build: ./Bob/.
+        image: mitm_bob
+        container_name: mitm_bob
+        restart: always
+        volumes:
+            - ./Bob/bob_files:/var/www/html
+        networks:
+            - mitm
+
+
+    eve:
+        privileged: true
+        build: ./Eve/.
+        image: mitm_eve
+        container_name: mitm_eve
+        volumes:
+            - ./Eve/eve_files:/eve_files
+        sysctls:
+            # Necessary for transparent mode for mitmproxy
+            - net.ipv4.ip_forward=1
+            - net.ipv6.conf.all.forwarding=1
+            - net.ipv4.conf.all.send_redirects=0
+        networks:
+            - mitm
+
+networks:
+    mitm:

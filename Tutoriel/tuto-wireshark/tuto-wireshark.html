@@ -1,0 +1,34 @@
+<h1><b>Wireshark</b></h1>
+<p><U><b>Qu’est-ce que Wireshark ?</b></U> <br><br>
+
+    Wireshark est un logiciel d'analyse de protocoles réseaux, 
+    il permet de capturer le trafic du réseau local et de stocker les données ainsi obtenues pour permettre 
+    leur analyse hors ligne.
+
+<U><b>Comment utiliser Wireshark ?</b></U> <br><br>
+
+Lors de l'ouverture de Wireshark, on se retrouve face à la liste de toutes les connexions réseau que l'on peut surveiller.
+Il y a d'ailleurs juste au-dessus un champ de filtre de capture qui nous permet de sélectionner le réseau qui nous intéresse.
+On peut également sélectionner plusieurs interfaces réseaux, soit en maintenant la touche CTRL et en sélectionnant les interfaces voulues, 
+soit en maintenant la touche SHIFT en sélectionnant deux interfaces différentes, ce qui aura pour effet de sélectionner toutes les interfaces entre les deux choisies (ces dernières inclues).<br>
+Une fois l'interface réseau sélectionnée, on peut lancer la capture en utilisant l'icône "Démarrer la capture de paquets" 
+situé sur la barre d'outils. Une fois la capture lancée, Wireshark fera défiler les paquets capturés en temps réel, il est donc 
+conseillé d'utiliser l'icône "arrêter la capture de paquets", situé aussi sur la barre d'outils. <br><br>
+
+Une fois ceci fait, attardons-nous sur ce que nous voyons, à savoir trois fenêtres qui permettent d'inspecter les données des paquets.
+On peut voir que sur la fenêtre du haut, nous voyons la liste des paquets capturés, tandis que sur les autres fenêtres, il y a les informations concernant le paquet choisis (en cliquant dessus). 
+La fenêtre du milieu présente le détail des informations du paquet capturé, tandis que la fenêtre du bas présente juste le paquet sous sa forme hexadécimale. 
+D'ailleurs, sur la fenêtre des paquets, il y a plusieurs colonnes avec différents noms, faisons un petit point :<br><br>
+
+Nº : numéro du paquet capturé. Le trait vertical indique que ce paquet fait partie d’une conversation.<br>
+Time : cette colonne indique combien de temps après le lancement de la capture le paquet a été capturé. Vous pouvez changer la nature de cette valeur dans les paramètres.<br>
+Source : adresse du système qui a émis le paquet.<br>
+Destination : adresse de la destination du paquet.<br>
+Protocole : type du paquet. Par exemple : TCP, DNS, DHCPv6 ou ARP.<br>
+Length : cette colonne indique la longueur du paquet, en octets.<br>
+Info : cette colonne présente plus d’informations sur le contenu du paquet et varie selon le type du paquet.<br><br>
+
+Voyons maintenant comment fonctionnent les filtres sur Wireshark. Ils permettent d’opter pour le mode d’affichage le plus efficace pour résoudre toutes sortes de problèmes.
+Par exemple, il y a les filtres de capture, qui permettent de ne capturer que les paquets qui correspondent à la condition du filtre, les autres ne sont tout simplement pas capturés.
+On peut essayer par exemple le filtre "host <i>adresse ip</i>" afin de limiter la capture au trafic émis et reçu par l'adresse IP.<br>
+Il y a également les filtres d'affichage Wireshark, qui eux vont permettre d'alléger la liste des paquets capturés en n'affichant que ceux qui correspondent au filtre.

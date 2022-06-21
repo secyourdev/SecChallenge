@@ -1,0 +1,30 @@
+<h1><b>LOG4SHELL</b></h1>
+<p>
+    Log4Shell, également connue par son num&eacute;ro <strong>CVE-2021-44228</strong>, &eacute;tait une vuln&eacute;rabilit&eacute; zero-day exploit&eacute;e 
+    par ex&eacute;cution de code arbitraire et touchant l'utilitaire Java Log4j.
+    <br><br>
+    La vuln&eacute;rabilit&eacute; tire parti du fait que Log4j ne v&eacute;rifie pas les requ&ecirc;tes LDAP (Lightweight Directory Access Protocol) et JNDI 
+    (Java Naming and Directory Interface). Cela permet aux attaquants d'ex&eacute;cuter du code Java arbitraire sur un serveur ou un autre ordinateur. Les services concern&eacute;s incluent iCloud, l'&eacute;dition Java de Minecraft et Steam.
+    <br><br>
+    Elle est consid&eacute;r&eacute; comme la vuln&eacute;rabilit&eacute; la plus importante et la plus critique de la derni&egrave;re d&eacute;cennie par la 
+    directrice de la Cybersecurity and Infrastructure Security Agency (CISA). L'Apache Software Foundation, dont Log4j est un projet, a attribu&eacute; &agrave; 
+    Log4Shell une note CVSS (Common Vulnerability Scoring System) de 10, la note la plus &eacute;lev&eacute;e possible.
+    <br><br>
+    Log4j est un framework de journalisation open source qui permet aux d&eacute;veloppeurs de logiciels d'enregistrer diverses donn&eacute;es au sein de leur 
+    application. Ces donn&eacute;es peuvent &eacute;galement inclure une entr&eacute;e utilisateur. Il est utilis&eacute; de mani&egrave;re omnipr&eacute;sente 
+    dans les applications Java, en particulier les logiciels d'entreprise. La biblioth&egrave;que est ainsi utilis&eacute;e dans des logiciels de bureautique, 
+    dans des serveurs ou des syst&egrave;mes embarqu&eacute;s comme dans certaines voitures.
+    L'exploitation de la vuln&eacute;rabilit&eacute; CVE-2021-44228 passe par l'insertion d'un appel JNDI dans une requ&ecirc;te. Ces appels sont utilis&eacute;s 
+    pour r&eacute;diger des journaux de mani&egrave;re dynamique, par exemple pour ins&eacute;rer dans les entr&eacute;es du journal les r&eacute;sultats d'un calcul
+     complexe g&eacute;r&eacute; par un syst&egrave;me tiers. Si la requ&ecirc;te est enregistr&eacute;e dans les journaux g&eacute;r&eacute;s par une version
+      vuln&eacute;rable de Log4J, alors la vuln&eacute;rabilit&eacute; se d&eacute;clenche.
+    <br><br>
+    La CVE-2021-44228 peut &ecirc;tre utilis&eacute;e avec des charges utiles qui g&eacute;n&egrave;reront respectivement des appels via le protocole LDAP ou DNS,
+     vers un serveur contr&ocirc;l&eacute; par un tiers. Un pirate peut aussi utiliser ce m&eacute;canisme pour provoquer une exfiltration de donn&eacute;es, via 
+     un appel &agrave; des variables Java comme les variables de l'environnement utilisateur.
+    Une attaque peut facilement &ecirc;tre r&eacute;alis&eacute;e &agrave; partir d'un service d'&eacute;coute DNS, comme DNSLog, puis une charge utile est
+     cr&eacute;&eacute;e qui g&eacute;n&egrave;rera un appel vers ce service d'&eacute;coute. Afin de maximiser les chances de r&eacute;ussite de l'attaque, 
+     les pirates ins&egrave;reront la charge utile dans des &eacute;l&eacute;ments classiquement enregistr&eacute;s comme les ent&ecirc;tes HTTP.
+    <br><br>
+    Les correctifs de cette vuln&eacute;rabilit&eacute; ont &eacute;t&eacute; rendus disponibles le 6 d&eacute;cembre 2021, trois jours avant la publication de la vuln&eacute;rabilit&eacute;. Le correctif inclut la restriction des serveurs et des protocoles pouvant &ecirc;tre utilis&eacute;s pour les recherches, qui peuvent &ecirc;tre configur&eacute;s &agrave; l'aide de plusieurs propri&eacute;t&eacute;s syst&egrave;me. Les administrateurs syst&egrave;me ont &eacute;t&eacute; invit&eacute;s &agrave; &eacute;valuer la situation et &agrave; mettre en place des mesures d'att&eacute;nuation le plus rapidement possible, soit en mettant &agrave; jour la biblioth&egrave;que logicielle, soit en d&eacute;sactivant les recherches &agrave; l'aide de la propri&eacute;t&eacute; syst&egrave;me.
+</p>

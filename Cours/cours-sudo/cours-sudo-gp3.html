@@ -1,0 +1,50 @@
+<h2><b>LA VULNERABILITE SUDO CVE-2021-3156</b></h2>
+
+<h2 class="mb-3"></br>1. Introduction</h2>
+<p >
+    L'objectif de ce cours est de vous présenter la vulnérabilité CVE-2021-3156.
+    </br>
+    La vulnérabilité Sudo est une vulnérabilité sévère qui a été découverte dans les systèmes d'exploitation Unix et Linux. 
+    </br>
+    L'origine de la faille est liée à une mauvaise gestion de l'allocation de la mémoire de la chaine de caractère contenant l'argument de la commande sudo.
+    </br>
+    Elle permet à un utilisateur non privilégié d'exploiter cette vulnérabilité à l'aide de Sudo, en provoquant une élévation de ses privilèges jusqu'à root sans avoir besoin de la moindre authentification.
+</p>    
+            
+<h2 class="mb-3"></br>2. Explications du fonctionnement de Sudo</h2>
+<p >
+    Les versions de Sudo avant 1.9.5p2 contenaient une erreur de type "off-by-one" (erreur de décalage unitaire) qui peut entraîner un dépassement de tampon basé sur le tas, 
+    ce qui permet une élévation de privilèges vers root via 'sudoedit -s' et un argument de ligne de commande qui se termine par un seul caractère backslash.
+    </br>
+    Normalement, Sudo permet à un utilisateur la possibilité d’exécuter des programmes avec les privilèges de sécurité d’un autre utilisateur après s’être authentifié.
+    </br>
+    Voici quelques explications théoriques des commandes sudo pour mieux comprendre comment la vulnérabilité a pu être exploitée:	
+    <ul>
+        <li>
+        Lors de l'exécution d'une commande sudo en mode shell avec les drapeaux -s ou -i ('sudo -s' permet d’exécuter le shell en tant qu'utilisateur cible, 
+        et 'sudo -i' permet d’exécuter le shell de connexion en tant qu'utilisateur cible), la commande attendra l’apparition de deux barres obliques inversées '\\' pour marquer le premier caractère;
+        </li></br>
+        <li>
+        Une fois cette commande reçue, le plugin de politique de sécurité sudo par défaut cherchera à supprimer les caractères d’échappement. 
+        Si vous exécutez cette commande avec une seule barre oblique inversée '\', elle sera inoffensive et se terminera par une erreur;
+        </li>
+    </ul>
+</p>   
+
+<h2 class="mb-3"></br>3. Exploitation de la vulnérabilité</h2>
+<p >
+    Il existe cependant la commande 'sudoedit', une commande intégrée qui permet aux utilisateurs de modifier des fichiers en toute sécurité. 
+    </br>
+    C’est dans cette commande qu’il a été découvert que lors de l’exécution de 'sudoedit' avec les drapeaux -s ou -i, la commande ne se terminait pas par une erreur et les caractères d’échappement n’étaient pas supprimés. 
+    </br>
+    Cela entraînait donc une lecture au-delà du dernier caractère d’une chaîne, si celle-ci se terminait par un caractère backslash non masqué.
+    </br>
+    Cette vulnérabilité permet aux attaquants l’exécution de code aléatoire, ce qui conduit à l’exécution d’une commande avec les privilèges de l’utilisateur root, sans la moindre authentification.
+</p> 
+
+<h2 class="mb-3"></br>4. Solutions</h2>
+<p>
+    Heureusement, les différents éditeurs de distributions Linux ont déjà publié des correctifs. 
+    </br>
+    Les systèmes affectés par cette faille sont les versions de Sudo fournies par les éditeurs de distribution Linux sans le dernier correctif de sécurité, c'est-à-dire les versions antérieures à 1.9.5p2.
+</p> 

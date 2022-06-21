@@ -1,0 +1,92 @@
+<h1>Netcat</h1>
+
+<h2 class="mb-3">1. Objectif</h2>
+<p>
+	L'objectif de ce cours et de vous présenter l'outil Netcat ainsi que certaines de ces fonctionnalités.
+	</br>
+	</br>
+	Netcat est un outil de réseaux qui est principalement utilisé pour permettre la communication entre plusieurs
+	machines en utilisant des connexions TCP ou UDP.
+	</br>
+	On peut utiliser Netcat pour notamment scanner des ports, transférer des fichiers ou encore faire du reverse shell.
+	Vous pouvez afficher la page de manuel de Netcat en entrant netcat -h ou nc -h dans un terminal.
+</p>
+<img src="Cours/cours-netcat/netcat1.png" alt="" class="img-fluid">
+
+<h2 class="mb-3">2. Configuration</h2>
+
+
+<p>
+	L'installation de Netcat sur un système Linux est très simple, il suffit d'ouvrir un terminal et d'entrer la
+	commande <kbd class="ms-3">apt install netcat-traditional.</kbd>
+	</br>
+	Il est possible que la commande "sudo" soit nécessaire, ce qui donnera <kbd class="ms-3">sudo apt install
+		netcat-traditional</kbd>.
+	</br></br>
+</p>
+
+<h2 class="mb-3">3. Les Utilisations</h2>
+<p>
+
+	<h3>I. Transfert de fichier</h3>
+
+	Il est possible d’envoyer des fichiers entre différentes machines en utilisant Netcat.
+	</br>
+	Le transfert de fichier avec Netcat se fait en utilisant les ports d’une machine pour ouvrir un canal de
+	communication entre les machines. La méthode d’envoi et la suivante:
+	</br></br>
+	Sur la machine réceptrice, on entre la commande suivante dans un terminal:
+	</br>
+	<kbd class="ms-3">netcat -l -p [port_number] > [file_name]</kbd>
+	</br>
+	Il faut entrer la valeur du port que l'on a choisi d'utiliser pour la communication dans le champs [port_number].
+	</br>
+	La partie [file_name] correspond au fichier qui va stocker les informations qui circuleront à travers le port
+	choisi.
+</p>
+<img src="Cours/cours-netcat/netcat2.png" alt="" class="img-fluid">
+<p>
+	Nous allons ensuite nous rendre sur la machine émettrice et saisir la commande suivante:
+	</br>
+	<kbd class="ms-3">netcat -w [Temps] [receiver_ip] [port_number] &lt [FileToSend]</kbd> </br> La valeur [Temps]
+	correspond au nombre de secondes avant que la connexion soit automatiquement coupée, receiver_ip est
+	l’adresse IP de la machine sur laquelle on envoie le fichier. </br> La valeur du [port_number] doit être la
+	même que celle choisie sur la machine réceptrice. </br> Le champs [FileToSend] correspond au fichier que
+	l’on souhaite envoyer. </p>
+
+<img src="Cours/cours-netcat/netcat3.png" alt="" class="img-fluid">
+
+
+
+<h3>II. Scan de port</h3>
+
+<p>Netcat, à l’instar de Nmap, offre la possibilité de scanner les ports d’une machine.
+	</br>
+	Pour ne scanner qu'un seul port, on peut utiliser la commande suivante: <kbd class="ms-3">netcat -z -v
+		[ip_adress] [port_number]</kbd>
+	</br>
+	Cette commande va scanner le port numéro [port_number] et indiquer s’il est ouvert ou non.
+	</br>
+	Mais on peut aussi scanner plusieurs ports à la fois en utilisant la commande suivante: <kbd class="ms-3">netcat -z
+		-v [ip_adress] [range]</kbd>
+	</br>
+	Le principe est exactement le même qu'avec le scan d'un seul port, sauf que cette fois-ci, on entre un
+	interval de ports à scanner. Par exemple, la commande <kbd class="ms-3">netcat -z -v [ip_adress] 1-50</kbd>
+	va scanner tous les ports numérotés de 1 à 50.
+	</br>
+</p>
+
+
+<h3>Sources & Crédits</h3>
+
+<p>Nous nous sommes inspirés de plusieurs sources pour la rédation de ce cours. Vous trouverez dans cette
+	section les liens vers les articles ou vidéos qui nous on servit lors de la rédation.
+	</br></br>
+	Netcat: <a href="https://www.kali.org/tools/netcat/">Netcat Kali Linux</a>
+	</br>
+	Scan de port: <a href="https://www.youtube.com/watch?v=ovVTkRp_QRo">Netcat Scan de Port</a>
+	</br>
+	Transfert de fichier: <a href="https://www.youtube.com/watch?v=wKReZ4iBIoM">Netcat Envoi et Réception de
+		fichier</a>
+
+</p>

@@ -1,0 +1,146 @@
+<h1><b>LA CRYPTOLOGIE</b></h1>
+
+<p>
+    Historiquement, la cryptologie correspond à la science du secret, c'est-à-dire au chiffrement.
+    Aujourd'hui, elle s’est élargie au fait de prouver qui est l'auteur d'un message et s'il a été modifié ou non,
+    grâce aux signatures numériques et aux fonctions de hachage. <br><br>
+</p>
+
+<img src="Cours/cours-crypto/courscrypto1.png" alt="" class="img-fluid">
+
+<p>
+    Étymologiquement, la cryptologie est la science (λόγος) du secret (κρυπτός).
+    Elle réunit la cryptographie (« écriture secrète ») et la cryptanalyse (étude des attaques contre les mécanismes de
+    cryptographie). <br><br>
+
+    La cryptologie ne se limite plus aujourd’hui à assurer la confidentialité des secrets.
+    Elle s’est élargie au fait d’assurer mathématiquement d’autres notions :
+    assurer l’authenticité d’un message (qui a envoyé ce message ?) ou encore assurer son intégrité (est-ce qu’il a été
+    modifié ?). <br><br>
+
+    Pour assurer ces usages, la cryptologie regroupe quatre principales fonctions : le hachage avec ou sans clé, la
+    signature numérique et le chiffrement. <br><br>
+
+    Pour expliquer la cryptologie, nous utiliserons dans nos exemples les personnages traditionnels en cryptographie :
+    Alice et Bob. <br><br>
+
+    <b>Pourquoi la cryptologie existe-t-elle ?</b> <br><br>
+
+    <b>1-Pour assurer l’intégrité du message : le hachage </b> <br><br>
+
+    >La cryptologie permet justement de détecter si le message ou l’information, a été involontairement modifié.
+    Ainsi, une « fonction de hachage » permettra d’associer à un message, à un fichier ou à un répertoire, une empreinte
+    unique calculable et vérifiable par tous.
+    Cette empreinte est souvent matérialisée par une longue suite de chiffres et de lettres précédées du nom de
+    l’algorithme utilisé, par exemple « SHA2» ou « SHA256 ». <br><br>
+
+    Il ne faut pas confondre le chiffrement, qui permet d’assurer la confidentialité,
+    c’est-à-dire que seules les personnes visées peuvent y avoir accès (voir « Pour assurer la confidentialité du
+    message »),
+    et le hachage qui permet de garantir que le message est intègre, c'est-à-dire qu’il n’a pas été modifié. <br><br>
+
+    <b>Le hachage, pour quoi faire ? </b> <br><br>
+
+    Pour sauvegarder vos photos sur votre espace d’hébergement (de type « cloud » par exemple) et vérifier que votre
+    téléchargement s’est bien déroulé ? <br><br>
+    Pour synchroniser vos dossiers et détecter ceux qu’il faut sauvegarder à nouveau et ceux qui n’ont pas été modifiés
+    ?
+    <br><br>
+
+    Il existe aussi des « fonctions de hachage à clé » qui permettent de rendre le calcul de l’empreinte différent en
+    fonction de la clé utilisée.
+    Avec celles-ci, pour calculer une empreinte, on utilise une clé secrète. Pour deux clés différentes, l’empreinte
+    obtenue sur un même message sera différente.
+    Donc pour qu’Alice et Bob calculent la même empreinte, ils doivent tous les deux utiliser la même clé. <br><br>
+
+    C’est parmi ces fonctions de hachage à clé que l’on trouve celles utilisées pour stocker les mots de passe de façon
+    sécurisée. <br><br>
+</p>
+
+<img src="Cours/cours-crypto/courscrypto2.png" alt="" class="img-fluid">
+
+<p>
+    <b>2-Pour assurer l’authenticité du message : la signature </b> <br><br>
+
+    Au même titre que pour un document administratif ou un contrat sur support papier,
+    le mécanisme de la « signature » - numérique - permet de vérifier qu’un message a bien été envoyé par le détenteur
+    d’une « clé publique ».
+    Ce procédé cryptographique permet à toute personne de s’assurer de l’identité de l’auteur d’un document et permet en
+    plus d’assurer que celui-ci n’a pas été modifié. <br><br>
+
+    <b>La signature numérique, pour quoi faire ?</b> <br><br>
+
+    Vous voulez garantir être l’émetteur d’un courriel ?
+    Vous désirez assurer qu’une information provient d’une source sûre ? <br><br>
+
+    Pour pouvoir signer, Alice doit se munir d’une paire de clés :<br><br>
+
+    l’une, dite « publique », qui peut être accessible à tous et en particulier à Bob qui est le destinataire des
+    messages qu’envoie Alice ;
+    l’autre, dite « privée », qui ne doit être connue que d’Alice.
+
+    En pratique, Alice génère sa signature avec sa clé privée qui n’est connue que d’elle.
+    N’importe quelle personne ayant accès à la clé publique d’Alice, dont Bob, peut vérifier la signature sans échanger
+    de secret. <br><br>
+</p>
+
+<img src="Cours/cours-crypto/courscrypto3.png" alt="" class="img-fluid">
+
+<p>
+    <b>3-Pour assurer la confidentialité du message : le chiffrement </b> <br><br>
+
+    Le chiffrement d’un message permet justement de garantir que seuls l’émetteur et le(s) destinataire(s) légitime(s)
+    d’un message en connaissent le contenu.
+    C’est une sorte d’enveloppe scellée numérique.
+    Une fois chiffré, faute d'avoir la clé spécifique, un message est inaccessible et illisible, que ce soit par les
+    humains ou les machines. <br><br>
+
+    <b>Le chiffrement, pour quoi faire ? </b> <br><br>
+
+    Vous voulez vous assurer que seul le destinataire ait accès au message ?
+    Vous souhaitez envoyer ces informations sous enveloppe numérique et non lisible par tous comme sur une carte postale
+    ?
+
+    Il existe deux grandes familles de chiffrement : le chiffrement symétrique et le chiffrement asymétrique. <br><br>
+
+    <b>c- Le crackage </b> <br><br>
+    Le <b>chiffrement symétrique</b> permet de chiffrer et de déchiffrer un contenu avec la même clé, appelée alors la «
+    clé secrète ».
+    Le chiffrement symétrique est particulièrement rapide, mais nécessite que l’émetteur et le destinataire se mettent
+    d’accord sur une clé secrète commune ou
+    se la transmettent par un autre canal. Celui-ci doit être choisi avec précautions, sans quoi la clé pourrait être
+    récupérée par les mauvaises personnes,
+    ce qui n’assurerait plus la confidentialité du message. <br><br>
+
+    Le <b>chiffrement asymétrique</b> suppose que le (futur) destinataire est muni d’une paire de clés (clé privée, clé
+    publique)
+    et qu’il a fait en sorte que les émetteurs potentiels aient accès à sa clé publique. Dans ce cas,
+    l’émetteur utilise la clé publique du destinataire pour chiffrer le message tandis que le destinataire utilise sa
+    clé privée pour le déchiffrer. <br><br>
+
+    Parmi ses avantages, la clé publique peut être connue de tous et publiée. Mais attention :
+    il est nécessaire que les émetteurs aient confiance en l’origine de la clé publique, qu’ils soient sûrs qu’il s’agit
+    bien de celle du destinataire. <br><br>
+
+    Autre point fort : plus besoin de partager une même clé secrète ! Le chiffrement asymétrique permet de s’en
+    dispenser. Mais il devient malheureusement plus lent. <br><br>
+
+    Pour cette dernière raison, il existe une technique combinante chiffrements « symétrique » et « asymétrique »,
+    mieux connue sous le nom de <b>« chiffrement hybride »</b>. <br><br>
+
+    Cette fois, une clé secrète est déterminée par une des deux parties souhaitant communiquer et celle-ci est envoyée
+    chiffrée par un chiffrement asymétrique.
+    Une fois connue des deux parties, celles-ci communiquent en chiffrant symétriquement leurs échanges.
+    Cette technique est notamment appliquée lorsque vous visitez un site dont l’adresse débute par « https ». <br><br>
+
+</p>
+
+<img src="Cours/cours-crypto/courscrypto4.png" alt="" class="img-fluid">
+
+<p>
+    <b>SOURCE</b>
+</p>
+
+<a href="https://www.cnil.fr/fr/comprendre-les-grands-principes-de-la-cryptologie-et-du-chiffrement">
+    <U>https://www.cnil.fr/fr/comprendre-les-grands-principes-de-la-cryptologie-et-du-chiffrement</U>
+</a>

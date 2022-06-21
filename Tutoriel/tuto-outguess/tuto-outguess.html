@@ -1,0 +1,206 @@
+<h2><b>OUTGUESS : OUTIL DE STÉGANOGRAPHIE</b></h2>
+
+<h2 class="mb-3">1. Introduction</h2>
+
+<p>
+    Outguess est un outil avancé de stéganographie, qui permet l'insertion d'informations cachées dans les
+    bits redondants des sources de données.
+    </br>
+    Seuls les formats PPM, PNM et JPEG sont supportés, bien que Outguess puisse utiliser n'importe quel type
+    de données à condition qu'un gestionnaire soit fourni.
+</p>
+
+
+<h2 class="mb-3"></br>2. Installation</h2>
+
+<p>
+    Pour installer Zsteg sur Kali Linux, il suffit de taper la commande suivante :
+    </br>
+    <kbd class="ms-3">sudo apt install outguess</kbd>
+</p>
+
+
+<h2 class="mb-3"></br>3. Fonctionnement</h2>
+
+<p>
+    Pour comprendre comment Outguess fonctionne et ce que l'outil nous permet de réaliser, vous pouvez taper
+    la commande ci-dessous :
+    </br>
+    <kbd class="ms-3">outguess -h</kbd>
+    </br></br>
+
+    On peut alors observer toutes les options à notre disposition :
+</p>
+
+<img src="Tutoriel/tuto-outguess/images/outguess-tuto-0.jpg" alt="" class="img-fluid">
+
+<p>
+    <ul>
+        <li> <kbd class="ms-3">-s graine_souhaitee</kbd> : spécifie la graine initiale que l'itérateur
+            utilise pour sélectionner les bits dans les données redondantes ;
+            </br>
+            Si aucune limite supérieure n'est spécifiée, l'itérateur utilisera cette graine sans chercher
+            une graine plus optimale.
+        </li></br>
+
+        <li> <kbd class="ms-3">-i limite_souhaitee </kbd> : spécifie la limite supérieure pour trouver une
+            graine d'itérateur optimale ;
+            </br>
+            La valeur maximale de la limite est de 65535 ;
+        </li></br>
+
+        <li> <kbd class="ms-3">-k cle_secrete</kbd> : indique la clé secrète utilisée pour crypter et cacher
+            le message dans les données fournies ;
+        </li></br>
+
+        <li> <kbd class="ms-3">-d nom_fichier</kbd> : indique le nom du fichier contenant un message à
+            dissimuler dans les données ;
+        </li></br>
+
+        <li> <kbd class="ms-3">-e</kbd> : utilise la correction d'erreurs pour le codage et le décodage des
+            données ;
+        </li></br>
+
+        <li> <kbd class="ms-3">-p parametre_souhaite</kbd> : transmet une chaîne de caractères comme
+            paramètre au gestionnaire de données de destination ;
+            </br>
+            Pour le format d'image JPEG il s'agit de la qualité de compression, qui peut prendre des valeurs
+            comprises entre 75 et 100.
+            </br>
+            Plus la qualité est élevée, plus il y a de bits disponibles pour cacher un message dans les
+            données.
+        </li></br>
+
+        <li> <kbd class="ms-3">-r</kbd> : récupère un message à partir d'un objet de données ;
+            </br>
+            Si cette option n'est pas spécifiée, Outguess incorporera les messages.
+        </li></br>
+
+        <li> <kbd class="ms-3">-x nombre_cles_max</kbd> : si la deuxième clé ne crée pas un itérateur qui
+            réussit à l'intégration des données, le programme dérivera jusqu'au nombre spécifié de nouvelles
+            clés ;
+        </li></br>
+
+        <li> <kbd class="ms-3">-m</kbd> : marque les pixels qui ont été modifiés ;
+        </li></br>
+
+        <li> <kbd class="ms-3">-t</kbd> : collecte des statistiques sur l'utilisation des bits redondants.
+            </br>
+            Une utilisation répétée augmente le niveau de sortie.
+        </li></br>
+
+        <li> <kbd class="ms-3">-F +</kbd> ou <kbd class="ms-3">-F -</kbd> : spécifie que OutGuess doit
+            préserver les statistiques basées sur les comptes de fréquence.
+            </br>
+            Par conséquent, aucun test statistique basé sur les comptes de fréquence ne sera en mesure de
+            détecter le contenu stéganographique.
+            </br>
+            Cette option est activée par défaut.
+        </li>
+    </ul>
+    Remarque : pour l'utilisation d'une commande, il ne faut pas oublier de spécifier les fichiers sur
+    lesquelles on veut travailler.
+    Mais ne vous inquiétez pas, nous allons voir des cas concrets dans la partie suivante.
+</p>
+
+
+<h2 class="mb-3"></br>4. Application</h2>
+
+<p>
+    Pour vous montrer comment Outguess fonctionne, nous allons vous montrer des exemples ci-dessous.
+</p>
+
+<h3 class="mb-3">4.1 Dissimuler un texte dans une image</h3>
+
+<p>
+    Dans cet exemple, nous allons chercher à dissimuler un message dans une image JPEG.
+    </br></br>
+
+    Voici l'image JPEG sur laquelle nous allons utiliser Outguess :
+</p>
+
+<img src="Tutoriel/tuto-outguess/images/outguess-tuto-base.jpg" alt="" class="img-fluid">
+
+<p>
+    Si vous voulez aussi réaliser le tutoriel de votre côté, téléchargez l'image en <a class="link-primary"
+        href="Tutoriel/tuto-outguess/images/outguess-tuto-base.jpg" download="outguess-tuto-base.jpg"><u>cliquant
+            ici</u><a>.
+            </br></br>
+
+            En parallèle, il vous faudra aussi un fichier texte qui contient le message à dissimuler.
+            </br>
+            Voici celui avec lequel nous allons travailler :
+</p>
+
+<img src="Tutoriel/tuto-outguess/images/outguess-tuto-1.jpg" alt="" class="img-fluid">
+
+<p>
+    Pour dissimuler le fichier texte dans l'image à l'aide d'un mot de passe par exemple, nous pouvons taper
+    la commande suivante :
+    </br>
+    <kbd class="ms-3">outguess -k "MotDePasse_souhaite" -d nom_fichier_txt image_entree image_sortie</kbd>
+    </br></br>
+
+    Nous obtiendrons alors le résultat suivant :
+</p>
+
+<img src="Tutoriel/tuto-outguess/images/outguess-tuto-2.jpg" alt="" class="img-fluid">
+
+<p>
+    Et voilà, le tour est joué ! Une nouvelle image a été créée avec notre fichier texte dissimulé à
+    l'intérieur.
+    </br>
+    On peut vérifier que cette image existe bel et bien :
+</p>
+
+<img src="Tutoriel/tuto-outguess/images/outguess-tuto-3.jpg" alt="" class="img-fluid">
+
+
+<h3 class="mb-3">4.2 Extraction d'un texte dans une image</h3>
+
+<p>
+    Dans cet exemple, nous allons maintenant chercher à récupérer le contenu du message dissimulé dans
+    l'image de l'exemple précédent.
+    </br></br>
+
+    Voici l'image JPEG sur laquelle nous allons travailler :
+</p>
+
+<img src="Tutoriel/tuto-outguess/images/outguess-tuto-new.jpg" alt="" class="img-fluid">
+
+<p>
+    Si jamais vous ne l'avez pas déjà (grâce à l'exemple précédent) et que vous souhaitez réaliser le
+    tutoriel de votre côté à partir d'ici, téléchargez l'image en
+    <a class="link-primary" href="Tutoriel/tuto-outguess/images/outguess-tuto-new.jpg"
+        download="outguess-tuto-new.jpg"><u>cliquant ici</u><a>.
+            </br></br>
+
+            Pour extraire le fichier texte dissimulé dans l'image (en supposant ici que le mot de passe
+            précédent est connu), nous pouvons taper la commande suivante :
+            </br>
+            <kbd class="ms-3">outguess -k "MotDePasse_connu" -r image_entree nom_fichier_txt_sortie</kbd>
+            </br></br>
+
+            Nous obtiendrons alors le résultat suivant :
+</p>
+
+<img src="Tutoriel/tuto-outguess/images/outguess-tuto-4.jpg" alt="" class="img-fluid">
+
+<p>
+    Et voilà, nous avons encore réussi ! Un nouveau fichier texte a été créé, ce qui signifie que notre
+    commande a fonctionné.
+    </br>
+    On peut vérifier que ce fichier texte existe bel et bien, et que son contenu est bien celui que l'on a
+    écrit dans l'exemple précédent :
+</p>
+
+<img src="Tutoriel/tuto-outguess/images/outguess-tuto-5.jpg" alt="" class="img-fluid">
+
+
+<h2 class="mb-3"></br>Fin du tutoriel</h2>
+
+<p>
+    Le tutoriel est terminé, et vous savez désormais comment manipuler Outguess.
+    </br>
+    Pour valider ce tutoriel, il vous suffira de rentrer "Tuto-Outguess" dans la case de validation.
+</p>

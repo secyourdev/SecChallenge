@@ -1,0 +1,85 @@
+<h1>Présentations : L'attaque de l'homme du milieu<span class="m_1"></span></h1>
+<h2 class="mb-3">1. Qu'est-ce que c'est ?</h2>
+<p>
+    L'attaque de l'homme du milieu (MITM : Man in the middle) est une attaque qui a pour but d'intercepter
+    les communications entre deux parties, sans que ni l'une ni l'autre puisse se douter que le canal de
+    communication entre elles a été compromis.
+    </br>
+    Elle peut être initiée par des pirates qui interceptent les e-mails, l'historique de votre navigation sur Internet
+    et les réseaux sociaux pour cibler vos données sécurisées et commettre des actes criminels.
+    Contrairement au phishing qui nécessite que vous baissiez votre garde involontairement et que vous
+    ouvriez votre ligne de défense, une attaque passive dite de l'homme du milieu se fait sans que vous en ayez
+    conscience.
+    </br>
+    Le but des hackers est de se faire passer pour quelqu'un à qui vous devez communiquer vos informations
+    pour payer une facture, régler quelque chose, et de ce fait récupérer vos données bancaires, vos mots de passes,
+    vos comptes. Finalement, il va essayer de voler le plus d'informations personnelles et professionnelles à votre
+    égard
+    dans le but de les revendre ou de les utiliser contre votre gré.
+</p>
+<h2 class="mb-3">2. Le déroulement d'une attaque</h2>
+<p>
+    Alice et Bob veulent échanger des données confidentielles, et Carole, jalouse, désire les intercepter.
+    Ils possèdent chacun une clé privée (respectivement As, Bs et Cs) et une clé publique (respectivement Ap, Bp et Cp).
+    </br>
+    Admettons maintenant que Carole soit en mesure de modifier les échanges entre Alice et Bob.
+    </br>
+    Bob envoie sa clé publique à Alice. Carole l'intercepte et renvoie à Alice sa propre clé publique (Cp)
+    en se faisant passer pour Bob.
+    </br>
+    Lorsque Alice veut envoyer un message à Bob, elle utilise donc, sans le savoir, la clé publique de Carole.
+    </br>
+    Alice chiffre le message avec la clé publique de Carole et l'envoie à celui qu'elle croit être Bob.
+    </br>
+    Carole intercepte le message, le déchiffre avec sa clé privée (Cs) et peut lire le message.
+    </br>
+    Puis elle chiffre à nouveau le message avec la clé publique de Bob (Bp), après l'avoir éventuellement modifié.
+    </br>
+    Bob déchiffre son message avec sa clé privée, et ne se doute de rien puisque cela fonctionne.
+    </br>
+    Ainsi, Alice et Bob sont chacun persuadés d'utiliser la clé de l'autre,
+    alors qu'ils utilisent en réalité tous les deux la clé de Carole.
+</p>
+<h2 class="mb-3">3. Comment s'en protéger ? </h2>
+<p>
+    <ul>
+        <li>L'essentiel est de faire en sorte de naviguer en toute sécurité. </li>
+        <b>En chiffrant le trafic</b> entre le réseau et votre appareil à l'aide d'un logiciel de chiffrement
+        de navigation, vous pouvez repousser les éventuelles attaques dites de l'homme du milieu.
+        </br>
+        </br>
+        <li>Vérifiez toujours que les sites que vous visitez sont sécurisés.</li>
+        La plupart des navigateurs affichent un symbole de cadenas à côté de l'URL lorsqu'un site Web est sécurisé.
+        Si vous ne voyez pas ce symbole, vérifiez que l'adresse Web commence par « https ».
+        Le « S » signifie sécurisé et garantit que vos données ne seront pas susceptibles d'être interceptées par un
+        pirate.
+        </br>
+        </br>
+        <li>Utiliser un pare-feu</li>
+        C'est également un moyen fiable de protéger vos données de navigation.
+        Sans être infaillible, un pare-feu fournit un degré de sécurité supplémentaire lorsque vous utilisez
+        un réseau wifi public. Si vous naviguez souvent sur un réseau wifi public,
+        il est conseillé de <b>configurer un réseau privé virtuel (VPN)</b>.
+        Ce type de réseau protège votre trafic et complique la tâche des pirates qui voudrait l'intercepter.
+        </br>
+        </br>
+        <li>Mettez vos logiciels de sécurité à jour</li>
+        Les cybercriminels ne cessent de s'adapter et de se perfectionner,
+        vous devriez en faire de même. En mettant à jour votre solution de sécurité,
+        vous avez accès en permanence à des outils dernier cri qui surveillent votre activité en ligne
+        pour une navigation sécurisée et agréable.
+        </br>
+        </br>
+    </ul>
+</p>
+<h2 class="mb-3">4. Sources</h2>
+<p>
+    <a href="https://www.kaspersky.fr/resource-center/threats/man-in-the-middle-attack">
+        <U>- kaspersky</U></a>
+    </br>
+    <a href="https://www.futura-sciences.com/tech/definitions/cybersecurite-attaque-man-in-middle-10048/">
+        <U>- futura-sciences</U></a>
+    </br>
+    <a href="https://fr.m.wikipedia.org/wiki/Attaque_de_l%27homme_du_milieu">
+        <U>- Wikipédia</U></a>
+</p>

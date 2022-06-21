@@ -1,0 +1,43 @@
+<h1><b>FAILLE SUDO Baron Samedit CVE-2021-3156</b></h1>
+<p>
+    Le 26 janvier 2021, les Qualys Research Labs ont révélé une vulnérabilité de dépassement de mémoire tampon basé sur
+    le tas dans Sudo, qui, en cas d’exploitation réussie, permet à tout utilisateur local d’élever ses privilèges à ceux
+    de root. Les sudoers, ainsi que les non-sudoers, peuvent exploiter cette vulnérabilité sans authentification afin
+    d’obtenir les privilèges root.
+    <br><br>
+    La vulnérabilité CVE-2021-3156 est due à une mauvaise analyse des paramètres de ligne de commande et un attaquant
+    peut l’exploiter via «sudoedit -s» et un argument de ligne de commande qui se termine par un seul caractère de type
+    backslash. La faille a été introduite en juillet 2011 et affecte toutes les anciennes versions de 1.8.2 à 1.8.31p2
+    et toutes les versions stables de 1.9.0 à 1.9.5p1, dans leur configuration par défaut.
+    <br><br>
+    L’équipe de recherche de Qualys a pu vérifier indépendamment la vulnérabilité CVE-2021-3156 et développer plusieurs
+    variantes d’exploit pour Ubuntu 20.04 (Sudo 1.8.31), Debian 10 (Sudo 1.8.27) et Fedora 33 (Sudo 1.9.2). Cependant,
+    d’autres distributions peuvent également être vulnérables, car Sudo est disponible dans presque toutes les
+    principales versions de système d’exploitation Unix/Linux.
+    <br><br>
+    Même si la vulnérabilité a été corrigée en seulement 13 jours, de nombreux builds amont n’ont pas encore été
+    corrigés, laissant ainsi un grand nombre de systèmes vulnérables. Pour aggraver la situation, plusieurs PoC sont
+    désormais disponibles dans Github, ouvrant la porte à une exploitation facile par des acteurs malveillants peu
+    expérimentés.
+    <br><br>
+    Il est possible de détecter une tentative d’exploitation en utilisant LogPoint : une plateforme d’opérations de
+    securité. Étant donné qu’une attaque par force brute est nécessaire pour déclencher la vulnérabilité CVE-2021-3156,
+    les logs auditd seront alors submergés d’événements liés à sudoedit. Vous pourrez créer des détections à l’aide de
+    l’un des trois types d’événements générés par auditit : SYSCALL, EXECV et ANOM_ABEND.
+    <br><br>
+    Pour une détection basée sur EXECVE, il suffira de rechercher un afflux important de logs EXECVE pour sudoedit avec
+    «\» et «-s» comme paramètres de ligne de commande.
+    <br><br>
+    Enfin, nous pouvons rechercher tous les appels de sudoedit avec une ligne de commande anormalement longue, pouvant
+    ainsi révéler une tentative de déclenchement de la vulnérabilité de dépassement de tampon basé sur le tas.
+    <br><br>
+    Étant donné que les attaquants peuvent exploiter cette faille même dans la configuration par défaut, il est
+    conseillé aux administrateurs système de corriger leurs systèmes dès que possible. Si l’installation du correctif
+    n’est pas possible ou bien si le correctif n’a pas été publié pour la distribution Linux/Unix utilisée, nous vous
+    recommandons de déployer des détections qui surveillent toute tentative d’exploitation.
+    <br><br>
+    Les acteurs malveillants peuvent utiliser la vulnérabilité Sudo (CVE-2021-3156) en conjonction avec d’autres
+    méthodes d’attaque pour compromettre intégralement le système. Nous conseillons donc aux entreprises de lancer une
+    action de réponse aux incidents si une tentative d’exploitation devait être détectée.
+
+</p>

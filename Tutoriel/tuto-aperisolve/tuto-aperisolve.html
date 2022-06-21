@@ -1,0 +1,283 @@
+<h2><b>APERI'SOLVE : PLATEFORME WEB DE STEGANALYSE</b></h2>
+
+<h2 class="mb-3"></br>1. Introduction</h2>
+
+<p>
+    Aperi'Solve est une plateforme en ligne qui effectue une analyse des couches sur les images.
+    </br>
+    La plateforme utilise également zsteg, steghide, outguess, exiftool, binwalk, foremost et strings pour une analyse
+    approfondie de la stéganographie.
+    </br>
+    Aperi'Solve a été créé dans le but de disposer d'une plateforme "facile à utiliser" qui réalise les tests les plus
+    courants tels que LSB ou steghide.
+    </br>
+    La plateforme est aussi une alternative rapide pour les personnes qui n'ont pas réussi à installer correctement
+    zsteg (RubyGems).
+</p>
+
+
+<h2 class="mb-3"></br>2. Caractéristiques</h2>
+
+<p>
+    Aperi'Solve est basé sur Python3 avec Flask et le module PIL.
+    </br>
+    La plateforme supporte actuellement les formats d'images suivants : .png, .jpg, .gif, .bmp, .jpeg, .jfif, .jpe,
+    .tiff.
+    </br></br>
+
+    De plus, cette plateforme vous permet de :
+    <ul>
+        <li>Visualiser chaque couche de bits de chaque canal pour une image donnée (par exemple, LSB du canal rouge);
+        </li>
+        <li>Parcourir et télécharger chaque couche binaire de l'image;</li>
+        <li>Visualiser des informations zsteg telles que du texte encodé sur LSB ;</li>
+        <li>Télécharger des fichiers zsteg tels que des mp3 encodés en LSB ;</li>
+        <li>Télécharger des fichiers steghides en utilisant un mot de passe défini ;</li>
+        <li>Télécharger des fichiers outguess à l'aide d'un mot de passe défini ;</li>
+        <li>Visualiser des informations exiftool telles que la géolocalisation ou l'auteur;</li>
+        <li>Visualisation des informations binwalk;</li>
+        <li>Télécharger les fichiers binwalk tels que les en-têtes zip en png;</li>
+        <li>Télécharger les fichiers les plus importants tels que les fichiers zip dans les en-têtes en png;</li>
+        <li>Visualisation de la sortie des chaînes de caractères ;</li>
+    </ul>
+</p>
+
+
+<h2 class="mb-3"></br>3. Application et installation</h2>
+
+<p>
+    Si vous souhaitez maintenant utiliser Aperi'Solve directement en ligne, il vous suffit d'aller sur
+    <a class="link-primary" href="https://aperisolve.fr"><U>https://aperisolve.fr</U></a>
+    </br></br>
+
+    Aperi'Solve est un service web Flask (/web) (python 3.7) avec des backend daemons (/backend) qui effectuent les
+    analyses.
+    Chacune des deux parties possède son propre conteneur docker.
+    </br></br>
+
+    Si vous voulez l'exécuter avec Docker-Compose, téléchargez le fichier zip fourni
+    <a class="link-primary" href="Tutoriel/tuto-aperisolve/installation-aperisolve.zip"
+        download="installation-aperisolve.zip"><U>installation-aperisolve.zip</U><a>
+            ou récupérez les fichiers directement depuis <a class="link-primary"
+                href="https://github.com/Zeecka/AperiSolve"><u> github</u></a>.
+            </br>
+            Il vous suffit ensuite d'exécuter les commandes suivantes :
+            </br>
+            <kbd class="ms-3">docker-compose build</kbd>
+            </br>
+            <kbd class="ms-3">docker-compose up</kbd>
+            </br></br>
+
+            Vérifiez ensuite votre navigateur sur <a class="link-primary"
+                href="http://localhost:5000/"><U>http://localhost:5000/</U></a>.
+</p>
+
+
+<h2 class="mb-3"></br>4. Exemples et mise en pratique</h2>
+
+<h3 class="mb-3"></br>4.1. Zsteg</h3>
+
+<p>
+    Zsteg est très utile pour détecter les données cachées par la stéganographie en PNG et BMP, surtout pour la
+    stéganographie LSB.
+    </br></br>
+
+    Voici une image avec laquelle un message a été dissimulé dans les LSB. La modification de cette image ne peut être
+    vue à l'oeil
+    nu :
+</p>
+
+<img src="Tutoriel/tuto-aperisolve/aperisolve-tuto-lsb.png" alt="" class="img-fluid" width="800" height="430">
+
+<p>
+    Si vous voulez aussi réaliser le tutoriel de votre côté, téléchargez l'image en <a class="link-primary"
+        href="Tutoriel/tuto-aperisolve/aperisolve-tuto-lsb.png" download="aperisolve-tuto-lsb.png"><U>cliquant
+            ici</U><a> et
+            soumettez l'image sur Apéri'Solve afin de lancer l'analyse de l'image.
+            </br></br>
+
+            Dans un premier temps, on peut voir différentes informations générales sur l'image :
+</p>
+
+<img src="Tutoriel/tuto-aperisolve/aperisolve-tuto-lsb0.jpg" alt="" class="img-fluid" width="800" height="350">
+
+<p>
+    <ul>
+        <li>Les différents noms donnés à l'image lors de son upload;</li>
+        <li>La taille de l'image;</li>
+        <li>La date et l'heure à laquelle l'image a été upload pour la première fois ;</li>
+        <li>La date et l'heure à laquelle l'image a été upload pour la dernière fois ;</li>
+        <li>Le nombre de fois où l'image a été upload;</li>
+        <li>Les mots de passe qui on été mis en lien avec l'image lors de l'upload;</li>
+    </ul>
+    <br><br>
+
+    Juste en dessous, nous avons accès à l'affichage de l'image en fonction de ses différentes composantes RGB :
+</p>
+
+<img src="Tutoriel/tuto-aperisolve/aperisolve-tuto-lsb1.jpg" alt="" class="img-fluid" width="800" height="410">
+
+<p>
+    Si l'on regarde attentivement n'importe quelle image, on peut voir que des bits situés en haut à gauche de l'image
+    ont été modifiés :
+</p>
+
+<img src="Tutoriel/tuto-aperisolve/aperisolve-tuto-lsb2.png" alt="" class="img-fluid" width="800" height="250">
+
+<p>
+    Il y a donc de grandes chances pour que le message dissimulé soit situé exactement à cet endroit.
+    </br></br>
+
+    En effet, si l'on regarde ensuite dans la partie Zsteg, on peut voir apparaître le message suivant :
+</p>
+<img src="Tutoriel/tuto-aperisolve/aperisolve-tuto-lsb3.png" alt="" class="img-fluid" width="800" height="400">
+
+
+<h3 class="mb-3"></br>4.2. Steghide</h3>
+
+<p>
+    Nous allons voir ici comment récupérer des messages qui ont été cachés dans une image à l'aide de Steghide.
+    </br></br>
+
+    De la même manière que précédemment, la modification de cette image ne peut être vue à l'œil nu :
+</p>
+
+<img src="Tutoriel/tuto-aperisolve/aperisolve-tuto-steghide.jpeg" alt="" class="img-fluid">
+
+<p>
+    Pour réaliser l'exercice de votre côté, téléchargez l'image en <a class="link-primary"
+        href="Tutoriel/tuto-aperisolve/aperisolve-tuto-steghide.jpeg"
+        download="aperisolve-tuto-steghide.jpeg"><U>cliquant ici.</U><a>
+            </br></br>
+
+            De la même manière, allons directement à la partie qui nous intéresse sur Apéri'Solve : Steghide.
+</p>
+
+<img src="Tutoriel/tuto-aperisolve/aperisolve-tuto-steghide0.jpg" alt="" class="img-fluid" width="800" height="165">
+
+<p>
+    On peut voir qu'il est marqué qu'Apéri'Solve a écrit les données extraites dans un fichier
+    "aperisolve-tuto-steghide.txt".
+    </br></br>
+
+    Il suffit alors de télécharger le fichier .7z fourni puis d'en extraire le fichier texte à l'intérieur.
+    </br>
+    On peut ainsi visualiser son contenu à l'aide d'un éditeur de texte :
+</p>
+
+<img src="Tutoriel/tuto-aperisolve/aperisolve-tuto-steghide1.jpg" alt="" class="img-fluid" width="800" height="120">
+
+
+<h3 class="mb-3"></br>4.3. Outguess</h3>
+
+<p>
+    Cette fois-ci, nous allons découvrir un message qui a été caché dans l'image suivante à partir de Outguess :
+</p>
+
+<img src="Tutoriel/tuto-aperisolve/aperisolve-tuto-outguess.jpg" alt="" class="img-fluid">
+
+<p>
+    Pour télécharger l'image, <a class="link-primary" href="Tutoriel/tuto-aperisolve/aperisolve-tuto-lsb.jpg "
+        download="aperisolve-tuto-outguess.jpg"><U>cliquez ici.</U><a>
+</p>
+<p>
+    Allons directement à la partie qui nous intéresse sur Apéri'Solve : Outguess.
+</p>
+
+<img src="Tutoriel/tuto-aperisolve/aperisolve-tuto-outguess0.jpg" alt="" class="img-fluid" width="800" height="190">
+
+<p>
+    De la même manière que précédemment, il suffit alors de télécharger le fichier .7z proposé puis d'en extraire le
+    fichier .data à l'intérieur.
+    </br>
+    On peut donc visualiser son contenu à l'aide d'un éditeur de texte :
+</p>
+
+<img src="Tutoriel/tuto-aperisolve/aperisolve-tuto-outguess1.jpg" alt="" class="img-fluid" width="800" height="190">
+
+
+<h3 class="mb-3"></br>4.4. ExifTool</h3>
+
+<p>
+    ExifTool est un logiciel Kali Linux qui permet d'afficher et d'exploiter les métadonnées de l'image.
+    </br>
+    Une image peut donner beaucoup de données comme l'appareil, l'ISO, la date, l'heure, le type d'objectif.
+    </br>
+    Ces données peuvent être extraites et modifiées en utilisant l'outil Exif.
+    </br>
+    Cependant Apéri'Solve est susceptible de mal afficher les caractères spéciaux avec cet outil.
+    </br>
+    Si jamais vous voyez un endroit avec un message (comme un commentaire par exemple), je vous conseille de vérifier sa
+    syntaxe via ExifTool de vous-même.
+    </br></br>
+
+    Pour vous montrer, prenons par exemple cette image :
+</p>
+
+<img src="Tutoriel/tuto-aperisolve/aperisolve-tuto-exiftool.png" alt="" class="img-fluid">
+
+<p>
+    Pour télécharger l'image, <a class="link-primary" href="Tutoriel/tuto-aperisolve/aperisolve-tuto-exiftool.png"
+        download="aperisolve-tuto-exiftool.png"><U>cliquez ici.</U><a>
+</p>
+<p>
+    Nous pouvons voir la modification des métadonnées à deux endroits différents.
+    </br>
+    Voici ce que l'on peut apercevoir dans le bloc Zsteg :
+</p>
+
+<img src="Tutoriel/tuto-aperisolve/aperisolve-tuto-exiftool-0.jpg" alt="" class="img-fluid" width="800" height="190">
+
+<p>
+    Et voici ce que l'on peut observer dans le bloc ExifTool, ici au niveau de la section "Comment" :
+</p>
+
+<img src="Tutoriel/tuto-aperisolve/aperisolve-tuto-exiftool-1.png" alt="" class="img-fluid" width="800" height="390">
+
+<p>
+    On peut donc bien voir que quelque chose est dissimulé, mais nous n'arrivons pas à avoir la syntaxe exacte du
+    message.
+    </br></br>
+
+    Regardons maintenant directement avec ExifTool sur Kali Linux.
+    </br>
+    On peut alors remarquer le résultat suivant, qui est le même qu'avec Apéri'Solve avec cette fois-ci la section
+    "Comment" qui contient le message caché avec la bonne syntaxe :
+</p>
+
+<img src="Tutoriel/tuto-aperisolve/aperisolve-tuto-exiftool-2.jpg" alt="" class="img-fluid" width="800" height="500">
+
+
+<h3 class="mb-3"></br>4.5. Binwalk et Foremost</h3>
+
+<p>
+    Apéri'Solve possède aussi Binwalk et Foremost, outil et logiciel utiles pour la stéganographie.
+    </br></br>
+
+    Binwalk est un outil permettant d'explorer une image binaire donnée à la recherche de fichiers intégrés et de code
+    exécutable.
+    </br>
+    Plus précisément, il est conçu pour identifier les fichiers et le code intégrés dans les images de micrologiciels.
+    </br>
+    Binwalk inclut également un fichier de signature magique personnalisé qui contient des signatures améliorées pour
+    les fichiers que l'on trouve couramment dans les images de micrologiciels, comme les fichiers compressés.
+    </br></br>
+
+    Foremost est un logiciel Linux de récupération de données pour l'informatique légale, qui exploite les en-têtes,
+    pieds de page et structures de données de fichiers endommagés via un processus nommé file carving,
+    consistant en la récupération à partir de fragments privés de métadonnées de fichiers informatiques.
+</p>
+
+
+<h2 class="mb-3"></br>Validation du tutoriel</h2>
+
+<p>
+    Le tutoriel est maintenant terminé, et vous devriez être capable de pouvoir utiliser tous les outils qu'Apéri'Solve
+    met à disposition.
+    </br></br>
+
+    Pour valider ce tutoriel, il vous suffira de rentrer le flag, qui est <b>composé des deux premiers caractères des
+        quatre messages cachés</b> vus à travers ce tutoriel.
+    </br>
+    Exemple : 'Binwalk', 'enerve', 'Jolie' et 'uefa' donnerait le flag 'Bien Joue'.
+</p>

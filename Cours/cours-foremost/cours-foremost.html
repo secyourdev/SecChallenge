@@ -1,0 +1,94 @@
+<h2 class="mb-3"><b>FOREMOST : LOGICIEL DE RÉCUPÉRATION DE DONNÉES </b></h2>
+
+
+<h2 class="mb-3"></br>1. Introduction</h2>
+<p>
+    Foremost est un logiciel Linux de récupération de données pour l'informatique légale, qui exploite les en-têtes,
+    pieds de page et structures de données de fichiers endommagés via un processus nommé file carving, consistant en la
+    récupération à partir de fragments privés de métadonnées de fichiers informatiques.
+    </br>
+    En effet, Foremost est capable de travailler sur des fichiers image ou même directement sur un disque dur, car il
+    permet l'utilisation de modificateurs de ligne de commande pour spécifier les types de fichiers que nous voulons
+    rechercher et ainsi être plus précis avec ce que nous souhaitons rechercher.
+    </br></br>
+
+    Ce logiciel donne la possibilité de récupérer des fichiers sous une multitude de formats, comme jpg, gif, png, bmp,
+    avi, tiff, mp4, exe, mpg, wav, asf, wma, mp3, fws, riff, wmv, mov, pdf, ole, doc, docx, xls, xlsx. ppt, pptx, zip,
+    rar, html, cpp, java, art, pst, ost, dbx, idx, mbx, wpc, pgp, txt, rpm, dat, etc.
+</p>
+
+
+<h2 class="mb-3"></br>2. Installation de Foremost</h2>
+<p>
+    Foremost est un outil en ligne de commande, disponible dans les dépôts officiels de Kali Linux.
+    </br>
+    Pour l’installer, il suffit ensuite de taper la commande suivante :
+    </br>
+    <kbd class="ms-3">sudo apt install foremost</kbd>
+</p>
+
+
+<h2 class="mb-3"></br>3. Fonctionnement</h2>
+
+<p>
+    Pour comprendre comment Foremost fonctionne et ce que le logiciel nous permet de réaliser, vous pouvez taper
+    la commande ci-dessous :
+    </br>
+    <kbd class="ms-3">foremost -h</kbd>
+    </br></br>
+
+    On peut alors observer toutes les options à notre disposition :
+</p>
+
+<img src="Cours/cours-foremost/images/cours-foremost-0.jpg" alt="" class="img-fluid">
+<p>
+    <ul>
+        <li> <kbd class="ms-3">-V</kbd> : affiche l'information sur le droit d'auteur puis quitte ;</li></br>
+        <li> <kbd class="ms-3">-t </kbd> : permet de spécifier le type de fichier (ex : jpeg, pdf);</li></br>
+        <li> <kbd class="ms-3">-d</kbd> : permet l'activation de la détection indirecte des blocs (pour les systèmes de
+            fichiers UNIX);</li></br>
+        <li> <kbd class="ms-3">-i</kbd> : spécifie le fichier d'entrée (stdin par défaut);</li></br>
+        <li> <kbd class="ms-3">-a</kbd> : permet l'écriture de tous les en-têtes, avec aucune détection d'erreur
+            (fichiers corrompus);</li></br>
+        <li> <kbd class="ms-3">-w</kbd> : permet d'écrire uniquement à l'intérieur du fichier d'audit, et non dans les
+            autres fichiers détectés sur le disque ;</li></br>
+        <li> <kbd class="ms-3">-o</kbd> : sert à définir le répertoire de sortie du fichier ;</li></br>
+        <li> <kbd class="ms-3">-c</kbd> : définit le fichier de configuration à utiliser (foremost.conf par défaut);
+        </li></br>
+        <li> <kbd class="ms-3">-q</kbd> : active le mode rapide, les recherches sont alors effectuées sur des frontières
+            de 512 octets.;</li></br>
+        <li> <kbd class="ms-3">-Q</kbd> : active le mode silencieux et supprime les messages de sortie ;</li></br>
+        <li> <kbd class="ms-3">-v</kbd> : mode verbeux, enregistre tous les messages à l'écran;</li>
+    </ul>
+</p>
+
+
+<h2 class="mb-3"></br>4. Exemples</h2>
+<p>
+    Dans cette partie, vous pourrez voir des commandes concrètes qui peuvent s'utiliser en cas réels, afin de vous aider
+    à mieux visualiser le fonctionnement de Foremost :
+    <ul>
+        <li><kbd class="ms-3">foremost -s 100 -t jpg -i image.dd</kbd> : recherche le format jpeg en sautant les 100
+            premiers blocs ;</li>
+        <li><kbd class="ms-3">foremost -av image.dd</kbd> : génère uniquement un fichier d'audit, et l'affiche à l'écran
+            (mode verbeux);</li>
+        <li><kbd class="ms-3">foremost -t all -i image.dd</kbd> : recherche tous les types définis ;</li>
+        <li><kbd class="ms-3">foremost -t gif,pdf -i image.dd</kbd> : recherche les formats gif et pdf;</li>
+        <li><kbd class="ms-3">foremost -vd -t ole,jpeg -i image.dd</kbd> : permet la recherche de documents office et de
+            fichiers jpeg dans un système de fichiers Unix en mode verbeux ;</li>
+        <li><kbd class="ms-3">foremost image.dd</kbd> : exécute le cas par défaut ;</li>
+    </ul>
+    Pour voir une mise en pratique avec illustration, vous pouvez aussi jeter un coup d'œil sur <a class="link-primary"
+        href="https://fr.smartworldclub.net/11702523-how-to-use-foremost-linux-and-recover-deleted-files"><U>ce
+            site</U></a> par exemple,
+    qui montre une récupération de fichiers en plusieurs étapes.
+</p>
+
+<h2 class="mb-3"></br>5. Conclusion</h2>
+<p>
+    Le cours est maintenant terminé, et vous connaissez à présent Foremost.
+    </br>
+    Si jamais vous avez besoin de vous en servir pour effectuer une récupération des données, n'hésitez pas à vous
+    servir de ce cours pour voir les différents formats utilisés ainsi que les différentes commandes mises à disposition
+    par le logiciel.
+</p>
