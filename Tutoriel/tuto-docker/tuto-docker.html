@@ -1,11 +1,4 @@
-<!-- Titre : Docker : les commandes utiles-->
-<!-- Description : Voici un tutoriel pour vous apprendre à manipuler les commandes sur Docker -->
-
-
-<img src="Tutoriel/tuto-docker/docker-tuto.jpg" alt="" class="img-fluid" width="800" height="400">
-
 <h2 class="mb-3"><b>Docker : les commandes utiles</b></h2>
-
 
 <h2 class="mb-3"></br>1. Objectif</h2>
 
@@ -30,23 +23,21 @@
     exécuter sur l’hôte Docker.
     </br>
     Un conteneur est donc l'instanciation d'une image.
+    </br></br>
+
+    Pour récupérer des images, je vous conseille d'aller sur le site <a class="link-primary" href="https://hub.docker.com/"><u>Docker Hub</u><a>, 
+    qui est actuellement le plus grand dépôt d'images de conteneurs au monde.
+    </br></br>
+
+    Pour récupérer une image depuis le Docker Hub, il suffit de taper la commande :
+    </br>
+    <kbd class="ms-3">docker pull nom_image</kbd>
+    </br></br>
+
+    On peut voir que le téléchargement s'effectue automatiquement une fois que l'image a été trouvée :
 </p>
 
-<p>
-    Pour récupérer des images, je vous conseille d'aller sur le site <a class="link-primary"
-        href="https://hub.docker.com/"><u>Docker Hub</u><a>, qui est actuellement le plus grand dépôt d'images de
-            conteneurs au monde.
-
-            <br><br>
-
-            Pour récupérer une image depuis le Docker Hub, il suffit de taper la commande :
-            </br>
-            <kbd class="ms-3">docker pull nom_image</kbd>
-            <br><br>
-            On peut voir que le téléchargement s'effectue automatiquement une fois que l'image a été trouvée :
-</p>
-
-<img src="Tutoriel/tuto-docker/docker-tuto-0.jpg" alt="" class="img-fluid" width="700" height="150">
+<img src="Tutoriel/tuto-docker/docker-tuto-0.jpg" alt="" class="img-fluid" >
 
 <p>
     Pour regarder toutes les images que nous possédons, il faudra taper la commande :
@@ -54,7 +45,7 @@
     <kbd class="ms-3">docker images -a</kbd>
 </p>
 
-<img src="Tutoriel/tuto-docker/docker-tuto-1.jpg" alt="" class="img-fluid" width="700" height="170">
+<img src="Tutoriel/tuto-docker/docker-tuto-1.jpg" alt="" class="img-fluid" >
 
 <p>
     On peut voir que l'affichage des images est décomposé en plusieurs parties :
@@ -73,7 +64,7 @@
     <br><br>
     On peut ensuite vérifier que celle-ci ne se situe plus lorsque l'on affiche de nouveau la liste de nos images :
 </p>
-<img src="Tutoriel/tuto-docker/docker-tuto-2.jpg" alt="" class="img-fluid" width="700" height="280">
+<img src="Tutoriel/tuto-docker/docker-tuto-2.jpg" alt="" class="img-fluid" >
 
 
 <h2 class="mb-3"></br>3. Commandes pour la création de conteneur</h2>
@@ -85,20 +76,21 @@
     Une commande nous sera utile tout au long de cette partie permettant d'afficher la liste des conteneurs :
     </br>
     <kbd class="ms-3">docker ps -a</kbd>
-    <br><br>
+    </br></br>
+
     Pour créer un conteneur à partir d'une image, la commande est la suivante :
     </br>
     <kbd class="ms-3">docker run nom_image</kbd>
-    <br><br>
+    </br></br>
+
     On crée donc un conteneur à partir d'une image (stockée soit localement soit sur le Docker Hub), et on peut voir le
     résultat suivant :
 </p>
-<img src="Tutoriel/tuto-docker/docker-tuto-3.jpg" alt="" class="img-fluid" width="700" height="150">
+<img src="Tutoriel/tuto-docker/docker-tuto-3.jpg" alt="" class="img-fluid" >
 <p>
     Remarque : en effet, si l'image n'est pas trouvée localement, Docker ira la chercher automatiquement sur le Docker
     Hub afin de la récupérer.
-
-    <br><br>
+    </br></br>
 
     Sur l'affichage, on peut remarquer que notre conteneur possède un nom qui est 'stoic_ramanujan'.
     </br>
@@ -107,24 +99,18 @@
     </br>
     Pour les commandes qui nécessitent de rentrer l'ID du conteneur (ex: 49ccd7aeca62), le nom du conteneur (ex:
     stoic_ramanujan) peut être saisi à la place.
-
-    <br><br>
+    </br></br>
 
     Voici quelques options pouvant vous être utiles lors de la création d'un conteneur avec la commande <kbd
         class="ms-3">run</kbd> :
     <ul>
-        <li> <kbd class="ms-3">-d</kbd> : permet de se détacher du conteneur pour le laisser fonctionner en
-            arrière-plan; </li>
+        <li> <kbd class="ms-3">-d</kbd> : permet de se détacher du conteneur pour le laisser fonctionner en arrière-plan; </li>
         <li> <kbd class="ms-3">-it</kbd> : emmène directement à l'intérieur du conteneur lors de sa création; </li>
         <li> <kbd class="ms-3">--name nom_image</kbd> : permet de choisir le nom attribué au conteneur; </li>
-        <li> <kbd class="ms-3">-p port_physique:port_conteneur</kbd> : connecte les ports entre la machine et le
-            conteneur; </li>
-        <li> <kbd class="ms-3">--user nobody</kbd> : permet de se connecter au conteneur en tant qu'utilisateur
-            non-root; </li>
-        <li> <kbd class="ms-3">-v /chemin/</kbd> : effectue une sauvegarde du conteneur créé au niveau du chemin
-            indiqué; </li>
-        <li> <kbd class="ms-3">--rm</kbd> : programme la suppression automatique du conteneur à sa sortie (taper <kbd
-                class="ms-3">exit</kbd> pour sortir du conteneur); </li>
+        <li> <kbd class="ms-3">-p port_physique:port_conteneur</kbd> : connecte les ports entre la machine et le conteneur; </li>
+        <li> <kbd class="ms-3">--user nobody</kbd> : permet de se connecter au conteneur en tant qu'utilisateur non-root; </li>
+        <li> <kbd class="ms-3">-v /chemin/</kbd> : effectue une sauvegarde du conteneur créé au niveau du chemin indiqué; </li>
+        <li> <kbd class="ms-3">--rm</kbd> : programme la suppression automatique du conteneur à sa sortie (taper <kbd class="ms-3">exit</kbd> pour sortir du conteneur); </li>
     </ul>
 </p>
 
@@ -138,14 +124,10 @@
     Voici quelques commandes pouvant vous aider durant vos manipulations :
     <ul>
         <li> <kbd class="ms-3">docker rename old_name new_name </kbd> : permet de renommer un conteneur; </li>
-        <li> <kbd class="ms-3">docker diff nom_conteneur</kbd> : compare et montre les différences entre le conteneur
-            ciblé et les autres; </li>
-        <li> <kbd class="ms-3">docker ps -a -f status=created</kbd> : affiche les conteneurs créés (status=exited pour
-            sortis) ; </li>
-        <li> <kbd class="ms-3">docker save nom_conteneur > /chemin/nom.tar</kbd> : exporte le conteneur à l'endroit
-            indiqué; </li>
-        <li> <kbd class="ms-3">docker commit nom_conteneur nom_image</kbd> : enregistre les modifications du conteneurs
-            effectuées dans une nouvelle image; </li>
+        <li> <kbd class="ms-3">docker diff nom_conteneur</kbd> : compare et montre les différences entre le conteneur ciblé et les autres; </li>
+        <li> <kbd class="ms-3">docker ps -a -f status=created</kbd> : affiche les conteneurs créés (status=exited pour sortis) ; </li>
+        <li> <kbd class="ms-3">docker save nom_conteneur > /chemin/nom.tar</kbd> : exporte le conteneur à l'endroit indiqué; </li>
+        <li> <kbd class="ms-3">docker commit nom_conteneur nom_image</kbd> : enregistre les modifications du conteneurs effectuées dans une nouvelle image; </li>
     </ul>
 </p>
 
@@ -163,8 +145,7 @@
         <li> <kbd class="ms-3">docker stop nom_conteneur</kbd> : arrête un conteneur; </li>
         <li> <kbd class="ms-3">docker rm nom_conteneur</kbd> : supprime un conteneur; </li>
         <li> <kbd class="ms-3">docker rm -f nom_conteneur</kbd> : supprime un conteneur fonctionnel; </li>
-        <li> <kbd class="ms-3">docker rm $(docker ps -a -f status=exited -f status=created)</kbd> : supprime tous les
-            conteneurs soit créés soit sortis ; </li>
+        <li> <kbd class="ms-3">docker rm $(docker ps -a -f status=exited -f status=created)</kbd> : supprime tous les conteneurs soit créés soit sortis ; </li>
     </ul>
 </p>
 

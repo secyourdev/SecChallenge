@@ -1,21 +1,15 @@
-<!-- Titre : La stéganographie avec Zsteg -->
-<!-- Description : Voici un tutoriel afin de connaître un outil utile à la stéganographie sur une image : Zsteg -->
-<!-- FLAG du tutoriel : Tuto-Zsteg -->
-
 <h2><b>ZSTEG : OUTIL DE STEGANALYSE</b></h2>
+    
 
 <h2 class="mb-3"></br>1. Introduction</h2>
-
-<p>
+<p >
     Zsteg est un outil Ruby qui détecte les données cachées dans les images PNG et BMP.
     </br>
-    Cet outil est donc très utile pour détecter les données cachées par la stéganographie en PNG et BMP, surtout pour la
-    stéganographie LSB.
-</p>
-
-
+    Cet outil est donc très utile pour détecter les données cachées par la stéganographie en PNG et BMP, surtout pour la stéganographie LSB.
+</p>    
+    
+    
 <h2 class="mb-3"></br>2. Caractéristiques</h2>
-
 <p>
     Zsteg est capable de détecter :
     <ul>
@@ -26,98 +20,90 @@
         <li>LSB avec l'ensemble Eratosthenes</li>
     </ul>
 </p>
-
+    
 <h2 class="mb-3"></br>3. Installation</h2>
-
 <p>
     Pour installer Zsteg sur Kali Linux, il suffit de taper la commande suivante :
     </br>
     <kbd class="ms-3">sudo gem install zsteg</kbd>
 </p>
-
+            
 
 <h2 class="mb-3"></br>4. Fonctionnement</h2>
 
 <p>
-    Pour comprendre comment Zsteg fonctionne et ce que l'outil nous permet de réaliser, vous pouvez taper la commande
-    ci-dessous :
+    Pour comprendre comment Zsteg fonctionne et ce que l'outil nous permet de réaliser, vous pouvez taper la commande ci-dessous :
     </br>
     <kbd class="ms-3">zsteg -h</kbd>
-    <br><br>
-
+    </br></br>
+                
     On peut alors observer toutes les options à notre disposition :
 </p>
 
-<img src="Tutoriel/tuto-zsteg/images/zsteg-tuto-0.jpg" alt="" class="img-fluid" width="600" height="400">
+<img src="images/zsteg-tuto-0.jpg" alt="" class="img-fluid" width="600" height="400">
 
 <p>
-    Certaines options sont très intuitives et faciles à utiliser, alors que d'autres nécessitent de préciser des valeurs
-    dont nous ne connaissons pas forcément la signification.
+    Certaines options sont très intuitives et faciles à utiliser, alors que d'autres nécessitent de préciser des valeurs dont nous ne connaissons pas forcément la signification.
     </br>
     En effet, Zsteg comprend les paramètres suivants :
     <ul>
-        <li> <kbd class="ms-3">-c</kbd> : correspond à la compréhension combinée de rgba;
+        <li> <kbd class="ms-3">-c</kbd> : correspond à la compréhension combinée de rgba; 
             </br>
-            Par exemple, r3g2b3 signifie les 3bit bas du canal r, 2bit du canal g, et 3bit du canal r.
+            Par exemple, r3g2b3 signifie les 3bit bas du canal r, 2bit du canal g, et 3bit du canal r. 
             </br>
-            S'il est défini à rgb sans numéro, cela signifie que le nombre de bits lus par chaque canal est le même, et
-            le nombre de bits a le paramètre <kbd class="ms-3">-b</kbd>. </li>
+            S'il est défini à rgb sans numéro, cela signifie que le nombre de bits lus par chaque canal est le même, et le nombre de bits a le paramètre <kbd class="ms-3">-b</kbd>. </li>
         </br>
-        <li> <kbd class="ms-3">-b</kbd> : définit le nombre de bits lus par canal, en commençant par le bit le plus bas;
+        <li> <kbd class="ms-3">-b</kbd> : définit le nombre de bits lus par canal, en commençant par le bit le plus bas; 
             </br>
-            Vous pouvez aussi utiliser un masque. Par exemple, pour prendre le bit le plus bas et le bit le plus haut,
-            vous pouvez utiliser <kbd class="ms-3">-b 10000001</kbd> ou <kbd class="ms-3">-b 0x81</kbd>. </li>
+            Vous pouvez aussi utiliser un masque. Par exemple, pour prendre le bit le plus bas et le bit le plus haut, vous pouvez utiliser <kbd class="ms-3">-b 10000001</kbd> ou <kbd class="ms-3">-b 0x81</kbd>. </li>
         </br>
-        <li> <kbd class="ms-3">-o</kbd> : définit l'ordre de lecture des rangs;
+        <li> <kbd class="ms-3">-o</kbd> : définit l'ordre de lecture des rangs; 
             </br>
-            Par exemple, <kbd class="ms-3">xy</kbd> signifie de haut en bas, et de gauche à droite.
+            Par exemple, <kbd class="ms-3">xy</kbd> signifie de haut en bas, et de gauche à droite. 
             Si une lettre est écrite en majuscule, cela signifie l'ordre inverse.
             </br>
             Les ordres de lecture les plus utilisés sont <kbd class="ms-3">xy</kbd> et <kbd class="ms-3">xY</kbd>. </li>
     </ul>
 
-    Si jamais vous souhaitez directement utiliser toutes les méthodes connues par Zsteg, le drapeau <kbd
-        class="ms-3">-a</kbd> vous permet de palier cette demande et d'obtenir un affichage complet.
+    Si jamais vous souhaitez directement utiliser toutes les méthodes connues par Zsteg, le drapeau <kbd class="ms-3">-a</kbd> vous permet de palier cette demande et d'obtenir un affichage complet.
 </p>
 
 
 <h2 class="mb-3"></br>5. Application</h2>
-
+    
 <p>
     Pour vous montrer comment Zsteg fonctionne, nous allons vous montrer un exemple ci-dessous.
-    </br>
-    Voici une image où un message a été dissimulé dans les LSB. La modification de cette image ne peut être vue à l'oeil
-    nu :
+    </br>    
+    Voici une image où un message a été dissimulé dans les LSB. La modification de cette image ne peut être vue à l'oeil nu :
 </p>
-
-<img src="Tutoriel/tuto-zsteg/images/zsteg-tuto-lsb.png" alt="" class="img-fluid" width="400" height="350">
-
-<p>
+    
+<img src="Tutoriel/tuto-zsteg/images/zsteg-tuto-lsb.png" alt="" class="img-fluid" >
+                
+<p >
     Si vous voulez aussi réaliser le tutoriel de votre côté, téléchargez l'image en
-    <a class="link-primary" href="Tutoriel/tuto-zsteg/images/zsteg-tuto-lsb.png" download="zsteg-tuto-lsb.png"><u>cliquant ici</u><a>.
-            <br><br>
-
-            Ensuite, il vous suffit de taper la commande suivante :
-            </br>
-            <kbd class="ms-3">zsteg zsteg-tuto-lsb.png</kbd>
-            <br><br>
-
-            Vous obtiendrez alors le résultat suivant :
+    <a  class="link-primary" href="Tutoriel/tuto-zsteg/images/zsteg-tuto-lsb.png" download="zsteg-tuto-lsb.png"><u>cliquant ici</u><a>.
+    </br></br>
+                    
+    Ensuite, il vous suffit de taper la commande suivante :
+    </br>
+    <kbd class="ms-3">zsteg zsteg-tuto-lsb.png</kbd>
+    </br></br>
+                
+    Vous obtiendrez alors le résultat suivant :
 </p>
 
-<img src="Tutoriel/tuto-zsteg/images/zsteg-tuto-1.jpg" alt="" class="img-fluid" width="670" height="400">
+<img src="images/zsteg-tuto-1.jpg" alt="" class="img-fluid" width="670" height="400">
 
-<p>
-    On peut alors remarquer qu'un message a été retrouvé aux niveau des LSB pour les canaux rgb
+<p >
+    On peut alors remarquer qu'un message a été retrouvé aux niveau des LSB pour les canaux rgb 
     avec pour ordre d'itération des pixels xy.
 </p>
-
-
+    
+    
 <h2 class="mb-3"></br>Fin du tutoriel</h2>
-
-<p>
-    Le tutoriel est maintenant terminé, et vous devriez être capable de pouvoir utiliser les options que Zsteg met à
-    disposition.
+    
+<p >
+    Le tutoriel est maintenant terminé, et vous devriez être capable de pouvoir utiliser les options que Zsteg met à disposition.
     </br>
     Pour valider ce tutoriel, il vous suffira de rentrer "Tuto-Zsteg" dans la case de validation.
 </p>

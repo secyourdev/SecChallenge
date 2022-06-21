@@ -50,16 +50,16 @@ INSERT INTO `challenge` (`IdChallenge`, `Emplacement`, `Reponse`, `NomChallenge`
 (4, 'Challenge/challenge-rsa/challenge-rsa.html', 'dechiffrer ce message est vraiment simple', 'RSA', 'Chiffrement RSA', NULL, NULL, NULL, 5),
 (5, 'Challenge/Challenge-mitm/Challenge-mitm.html', 'ILoveChocolate', 'Man in the middle', 'arp poisoning', NULL, NULL, 'Collecte d\'information', 5),
 (6, 'Challenge/Challenge-osint/Challenge-osint.html', '6718709afea3accd6415832982f15e13', 'OSINT', 'OSINT', 'Brute force', NULL, 'Collecte d\'information', 5),
-(7, 'Challenge/Challenge-john/Challenge-john.html', 'ilovejeremy', 'John the ripper', 'Brute force', NULL, NULL, 'Attaque de mot de passe', 5),
-(8, 'Challenge/Challenge-nessus/Challenge-nessus.html', 'SSH', 'Nessus', NULL, NULL, NULL, 'Scanner de vulnérabilité', 5),
+(7, 'Challenge/Challenge-john/Challenge-john.html', 'ilovejeremy', 'John the ripper', 'Brute force', 'Compromis temps-mémoire', NULL, 'Attaque de mot de passe', 5),
+(8, 'Challenge/Challenge-nessus/Challenge-nessus.html', 'SSH', 'Nessus', 'Analyse Serveur Web', NULL, NULL, 'Scanner de vulnérabilité', 5),
 (9, 'Challenge/Challenge-ssh/challenge-ssh.html', '50617461746F725353484E6574636174', 'SSH', 'patator', 'ssh', 'netcat', 'Prise de contrôle', 5),
-(10, 'Challenge/challenge-rainbowcrack/challenge-rainbowcrack.html', 'ici alpha il nous faut un bonbon et vite', 'Rainbowcrack', NULL, NULL, NULL, 'Attaque de mot de passe', 5),
-(11, 'Challenge/challenge-aperisolve/challenge-aperisolve.html', 'LeChallengeEstReussi', 'Challenge Apéri\'Solve', 'Apéri\'Solve', NULL, NULL, 'Stéganographie', 5),
+(10, 'Challenge/challenge-rainbowcrack/challenge-rainbowcrack.html', 'ici alpha il nous faut un bonbon et vite', 'k4li', NULL, NULL, NULL, 'Attaque de mot de passe', 5),
+(11, 'Challenge/challenge-aperisolve/challenge-aperisolve.html', 'LeChallengeEstReussi', 'Apéri\'Solve', 'Apéri\'Solve', NULL, NULL, 'Stéganographie', 5),
 (12, 'Challenge/challenge-stegano/challenge-stegano.html', 'l0vE-5teg4n0', 'Stéganographie', 'Stéganographie', 'Cyberchef', NULL, 'Stéganographie', 5),
 (13, 'Challenge/challenge-wmic/challenge-wmic.html', '5da507ae6b4cfb86904b5651ce99839138eae6f5', 'Wmic', 'Commandes Wmic', NULL, NULL, 'Collecte d\'information', 5),
 (14, 'Challenge/challenge-nikto/challenge-nikto.html', '877', 'Nikto', 'Analyse serveur web', 'Reconnaissance', NULL, 'Scanner de vulnérabilité', 5),
-(15, 'Challenge/challenge-sqlmap/Challenge-sqlmap.html', '0924086489ca5a44e71715a6c00832cb', 'Sql injection', 'SQL', 'SQLMap', 'PHP', NULL, 5);
-
+(15, 'Challenge/challenge-sqlmap/Challenge-sqlmap.html', '0924086489ca5a44e71715a6c00832cb', 'Sql injection', 'SQL', 'SQLMap', 'PHP', NULL, 5),
+(16, 'Challenge/challenge-cyberchef/challenge-cyberchef.html', '22/12/1973', 'RoDate', 'CyberChef', 'Brute force', NULL, 'Collecte d\'information', 5);
 -- --------------------------------------------------------
 
 --
@@ -104,6 +104,7 @@ INSERT INTO `cours` (`Id`, `Titre`, `Description`, `EmplacementCours`, `LienImag
 (24, 'King-Phisher', 'Vous trouverez ici une introduction sur une boîte à outils pour les campagnes de phishing', 'Cours/cours-kingphisher/cours-kingphisher.html', 'Cours/cours-kingphisher/image-premiere-page.jpg', 'Outil'),
 (25, 'Faille XXE', 'Qu\'est-ce que la faille XXE ? Que permet-elle de réaliser ?', 'Cours/cours-xxe/cours-failleXXE.html', 'Cours/cours-xxe/images/image.png', 'Faille'),
 (26, 'Les antivirus', 'Dans ce cours nous allons décourvir les méthodes employées pars les antivirus pour analyser les fichiers', 'Cours/cours-av/cours-av.html', 'Cours/cours-av/av.jpeg', 'Outil');
+(27, 'Foremost', 'Vous trouverez ici une introduction sur un logiciel permettant la récupération de données.', 'Cours/cours-foremost/cours-foremost.html', 'Cours/cours-foremost/image-premiere-page.jpg', 'Outil');
 
 -- --------------------------------------------------------
 
