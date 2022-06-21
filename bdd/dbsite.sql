@@ -374,7 +374,8 @@ INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Description`, `Reponse`, `Emplac
 (34, 'GoBuster', 'Voici un tutoriel afin de connaître un outil qui permet le brute force d\'URL Web : GoBuster', 'Tuto-GoBuster', 'Tutoriel/tuto-gobuster/tuto-gobuster.html', 'Tutoriel/tuto-gobuster/image-premiere-page.jpg', 'Prise de contrôle'),
 (35, 'GHIDRA', 'apprendre à manipuler GHIDRA', NULL, 'Tutoriel/tuto-ghidra/tuto-ghidra.html', 'Tutoriel/tuto-ghidra/affiche.png', NULL),
 (36, 'Apprendre à utiliser acunétix', 'Utiliser acunétix pour sécuriser vos platformes internet', NULL, 'Tutoriel/tuto-acunetix/acunetix.html', 'Tutoriel/tuto-acunetix/icon.png', NULL),
-(37, 'Geoint', 'Ce tutoriel vous apprendra les bases du geoint', NULL, 'Tutoriel/tuto-geoint/tuto-geoint.html', 'Tutoriel/tuto-geoint/affiche.png', NULL);
+(37, 'Geoint', 'Ce tutoriel vous apprendra les bases du geoint', NULL, 'Tutoriel/tuto-geoint/tuto-geoint.html', 'Tutoriel/tuto-geoint/affiche.png', NULL),
+(38, 'GNU Debugger', 'Apprendre à debugger un programme avec GDB', NULL, 'Tutoriel/tuto-gdb/tuto-gdb.html', 'Tutoriel/tuto-gdb/gdb.png', NULL);
 
 -- --------------------------------------------------------
 

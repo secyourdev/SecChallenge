@@ -1,0 +1,45 @@
+<h1><b>GNU Debugger</b></h1>
+
+<h2 class="mb-3">1. PRÉSENTATION DE L'OUTIL </h2>
+<p>
+	GNU Debugger ou GDB est un debugger développé à l'origine pour le projet GNU mais fonctionnant sous plusieurs
+	systèmes UNIX. GDB fonctionne pour plusieurs langages
+	de programmation tels que C, C++ ou Fortran.
+	</br>
+	</br>
+	GDB est utilisé pour débugger un programme ligne par ligne durant son exécution ou post mortem quand le programme a
+	été arrété suite à une erreur.
+	Son interface est entièrement en lignes de commande bien que certaines applications permettent de l'utiliser avec
+	une interface graphique. Certains IDE tels qu'Eclipse
+	l'utilisent directement en arrière-plan lors de l'exécution d'un programme.
+
+</p>
+
+<h2 class="mb-3">2. UTILISATION </h2>
+<p>
+	Pour utiliser GDB, il faut que votre programme possède des informations de debug, pour cela, il suffit d'ajouter
+	l'argument -g lors de la compilation :
+	<kbd class="ms-3">gcc -g programme.c -o programme</kbd>
+	</br>Il reste ensuite à taper la commande <kbd class="ms-3">gdb programme</kbd> afin de lancer le debug.
+	</br>
+	</br>
+	Une fois le debug en cours, de nombreuses commandes permettent de l'utiliser :
+	</br>
+	</br>- <kbd class="ms-3">break programme.c:x</kbd> ou <kbd class="ms-3">b programme.c:x</kbd> permet de placer un
+	breakpoint à la ligne x du programme "programme.c".
+	</br>- <kbd class="ms-3">delete x</kbd> ou <kbd class="ms-3">d x</kbd> permet de supprimer le breakpoint à la ligne
+	x (ou tous les breakpoints si aucun argument n'est ajouté).
+	</br>- <kbd class="ms-3">info breakpoints</kbd> liste tous les breakpoints du programme.
+	</br>- <kbd class="ms-3">run</kbd> ou <kbd class="ms-3">r</kbd> permet de lancer le programme jusqu'au prochain
+	breakpoint.
+	</br>- <kbd class="ms-3">continue</kbd> ou <kbd class="ms-3">c</kbd> permet de relancer un programme en pause
+	jusqu'au prochain breakpoint.
+	</br>- <kbd class="ms-3">next</kbd> ou <kbd class="ms-3">n</kbd> exécute la prochaine instruction du programme mais
+	ne rentre pas dans les fonctions (avec un nombre en argument, il est possible d'exécuter plusieurs instructions).
+	</br>- <kbd class="ms-3">step</kbd> ou <kbd class="ms-3">s</kbd> exécute la prochaine instruction du programme et
+	peut rentrer dans les fonctions.
+	</br>- <kbd class="ms-3">finish</kbd> ou <kbd class="ms-3">f</kbd> exécute le programme jusqu'à sortir de la
+	fonction courante.
+	</br>- <kbd class="ms-3">print variable</kbd> permet d'afficher la valeur de la variable "variable" lorsque le
+	programme est arrété.
+</p>
