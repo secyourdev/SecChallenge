@@ -371,7 +371,8 @@ INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Description`, `Reponse`, `Emplac
 (31, 'Wireshark', 'Qu\'est ce que Wireshark et comment s\'en servir?', NULL, 'Tutoriel/tuto-wireshark/tuto-wireshark.html', 'Tutoriel/tuto-wireshark/wireshark.jpg', NULL),
 (32, 'L\'OSINT avec Maltego', 'Rechercher des informations n\'a jamais été aussi simple avec Maltego', NULL, 'Tutoriel/tuto-maltego/tuto-maltego.html', 'Tutoriel/tuto-maltego/maltego.png', NULL),
 (33, 'Sqlmap', 'Comment effectuer des injections sql de façon automatique', NULL, 'Tutoriel/tuto-sqlmap/tuto-sqlmap.html', 'Tutoriel/tuto-sqlmap/sqlmap.png', NULL),
-(34, 'GoBuster', 'Voici un tutoriel afin de connaître un outil qui permet le brute force d\'URL Web : GoBuster', 'Tuto-GoBuster', 'Tutoriel/tuto-gobuster/tuto-gobuster.html', 'Tutoriel/tuto-gobuster/image-premiere-page.jpg', 'Prise de contrôle');
+(34, 'GoBuster', 'Voici un tutoriel afin de connaître un outil qui permet le brute force d\'URL Web : GoBuster', 'Tuto-GoBuster', 'Tutoriel/tuto-gobuster/tuto-gobuster.html', 'Tutoriel/tuto-gobuster/image-premiere-page.jpg', 'Prise de contrôle'),
+(35, 'GHIDRA', 'apprendre à manipuler GHIDRA', NULL, 'Tutoriel/tuto-ghidra/tuto-ghidra.html', 'Tutoriel/tuto-ghidra/affiche.png', NULL);
 -- --------------------------------------------------------
 
 --
