@@ -375,8 +375,10 @@ INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Description`, `Reponse`, `Emplac
 (35, 'GHIDRA', 'apprendre à manipuler GHIDRA', NULL, 'Tutoriel/tuto-ghidra/tuto-ghidra.html', 'Tutoriel/tuto-ghidra/affiche.png', NULL),
 (36, 'Apprendre à utiliser acunétix', 'Utiliser acunétix pour sécuriser vos platformes internet', NULL, 'Tutoriel/tuto-acunetix/acunetix.html', 'Tutoriel/tuto-acunetix/icon.png', NULL),
 (37, 'Geoint', 'Ce tutoriel vous apprendra les bases du geoint', NULL, 'Tutoriel/tuto-geoint/tuto-geoint.html', 'Tutoriel/tuto-geoint/affiche.png', NULL),
-(38, 'GNU Debugger', 'Apprendre à debugger un programme avec GDB', NULL, 'Tutoriel/tuto-gdb/tuto-gdb.html', 'Tutoriel/tuto-gdb/gdb.png', NULL);
-
+(38, 'GNU Debugger', 'Apprendre à debugger un programme avec GDB', NULL, 'Tutoriel/tuto-gdb/tuto-gdb.html', 'Tutoriel/tuto-gdb/gdb.png', NULL),
+(39, 'RAT', 'C\'est un software malveillant qui a pour but de prendre contrôle de l\'appareil infecté', NULL, 'Tutoriel/tuto-rat/tuto-rat.html', 'Tutoriel/tuto-rat/affiche.png', NULL),
+(40, 'NETCAT', 'Un outil permettant de créer une connexion entre deux ou plusieur machines', NULL, 'Tutoriel/tuto-netcat/tuto-netcat.html', 'Tutoriel/tuto-netcat/affiche.png', NULL),
+(41, 'Volatility', 'Comment analyser la ram d\'un ordinateur', NULL, 'Tutoriel/tuto-volatility/tuto-volatility.html', 'Tutoriel/tuto-volatility/affiche.png', NULL);
 -- --------------------------------------------------------
 
 --

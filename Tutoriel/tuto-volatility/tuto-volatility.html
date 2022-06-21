@@ -1,0 +1,164 @@
+<h1>Volatility</h1>
+
+<h2 class="mb-3">1. Objectif</h2>
+<p>
+	L'objectif de ce tutoriel est de vous présenter Volatility et son utilité pour la réponse aux incidents.
+	</br>
+	</br>
+	Le framework Volatility est une collection d’outils open-source, implémenté en Python et qui est
+	multi-plateforme(windows, linux, mac os ..).
+	</br>
+	Il vous permet de travailler avec des images de mémoire volatile, de les analyser, d’obtenir des données sur les
+	états passés du système, et plus encore.
+	</br>
+	Sur un ordinateur, il y a beaucoup de choses en cours d'exécution dans la mémoire qui ne seront jamais écrites sur
+	le disque dur.
+	Volatility nous permet d'analyser ces éléments qui n'ont pas été enregistrés sur le disque, mais qui peuvent encore
+	être en mémoire.
+	Il s’utilise beaucoup pour l'analyse des logiciels malveillants.
+	</br>
+	</br>
+	Vous pourrez trouver plus d'informations ici : <a class="link-primary"
+		href="https://volatility3.readthedocs.io/en/latest/"><u>https://volatility3.readthedocs.io/en/latest/</u></a>
+	</br>
+</p>
+
+<h2 class="mb-3">2. Configuration</h2>
+
+<p>
+	Pour installer Volatility, il faut d'abord exécuter la commande suivante :
+	<kbd class="ms-3">git clone https://github.com/volatilityfoundation/volatility3.git</kbd>
+	</br></br>
+	Cela créer un dossier volatility3 il faudra alors se placer dans ce fichier puis installer
+	les dépendances requises afin de permettre à Volatility de fonctionner sans problème :
+	</br></br>
+	<kbd class="ms-3">pip3 install -r requirements.txt</kbd>
+	</br></br>
+	Enfin il nous faut un fichier à analyser. Plusieurs outils peuvent être utilisés pour capturer la RAM d’un appareil
+	physique. On peut citer WinPmem parmi ces outils.
+	</br>
+	C'est cette capture mémoire qu'on rentrera en ligne de commande.
+</p>
+
+<h2 class="mb-3">3. Les étapes</h2>
+
+
+<h3>i. Identifier les processus malveillants</h3>
+
+<p>
+	La première chose qu’on peut faire c’est d’analyser les processus en cours d’exécution sur l’appareil
+	au moment de la capture de la RAM. C’est un moyen d’identifier les malwares potentiellement
+	exécutés sur ce dernier. Dans Volatility, on peut pour cela utiliser le module pslist :
+	</br></br>
+	<kbd class="ms-3"> python3 vol.py -f FILENAME windows.pslist > output.txt </kbd>
+	</br></br>
+	Cette syntaxe permet de placer la sortie de la commande qui peut s'avérer très longue dans un fichier texte nommé
+	output.
+</p>
+
+<img src="Tutoriel/tuto-volatility/volatility1.png" alt="" class="img-fluid">
+
+<p>
+	On peut parcourir le nom des processus à la recherche d’un nom qui pourrait attirer notre attention.
+	Reste ensuite à déterminer s’il s’agit d’un processus légitime.
+	</br>
+	</br>
+	Ensuite, le module pstree nous renseigne sur quels processus en ont lancé d’autres.
+	Pour essayer de repérer les activités suspectes. Par exemple voir quel processus a lancé
+	« cmd.exe » ou « powershell.exe » et vérifier si cette activité semble légitime ou non.
+	</br>
+	</br>
+	Les pirates nomment souvent le processus exécuté par leur malware comme des processus Windows,
+	par exemple « svchost.exe ». Le malware peut ainsi passer inaperçu.
+	</br>
+	</br>
+	pstree permet de repérer ces processus malveillants car les processus Windows s’exécutent toujours
+	à partir d’emplacements définis sur le disque et leur processus parent est généralement
+	un processus défini. Par exemple, « taskhostw » s’exécutera toujours à partir de l’emplacement
+	« %systemroot%\system32\taskhostw.exe » et son processus parent sera toujours « svchost.exe ».
+	</br> </br>
+	<kbd class="ms-3"> python3 vol.py -f FILENAME windows.pstree > output.txt </kbd>
+</p>
+
+<img src="Tutoriel/tuto-volatility/volatility2.png" alt="" class="img-fluid">
+
+<p>
+	Le contenu de la colonne PID est trié par processus, lesquels sont associés à leurs processus enfant. Chaque
+	processus enfant se voit attribuer le symbole * devant son PID, et chaque processus enfant suivant en reçoit un
+	supplémentaire en préfixe de son PID. L’image ci-dessus montre que le processus « System » a lancé « smss.exe ».
+</p>
+
+
+<h3>ii. Identifier les connexions réseau malveillantes</h3>
+<p>
+	Lorsqu’un vidage mémoire est capturé, toutes les connexions réseau au moment de la capture sont également
+	enregistrées dans la RAM capturée. C’est une excellente chose pour les agents de réponse aux incidents, car toute
+	connexion réseau malveillante peut être identifiée, notamment le port source, l’IP de destination, le port de
+	destination et le processus auquel l’activité réseau est liée.
+	</br></br>
+	Le module netscan permet d’afficher les connexions réseau du vidage mémoire analysé :
+	</br></br>
+	<kbd class="ms-3"> python3 vol.py -f FILENAME windows.netscan </kbd>
+</p>
+
+<img src="Tutoriel/tuto-volatility/volatility3.png" alt="" class="img-fluid">
+<p>
+
+	L’image ci-dessous montre une connexion réseau généré par un processus nommé « msedge.exe » Volatility a identifié
+	une connexion à une adresse IP distincte communiquant sur le port 443.
+	</br></br>
+	<img src="Tutoriel/tuto-volatility/volatility4.png" alt="" class="img-fluid">
+	</br></br>
+	On peut ensuite vérifier si l’adresse IP est associée à un serveur de commande malveillant connu.
+</p>
+
+<img src="Tutoriel/tuto-volatility/volatility5.png" alt="" class="img-fluid">
+
+<p>
+	On peut aussi parcourir notre fichier à la recherche d’un port non usuel auquel la machine serait connectée. On sera
+	plus particulièrement attentif aux ports comportant les mêmes nombres comme 3333 ou une suite de nombres comme 1234
+	car ces ports sont plus régulièrement utilisés pour des actions malveillantes.
+</p>
+
+<h3>iii. Identifier du code injecté</h3>
+
+<p>
+
+	Les malwares sont souvent packés, de sorte que leur code malveillant est masqué. Pour qu’il soit difficile de
+	l’étudier et de déterminer rapidement ce qu’il fait, les cybercriminels l’encapsule dans du code ce qui permet de
+	masquer les lignes écrites par l’auteur du malware.
+	</br>
+	</br>
+	Le malware doit donc être dépacker et cela se déroule dans la mémoire. Lorsqu’il se dépack il créer un processus
+	enfant et injecte l’exécutable/le malware dépacké dans ce dernier.
+	</br>
+	</br>
+	Pour rechercher du code injecté avec Volatility, nous utilisons le module malfind qui affiche une liste des
+	processus soupçonnés de contenir du code injecté d’après les informations d’en-tête affichées au format hexadécimal,
+	les droits d’accès et du code assembleur extrait.
+	</br></br>
+	<kbd class="ms-3"> python3 vol.py -f FILENAME windows.malfind </kbd>
+</p>
+
+<img src="Tutoriel/tuto-volatility/volatility6.png" alt="" class="img-fluid">
+
+<p>
+	On s’intéresse au PID, au nom, à la protection des processus. La protection concerne la sortie
+	PAGE_EXECUTE_READWRITE. Cela signifie que le processus a des droits en exécution, en lecture et en écriture.
+	</br>
+	</br>
+	Ceci est courant pour les malwares car ils doivent pouvoir s’exécuter ou exécuter d’autres fichiers
+	téléchargés/déposés. Ils doivent lire les fichiers sur l’appareil compromis et pouvoir en écrire sur le disque. Par
+	conséquent, tout processus capturé possédant ces autorisations apparaît dans la sortie de malfind.
+	</br>
+	</br>
+	La zone encadrée en rouge affiche le début des données contenues dans le processus au format hexadécimal, suivi des
+	mêmes valeurs au format ASCII.
+	</br>
+	</br>
+	Un exécutable Windows est un type de fichier courant utilisé pour déployer des malwares. L’en-tête d’un fichier
+	exécutable Windows au format hexadécimal commence toujours par « 4D 5A », ou « MZ » au format ASCII. Il faudra donc
+	se renseigner sur un processus dont les données commencent de la même manière.
+
+</p>
+
