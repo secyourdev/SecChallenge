@@ -103,7 +103,7 @@ INSERT INTO `cours` (`Id`, `Titre`, `Description`, `EmplacementCours`, `LienImag
 (23, 'Les Fonctions de Hachage', 'Comment faire pour s\'assurer qu\'un message n\'ait pas été modifié ?', 'Cours/cours-hachage/cours-hachage.html', 'Cours/cours-hachage/Image_hach.jpg', 'Notion'),
 (24, 'King-Phisher', 'Vous trouverez ici une introduction sur une boîte à outils pour les campagnes de phishing', 'Cours/cours-kingphisher/cours-kingphisher.html', 'Cours/cours-kingphisher/image-premiere-page.jpg', 'Outil'),
 (25, 'Faille XXE', 'Qu\'est-ce que la faille XXE ? Que permet-elle de réaliser ?', 'Cours/cours-xxe/cours-failleXXE.html', 'Cours/cours-xxe/images/image.png', 'Faille'),
-(26, 'Les antivirus', 'Dans ce cours nous allons décourvir les méthodes employées pars les antivirus pour analyser les fichiers', 'Cours/cours-av/cours-av.html', 'Cours/cours-av/av.jpeg', 'Outil');
+(26, 'Les antivirus', 'Dans ce cours nous allons décourvir les méthodes employées pars les antivirus pour analyser les fichiers', 'Cours/cours-av/cours-av.html', 'Cours/cours-av/av.jpeg', 'Outil'),
 (27, 'Foremost', 'Vous trouverez ici une introduction sur un logiciel permettant la récupération de données.', 'Cours/cours-foremost/cours-foremost.html', 'Cours/cours-foremost/image-premiere-page.jpg', 'Outil');
 
 -- --------------------------------------------------------
