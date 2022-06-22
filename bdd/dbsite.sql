@@ -89,7 +89,7 @@ INSERT INTO `cours` (`Id`, `Titre`, `Description`, `EmplacementCours`, `LienImag
 (6, 'La cryptologie', 'Cours pour introduire la notion de cryptologie', 'Cours/cours-crypto/cours-crypto.html', 'Cours/cours-crypto/crypto1.png', 'Notion'),
 (7, 'Injection SQL', 'Qu\'est-ce qu\'une injection SQL?, Comment cela fonctionne ?, Comment s\'en protéger ?...', 'Cours/cours-sql/cours-sql.html', 'Cours/cours-sql/sql1.jpg', 'Notion'),
 (8, 'Adware', 'Des publicités personalisées apparaissent sur votre ecran. Lisez ce cours pour en savoir plus.', 'Cours/cours-adware/cours-adware.html', 'Cours/cours-adware/adware1.png', 'Notion'),
-(9, 'Vulnérabilité Sudo', 'Qu\'est ce que la faille sudo Baron samedit ? Que permet elle d\'exploiter ?', 'Cours/cours-sudo/cours-sudo.html', 'Cours/cours-sudo/sudo.jpg', 'Faille'),
+(9, 'Vulnérabilité Sudo', 'Qu\'est ce que la faille sudo Baron samedit ? Que permet elle d\'exploiter ?', 'Cours/cours-sudo/cours-sudo-gp3.html', 'Cours/cours-sudo/image-premiere-page.jpg', 'Faille'),
 (11, 'OSINT', 'L\'OSINT est de plus en plus répendu de nos jours, mais qu\'est ce que l\'OSINT ?', 'Cours/cours-osint/cours-osint.html', 'Cours/cours-osint/osint.jpg', 'Notion'),
 (12, 'Vulnérabilité Baron Samedit', 'Depuis plus de 10 ans, il était possible de devenir administrateur sur n\'importe quelle machine utilisant sudo. Mais comment est-ce possible ?', 'Cours/cours-baron/cours-baron.html', 'Cours/cours-baron/baron.jpg', 'Faille'),
 (13, 'Vulnérabilité ROCA', 'Comment le plus puissant algorithme de chiffrement des données a-t-il pu devenir une passoire en quelques instants ?', 'Cours/cours-roca/cours-roca.html', 'Cours/cours-roca/roca.jpg', 'Faille'),
