@@ -49,7 +49,7 @@ INSERT INTO `challenge` (`IdChallenge`, `Emplacement`, `Reponse`, `NomChallenge`
 (3, 'Challenge/Challenge3/Challenge3.html', 'salut tout le monde', 'Pourras-tu décrypter le message ?', 'Chiffrement : Code César', 'Decryptage', 'Langage Python', NULL, 5),
 (4, 'Challenge/challenge-rsa/challenge-rsa.html', 'dechiffrer ce message est vraiment simple', 'RSA', 'Chiffrement RSA', NULL, NULL, NULL, 5),
 (5, 'Challenge/Challenge-mitm/Challenge-mitm.html', 'ILoveChocolate', 'Man in the middle', 'arp poisoning', NULL, NULL, 'Collecte d\'information', 5),
-(6, 'Challenge/Challenge-osint/Challenge-osint.html', '6718709afea3accd6415832982f15e13', 'OSINT', 'OSINT', 'Brute force', NULL, 'Collecte d\'information', 5),
+(6, 'Challenge/Challenge-osint/challenge-osint.html', '6718709afea3accd6415832982f15e13', 'OSINT', 'OSINT', 'Brute force', NULL, 'Collecte d\'information', 5),
 (7, 'Challenge/Challenge-john/Challenge-john.html', 'ilovejeremy', 'John the ripper', 'Brute force', 'Compromis temps-mémoire', NULL, 'Attaque de mot de passe', 5),
 (8, 'Challenge/Challenge-nessus/Challenge-nessus.html', 'SSH', 'Nessus', 'Analyse Serveur Web', NULL, NULL, 'Scanner de vulnérabilité', 5),
 (9, 'Challenge/Challenge-ssh/challenge-ssh.html', '50617461746F725353484E6574636174', 'SSH', 'patator', 'ssh', 'netcat', 'Prise de contrôle', 5),
