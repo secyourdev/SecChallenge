@@ -34,26 +34,27 @@
     on peut essayer de se connecter avec des identifiants incorrects.
     On remarque alors dans la console du navigateur que le site a fait une requête à l'adresse suivante :
     http://localhost:3000/rest/user/login
-    <img src="Tutoriel/tuto-sqlmap/images/sqlmap/sqlmap1.png" alt="" class="img-fluid">
+    <br>
+    <img src="Tutoriel/tuto-sqlmap/images/sqlmap/sqlmap1.png" alt="" class="img-fluid"><br>
     En essayant maintenant de se connecter avec ' pour email on remarque une erreur dans l'onglet network qui nous
     indique le type de base de données utilisée.
-    <img src="Tutoriel/tuto-sqlmap/images/sqlmap/sqlmap2.png" alt="" class="img-fluid">
+    <br><img src="Tutoriel/tuto-sqlmap/images/sqlmap/sqlmap2.png" alt="" class="img-fluid"><br>
     ici il s'agit de SQLite.
 
-    <br><br>
+    <br>
     Il faut maintenant installer sqlmap :
-    <br><br>
+    <br>
     Pour cela : <kbd class="ms-3">bash> git clone --depth 1 https://github.com/sqlmapproject/sqlmap.git sqlmap-dev
     </kbd>
-    <br><br>
+    <br>
     On a maintenant le projet en local.
-    <br><br>
-    <img src="Tutoriel/tuto-sqlmap/images/sqlmap/sqlmap3.png" alt="" class="img-fluid">
-    <br><br>
+    <br>
+    <br><img src="Tutoriel/tuto-sqlmap/images/sqlmap/sqlmap3.png" alt="" class="img-fluid"><br>
+    <br>
     On peut se placer dans le dossier sqlmap-dev/
-    <br><br>
+    <br>
     Il faut maintenant exécuter sqlmap avec la commande suivante :
-    <br><br>
+    <br>
     <kbd class="ms-3">bash> python3 sqlmap.py -u 'http://shop:3000/rest/user/login'
         --data="email=test@test.com&password=test" --level 5 --risk 3 --ignore-code 401 --dbms='sqlite' --technique=B
     </kbd>
@@ -71,13 +72,13 @@
     --technique=B indique que l'on utilise la technique binaire.
     <br>
     On peut maintenant voir dans la console du navigateur que l'on a bien injecté le mot de passe.
-    <br><br>
+    <br>
     <img src="Tutoriel/tuto-sqlmap/images/sqlmap/sqlmap4.png" alt="" class="img-fluid">
-    <br><br>
+    <br>
     Ici il faut donc insérer dans id : 3654 et password : -5628' OR 2470=2470 AND 'msaf'='msaf
-    <br><br>
+    <br>
     On a donc :
-    <br><br>
+    <br>
     <img src="Tutoriel/tuto-sqlmap/images/sqlmap/sqlmap5.png" alt="" class="img-fluid">
     <br><br>
     Nous sommes donc connecté à notre site.
