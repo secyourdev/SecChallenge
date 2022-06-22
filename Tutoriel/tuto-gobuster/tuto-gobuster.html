@@ -7,17 +7,17 @@
     </br>
     C'est un outil à la fois simple d'utilisation et performant qui permet de brute force :
     <ul>
-        <li>des répertoires et fichiers d’un site web ;</li>
-        <li>des sous domaines d’un domaine principal ;</li>
-        <li>des hôtes virtuelles (vhost) d’un serveur web ;</li>
-        <li>des buckets Amazon ouverts ;</li>
+        <li>des répertoires et fichiers d’un site web;</li>
+        <li>des sous domaines d’un domaine principal;</li>
+        <li>des hôtes virtuelles (vhost) d’un serveur web;</li>
+        <li>des buckets Amazon ouverts;</li>
     </ul>
 </p>
 
 <h2 class="mb-3"></br>2. Installation de GoBuster</h2>
 
 <p>
-    Comme notifié ci-haut, GoBuster étant disponible dans les dépôts officiels de Kali Linux, et son
+    Comme notifié ci-haut, GoBuster étant disponible dans les dépôts officiels de Kali Linux, son
     installation est alors très simple.
     </br>
     Par sécurité, on télécharge d'abord les informations sur les paquets à partir de toutes les sources
@@ -40,24 +40,24 @@
     </br>
     Parmi la liste des commandes que l'on peut voir, voici les quatre commandes les plus importantes :
     <ul>
-        <li> <b>dir</b> : pour l’énumération des répertoires et fichiers ;</li>
-        <li> <b>dns</b> : pour l’énumération des sous domaines ;</li>
-        <li> <b>s3</b> : pour l’énumération de aws bucket;</li>
-        <li> <b>vhost</b> : pour l’énumération des vhost;</li>
+        <li> <kbd class="ms-3">dir</kbd> : pour l’énumération des répertoires et fichiers ;</li>
+        <li> <kbd class="ms-3">dns</kbd> : pour l’énumération des sous domaines ;</li>
+        <li> <kbd class="ms-3">s3</kbd> : pour l’énumération de aws bucket;</li>
+        <li> <kbd class="ms-3">vhost</kbd> : pour l’énumération des vhost;</li>
     </ul>
 </p>
 
 <h2 class="mb-3"></br>3. Brute force d'URL Web basique</h2>
 <p>
-    Ici, nous expliquerons uniquement la commande <b>dir</b>, qui est nécessaire pour indiquer que l'on
+    Ici, nous expliquerons uniquement la commande <kbd class="ms-3">dir</kbd>, qui est nécessaire pour indiquer que l'on
     souhaite lancer un brute force d'URL Web.
 </p>
 <p>
-    Les drapeaux utiles pour cette manipulation sont les drapeaux -u et -w:
+    Les drapeaux utiles pour cette manipulation sont les drapeaux <kbd class="ms-3">-u</kbd> et <kbd class="ms-3">-w</kbd>:
     </br>
-    Le drapeau -u permet d'indiquer l'URL du site internet que l'on souhaite cibler.
+    Le drapeau <kbd class="ms-3">-u</kbd> permet d'indiquer l'URL du site internet que l'on souhaite cibler.
     </br>
-    Le drapeau -w permet d’indiquer le chemin de la liste de mots que l'on souhaite utiliser.
+    Le drapeau <kbd class="ms-3">-w</kbd> permet d’indiquer le chemin de la liste de mots que l'on souhaite utiliser.
 </p>
 <p>
     La commande sera alors du format suivant :
@@ -118,7 +118,7 @@
     </br>
     <img src="Tutoriel/tuto-gobuster/tuto-gobuster-7.jpg" alt="" class="img-fluid">
     </br>
-    Le drapeau -x permet de spécifier les extensions que nous recherchons.
+    Le drapeau <kbd class="ms-3">-x</kbd> permet de spécifier les extensions que nous recherchons.
 </p>
 <p>
     GoBuster pourra alors réaliser un brute force de tous les mots de sa liste auquel il ajoutera les noms
