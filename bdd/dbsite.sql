@@ -99,7 +99,7 @@ INSERT INTO `cours` (`Id`, `Titre`, `Description`, `EmplacementCours`, `LienImag
 (18, 'Honeypot', 'honeypot ? Comment se protéger ?', 'Cours/cours-honeypot/cours-honeypot.html', 'Cours/cours-honeypot/honeypot.png', 'Défense'),
 (19, 'Man in the middle', 'Ici nous allons voir une des attaques les plus connues', 'Cours/cours-mitm/cours-mitm.html', 'Cours/cours-mitm/mitm.png', 'Notion'),
 (20, 'Reverse Engineering', 'Reverse engineering : l\'art de déconstruire', 'Cours/cours-reverse/cours-reverse.html', 'Cours/cours-reverse/Reverse.jpeg', 'Notion'),
-(21, 'Log4shell', 'Cours/cours-log4shell/log4shell.jpg', 'Qu\'est ce que la faille log4shell ? Que permet-elle d\'exploiter ?', 'Cours/cours-log4shell/cours-log4shell-gp3.html', 'Faille'),
+(21, 'Log4shell', 'Qu\'est ce que la faille log4shell ? Que permet-elle d\'exploiter ?', 'Cours/cours-log4shell/cours-log4shell-gp3.html', 'Cours/cours-log4shell/log4shell.jpg', 'Faille'),
 (22, 'msfvenom : tromper l\'antivirus ?', 'Ce cours vous permettra de connaître les différentes méthodes ainsi que leur limites pour créer un virus indétectable d\'un antivirus', 'Cours/cours-msfvenom/cours-msfvenom.html', 'Cours/cours-msfvenom/virus.png', 'Outil'),
 (23, 'Les Fonctions de Hachage', 'Comment faire pour s\'assurer qu\'un message n\'ait pas été modifié ?', 'Cours/cours-hachage/cours-hachage.html', 'Cours/cours-hachage/Image_hach.jpg', 'Notion'),
 (24, 'King-Phisher', 'Vous trouverez ici une introduction sur une boîte à outils pour les campagnes de phishing', 'Cours/cours-kingphisher/cours-kingphisher.html', 'Cours/cours-kingphisher/image-premiere-page.jpg', 'Outil'),
