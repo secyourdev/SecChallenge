@@ -140,10 +140,13 @@ INSERT INTO `presentation` (`Id`, `LienPresentation`, `LienImage`, `Titre`, `Des
 -- Structure de la table `rela_challenge_utilisateur`
 --
 
-CREATE TABLE `rela_challenge_utilisateur` (
-  `IdChallenge` int(11) NOT NULL,
-  `IdUtilisateur` int(11) NOT NULL,
-  `Score` int(11) DEFAULT NULL
+CREATE TABLE rela_challenge_utilisateur (
+  IdChallenge int(11) NOT NULL,
+  IdUtilisateur int(11) NOT NULL,
+  Score int(11) DEFAULT NULL,
+  PRIMARY KEY(IdChallenge, IdUtilisateur),
+  FOREIGN KEY(IdChallenge) REFERENCES challenge(IdChallenge),
+  FOREIGN KEY(IdUtilisateur) REFERENCES utilisateur(id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
