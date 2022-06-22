@@ -56,14 +56,14 @@
     <div id="pricing-box" class="section wb">
 
 		<div class ="listeCategories">
-        <a class ='categorie <?php if ($categorie=='Tous'){?> selected <?php } ?>' href="pricing.php?categorie=Tous"> Tous </a>
+        <a class ='categorie <?php if ($categorie=='Tous'){?> selected <?php } ?>' href="challengePage.php?categorie=Tous"> Tous </a>
 			<?php
 				$q=$BDD->prepare('SELECT DISTINCT(Categorie) FROM challenge WHERE Categorie IS NOT NULL');
 				$q->execute(array());
 				foreach($q as $ligne){
 			?>
             
-					<a class ='categorie<?php if ($categorie==$ligne['Categorie']){?> selected <?php } ?>' href="pricing.php?categorie=<?php echo $ligne['Categorie'] ?>"> <?php echo $ligne['Categorie']; ?> </a>
+					<a class ='categorie<?php if ($categorie==$ligne['Categorie']){?> selected <?php } ?>' href="challengePage.php?categorie=<?php echo $ligne['Categorie'] ?>"> <?php echo $ligne['Categorie']; ?> </a>
 			<?php
 				}
 			?>
@@ -146,3 +146,4 @@
 else{
 	header('Location: index.php');
 }
+?>
