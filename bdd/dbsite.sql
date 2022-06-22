@@ -59,7 +59,8 @@ INSERT INTO `challenge` (`IdChallenge`, `Emplacement`, `Reponse`, `NomChallenge`
 (13, 'Challenge/challenge-wmic/challenge-wmic.html', '5da507ae6b4cfb86904b5651ce99839138eae6f5', 'Wmic', 'Commandes Wmic', NULL, NULL, 'Collecte d\'information', 5),
 (14, 'Challenge/challenge-nikto/challenge-nikto.html', '877', 'Nikto', 'Analyse serveur web', 'Reconnaissance', NULL, 'Scanner de vulnérabilité', 5),
 (15, 'Challenge/challenge-sqlmap/Challenge-sqlmap.html', '0924086489ca5a44e71715a6c00832cb', 'Sql injection', 'SQL', 'SQLMap', 'PHP', NULL, 5),
-(16, 'Challenge/challenge-cyberchef/challenge-cyberchef.html', '22/12/1973', 'RoDate', 'CyberChef', 'Brute force', NULL, 'Collecte d\'information', 5);
+(16, 'Challenge/challenge-cyberchef/challenge-cyberchef.html', '22/12/1973', 'RoDate', 'CyberChef', 'Brute force', NULL, 'Collecte d\'information', 5),
+(17, 'Challenge/Challenge-john/challenge-johntheripper.html', 'GG_U_S0LV3_TH1S', 'John the ripper', 'Brute force', NULL, NULL, 'Attaque de mot de passe', 5);
 -- --------------------------------------------------------
 
 --
@@ -98,14 +99,13 @@ INSERT INTO `cours` (`Id`, `Titre`, `Description`, `EmplacementCours`, `LienImag
 (18, 'Honeypot', 'honeypot ? Comment se protéger ?', 'Cours/cours-honeypot/cours-honeypot.html', 'Cours/cours-honeypot/honeypot.png', 'Défense'),
 (19, 'Man in the middle', 'Ici nous allons voir une des attaques les plus connues', 'Cours/cours-mitm/cours-mitm.html', 'Cours/cours-mitm/mitm.png', 'Notion'),
 (20, 'Reverse Engineering', 'Reverse engineering : l\'art de déconstruire', 'Cours/cours-reverse/cours-reverse.html', 'Cours/cours-reverse/Reverse.jpeg', 'Notion'),
-(21, 'Log4shell', '\'Qu\'est ce que la faille log4shell ? Que permet-elle d\'exploiter ?', 'Cours/cours-log4shell/cours-log4shell.html', 'Cours/cours-log4shell/log4shell.jpg', 'Faille'),
+(21, 'Cours/cours-log4shell/log4shell.jpg', 'Log4shell', ''Qu'est ce que la faille log4shell ? Que permet-elle d'exploiter ?', 'Cours/cours-log4shell/cours-log4shell-gp3.html', 'Faille'),
 (22, 'msfvenom : tromper l\'antivirus ?', 'Ce cours vous permettra de connaître les différentes méthodes ainsi que leur limites pour créer un virus indétectable d\'un antivirus', 'Cours/cours-msfvenom/cours-msfvenom.html', 'Cours/cours-msfvenom/virus.png', 'Outil'),
 (23, 'Les Fonctions de Hachage', 'Comment faire pour s\'assurer qu\'un message n\'ait pas été modifié ?', 'Cours/cours-hachage/cours-hachage.html', 'Cours/cours-hachage/Image_hach.jpg', 'Notion'),
 (24, 'King-Phisher', 'Vous trouverez ici une introduction sur une boîte à outils pour les campagnes de phishing', 'Cours/cours-kingphisher/cours-kingphisher.html', 'Cours/cours-kingphisher/image-premiere-page.jpg', 'Outil'),
 (25, 'Faille XXE', 'Qu\'est-ce que la faille XXE ? Que permet-elle de réaliser ?', 'Cours/cours-xxe/cours-failleXXE.html', 'Cours/cours-xxe/images/image.png', 'Faille'),
 (26, 'Les antivirus', 'Dans ce cours nous allons décourvir les méthodes employées pars les antivirus pour analyser les fichiers', 'Cours/cours-av/cours-av.html', 'Cours/cours-av/av.jpeg', 'Outil'),
 (27, 'Foremost', 'Vous trouverez ici une introduction sur un logiciel permettant la récupération de données.', 'Cours/cours-foremost/cours-foremost.html', 'Cours/cours-foremost/image-premiere-page.jpg', 'Outil'),
-
 (28, 'NETCAT', 'Un outil permettant de créer une connexion entre deux ou plusieur machines', 'Cours/cours-netcat/cours-netcat.html', 'Cours/cours-netcat/affiche.png', 'Outil');
 
 -- --------------------------------------------------------
@@ -379,7 +379,8 @@ INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Description`, `Reponse`, `Emplac
 (37, 'Geoint', 'Ce tutoriel vous apprendra les bases du geoint', NULL, 'Tutoriel/tuto-geoint/tuto-geoint.html', 'Tutoriel/tuto-geoint/affiche.png', NULL),
 (38, 'GNU Debugger', 'Apprendre à debugger un programme avec GDB', NULL, 'Tutoriel/tuto-gdb/tuto-gdb.html', 'Tutoriel/tuto-gdb/gdb.png', NULL),
 (39, 'RAT', 'C\'est un software malveillant qui a pour but de prendre contrôle de l\'appareil infecté', NULL, 'Tutoriel/tuto-rat/tuto_rat.html', 'Tutoriel/tuto-rat/affiche.png', NULL),
-(40, 'Volatility', 'Comment analyser la ram d\'un ordinateur', NULL, 'Tutoriel/tuto-volatility/tuto-volatility.html', 'Tutoriel/tuto-volatility/affiche.png', NULL);
+(40, 'Volatility', 'Comment analyser la ram d\'un ordinateur', NULL, 'Tutoriel/tuto-volatility/tuto-volatility.html', 'Tutoriel/tuto-volatility/affiche.png', NULL),
+(41, 'John The Ripper', 'Voici un tutoriel pour cracker le hash d\'un mot de passe et de dézipper un fichier caché', 'JOHN_1S_EASY', 'Tutoriel/tuto-john/tuto-john-gp3.html', 'Tutoriel/tuto-john/john2.png', 'Attaque de mot de passe');
 -- --------------------------------------------------------
 
 --
@@ -456,25 +457,25 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `challenge`
 --
 ALTER TABLE `challenge`
-  MODIFY `IdChallenge` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `IdChallenge` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT pour la table `cours`
 --
 ALTER TABLE `cours`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- AUTO_INCREMENT pour la table `presentation`
 --
 ALTER TABLE `presentation`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `tutoriel`
 --
 ALTER TABLE `tutoriel`
-  MODIFY `IdTutoriel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `IdTutoriel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=41;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
