@@ -49,7 +49,7 @@ Il faut ensuite installer nmap et net-tools.
     </br>
     <kbd class="ms-3">bash> ifconfig</kbd>
     </br>
-    <img src="images/arpspoof/arpspoof1.png" alt="" class="img-fluid">
+    <img src="Tutoriel/tuto-arpspoof/arpspoof1.png" alt="" class="img-fluid">
     </br>
     Dans notre cas l'adresse ip de notre machine est 172.21.0.2
     </br>
@@ -57,7 +57,7 @@ Il faut ensuite installer nmap et net-tools.
     </br>
     <kbd class="ms-3">bash> nmap -sP 172.21.0.0/24</kbd>
     </br>
-    <img src="images/arpspoof/arpspoof2.png" alt="" class="img-fluid">
+    <img src="Tutoriel/tuto-arpspoof/arpspoof2.png" alt="" class="img-fluid">
     </br>
     Le scan nous indique que deux machines sont connectées sur le même réseau local que notre machine.
     </br>
@@ -66,7 +66,7 @@ Il faut ensuite installer nmap et net-tools.
     </br>
     <kbd class="ms-3">bash> arpspoof -i eth0 -r -t 172.21.0.3 172.21.0.4</kbd>
     </br>
-    <img src="images/arpspoof/arpspoof3.png" alt="" class="img-fluid">
+    <img src="Tutoriel/tuto-arpspoof/arpspoof3.png" alt="" class="img-fluid">
     </br>
     arpspoof commence alors à envoyer de faux messages ARP permettant d'usurper les adresses ip et mac des autres pc.
     Permettant de rediriger le trajet des paquets qu'échange les deux machines pour les faire passer par notre machine.

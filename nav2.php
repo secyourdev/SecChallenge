@@ -58,7 +58,7 @@
 							<?php } ?>
 					</li>
 					<li class="nav-item dropdown">
-						<a class="nav-link " href="pricing.php?categorie=Tous" data-bs-toggle="dropdown"> Challenges  </a>
+						<a class="nav-link " href="challengePage.php?categorie=Tous" data-bs-toggle="dropdown"> Challenges  </a>
 						<?php
 									$cat=$BDD->prepare('SELECT DISTINCT(Categorie) FROM challenge WHERE Categorie IS NOT NULL');
 									$cat->execute(array());
@@ -68,7 +68,7 @@
 								<?php
 									foreach($cat as $ligne){
 										?>
-										<li><a class="dropdown-item menuDeroulantItem" href="pricing.php?categorie=<?php echo $ligne['Categorie']; ?>"> <?php echo $ligne['Categorie']; ?></a></li>
+										<li><a class="dropdown-item menuDeroulantItem" href="challengePage.php?categorie=<?php echo $ligne['Categorie']; ?>"> <?php echo $ligne['Categorie']; ?></a></li>
 										<?php
 									}
 									?>

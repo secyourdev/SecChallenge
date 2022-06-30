@@ -151,3 +151,4 @@ $challenge3=$result['challenge3'];
 else{
 	header('Location: index.php');
 }
+?>

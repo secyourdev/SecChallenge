@@ -49,11 +49,11 @@ INSERT INTO `challenge` (`IdChallenge`, `Emplacement`, `Reponse`, `NomChallenge`
 (3, 'Challenge/Challenge3/Challenge3.html', 'salut tout le monde', 'Pourras-tu décrypter le message ?', 'Chiffrement : Code César', 'Decryptage', 'Langage Python', NULL, 5),
 (4, 'Challenge/challenge-rsa/challenge-rsa.html', 'dechiffrer ce message est vraiment simple', 'RSA', 'Chiffrement RSA', NULL, NULL, NULL, 5),
 (5, 'Challenge/Challenge-mitm/Challenge-mitm.html', 'ILoveChocolate', 'Man in the middle', 'arp poisoning', NULL, NULL, 'Collecte d\'information', 5),
-(6, 'Challenge/Challenge-osint/Challenge-osint.html', '6718709afea3accd6415832982f15e13', 'OSINT', 'OSINT', 'Brute force', NULL, 'Collecte d\'information', 5),
-(7, 'Challenge/Challenge-john/Challenge-john.html', 'ilovejeremy', 'John the ripper', 'Brute force', 'Compromis temps-mémoire', NULL, 'Attaque de mot de passe', 5),
+(6, 'Challenge/Challenge-osint/challenge-osint.html', '6718709afea3accd6415832982f15e13', 'OSINT', 'OSINT', 'Brute force', NULL, 'Collecte d\'information', 5),
+(7, 'Challenge/Challenge-john/Challenge-john.html', 'ilovejeremy', 'John the ripper', 'Brute force', NULL, NULL, 'Attaque de mot de passe', 5),
 (8, 'Challenge/Challenge-nessus/Challenge-nessus.html', 'SSH', 'Nessus', 'Analyse Serveur Web', NULL, NULL, 'Scanner de vulnérabilité', 5),
 (9, 'Challenge/Challenge-ssh/challenge-ssh.html', '50617461746F725353484E6574636174', 'SSH', 'patator', 'ssh', 'netcat', 'Prise de contrôle', 5),
-(10, 'Challenge/challenge-rainbowcrack/challenge-rainbowcrack.html', 'ici alpha il nous faut un bonbon et vite', 'k4li', NULL, NULL, NULL, 'Attaque de mot de passe', 5),
+(10, 'Challenge/challenge-rainbowcrack/challenge-rainbowcrack.html', 'k4li', 'Rainbowcrack', 'Compromis temps-mémoire', NULL, NULL, 'Attaque de mot de passe', 5),
 (11, 'Challenge/challenge-aperisolve/challenge-aperisolve.html', 'LeChallengeEstReussi', 'Apéri\'Solve', 'Apéri\'Solve', NULL, NULL, 'Stéganographie', 5),
 (12, 'Challenge/challenge-stegano/challenge-stegano.html', 'l0vE-5teg4n0', 'Stéganographie', 'Stéganographie', 'Cyberchef', NULL, 'Stéganographie', 5),
 (13, 'Challenge/challenge-wmic/challenge-wmic.html', '5da507ae6b4cfb86904b5651ce99839138eae6f5', 'Wmic', 'Commandes Wmic', NULL, NULL, 'Collecte d\'information', 5),
@@ -359,7 +359,7 @@ INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Description`, `Reponse`, `Emplac
 (16, 'MITMProxy', 'Mitmproxy : un wireshark simple en ligne de commande pour les requêtes HTTP.', 'PasswordAlice1234', 'Tutoriel/tuto-mitmproxy/tuto-mitmproxy.html', 'Tutoriel/tuto-mitmproxy/mitmproxy.jpg', 'Collecte d\'information'),
 (17, 'Reverse engineering android : les bases', 'Ce tuto va vous apprendre à utiliser les outils jadx et apktool', '636e2d6a4e34cf74146572ec64442cee', 'Tutoriel/tuto-reverse/tuto-reverse.html', 'Tutoriel/tuto-reverse/Reverse.jpeg', 'Android'),
 (18, 'RainbowCrack', 'Introduction rapide à RainbowCrack suivie de son tutoriel', NULL, 'Tutoriel/tuto-rainbowcrack/tuto-rainbowcrack.html', 'Tutoriel/tuto-rainbowcrack/rainbowcrack.png', 'Attaque de mot de passe'),
-(19, 'Comment détecter des messages cachés dans une image ?', 'Voici un tutoriel afin de connaître une plateforme web qui regroupe plusieurs outils utiles à la stéganographie sur une image', 'VoWoBi<3', 'Tutoriel/tuto-aperisolve/tuto-aperisolve.html', 'Tutoriel/tuto-aperisolve/image-premiere-page.jpg', 'Stéganographie'),
+(19, 'Comment détecter des messages cachés dans une image ?', 'Voici un tutoriel afin de connaître une plateforme web qui regroupe plusieurs outils utiles à la stéganographie sur une image', 'Tuto-Aperisolve', 'Tutoriel/tuto-aperisolve/tuto-aperisolve.html', 'Tutoriel/tuto-aperisolve/image-premiere-page.jpg', 'Stéganographie'),
 (20, 'Explications de CyberChef', 'Voici un tutoriel afin de comprendre les différentes catégories de cyberchef et d\'en utiliser une partie', NULL, 'Tutoriel/tuto-cyberchef/tuto-cyberchef.html', 'Tutoriel/tuto-cyberchef/cyberchef.png', 'Attaque de mot de passe'),
 (21, 'Docker : les commandes utiles', 'Voici un tutoriel pour vous apprendre à manipuler les commandes sur Docker', NULL, 'Tutoriel/tuto-docker/tuto-docker.html', 'Tutoriel/tuto-docker/image-premiere-page.png', 'Prérequis'),
 (22, 'Installation d\'une Kali', 'Ce tutoriel vous permettra d\'installer une machine virtuelle Kali sur le logiciel Virtual Box.', NULL, 'Tutoriel/tuto-install-kali/tuto-install-kali.html', 'Tutoriel/tuto-install-kali/kali.png', 'Prérequis'),
@@ -368,8 +368,8 @@ INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Description`, `Reponse`, `Emplac
 (25, 'La stéganographie avec Zsteg', 'Voici un tutoriel afin de connaître un outil utile à la stéganographie sur une image : Zsteg', 'Tuto-Zsteg', 'Tutoriel/tuto-zsteg/tuto-zsteg.html', 'Tutoriel/tuto-zsteg/images/image-premiere-page.jpg', 'Stéganographie'),
 (26, 'Trouver les vulnérabilités d\'un serveur web', 'Ce tutoriel vous montrera comment scanner un serveur web pour y trouver de potentielles vulnérabilités web', NULL, 'Tutoriel/tuto-nikto/tuto-nikto.html', 'Tutoriel/tuto-nikto/images/nikto.png', NULL),
 (28, 'La stéganographie avec OpenStego', 'Voici un tutoriel afin de connaître un outil utile à la stéganographie : OpenStego', 'Tuto-OpenStego', 'Tutoriel/tuto-openstego/tuto-openstego.html', 'Tutoriel/tuto-openstego/image-premiere-page.jpg', 'Stéganographie'),
-(29, 'Metasploit - Venom (MsfVenom : Payload generator & Encoder)', 'Tutoriel sur la génération et l\'encodage de payloads avec MsfVenom', NULL, 'Tutoriel/tuto-msfvenom/tuto-msfvenom.html', 'Tutoriel/tuto-msfvenom/', 'Prise de contrôle'),
-(30, 'Metasploit - VNC BruteForcing', 'Tutoriel sur l\'attaque par bruteforce d\'une session VNC.', NULL, 'Tutoriel/tuto-vnc-bruteforcing/tuto-vnc-bruteforcing.html', 'Tutoriel/tuto-vnc-bruteforcing/', NULL),
+(29, 'Metasploit - Venom (MsfVenom : Payload generator & Encoder)', 'Tutoriel sur la génération et l\'encodage de payloads avec MsfVenom', NULL, 'Tutoriel/tuto-msfvenom/tuto-msfvenom.html', 'Cours/cours-meta/metasploit.jpg', 'Prise de contrôle'),
+(30, 'Metasploit - VNC BruteForcing', 'Tutoriel sur l\'attaque par bruteforce d\'une session VNC.', NULL, 'Tutoriel/tuto-vnc-bruteforcing/tuto-vnc-bruteforcing.html', 'Cours/cours-meta/metasploit.jpg', NULL),
 (31, 'Wireshark', 'Qu\'est ce que Wireshark et comment s\'en servir?', NULL, 'Tutoriel/tuto-wireshark/tuto-wireshark.html', 'Tutoriel/tuto-wireshark/wireshark.jpg', NULL),
 (32, 'L\'OSINT avec Maltego', 'Rechercher des informations n\'a jamais été aussi simple avec Maltego', NULL, 'Tutoriel/tuto-maltego/tuto-maltego.html', 'Tutoriel/tuto-maltego/maltego.png', NULL),
 (33, 'Sqlmap', 'Comment effectuer des injections sql de façon automatique', NULL, 'Tutoriel/tuto-sqlmap/tuto-sqlmap.html', 'Tutoriel/tuto-sqlmap/sqlmap.png', NULL),
@@ -379,7 +379,8 @@ INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Description`, `Reponse`, `Emplac
 (37, 'Geoint', 'Ce tutoriel vous apprendra les bases du geoint', NULL, 'Tutoriel/tuto-geoint/tuto-geoint.html', 'Tutoriel/tuto-geoint/affiche.png', NULL),
 (38, 'GNU Debugger', 'Apprendre à debugger un programme avec GDB', NULL, 'Tutoriel/tuto-gdb/tuto-gdb.html', 'Tutoriel/tuto-gdb/gdb.png', NULL),
 (39, 'RAT', 'C\'est un software malveillant qui a pour but de prendre contrôle de l\'appareil infecté', NULL, 'Tutoriel/tuto-rat/tuto_rat.html', 'Tutoriel/tuto-rat/affiche.png', NULL),
-(40, 'Volatility', 'Comment analyser la ram d\'un ordinateur', NULL, 'Tutoriel/tuto-volatility/tuto-volatility.html', 'Tutoriel/tuto-volatility/affiche.png', NULL);
+(40, 'Volatility', 'Comment analyser la ram d\'un ordinateur', NULL, 'Tutoriel/tuto-volatility/tuto-volatility.html', 'Tutoriel/tuto-volatility/affiche.png', NULL),
+(41, 'fcrackzip', 'Attaquer un dossier .zip protégé', NULL, 'Tutoriel/tuto-fcrackzip/tuto-fcrackzip.html', 'Tutoriel/tuto-fcrackzip/affiche.png', NULL);
 -- --------------------------------------------------------
 
 --
