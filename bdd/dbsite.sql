@@ -106,7 +106,9 @@ INSERT INTO `cours` (`Id`, `Titre`, `Description`, `EmplacementCours`, `LienImag
 (26, 'Les antivirus', 'Dans ce cours nous allons décourvir les méthodes employées pars les antivirus pour analyser les fichiers', 'Cours/cours-av/cours-av.html', 'Cours/cours-av/av.jpeg', 'Outil'),
 (27, 'Foremost', 'Vous trouverez ici une introduction sur un logiciel permettant la récupération de données.', 'Cours/cours-foremost/cours-foremost.html', 'Cours/cours-foremost/image-premiere-page.jpg', 'Outil'),
 
-(28, 'NETCAT', 'Un outil permettant de créer une connexion entre deux ou plusieur machines', 'Cours/cours-netcat/cours-netcat.html', 'Cours/cours-netcat/affiche.png', 'Outil');
+(28, 'NETCAT', 'Un outil permettant de créer une connexion entre deux ou plusieur machines', 'Cours/cours-netcat/cours-netcat.html', 'Cours/cours-netcat/affiche.png', 'Outil'),
+
+(29, 'Firewall', 'Etablissement de règle qui régissent le traffic autorisé et bloqué', 'Cours/cours-firewall/cours-firewall.html', 'Cours/cours-firewall/affiche.png', 'Notion');
 
 -- --------------------------------------------------------
 
