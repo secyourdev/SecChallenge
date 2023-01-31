@@ -1,0 +1,80 @@
+<h1><b>Firewall</b></h1>
+
+<h2><b>Description</h2>
+
+<p>
+    Un pare-feu (ou firewall) est un logiciel et/ou un matériel permettant de faire respecter la politique de sécurité du réseau,
+    celle-ci définissant quels sont les types de communications autorisés sur ce réseau informatique. Il établit une barrière de protection contre les intrusions et les contaminations venant de l’extérieur.
+
+    <br>
+    <br>
+    Remarque: Le pare-feu est jusqu'à ces dernières années considéré comme une des pierres angulaires de la sécurité d'un réseau informatique (il perd en importance au fur et à mesure que les communications basculent vers le HTTP sur TLS, 
+    court-circuitant tout filtrage). Il permet d'appliquer une politique d'accès aux ressources réseau (serveurs).
+    <br>
+    <br>
+
+</p>
+
+<h2><b>Fonctionnement</b></h2>
+
+<p>
+    Il a pour principale tâche de contrôler le trafic entre différentes zones de confiance, en filtrant les flux de données (paquets) qui y transitent. 
+
+    
+    <br>
+    Ces zones possèdent différents niveaux de confiance. 
+    On retrouve parmi celles-ci Internet (une zone de confiance nulle) et au moins un réseau interne (zone de confiance plus importante)
+    <br>
+    <img src="Firewall1.png" alt="Firewall">
+
+<br>
+<br>
+
+
+<p>
+    Le filtrage se fait selon divers critères. Les plus courants sont : 
+    l'origine ou la destination des paquets (adresse IP, ports TCP ou UDP, interface réseau, etc.), 
+    les options contenues dans les données (fragmentation, validité, etc.), les données elles-mêmes (taille, correspondance à un motif, etc.), 
+    les utilisateurs pour les plus récents.
+    <br>
+    Un pare-feu fait souvent office de routeur et permet ainsi d'isoler le réseau en plusieurs zones de sécurité appelées zones démilitarisées ou DMZ. Ces zones sont séparées suivant le niveau de confiance qu'on leur porte.
+</p>
+
+<br>
+
+<img src="Firewall2.png" alt="Firewall">
+
+<br>
+<p>
+Enfin, le pare-feu est également souvent situé à l'extrémité de tunnel IPsec ou TLS. L'intégration du filtrage de flux et de la gestion du tunnel est en effet nécessaire pour pouvoir à la fois protéger le trafic en confidentialité et intégrité et filtrer ce qui passe dans le tunnel. 
+</p>
+
+<h2><b>Catégories</b></h2>
+
+<p>
+    Les pare-feux ont subi de nombreuses évolutions. Suivant la génération du pare-feu ou son rôle précis, 
+    on peut les classer en différentes catégories : 
+    <br>
+    -Le pare-feu sans état : il est le plus ancien dispositif de filtrage réseau. Ce pare-feu inspecte chaque paquet et lui accorde le passage uniquement s’il répond à une liste de règles prédéterminées, qui se basent sur l’adresse IP, le numéro de port, et les protocoles de couche 3 et 4 (couche réseau et transport du modèle OSI) 
+Leur configuration est complexe et ne permet pas d’obtenir une finesse de filtrage très évoluée. Il est donc en train de devenir obsolète.
+</p>
+<br>
+<p>-Le pare-feu avec état : il vérifie systématiquement la conformité des paquets à une connexion en cours, en regardant si chaque paquet d’une connexion constitue bien la suite du précédent. Le pare-feu avec état a également de la mémoire : il garde une trace des sessions et des connexions, et réagit en cas d’anomalie. Il permet ainsi de se protéger de certaines attaques DoS.</p>
+
+<br>
+<p>-Le pare-feu applicatif : il appartient à la dernière génération de firewalls. Il fonctionne au niveau de la couche application : par exemple, chaque requête de type http est filtrée par un processus proxy http. Le pare-feu rejette ainsi toutes les requêtes non conformes aux spécifications du protocole. Ce type de pare-feu est plus sûr que le pare-feu avec état, mais est très gourmand en temps de calcul dès que le débit est important. Dans les années à venir, il devrait gagner en performance.</p>
+<br>
+
+<p>-Le pare-feu identifiant: il réalise des associations entre l’IP et les utilisateurs, et permet de suivre l’activité réseau par utilisateur. Les règles de filtrage sont ainsi définies en fonction de l’identification, et non des adresses IP. Selon les pare-feu, plusieurs méthodes différentes sont utilisées, dont l’identification par authpf, les pare-feu entièrement basés sur l’identité, ou la création de règles dynamiques prenant en compte l’identité de l’utilisateur et de son poste, ainsi que son niveau de sécurité informatique.</p>
+
+<br>
+<h2><b>Catégories</b></h2>
+<br>
+<p>Le pare-feu perd en importance au fur et à mesure que les communications basculent vers le HTTP sur TLS, court-circuitant tout filtrage (En effet, inspecter correctement le trafic chiffré TLS au niveau du pare-feu de manière efficace est très coûteux d’autant plus que le volume du trafic chiffré qui les traverse augmente)</p>
+
+<br>
+<p> pare-feu reste tout de même très important dans la sécurité d’un réseau informatique aujourd’hui et ils embarquent de plus en plus de fonctionnalités, parmi lesquelles on peut citer : l’intelligence artificielle pour détecter le trafic anormal, les serveurs de protocoles de connexion (telnet, SSH), de protocoles de transfert de fichier (SCP), Serveur Web pour offrir une interface de configuration agréable, Serveur mandataire (proxy), Système de détection d'intrusion IDS</p>
+<br>
+<br>
+<p>
+    Maintenant qu’on dispose des bases de connaissances sur le pare-feu. Essayons d’en mettre un en place : Tuto Configuration d’un pare-feu</p>
