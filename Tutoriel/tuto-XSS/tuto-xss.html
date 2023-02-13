@@ -1,0 +1,91 @@
+<h1>MitmProxy</h1>
+
+<h2 class="mb-3">1. Objectif</h2>
+<p>
+    L'objectif de ce tutoriel est de vous présenter la faille XSS et de comprendre comment l'exploiter.
+    </br>
+    La faille XSS est une faille présente sur certains site web qui laisse la possibilité à un attaquant de faire exécuter du code sur la machine de la victime.
+    Cette faille fait partie des failles de type injection tout comme la très connu injection sql.
+    La faille XSS est présente dans la mauvaise gestion des formulaires par le site web.
+    Nous savons donc que lorsque l'on voit un formulaire sur un site web, il est possible de faire une injection.
+    
+
+    </br>
+    Vous pourrez trouver plus d'informations ici : <a class="link-primary"
+        href="http://localhost/"><U>http://localhost/</U></a>
+    </br>
+</p>
+
+<h2 class="mb-3">2. Configuration</h2>
+
+<p>
+    Ce tuto met à disposition, par le biais de l'application Docker et docker-compose, plusieurs machines virtuelles.
+    </br>
+    Il est nécessaire de récupérer le fichier <b>docker-compose.yml</b> qui permet de lancer les trois machines.<br>
+
+    Téléchargez le <a class="link-primary" href="./Downloads/mitmproxy/docker-compose.yml"><U></Y>
+            docker-compose.yml</U></a><br>
+
+    Les commandes qui permettent de lancer les machines sont les suivantes : <br>
+    <kbd class="ms-3">bash> docker-compose up -d</kbd><br>
+
+    Nous avons besoin de nous connecter à celle d'Eve via la commande :
+    <br>
+    <kbd class="ms-3">bash> docker exec -it mitm_eve /bin/bash</kbd><br>
+    Pour visualiser le site internet que l'ont va attaquer, il faut se connecter au docker firefox avec l'addresse suivante :
+    <a class="link-primary" href="http://localhost:5801"><U></Y>
+        localhost:5801</U></a><br>
+
+</p>
+
+<h2 class="mb-3">3. Les étapes</h2>
+<p>
+    
+    Une fois sur le docker firefox, il suffit de rentrer l'addresse <b>http://Bob</b> pour acceder à son site web.
+    </br>
+    On peut voir que il s'agit d'un simple forum sans besoin de s'inscrire.
+    Si on test le fonctionnement on voit que le post ajouté est bien affiché, et ce de manière permanente pour tout les utilisateurs.
+    Si une faille XSS existe, ce sera une faille XSS stockée.
+</p>
+<img src="Tutoriel/tuto-XSS/XSS1.png" alt="" class="img-fluid">
+<p>
+    </br>
+    Pour tester si notre site on peut simplement essayer :
+    <br>
+    <kbd class="ms-3"> &ltb&gt Salut &lt/b&gt  </kbd>
+    <br>
+</p>
+<img src="Tutoriel/tuto-XSS/XSS2.png" alt="" class="img-fluid">
+<p>
+
+
+    On voit alors que notre nouveau post est affiché en gras. Une faille XSS est donc présente.
+
+    </br>
+    On peut également intégrer du code javascript dans notre post :
+    <br>
+    <kbd class="ms-3"> &ltscript&gt alert("XSS") &lt/script&gt  </kbd>
+    <br>
+</p>
+<img src="Tutoriel/tuto-XSS/XSS3.png" alt="" class="img-fluid">
+
+<p>
+    On a alors une alerte qui s'affiche lorsque l'on arrive sur la page, et comme c'est une faille XSS Stockée, elle s'affiche pour tout les utilisateurs.
+    </br>
+    On comprend alors que l'on peut faire exécuter du code javascript sur la machine de la victime, et ce, quelque soit la longueur de la chaine de caractères et la complexité du code injecté.
+    </br>
+
+</p>
+
+
+
+
+<h2 class="mb-3">4. Bonus : vidéo démonstration</h2>
+<p>
+    Vous trouverez ci-dessous une vidéo de démonstration:
+</p>
+<video controls width="560" height="315">
+    <source src="Tutoriel/tuto-mitmproxy/mitmproxy.mp4" type="video/mp4">
+
+    Désolé, votre navigateur ne supporte pas ce format vidéo.
+</video>
