@@ -1,0 +1,36 @@
+<h1>Introduction à la faille XSS</h1>
+<p>
+    La <b>Cross-Site Scripting (XSS)</b> est une vulnérabilité de sécurité des applications web qui permet à un
+    attaquant d'injecter du code malveillant (généralement du JavaScript) dans une page web affichée à un utilisateur.
+    Cela peut permettre à l'attaquant de voler des informations sensibles de l'utilisateur, de prendre le contrôle de
+    son compte ou de diffuser des pop-ups malveillants.
+</p>
+
+<h2>Types de XSS</h2>
+<p>Il existe principalement deux types de XSS :</p>
+<ol>
+    <li><b>XSS Stored (persistant)</b> : le code malveillant est stocké sur le serveur web et est exécuté chaque fois
+        que la page est affichée à un utilisateur.</li>
+    <li><b>XSS Reflected (non-persistant)</b> : le code malveillant est injecté dans la page à partir d'une requête HTTP
+        envoyée par un utilisateur (par exemple, via un formulaire) et n'est exécuté que pour la session actuelle de
+        l'utilisateur.</li>
+</ol>
+
+<h2>Comment se protéger contre les attaques XSS</h2>
+<p>
+    Pour se protéger contre les attaques XSS, il est important de valider toutes les entrées de l'utilisateur pour
+    s'assurer qu'elles ne contiennent pas de code malveillant. Les développeurs peuvent utiliser des bibliothèques
+    telles que OWASP ESAPI pour valider les entrées de l'utilisateur.
+</p>
+<p>
+    De plus, il est important d'échapper toutes les entrées de l'utilisateur avant de les afficher dans la page. Cela
+    peut être fait en utilisant des fonctions telles que <kbd class="ms-3">htmlentities()</kbd> en PHP ou
+    <kbd class="ms-3">HttpUtility.HtmlEncode()</kbd> en ASP.NET.
+</p>
+
+<h2>Conclusion</h2>
+<p>
+    En conclusion, la faille XSS est une vulnérabilité de sécurité importante qui peut causer de graves dommages si elle
+    n'est pas correctement gérée. Les développeurs doivent être conscients de ce danger et prendre les mesures
+    nécessaires pour se protéger contre les attaques XSS.
+</p>
