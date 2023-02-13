@@ -382,7 +382,8 @@ INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Description`, `Reponse`, `Emplac
 (38, 'GNU Debugger', 'Apprendre à debugger un programme avec GDB', NULL, 'Tutoriel/tuto-gdb/tuto-gdb.html', 'Tutoriel/tuto-gdb/gdb.png', NULL),
 (39, 'RAT', 'C\'est un software malveillant qui a pour but de prendre contrôle de l\'appareil infecté', NULL, 'Tutoriel/tuto-rat/tuto_rat.html', 'Tutoriel/tuto-rat/affiche.png', NULL),
 (40, 'Volatility', 'Comment analyser la ram d\'un ordinateur', NULL, 'Tutoriel/tuto-volatility/tuto-volatility.html', 'Tutoriel/tuto-volatility/affiche.png', NULL),
-(41, 'fcrackzip', 'Attaquer un dossier .zip protégé', NULL, 'Tutoriel/tuto-fcrackzip/tuto-fcrackzip.html', 'Tutoriel/tuto-fcrackzip/affiche.png', NULL);
+(41, 'fcrackzip', 'Attaquer un dossier .zip protégé', NULL, 'Tutoriel/tuto-fcrackzip/tuto-fcrackzip.html', 'Tutoriel/tuto-fcrackzip/affiche.png', NULL),
+(42, 'Faille XSS', 'Attaquer un site vulnérable', NULL, 'Tutoriel/tuto-XSS/tuto-xss.html', 'Tutoriel/tuto-XSS/affiche.png', NULL);
 -- --------------------------------------------------------
 
 --
