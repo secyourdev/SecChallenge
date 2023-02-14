@@ -385,7 +385,7 @@ INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Description`, `Reponse`, `Emplac
 (41, 'fcrackzip', 'Attaquer un dossier .zip protégé', NULL, 'Tutoriel/tuto-fcrackzip/tuto-fcrackzip.html', 'Tutoriel/tuto-fcrackzip/affiche.png', NULL),
 (42, 'Faille XSS', 'Attaquer un site vulnérable', NULL, 'Tutoriel/tuto-XSS/tuto-xss.html', 'Tutoriel/tuto-XSS/affiche.png', NULL),
 (43, 'NSE', 'Scripting pour nmap', NULL, 'Tutoriel/tuto-nse/tuto-NSE.html', 'Tutoriel/tuto-nse/images/nmap4.jpg', NULL),
-(44, 'DNSEnum', 'L\'outil d'énumération DNS simple & efficace', NULL, 'Tutoriel/tuto-DNSEnum/tuto-DNSenum.html', 'Tutoriel/tuto-DNSEnum/images/affiche.jpg', NULL);
+(44, 'DNSEnum', 'L\'outil d\'énumération DNS simple & efficace', NULL, 'Tutoriel/tuto-DNSEnum/tuto-DNSenum.html', 'Tutoriel/tuto-DNSEnum/images/affiche.jpg', NULL);
 -- --------------------------------------------------------
 
 --
