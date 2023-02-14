@@ -59,7 +59,8 @@ INSERT INTO `challenge` (`IdChallenge`, `Emplacement`, `Reponse`, `NomChallenge`
 (13, 'Challenge/challenge-wmic/challenge-wmic.html', '5da507ae6b4cfb86904b5651ce99839138eae6f5', 'Wmic', 'Commandes Wmic', NULL, NULL, 'Collecte d\'information', 5),
 (14, 'Challenge/challenge-nikto/challenge-nikto.html', '877', 'Nikto', 'Analyse serveur web', 'Reconnaissance', NULL, 'Scanner de vulnérabilité', 5),
 (15, 'Challenge/challenge-sqlmap/Challenge-sqlmap.html', '0924086489ca5a44e71715a6c00832cb', 'Sql injection', 'SQL', 'SQLMap', 'PHP', NULL, 5),
-(16, 'Challenge/challenge-cyberchef/challenge-cyberchef.html', '22/12/1973', 'RoDate', 'CyberChef', 'Brute force', NULL, 'Collecte d\'information', 5);
+(16, 'Challenge/challenge-cyberchef/challenge-cyberchef.html', '22/12/1973', 'RoDate', 'CyberChef', 'Brute force', NULL, 'Collecte d\'information', 5),
+(17, 'Challenge/Challenge-searchsploit/challenge-searchsploit.html', 'ESIEE2022', 'Searchsploit', 'scan de vulnérabilité'  , NULL, NULL, 'Scanner de vulnérabilité', 5);
 -- --------------------------------------------------------
 
 --
