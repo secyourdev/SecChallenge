@@ -1,0 +1,54 @@
+<center>
+    <h1>Nmap Scripting Engine</h1>
+    <img src="Tutoriel/tuto-nse/images/nmap.png" alt="" class="img-fluid">
+    <img src="Tutoriel/tuto-nse/images/nmap2.png" alt="NmapLogo" width="1500" class="img-fluid">
+</center>
+
+<h2 class="mb-3"><u>1. Objectif</u></h2>
+<p>
+    L'objectif de ce tutoriel et de vous introduire au concept des scripts Nmap et leur utilisation.<br>
+    Il est vivement conseillé de lire les cours et tutoriels sur Nmap pour mieux comprendre le fonctionnement
+    de l'outil. En effet, Nmap est un très puissant outil permettant de scanner des machines et leur ports, ce qui
+    est très utile lors des étapes de reconnaissance.<br>
+    <br>
+</p>
+
+<h2 class="mb-3"><u>2. Les Scripts Nmap</u></h2>
+<p>
+    Le Nmap Scripting Engine (ou NSE) est un outil qui permet à Nmap d'executer des scripts lors de sont scan de port.<br>
+    Ses scripts, écrient en langage <i>Lua</i>, permettent à Nmap d'effectuer des actions supplémentaires pendant le scan des ports d'une machine,
+    tel que du bruteforcing, du scan de malware ou encore directement exploiter des vulnérabilités. Vous pouvez retrouver toutes les
+    informations sur le NSE sur <a href="https://nmap.org/book/nse-usage.html">le site officiel de Nmap</a>.<br>
+    <br>
+    Avant de nous lancer dans l'utilisation des scripts Nmap, il est intéressant de savoir où ils se situent dans votre machine (on suppose une Kali Linux),
+    et d'être capable de les identifier.<br>
+    Tout d'abord, le <a href="https://nmap.org/book/nse-usage.html">le site officiel de Nmap</a> est un très bon moyen de se renseigner sur les différents scritps
+    et comprendre comment les utiliser, mais les scripts Nmap sont aussi sauvegardé dans le répertoire <kbd class="ms-3">/usr/share/nmap/scripts</kbd>.<br>
+    De plus, il existe une fichier texte <kbd class="ms-3">/usr/share/nmap/<b>scripts.db</b></kbd> qui contient le nom des scripts disponibles ainsi que leurs catégorie
+    associée <a href="https://nmap.org/book/nse-usage.html">(vuln, safe, brute, ...)</a>. Il suffit donc de faire une commande <kbd class="ms-3">grep</kbd> sur ce fichier
+    pour facilement retrouver des scripts (exemple: <kbd class="ms-3">grep "auth" /usr/share/nmap/scripts.db</kbd> pour retrouver les scripts liés à l'authentification).<br>
+    <br>
+</p>
+
+<center>
+    <img src="Tutoriel/tuto-nse/images/nmap3.png" alt="NmapScan" width="150" height="150" class="img-fluid">
+</center>
+
+<h2 class="mb-3"><u>3. Utilisation de NSE</u></h2>
+<p>
+    L'utilisation des scripts sur Nmap est très simple, il suffit de rajouter l'option <kbd class="ms-3">--script=[ScriptName]</kbd> à votre commande Nmap.
+    Par exemple, la commande <kbd class="ms-3">sudo nmap -p 80 --script=vuln 192.168.56.2 -vv</kbd> va effectuer un scan sur le port 80,
+    qui correspond généralement au port HTTP, et va tenter de trouver des potentielles vulnérabilités.<br>
+    Voici un exemple sous format vidéo qui d'utilisation du script <i>ssh-brute</i> de NSE sur le port 22 d'une machine. Afin de simplifier la démonstration,
+    deux fichiers on été créés: le fichier <b>root</b> qui contient la chaine de caractère "root" , et le fichier <b>pass</b> qui contient une très petite liste
+    de mot de passe. Ces deux fichiers seront passés en paramètres de la fonction <i>ssh-brute</i>, l'un en tant que liste d'identifiant et l'autre en tant que liste
+    de mot de passe.<br>
+    On peut observer que Nmap, à l'instar d'outils tel que Patator, va bruteforce le port 22 en utilisant le couple login/password donné en paramètre, jusqu'à trouver
+    la bonne combinaison. Il est ensuite possible d'aller plus loin en se connectant en SSH à la machine cible grace au mot de passe obtenu.
+    <center>
+        <video controls>
+            <source src="Tutoriel/tuto-nse/videos/NSE-video.mp4" type="videos/mp4">
+            Votre navigateur ne supporte pas l'affichage de la vidéo.
+        </video>
+    </center>
+</p>
