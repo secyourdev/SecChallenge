@@ -62,28 +62,28 @@ On obtient notamment les quatres premières opérations attendues :
 L’adresse hôte :
 
 <center>
-    <img src="Tutoriel/tuto-DNSEnum/images/dnsenum1.png" alt="DNSEnumhost" width="450" height=150" class="img-fluid">
+    <img src="Tutoriel/tuto-DNSEnum/images/DNSEnum1.png" alt="DNSEnumhost" width="450" height=150" class="img-fluid">
 </center>
 
 
 Les nameservers : 
 
 <center>
-    <img src="Tutoriel/tuto-DNSEnum/images/dnsenum2.png" alt="DNSEnumname" width="400" height="150" class="img-fluid">
+    <img src="Tutoriel/tuto-DNSEnum/images/DNSEnum2.png" alt="DNSEnumname" width="400" height="150" class="img-fluid">
 </center>
 
 
 Le MX record : 
 
 <center>
-    <img src="Tutoriel/tuto-DNSEnum/images/dnsenum3.png" alt="DNSEnummx" width="450" height="150" class="img-fluid">
+    <img src="Tutoriel/tuto-DNSEnum/images/DNSEnum3.png" alt="DNSEnummx" width="450" height="150" class="img-fluid">
 </center>
 
 
 Le Bind versions : 
 
 <center>
-    <img src="Tutoriel/tuto-DNSEnum/images/dnsenum4.png" alt="DNSEnumbind" width="650" height="150" class="img-fluid">
+    <img src="Tutoriel/tuto-DNSEnum/images/DNSEnum4.png" alt="DNSEnumbind" width="650" height="150" class="img-fluid">
 </center>
 
 
@@ -92,19 +92,19 @@ Puis on observe le résultat des trois autres opérations attendues, sauf le rev
 Brute force des sous domaines :
 
 <center>
-    <img src="Tutoriel/tuto-DNSEnum/images/dnsenum5.png" alt="DNSEnumbrute" width="750" height="350" class="img-fluid">
+    <img src="Tutoriel/tuto-DNSEnum/images/DNSEnum5.png" alt="DNSEnumbrute" width="750" height="350" class="img-fluid">
 </center>
 
 Calcule les réseaux de domaines de classe C (via WHOIS) :
 
 <center>
-    <img src="Tutoriel/tuto-DNSEnum/images/dnsenum6.png" alt="DNSEnumclass" width="650" height="150" class="img-fluid">
+    <img src="Tutoriel/tuto-DNSEnum/images/DNSEnum6.png" alt="DNSEnumclass" width="650" height="150" class="img-fluid">
 </center>
 
 Et enfin, les ip-blocks :
 
 <center>
-    <img src="Tutoriel/tuto-DNSEnum/images/dnsenum7.png" alt="DNSEnumip" width="650" height="150" class="img-fluid">
+    <img src="Tutoriel/tuto-DNSEnum/images/DNSEnum7.png" alt="DNSEnumip" width="650" height="150" class="img-fluid">
 </center>
 
 Maintenant, tentons d’appréhender plus profondément l’outil :
@@ -116,8 +116,8 @@ On rentre donc la commande : <kbd class="ms-3">‘dnsenum --dnsserver 8.8.8.8 --
 On obtient un résultat similaire pour lacybersecurite.com : pourquoi ?
 
 <center>
-    <img src="Tutoriel/tuto-DNSEnum/images/dnsenum8.png" alt="DNSEnumgoog1" width="450" height="350" class="img-fluid">
-    <img src="Tutoriel/tuto-DNSEnum/images/dnsenum9.png" alt="DNSEnumgoog2" width="450" height="350" class="img-fluid">
+    <img src="Tutoriel/tuto-DNSEnum/images/DNSEnum8.png" alt="DNSEnumgoog1" width="450" height="350" class="img-fluid">
+    <img src="Tutoriel/tuto-DNSEnum/images/DNSEnum9.png" alt="DNSEnumgoog2" width="450" height="350" class="img-fluid">
 </center>
 
 
@@ -126,7 +126,7 @@ Bâtissons notre propre dictionnaire de sous domaine :
 Lors de notre investigation du nom de domaine lacybersecurite.com, on a aperçu lors de l’étape de la brute force que dnsenum utilise une liste de dns nommée dns.txt pour effectuer ce bruteforce. 
 
 <center>
-    <img src="Tutoriel/tuto-DNSEnum/images/dnsenum10.png" alt="DNSEnumtxt" width="850" height="350" class="img-fluid">
+    <img src="Tutoriel/tuto-DNSEnum/images/DNSEnum10.png" alt="DNSEnumtxt" width="850" height="350" class="img-fluid">
 </center>
 
 Justement, nous pouvons utiliser une liste que nous souhaitons en précisant l’option <kbd class="ms-3">‘-f’</kbd> suivie du nom de notre fichier txt désiré.
@@ -145,7 +145,7 @@ Or, en utilisant une liste de dns pertinente pour le bruteforce :
 On obtient : 
 
 <center>
-    <img src="Tutoriel/tuto-DNSEnum/images/dnsenum11.png" alt="DNSEnumresult" width="350" height="150" class="img-fluid">
+    <img src="Tutoriel/tuto-DNSEnum/images/DNSEnum11.png" alt="DNSEnumresult" width="350" height="150" class="img-fluid">
 </center>
 </br>
 <center>
