@@ -1,0 +1,159 @@
+DNSEnum.html
+<center>
+    <	h1>DNSEnum</h1>
+    
+</center>
+
+<h2 class="mb-3"><u>1. Introduction :</u></h2>
+<p>
+  	Il peut être très utile de découvrir des noms de domaines dans le cadre d’une recherche spécifique en cybersécurité. 
+    Il s’agit de la reconnaissance DNS, activité pour laquelle est spécialement conçu DNSEnum. 
+	Cet outil est capable de visualiser l’ensemble des DNS liés à tout nom de domaine sur internet. 
+    Il offre notamment une syntaxe plutôt simple qui nous permettra de pratiquer aisément des reconnaissances DNS.<br>
+    <br>
+</p>
+
+<h2 class="mb-3"><u>2. Description :</u></h2>
+<p>
+    DNSEnum effectue différentes tâches à la suite :<br> 
+<br>
+    Tout d’abord 4 obtentions :<br> 
+<br>
+<center>
+    L’adresse hôte<br>
+    Les nameservers<br>
+    Le MX record<br>
+    Le Bind versions<br>
+</center>
+<br>
+
+    Puis 5 actions :<br> 
+<center>
+    Autres noms et sous domaines (google scraping)<br>
+    Brute force des sous domaines<br>
+    Calcule les réseaux de domaines de classe C (via WHOIS)<br>
+    Le reverse lookups sur les plages réseau.<br>
+    écriture des ip-blocks dans un fichier .txt<br>
+</center>
+</p>
+
+<h2 class="mb-3"><u>2. Installation :</u></h2>
+<p>
+    Pour installer DNSEnum, utiliser cette commande : <kbd class="ms-3">‘sudo apt-get install dnsenum’</kbd> 
+    C’est un outil déjà installé sur kali !
+    Logiciels d’exploitation compatibles : Linux & Windows
+
+</p>
+
+<h2 class="mb-3"><u>2. Utilisation :</u></h2>
+<p>
+    Pour utiliser DSNEnum, en général on utilise la syntaxe suivante :
+<kbd class="ms-3">‘dnsenum <options> <domain>’</kbd>
+Étant donné la longueur d’exécution de l’étape 8 (le reverse lookup) nous utiliserons l’option : <kbd class="ms-3">‘—noreverse’</kbd> permettant de sauter cette étape.
+De plus, la totalité de la commande peut être placée dans un fichier .xml via l’option <kbd class="ms-3">‘-o’</kbd> 
+Tous les résultats peuvent être placés dans un fichier texte avec <kbd class="ms-3">-subfile nomfichier.txt</kbd>
+Nous allons donc tenter d’explorer ces fonctionnalités à travers l’énumération d’un DNS. 
+Utiliser DNSEnum pour investiguer un site : 
+Prenons par exemple lacybersecurite.com : 
+On effectue <kbd class="ms-3">‘dnsenum –noreverse lacybersecurite.com’</kbd> : 
+
+On obtient notamment les quatres premières opérations attendues : 
+
+L’adresse hôte :
+
+<center>
+    <img src="Tutoriel/tuto-DNSEnum/images/dnsenum1.png" alt="DNSEnumhost" width="450" height=150" class="img-fluid">
+</center>
+
+
+Les nameservers : 
+
+<center>
+    <img src="Tutoriel/tuto-DNSEnum/images/dnsenum2.png" alt="DNSEnumname" width="400" height="150" class="img-fluid">
+</center>
+
+
+Le MX record : 
+
+<center>
+    <img src="Tutoriel/tuto-DNSEnum/images/dnsenum3.png" alt="DNSEnummx" width="450" height="150" class="img-fluid">
+</center>
+
+
+Le Bind versions : 
+
+<center>
+    <img src="Tutoriel/tuto-DNSEnum/images/dnsenum4.png" alt="DNSEnumbind" width="650" height="150" class="img-fluid">
+</center>
+
+
+Puis on observe le résultat des trois autres opérations attendues, sauf le reverse lookup (souvenez-vous de l’option <kbd class="ms-3">–noreverse</kbd> utilisée !) :
+
+Brute force des sous domaines :
+
+<center>
+    <img src="Tutoriel/tuto-DNSEnum/images/dnsenum5.png" alt="DNSEnumbrute" width="750" height="350" class="img-fluid">
+</center>
+
+Calcule les réseaux de domaines de classe C (via WHOIS) :
+
+<center>
+    <img src="Tutoriel/tuto-DNSEnum/images/dnsenum6.png" alt="DNSEnumclass" width="650" height="150" class="img-fluid">
+</center>
+
+Et enfin, les ip-blocks :
+
+<center>
+    <img src="Tutoriel/tuto-DNSEnum/images/dnsenum7.png" alt="DNSEnumip" width="650" height="150" class="img-fluid">
+</center>
+
+Maintenant, tentons d’appréhender plus profondément l’outil :
+
+En pratique, certains serveur de DNS possède un cache permettant de fausser volontairement nos résultats, pour passer outre cela; dnsenum propose l’option <kbd class="ms-3">–dnsserver</kbd> qui permet de spécifier un serveur de résolution de notre choix.
+
+Tentons d’utiliser le serveur de DNS de google, 8.8.8.8 : 
+On rentre donc la commande : <kbd class="ms-3">‘dnsenum --dnsserver 8.8.8.8 --noreverse lacybersecurite.com’</kbd>
+On obtient un résultat similaire pour lacybersecurite.com : pourquoi ?
+
+<center>
+    <img src="Tutoriel/tuto-DNSEnum/images/dnsenum8.png" alt="DNSEnumgoog1" width="450" height="350" class="img-fluid">
+    <img src="Tutoriel/tuto-DNSEnum/images/dnsenum9.png" alt="DNSEnumgoog2" width="450" height="350" class="img-fluid">
+</center>
+
+
+Bâtissons notre propre dictionnaire de sous domaine : 
+
+Lors de notre investigation du nom de domaine lacybersecurite.com, on a aperçu lors de l’étape de la brute force que dnsenum utilise une liste de dns nommée dns.txt pour effectuer ce bruteforce. 
+
+<center>
+    <img src="Tutoriel/tuto-DNSEnum/images/dnsenum10.png" alt="DNSEnumtxt" width="850" height="350" class="img-fluid">
+</center>
+
+Justement, nous pouvons utiliser une liste que nous souhaitons en précisant l’option <kbd class="ms-3">‘-f’</kbd> suivie du nom de notre fichier txt désiré.
+
+Mieux, nous pouvons alimenter un dictionnaire de résultats grâce à l’option <kbd class="ms-3">‘-u a’</kbd> avec a correspondant à tous les résultats à la fois issus de Google scraping, reverse lookup et transfert de zone.
+
+Allons-y : 
+
+Bâtissons un dnsperso.txt vide et voyons comment est alimenté le fichier txt résultat lacybersecurite.txt : 
+
+<kbd class="ms-3">‘dnsenum -f dnsperso.txt -subfile lacybersecuriteresult.txt lacybersecurite.com -u a’</kbd>
+Le fichier lacybersecuriteresult.txt est vide parce que le dictionnaire est obsolète (car vide).
+Or, en utilisant une liste de dns pertinente pour le bruteforce : 
+<kbd class="ms-3">‘dnsenum -f dns.txt -subfile lacybersecuriteresult.txt lacybersecurite.com -u a’</kbd>
+
+On obtient : 
+
+<center>
+    <img src="Tutoriel/tuto-DNSEnum/images/dnsenum11.png" alt="DNSEnumresult" width="350" height="150" class="img-fluid">
+</center>
+</br>
+<center>
+    Notre fichier à cette fois bien été alimenté !
+
+    Vous êtes fin prêts à débuter dans l’énumération de dns avec DNSEnum !
+</center>
+</p>
+
+
+
