@@ -110,7 +110,9 @@ INSERT INTO `cours` (`Id`, `Titre`, `Description`, `EmplacementCours`, `LienImag
 (28, 'NETCAT', 'Un outil permettant de créer une connexion entre deux ou plusieur machines', 'Cours/cours-netcat/cours-netcat.html', 'Cours/cours-netcat/affiche.png', 'Outil'),
 
 (29, 'Firewall', 'Etablissement de règle qui régissent le traffic autorisé et bloqué', 'Cours/cours-firewall/cours-firewall.html', 'Cours/cours-firewall/affiche.png', 'Notion'),
-(30, 'Faille XSS', 'Introduction à la faille XSS / cross-site scripting', 'Cours/cours-XSS/cours-XSS.html', 'Cours/cours-XSS/affiche.png', 'Faille');
+(30, 'Faille XSS', 'Introduction à la faille XSS / cross-site scripting', 'Cours/cours-XSS/cours-XSS.html', 'Cours/cours-XSS/affiche.png', 'Faille'),
+(31, 'Searchsploit', 'Recherche facile de vulnébalité', 'Cours/cours-searchsploit/cours-searchsploit.html', 'Cours/cours-searchsploit/SS1.png', 'Outil');
+
 -- --------------------------------------------------------
 
 --
