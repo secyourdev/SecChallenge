@@ -1,0 +1,73 @@
+<meta charset="utf8">
+
+<h1><b>Sherlock.py</b></h1>
+
+<h2>1. Objectif de l'outil</h2>
+
+<p>
+    Sherlock est un puissant outil en ligne de commande fourni par le projet Sherlock,
+    qui peut être utilisé pour trouver des noms d'utilisateur sur de nombreux réseaux sociaux.
+    <br>
+    Il nécessite Python 3.6 ou supérieur et fonctionne sur macOS, Linux et Windows.
+    <br><br>
+    <img src="sherlock_logo.png" alt="Sherlock.py logo" width="600" height="300">
+    <br><br>
+    Sherlock est un projet python open-source disponible sur GitHub.
+    Vous pouvez saisir tous les noms d'utilisateur et il retournera toutes les URL de tous les comptes de médias sociaux
+    associés.
+    <br>
+</p>
+<h2>2. Configuration</h2>
+
+<p>
+    Pour ce tutoriel, nous utiliserons docker pour avoir une machine pour lancer l'outil Sherlock.
+    <br><br>
+    Télécharger le fichier suivant :
+    <a class="link-primary" href="Docker/Tuto_sherlock/docker-compose.yml" download="docker-compose.yml"><U>docker-compose.yml</U></a>
+</p>
+
+<p>
+    Taper les commandes suivantes :
+</p>
+
+<kbd class="ms-3">docker-compose up -d</kbd>
+
+<p>
+    Pour utiliser la machine avec l'outil Sherlock, tapez :
+</p>
+
+<kbd class="ms-3">docker exec -it sherlock bash</kbd>
+
+
+<h2>3. Lancer la recherche pour un utilisateur</h2>
+
+<p>
+    Accéder au répertoire de l'outil avec la commande suivante :
+</p>
+
+<kbd class="ms-3">cd sherlock</kbd>
+
+<p>
+    Installer les dépendances requises avec la commande suivante :
+</p>
+
+<kbd class="ms-3">python3 -m pip install -r requirements.txt</kbd>
+
+<p>
+    Exécuter la commande suivante pour trouver les comptes associés au nom d'utilisateur "user3 sur les réseaux
+    sociaux :
+</p>
+
+<kbd class="ms-3">python3 sherlock user123</kbd>
+
+<p>
+    L'outil affichera les résultats pour chaque réseau social et indiquera si le nom d'utilisateur est disponible ou
+    associé à un compte.
+</p>
+
+<p>
+    Le résultat apparait comme ceci :
+</p>
+
+<img src="capture_sherlock.png" alt="Capture" width="600" height="300">
+<br>

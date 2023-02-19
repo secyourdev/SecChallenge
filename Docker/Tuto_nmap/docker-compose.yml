@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  kali:
+    container_name: nmap
+    image: kali_nmap
+    build: ./kali/
+    tty: true
+    restart: on-failure

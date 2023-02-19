@@ -1,0 +1,61 @@
+<meta charset="utf8">
+
+<h1><b>Nmap</b></h1>
+
+<h2>1. Objectif de l'outil</h2>
+
+<p>
+    Nmap (« Network Mapper ») est un outil open source d'exploration réseau et d'audit de sécurité. C'est un outil open
+    source utilisé pour scanner les réseaux et pour découvrir les hôtes connectés et les services associés à ces hôtes.
+    Il peut être utilisé pour des tâches telles que la reconnaissance des ports, la détection des systèmes
+    d'exploitation, la vérification de la sécurité des réseaux, etc.
+    <br><br>
+    <img src="nmap_logo.png" alt="Nmap logo" width="400" height="300">
+    <br><br>
+    Nmap innove en utilisant des paquets IP bruts (raw packets) pour déterminer quels sont les hôtes actifs sur le
+    réseau, quels services (y compris le nom de l'application et la version) ces hôtes offrent, quels systèmes
+    d'exploitation (et leurs versions) ils utilisent, quels types de dispositifs de filtrage/pare-feux sont utilisés,
+    ainsi que des douzaines d'autres caractéristiques.
+    <br><br>
+    Nmap est généralement utilisé pour les audits de sécurité mais de nombreux
+    gestionnaires des systèmes et de réseau l'apprécient pour des tâches de routine comme les inventaires de réseau, la
+    gestion des mises à jour planifiées ou la surveillance des hôtes et des services actifs.
+    <br><br>
+</p>
+
+<h2>2. Configuration</h2>
+
+<p>
+    Pour ce tutoriel, nous utiliserons docker pour avoir une machine pour lancer l'outil Nmap.
+    <br><br>
+    Télécharger le fichier suivant :
+    <a class="link-primary" href="Docker/Tuto_nmap/docker-compose.yml" download="docker-compose.yml"><U>docker-compose.yml</U></a>
+</p>
+
+<p>
+    Taper les commandes suivantes :
+</p>
+
+<kbd class="ms-3">docker-compose up -d</kbd>
+
+<p>
+    Pour utiliser la machine avec l'outil Nmap, tapez :
+</p>
+
+<kbd class="ms-3">docker exec -it nmap bash</kbd>
+
+<h2>3. Lancer la recherche</h2>
+
+<p>
+    Tapez la commande suivante pour lancer le scan sur une adresse IP ou un nom d'hôte:
+</p>
+
+<kbd class="ms-3">nmap -A scanme.nmap.org</kbd>
+<br>
+
+<p>
+    Le résultat apparait comme ceci :
+</p>
+
+<img src="capture_nmap.png" alt="Capture" width="600" height="300">
+<br>

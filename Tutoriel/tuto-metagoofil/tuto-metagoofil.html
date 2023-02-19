@@ -1,0 +1,88 @@
+<meta charset="utf8">
+
+<h1><b>Metagoofil</b></h1>
+
+<h2>1. Objectif de l'outil</h2>
+
+<p>
+    Metagoofil va effectuer une recherche dans Google pour identifier et télécharger les documents sur le disque
+    local. Il permet de collecter des informations et a été conçu pour extraire les métadonnées de documents publics
+    (pdf, doc, xls, ppt, docx, pptx, xlsx) appartenant à une entreprise cible.
+    <br><br>
+    <img src="metagoofil_logo.png" alt="Metagoofil logo" width="300" height="300">
+    <br><br>
+    Il s'agit d'un outil gratuit et open-source conçu pour extraire toutes les informations des métadonnées des
+    documents publics disponibles sur les sites web. Cet outil utilise deux bibliothèques pour extraire les données.
+    Il s'agit de Hachoir et de PdfMiner.
+    <br><br>
+    Après avoir extrait toutes les données, cet outil génère un rapport qui contient les noms d'utilisateurs, les
+    versions de logiciels et les noms de serveurs ou de machines qui aideront les testeurs de pénétration dans la phase
+    de collecte d'informations. Cet outil peut également extraire les adresses MAC des documents Microsoft Office. Cet
+    outil peut donner des informations sur le matériel du système par lequel il a généré le rapport de l'outil.
+    <br><br>
+</p>
+
+<h2>2. Configuration</h2>
+
+<p>
+    Pour ce tutoriel, nous utiliserons docker pour avoir une machine pour lancer l'outil Metagoofil.
+    <br><br>
+    Télécharger le fichier suivant :
+    <a class="link-primary" href="Docker/Tuto_metagoofil/docker-compose.yml" download="docker-compose.yml"><U>docker-compose.yml</U></a>
+</p>
+
+<p>
+    Taper les commandes suivantes :
+</p>
+
+<kbd class="ms-3">docker-compose up -d</kbd>
+
+<p>
+    Pour utiliser la machine avec l'outil Metagoofil, tapez :
+</p>
+
+<kbd class="ms-3">docker exec -it metagoofil bash</kbd>
+
+<h2>3. Lancer une recherche</h2>
+
+<p>
+    Accéder au répertoire de l'outil avec la commande suivante :
+</p>
+
+<kbd class="ms-3">cd metagoofil</kbd>
+
+<p>
+    Installer les dépendances requises avec la commande suivante :
+</p>
+
+<kbd class="ms-3">python3 -m pip install -r requirements.txt</kbd>
+
+<p>
+    Exécuter la commande suivante pour collecter les informations sur le site web cible "kali.org":
+</p>
+
+<kbd class="ms-3">metagoofil -d kali.org -t pdf -o ../result</kbd>
+
+<p>
+    Vous pouvez maintenant accéder aux résultats dans le dossier de sortie "result" et analyser les informations
+    collectées pour déterminer s'il y a des informations sensibles exposées.
+</p>
+
+
+<p>
+    Accéder au ficher de sortie avec la commande suivante :
+</p>
+
+<kbd class="ms-3">cd ../result</kbd>
+
+<p>
+    Si des informations sensibles sont trouvées, déterminer la gravité de la vulnérabilité et élaborer un rapport de
+    sécurité détaillé
+</p>
+
+<p>
+    Le résultat apparait comme ceci :
+</p>
+
+<img src="capture_metagoofil.png" alt="Capture" width="600" height="300">
+<br>

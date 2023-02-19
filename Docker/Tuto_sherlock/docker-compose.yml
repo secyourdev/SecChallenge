@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  kali:
+    container_name: sherlock
+    image: kali_sherlock
+    build: ./kali/
+    tty: true
+    restart: on-failure

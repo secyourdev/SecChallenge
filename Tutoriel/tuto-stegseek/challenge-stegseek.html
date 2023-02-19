@@ -1,0 +1,64 @@
+<h1><b>Stegseek</b></h1>
+
+<h2>1. Objectif de l'outil</h2>
+
+<p>
+    Steghide est un programme de stéganographie capable de cacher des données dans divers types d'images et de fichiers
+    audio. La couleur et les fréquences d'échantillonnage ne sont pas modifiées, ce qui rend l'incorporation résistante
+    aux tests statistiques de premier ordre.
+    <br><br>
+    <img src="steg.png" alt="Steganographie" width="600" height="300">
+    <br><br>
+    Stegseek est un cracker de Steghide rapide comme l'éclair, il peut être utiliser pour retrouver les phrases de
+    passe. Il est construit comme un fork du projet steghide original et, en conséquence, il est beaucoup
+    plus rapide que les autres craqueurs. Avant de vous lancer dans ce tutoriel, il est recommandé d'explorer le
+    tutoriel sur Steghide.
+    <br><br>
+    Stegseek comprend presque toutes les fonctionnalités de Steghide. La seule différence et que les commandes doivent
+    utiliser le format <kbd>--command</kbd>. Par exemple, <kbd>steghide embed</kbd> devient <kbd>stegseek --embed</kbd>
+</p>
+
+<h2>2. Configuration</h2>
+
+<p>
+    Pour ce tutoriel, nous utiliserons docker pour avoir une machine pour lancer l'outil Stegseek.
+    <br><br>
+    Télécharger le fichier suivant :
+    <a class="link-primary" href="Docker/Tuto_stegseek/docker-compose.yml" download="docker-compose.yml"><U>docker-compose.yml</U></a>
+</p>
+
+<p>
+    Taper les commandes suivantes :
+</p>
+
+<kbd class="ms-3">docker-compose up -d</kbd>
+
+<p>
+    Pour utiliser la machine avec l'outil Stegseek, tapez :
+</p>
+
+<kbd class="ms-3">docker exec -it stegseek bash</kbd>
+
+<h2>3. Extraire les données d'un image par brute force</h2>
+
+<p>
+    Pour révéler des données cachées dans une image, utiliser la commande suivante :
+</p>
+
+<kbd class="ms-3">stegseek image.jpg file.txt</kbd>
+<br>
+
+<p>
+    Le résultat apparait comme ceci :
+</p>
+
+<img src="capture_stegseek.png" alt="Capture" width="600" height="150">
+<br>
+
+<h2 class="mb-3"></br>Fin du tutoriel</h2>
+
+<p>
+    Le tutoriel est terminé, et vous savez maintenant comment manipuler Stegseek.
+    </br>
+    Pour valider ce tutoriel, il vous suffira de rentrer "awesome" dans la case de validation.
+</p>

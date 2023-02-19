@@ -1,0 +1,65 @@
+<meta charset="utf8">
+
+<h1><b>WPScan</b></h1>
+
+<h2>1. Objectif de l'outil</h2>
+
+<p>
+    Nous savons que près de 50% des sites sur Internet sont hébergés par WordPress.
+    Donc, s'il existe un scanner de vulnérabilité spécifiquement pour WordPress, c'est génial.
+    <br>
+    <img src="wpscan_logo.png" alt="WPScan Logo" width="400" height="150">
+    <br>
+    L'outil WPScan CLI est un scanner de sécurité WordPress gratuit afin de tester la sécurité des sites WoldPress.
+</p>
+
+<h2>2. Configuration</h2>
+
+<p>
+    Pour ce tutoriel, nous utiliserons docker pour avoir une machine pour lancer le site web WorldPress et une machine
+    attaquante (ayant l'outil WPScan installé).
+    <br><br>
+    Télécharger le fichier suivant :
+    <a class="link-primary" href="Docker/Challenge_wpscan/docker-compose.yml" download="docker-compose.yml"><U>docker-compose.yml</U></a>
+    <br><br>
+    Tapez les commandes suivantes :
+</p>
+
+<kbd class="ms-3">docker-compose up -d</kbd>
+
+<p>
+    Pour utiliser la machine attaquante (avec WPScan) tapez :
+</p>
+
+<kbd class="ms-3">docker exec -it wpscan bash</kbd>
+
+<h2>3. Lancer le scan avec WPScan</h2>
+
+<p>
+    La première à chose à savoir c'est qu'il faut inclure le paramètre "--url" pour spécifier le nom de domaine du site
+    à analyser.
+</p>
+
+<kbd class="ms-3">wpscan --url wordpress</kbd>
+
+<p>
+    Vous voyez s'afficher les informations sur les vulnérabilités de la version de Wordpress.
+</p>
+
+<h2>4. Enumerer les utilisateurs</h2>
+
+<kbd class="ms-3">wpscan --url wordpress -e u</kbd>
+
+<p>
+    Maintenant que nous avons énuméré les utilisateurs du site, nous pouvons tenter de trouver le mot de passe d’un
+    utilisateur par brute force.
+</p>
+
+<h2>5. Brute force le mot de passe d'un utilisateur</h2>
+
+<kbd class="ms-3" wpscan --url wordpress --usernames wordpress --passwords /usr/share/wordlists/rockyou.txt</kbd>
+
+<p>
+
+    Vous ne devrez pas attendre plus de cinq minutes pour que John trouve le ou les mots de passes.
+</p>

@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  kali:
+    container_name: stegseek
+    image: kali_stegseek
+    build: ./kali/
+    tty: true
+    restart: on-failure
