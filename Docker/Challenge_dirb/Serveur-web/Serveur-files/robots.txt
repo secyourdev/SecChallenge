@@ -1,0 +1,2 @@
+User-agent: *
+Disallow: hidd3n1/

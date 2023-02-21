@@ -1,0 +1,30 @@
+version: "3.7"
+
+services:
+    web:
+        image: jlesage/firefox
+        container_name: web_firefox
+        restart: always
+        volumes:
+            - /dev/shm:/dev/shm
+        ports:
+            - "5801:5800"
+        networks:
+            - reseau
+    ubuntu:
+        image: cybersecuriteachg2/ubuntu
+        container_name: ubuntu
+        restart: always
+        networks:
+            - reseau
+    Tourisme_Scranton:
+        image: cybersecuriteachg2/apache_challenge18
+        container_name: Tourisme_Scranton
+        restart: always
+        volumes:
+          - ./Serveur-web/Serveur-files:/var/www/html
+        networks:
+            - reseau
+
+networks:
+    reseau:
