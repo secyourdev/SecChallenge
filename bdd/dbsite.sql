@@ -389,7 +389,8 @@ INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Description`, `Reponse`, `Emplac
 (42, 'Faille XSS', 'Attaquer un site vulnérable', NULL, 'Tutoriel/tuto-XSS/tuto-xss.html', 'Tutoriel/tuto-XSS/affiche.png', NULL),
 (43, 'NSE', 'Scripting pour nmap', NULL, 'Tutoriel/tuto-nse/tuto-NSE.html', 'Tutoriel/tuto-nse/images/nmap4.jpg', NULL),
 (44, 'DNSEnum', 'L\'outil d\'énumération DNS simple & efficace', NULL, 'Tutoriel/tuto-DNSEnum/tuto-DNSEnum.html', 'Tutoriel/tuto-DNSEnum/images/affiche.png', NULL),
-(45, 'sslyze', 'Outil pour analyser la configuration SSL d\'un serveur', 'Tuto-SSLyze', 'Tutoriel/tuto-sslyze/tuto-sslyze.html', 'Tutoriel/tuto-sslyze/affiche.png', NULL);
+(45, 'sslyze', 'Outil pour analyser la configuration SSL d\'un serveur', 'Tuto-SSLyze', 'Tutoriel/tuto-sslyze/tuto-sslyze.html', 'Tutoriel/tuto-sslyze/affiche.png', NULL),
+(46, 'HashCat', 'Outil pour obtenir un mot de passe à partir de son hash', 'butterfly', 'Tutoriel/tuto-hashcat/tuto-hashcat.html', 'Tutoriel/tuto-hashcat/affiche.png', NULL);
 -- --------------------------------------------------------
 
 --
