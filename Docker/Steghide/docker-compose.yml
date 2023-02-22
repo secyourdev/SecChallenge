@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  kali:
+    container_name: steghide
+    image: kali_steghide
+    build: ./kali/
+    tty: true
+    restart: on-failure

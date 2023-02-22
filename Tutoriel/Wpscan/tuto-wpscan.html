@@ -19,10 +19,10 @@
     Pour ce tutoriel, nous utiliserons docker pour avoir une machine pour lancer le site web WorldPress et une machine
     attaquante (ayant l'outil WPScan installé).
     <br><br>
-    Télécharger le fichier suivant :
-    <a class="link-primary" href="Docker/Challenge_wpscan/docker-compose.yml" download="docker-compose.yml"><U>docker-compose.yml</U></a>
+    Télécharger le dossier suivant :
+    <a class="link-primary" href="Docker/Wpscan" download="docker"><U>docker</U></a>
     <br><br>
-    Tapez les commandes suivantes :
+    Tapez les commandes suivantes (en étant dans le bon répertoire où se trouve le fichier docker-compose.yml):
 </p>
 
 <kbd class="ms-3">docker-compose up -d</kbd>
@@ -60,6 +60,5 @@
 <kbd class="ms-3" wpscan --url wordpress --usernames wordpress --passwords /usr/share/wordlists/rockyou.txt</kbd>
 
 <p>
-
     Vous ne devrez pas attendre plus de cinq minutes pour que John trouve le ou les mots de passes.
 </p>

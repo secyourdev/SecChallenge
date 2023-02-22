@@ -1,0 +1,9 @@
+version: '2'
+
+services:
+  kali:
+    container_name: rainbowcrack
+    image: kali_rainbowcrack
+    build: ./kali/
+    tty: true
+    restart: on-failure

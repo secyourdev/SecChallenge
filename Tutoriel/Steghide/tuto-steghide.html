@@ -1,0 +1,89 @@
+<meta charset="utf8">
+
+<h1><b>Steghide</b></h1>
+
+<h2>1. Objectif de l'outil</h2>
+
+<p>
+    Steghide est un programme de stéganographie capable de cacher des données dans une grande variété de fichiers image
+    et audio. La couleur et les fréquences d'échantillonnage ne sont pas modifiées séquentiellement, ce qui rend
+    l'incorporation résistante aux tests statistiques de premier ordre.
+    <br><br>
+    <img src="steg.jpg" alt="Steganographie" width="600" height="300">
+    <br><br>
+    C'est un outil de stéganographie qui permet de couvrir des enregistrements confidentiels à l'intérieur d'une
+    image ou d'un enregistrement sonore avec une phrase de passe. Il intègre le groupe d'images BMP et JPEG, le groupe
+    de sons AU et WAV.
+</p>
+
+<h2>2. Configuration</h2>
+
+<p>
+    Pour ce tutoriel, nous utiliserons docker pour avoir une machine pour lancer l'outil Steghide.
+    <br><br>
+    Télécharger le docker suivant :
+    <a class="link-primary" href="Docker/Steghide" download="docker"><U>docker</U></a>
+</p>
+
+<p>
+    Taper les commandes suivantes (en étant dans le bon répertoire où se trouve le fichier docker-compose.yml):
+</p>
+
+<kbd class="ms-3">docker-compose up -d</kbd>
+
+<p>
+    Pour utiliser la machine avec l'outil Steghide, tapez :
+</p>
+
+<kbd class="ms-3">docker exec -it steghide bash</kbd>
+
+<h2>3. Cacher des données</h2>
+
+<p>
+    Nous souhaitons cacher des données dans l'image JPEG "image.jpg" en incorporant le fichier texte nommé
+    "top_secret.txt", dans lequel nous avons écrit nos données confidentielles.
+    <br><br>
+    Pour cacher des données dans une image, utiliser la commande suivante :
+</p>
+
+<kbd class="ms-3">steghide embed -ef top_secret.txt -cf image.jpg -p awesome</kbd>
+<br>
+
+<p>
+    Nous avons utilisé les options <kbd>-ef</kbd> et <kbd>-cf</kbd> respectivement, ces options réfèrent au fichier
+    d'intégration (le fichier qui sera intégré) et fichier de couverture (le fichier utilisé pour incorporer les
+    données). L'utilisation de Steghide permet d'ajouter une couche supplémentaire de sécurité en nous permettant
+    d'utiliser un mot de passe avec l'option -p.
+</p>
+
+<p>
+    Le résultat apparait comme ceci :
+</p>
+
+<img src="capture_steghide.png" alt="Capture" width="600" height="150">
+<br>
+
+<h2>4. Extraire des données avec la phrase de passe</h2>
+
+<p>
+    Tant que vous connaissez la phrase de passe, il est assez facile d'extraire des données dissumulées dans l'image
+    JPEG.
+    <br><br>
+    Pour extraire des données dans une image, utiliser la commande suivante :
+</p>
+
+<kbd class="ms-3">steghide extract -sf image.jpg -p awesome</kbd>
+<br>
+
+<p>
+    Le résultat apparait comme ceci :
+</p>
+
+<img src="capture_steghide2.png" alt="Capture" width="600" height="300">
+<br>
+
+<p>
+    Le tutoriel est terminé, et vous savez maintenant comment manipuler Steghide.
+    </br>
+    Pour valider ce tutoriel, il vous suffira de rentrer "Bien joué!" dans la case de validation.
+</p>

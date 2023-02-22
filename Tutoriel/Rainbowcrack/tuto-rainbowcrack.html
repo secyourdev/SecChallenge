@@ -1,0 +1,131 @@
+<meta charset="utf8">
+
+<h1><b>Rainbowcrack</b></h1>
+
+<h2>1. Objectif de l'outil</h2>
+
+<p>
+    Les Rainbow Tables (ou “Tables arc-en-ciel”) sont utilisées par les hackeurs pour déchiffrer des mots de
+    passe.
+    <br><br>
+    Une Rainbow Table est un fichier volumineux contenant une multitude de mots de passe reliés à leur valeur de
+    hachage. Les hackeurs s’en servent pour cracker des mots de passe. Les Rainbow Tables permettent généralement
+    de réduire le temps et la mémoire nécessaires à l’attaque, contrairement aux attaques par force brute qui requièrent
+    beaucoup de temps et aux attaques par dictionnaires qui nécessitent beaucoup de mémoire.
+    <br><br>
+    <img src="rainbowcrack_logo.png" alt="Rainbowcrack logo" width="300" height="200">
+    <br><br>
+    RainbowCrack est une implémentation proposée par Philippe Oechslin qui permet de craquer les hachages avec des
+    tables arc-en-ciel.
+</p>
+
+<h2>2. Configuration</h2>
+
+<p>
+    Pour ce tutoriel, nous utiliserons docker pour avoir une machine pour lancer l'outil Rainbowcrack.
+    <br><br>
+    Télécharger le dossier suivant :
+    <a class="link-primary" href="Docker/Rainbowcrack" download="docker"><U>docker</U></a>
+</p>
+
+<h2>2. Configuration</h2>
+
+<p>
+    Taper les commandes suivantes (en étant dans le bon répertoire où se trouve le fichier docker-compose.yml):
+</p>
+
+<kbd class="ms-3">docker-compose up -d</kbd>
+
+<p>
+    Pour utiliser la machine avec l'outil Rainbowcrack, tapez :
+</p>
+
+<kbd class="ms-3">docker exec -it rainbowcrack bash</kbd>
+
+<h2>3. Généner les tables arc-en-ciel</h2>
+
+<p>
+    L'option rtgen : cet outil est utilisé pour générer les tables arc en ciel, cette étape est parfois nomméestade de
+    pré calcul. Cette étape peut être très lente. Mais une fois ce calcul effectué, l’outil dehack sera beaucoup plus
+    rapide. Il supporte plusieurs algorithmes dont: NTLM, MD2, MD4,MD5, SHA1, et RIPEMD160.
+</p>
+
+<p>
+    Pour générer une table arc-en-ciel pour un hash MD5 d'une longueur de 4 textes en clair (contenant uniquement des
+    alphabets), nous utilisons la commande suivante :
+</p>
+
+<kbd class="ms-3">rtgen md5 loweralpha 1 4 0 1000 1000 0</kbd>
+
+<p>
+    Le résultat apparait comme ceci :
+</p>
+
+<img src="capture_rcrack.png" alt="Capture" width="600" height="200">
+<br>
+
+<p>
+    La table arc-en-ciel sera stockée dans le répertoire /usr/share/rainbowcrack.
+</p>
+
+<p>
+    Les tables peuvent aussi être téléchargées depuis certains sites, comme <a href="url">http://project-rainbowcrack.com/table.htm</a>.
+    Cela fait gagner du temps et l’espace.
+</p>
+
+<p>
+    Maintenant, nous pouvons utiliser cette rainbow table pour craquer le hash MD5 d'un mot de passe de 4 caractères.
+    Nous allons le craquer en utilisant notre rainbow table créée. Avant cela, nous devons trier notre rainbow table.
+</p>
+
+<h2>4. Trier les tales arc-en-ciel</h2>
+
+<p>
+    Pour accéder au dossier contenant la table arc-en-ciel pour un hash MD5, taper la commande suivante :
+</p>
+
+<kbd class="ms-3">cd /usr/share/rainbowcrack</kbd>
+
+<p>
+    Pour trier une table arc-en-ciel pour un hash MD5, nous allons utiliser la commande suivante :
+</p>
+
+<kbd class="ms-3">rtsort .</kbd>
+
+<p>
+    Le résultat apparait comme ceci :
+</p>
+
+<img src="capture_rcrack2.png" alt="Capture" width="600" height="200">
+<br>
+
+<p>
+    Maintenant que nosu avons trié notre rainbow table, nous pouvons utiliser l'outil RainbowCrack pour craquer le mot
+    de passe du hash MD5 qui a 4 caractères de texte en clair en minuscules.
+</p>
+
+<h2>5. Retrouver le mot de passe d’un hash dans une table arc en ciel avec rcrack</h2>
+
+<p>
+    Nous avons le hash suivant : d6ca3fd0c3a3b462ff2b83436dda495e
+    Pour lancer la ligne de commande rcrack, tapez la commande suivante :
+</p>
+
+<kbd class="ms-3">rcrack . -h d6ca3fd0c3a3b462ff2b83436dda495e</kbd>
+
+<p>
+    Le résultat apparait comme ceci :
+</p>
+
+<img src="capture_rcrack3.png" alt="Capture" width="600" height="300">
+
+<p>
+    En quelques secondes, nous avons réussi à retrouver le texte en clair de notre hash avec la commande rcrack aka
+    RainbowCrack. Le résultat est "kali" comme le montre la capture ci-dessus.
+</p>
+
+<p>
+    Le tutoriel est terminé, et vous savez maintenant comment manipuler RainbowCrack.
+    </br>
+    Pour valider ce tutoriel, il vous suffira de rentrer "rainbow" dans la case de validation.
+</p>
