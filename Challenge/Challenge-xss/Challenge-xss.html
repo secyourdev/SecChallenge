@@ -1,0 +1,51 @@
+<div class="section-title row text-center">
+    <div class="col-md-8 offset-md-2">
+        <h3>Vol de cookie</h3>
+        <!--Titre-->
+    </div>
+</div>
+
+<h2>Objectif</h2>
+<p>
+    L'objectif de ce challenge est de mettre en pratique le cours sur la faille xss
+    </br>
+    Vous prendrez le contrôle d'Eve qui doit voler la session http d'Alice sur le site <br>http://MyForum</br>
+    </br>
+</p>
+
+<h2>Outils à installer</h2>
+
+<p>
+    Installation de l'application Docker et docker-compose<br>
+    Rendez-vous sur votre invite de commandes<br>
+    Il est nécessaire de récupérer le fichier <b>docker-compose.yml</b> qui permet de lancer les 3
+    machines<br>
+</p>
+
+<h4><U>Pour cela :</U></h4>
+
+<p>
+    Télécharger le <a class="link-primary" href="Downloads/xss/docker-compose.yml"
+        download="docker-compose.yml"><U>docker-compose.yml</U></a><br>
+    Il faut maintenant exécuter ce fichier : <br>
+</p>
+
+
+<kbd class="ms-3">bash> docker-compose up -d</kbd>
+
+<p>
+    Cette commande peut être un peu longue, c'est normal. <br>
+    Les différents machines sont lancées et téléchargées. Vous pouvez vous connecter à la machine d'Eve avec la
+    commande :
+</p>
+
+<kbd class="ms-3">bash> docker exec -it mitm_eve /bin/bash</kbd>
+<p>
+    Vous pouvez accéder au site web avec l'interface firefox en allant à l'addresse <a class="link-primary" href="http://localhost:5801"><U>http://localhost:5801</U></a><br> 
+</p>
+
+<h3><b>À vous de jouer</b></h3>
+
+<p>Avec nos différents tutoriels et avec vos recherches personnelles, vous devez
+    être en mesure de
+    <b>trouver le flag sur le site</b>

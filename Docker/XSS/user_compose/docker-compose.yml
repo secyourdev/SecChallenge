@@ -1,0 +1,49 @@
+version: "3.7"
+
+services:
+    alice:
+    
+        image: cybersecuriteachg2/xss_alice
+        container_name: xss_alice
+        restart: always
+
+        ports:
+            - "5800:5800"
+        networks:
+            - xss
+    web:
+        image: jlesage/firefox
+        container_name: web
+        restart: always
+        volumes:
+            - /dev/shm:/dev/shm
+        ports:
+            - "5801:5800"
+        networks:
+            - xss
+    bob:
+        image: cybersecuriteachg2/xss_bob
+        container_name: xss_bob
+        restart: always
+
+        networks:
+            - xss
+    MyForum:
+        image: cybersecuriteachg2/xss_caro
+        container_name: xss_caro
+        restart: always
+
+        networks:
+            - xss
+
+
+    eve:
+        
+        image: cybersecuriteachg2/xss_eve
+        container_name: xss_eve
+
+        networks:
+            - xss
+
+networks:
+    xss:
