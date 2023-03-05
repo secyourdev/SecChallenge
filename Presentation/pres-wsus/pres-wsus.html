@@ -1,0 +1,69 @@
+<h2 class="mb-3">1. Qu'est-ce que c'est WSUS ?</h2>
+<p>
+        WSUS (Windows Server Update Services) est un outil de gestion de mises à jour de sécurité pour les systèmes d'exploitation Windows. 
+        </br></br>
+        Il permet aux administrateurs de télécharger et de distribuer des mises à jour de sécurité et de logiciels approuvées pour les ordinateurs 
+        Windows au sein de leur réseau. 
+        </br>
+        </p><img src="Presentation/pres-wsus/wsus1.png" alt="" class="img-fluid"> <br>
+        <p>
+        Dans cette présentation, nous allons discuter des principaux aspects de WSUS, notamment son architecture, sa configuration, sa gestion des mises à jour et sa sécurité.
+        </br>
+</p>
+<h2 class="mb-3">2. Architecture de WSUS</h2>
+<p>
+        Deux principaux composants : le serveur WSUS et le client WSUS. 
+        <br><br>
+        Le serveur WSUS est installé sur un serveur Windows, qui peut être un serveur physique ou virtuel. Il contient une base de données qui stocke les informations de configuration de WSUS, les mises à jour téléchargées et les rapports de statut de mise à jour des clients.
+        <br><br>
+        Le client WSUS est installé sur chaque ordinateur Windows que vous souhaitez mettre à jour. C’est un service qui se connecte au serveur pour télécharger et installer les mises à jour.
+
+        Les clients WSUS peuvent être gérés via l'interface utilisateur WSUS ou via des stratégies de groupe.
+        <br>
+        </p><img src="Presentation/pres-wsus/wsus2.png" alt="" class="img-fluid"> <br>
+        <p> 
+</p>
+<h2 class="mb-3">3. Configuration de WSUS</h2>
+<p>
+        La configuration de WSUS se fait via l'interface utilisateur WSUS accessible à partir du serveur.
+        <br><br>
+        Les administrateurs peuvent configurer les paramètres de mise à jour, tels que les classifications de mise à jour (Ceux sont des catégories de mises à jour, telles que les mises à jour de sécurité, les mises à jour critiques, les mises à jour de pilotes, etc), les langues prises en charge, les heures de synchronisation, et les groupes d'ordinateurs (pour organiser des groupes en fonction de l'emplacement géographique, de l'appartenance à un département ou d'autres critères et appliquer des paramètres spécifiques à chaque groupe)
+        <br>
+</p>
+
+</p>
+<h2 class="mb-3">4. Gestion des mises à jour</h2>
+<p>
+        Les mises à jour sont téléchargées à partir des serveurs Microsoft Update et stockées dans la base de données WSUS.
+        <br><br>
+        Les administrateurs peuvent approuver ou rejeter les mises à jour. Lorsqu'ell est approuvée, elle est téléchargée sur les ordinateurs de ce groupe lors de la prochaine synchronisation.
+        <br><br>
+        Les administrateurs peuvent aussi supprimer, reporter ou évaluer les mises à jour. L'évaluation permet de vérifier si la mise à jour est applicable à l'environnement informatique et de s'assurer qu'elle ne crée pas de problèmes de compatibilité ou de performance.
+        <br>
+</p>
+
+</p>
+<h2 class="mb-3">5. Sécurité de WSUS</h2>
+<p>
+        Il existe plusieurs types d'attaques qui peuvent cibler un serveur WSUS. Voici quelques exemples :
+        <br><br>
+        -Les attaques de type Man-in-the-Middle (MITM) : Un attaquant peut intercepter la communication entre le serveur WSUS et les clients WSUS, et ainsi modifier les mises à jour ou les remplacer par des mises à jour malveillantes.
+        <br><br>
+        -Les attaques par injection de code : Les attaquants peuvent exploiter des vulnérabilités dans les fichiers de configuration ou dans le code du serveur WSUS pour exécuter du code malveillant sur le serveur. Cela peut permettre à l'attaquant de prendre le contrôle du serveur ou de voler des données sensibles.
+        <br><br>
+        -Les attaques de déni de service (DoS) : Les attaquants peuvent tenter de saturer le serveur WSUS avec des requêtes malveillantes ou des flux de trafic élevés, entraînant une interruption de service pour les clients WSUS.
+        <br><br>
+        -Les attaques de phishing : Les attaquants peuvent envoyer des e-mails de phishing qui imitent des mises à jour WSUS pour tromper les utilisateurs et les inciter à télécharger et installer des mises à jour malveillantes.
+        <br><br>
+        Pour protéger un serveur WSUS contre ces attaques, il est recommandé de suivre les meilleures pratiques de sécurité, telles que la mise à jour régulière du serveur WSUS avec les derniers correctifs de sécurité, la configuration d'un pare-feu pour limiter l'accès au serveur WSUS, et la mise en place d'une authentification forte pour l'accès au serveur WSUS. Il est également recommandé de surveiller régulièrement les journaux d'événements du serveur WSUS pour détecter toute activité suspecte ou toute tentative d'attaque.
+</p>
+
+
+<h2 class="mb-3">4. Sources</h2>
+<p>
+    <a href="https://fr.wikipedia.org/wiki/Windows_Server_Update_Services">
+        <U>- Wikipédia</U></a>
+    </br>
+    <a href="https://learn.microsoft.com/fr-fr/windows-server/administration/windows-server-update-services/get-started/windows-server-update-services-wsus">
+        <U>- Microsoft learn</U></a>
+</p>

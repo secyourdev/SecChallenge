@@ -139,8 +139,9 @@ INSERT INTO `presentation` (`Id`, `LienPresentation`, `LienImage`, `Titre`, `Des
 (2, 'Presentation/pres-phishing/pres-phishing.html', 'Presentation/pres-phishing/phishing.png', 'Présentation : Le phishing (hammeçonnage)', 'Cette présentation vous expliquera ce qu\'est le phishing, comment s\'en protéger et que faire si on en est victime.', NULL),
 (3, 'Presentation/pres-ransomware/pres-ransomware.html', 'Presentation/pres-ransomware/ransomware.png', 'Présentation : Le ransomware (rançonlogiciel)', 'Cette présentation vous expliquera ce qu\'est un ransomware, comment se protéger de ces logiciels et que faire si on en est victime.', NULL),
 (4, 'Presentation/pres-xss/pres-xss.html', 'Presentation/pres-xss/xss.png', 'Présentation : Une attaque XSS', 'Cette présentation vous expliquera ce qu\'est une attaque XSS, l\'impact d\'une telle attaque et comment s\'en protéger.', NULL),
-(5, 'Presentation/pres-firewall/firewall.html', 'Presentation/pres-firewall/firewall.png', 'Le pare-feu par la granularité', 'Voici une présentation sommaire du fonctionnement d\'un pare-feu Linux.', NULL);
-
+(5, 'Presentation/pres-firewall/firewall.html', 'Presentation/pres-firewall/firewall.png', 'Firewall', 'Voici une présentation sommaire du fonctionnement d\'un pare-feu Linux.', NULL),
+(6, 'Presentation/pres-heartbleed/pres-heartbleed.html', 'Presentation/pres-heartbleed/heartbleed-logo.png', 'Faille Heartbleed', 'Présentation d\'une faille ssl', NULL),
+(7, 'Presentation/pres-wsus/pres-wsus.html', 'Presentation/pres-wsus/affiche.png', 'Windows Server Update Services (wsus)', 'Outil de gestion de mises à jour de sécurité pour les systèmes d\'exploitation  windows', NULL);
 -- --------------------------------------------------------
 
 --
