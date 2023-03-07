@@ -395,7 +395,8 @@ INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Description`, `Reponse`, `Emplac
 (45, 'sslyze', 'Outil pour analyser la configuration SSL d\'un serveur', 'Tuto-SSLyze', 'Tutoriel/tuto-sslyze/tuto-sslyze.html', 'Tutoriel/tuto-sslyze/affiche.png', NULL),
 (46, 'HashCat', 'Outil pour obtenir un mot de passe à partir de son hash', 'butterfly', 'Tutoriel/tuto-hashcat/tuto-hashcat.html', 'Tutoriel/tuto-hashcat/affiche.png', NULL),
 (47, 'Dirb', 'Outil pour effectuer des recherches de répertoires et de fichiers sur des serveurs web', 'Tuto-dirb', 'Tutoriel/tuto-dirb/tuto-dirb.html', 'Tutoriel/tuto-dirb/affiche.png', NULL),
-(48, 'Exploiter Heartbleed', 'Exploitation de la faille heartbleed avec Metasploit', 'tuto-heartbleed', 'Tutoriel/tuto-heartbleed/tuto-heartbleed.html', 'Tutoriel/tuto-heartbleed/affiche.png', NULL);
+(48, 'Exploiter Heartbleed', 'Exploitation de la faille heartbleed avec Metasploit', 'tuto-heartbleed', 'Tutoriel/tuto-heartbleed/tuto-heartbleed.html', 'Tutoriel/tuto-heartbleed/affiche.png', NULL),
+(49, 'Shodan', 'Moteur de recherche d\'objets connectés', NULL, 'Tutoriel/tuto-shodan/tuto-shodan.html', 'Tutoriel/tuto-shodan/shodan1.png', NULL);
 -- --------------------------------------------------------
 
 --
