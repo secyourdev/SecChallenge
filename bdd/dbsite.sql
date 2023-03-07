@@ -114,7 +114,8 @@ INSERT INTO `cours` (`Id`, `Titre`, `Description`, `EmplacementCours`, `LienImag
 (29, 'Firewall', 'Etablissement de règle qui régissent le traffic autorisé et bloqué', 'Cours/cours-firewall/cours-firewall.html', 'Cours/cours-firewall/affiche.png', 'Notion'),
 (30, 'Faille XSS', 'Introduction à la faille XSS / cross-site scripting', 'Cours/cours-XSS/cours-XSS.html', 'Cours/cours-XSS/affiche.png', 'Faille'),
 (31, 'Searchsploit', 'Recherche facile de vulnébalité', 'Cours/cours-searchsploit/cours-searchsploit.html', 'Cours/cours-searchsploit/SS1.png', 'Outil'),
-(32, 'Attaque Kerberoasting', 'Exploitation d\'une faille kerberoast', 'Cours/cours-kerbe/cours-kerbe.html', 'Cours/cours-kerbe/photoreseau.jpg', 'Faille');
+(32, 'Attaque Kerberoasting', 'Exploitation d\'une faille kerberoast', 'Cours/cours-kerbe/cours-kerbe.html', 'Cours/cours-kerbe/photoreseau.jpg', 'Faille'),
+(33, 'Spear-Phishing', 'Utilisation d\'information privé pour le phishing ', 'Cours/cours-spearphishing/cours-spearphishing.html', 'Cours/cours-spearphishing/affiche.jpg', 'Notion');
 
 -- --------------------------------------------------------
 
