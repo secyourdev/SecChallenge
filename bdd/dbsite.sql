@@ -62,7 +62,8 @@ INSERT INTO `challenge` (`IdChallenge`, `Emplacement`, `Reponse`, `NomChallenge`
 (16, 'Challenge/challenge-cyberchef/challenge-cyberchef.html', '22/12/1973', 'RoDate', 'CyberChef', 'Brute force', NULL, 'Collecte d\'information', 5),
 (17, 'Challenge/Challenge-searchsploit/Challenge-searchsploit.html', 'ESIEE2022', 'Searchsploit', 'scan de vulnérabilité'  , NULL, NULL, 'Scanner de vulnérabilité', 5),
 (18, 'Challenge/Challenge-dirb/challenge-dirb.html', 'CeciEstUnFlag', 'Dirb', 'dirb'  , 'wget', 'cyberchef', 'Collecte d\'information', 5),
-(19, 'Challenge/Challenge-xss/Challenge-xss.html', '4f2cbc87727679862bb4f14a0346fcab', 'Vol de session', 'xss'  , 'dirb', NULL, 'Prise de contôle', 10);
+(19, 'Challenge/Challenge-xss/Challenge-xss.html', '4f2cbc87727679862bb4f14a0346fcab', 'Vol de session', 'xss'  , 'dirb', NULL, 'Prise de contôle', 10),
+(12, 'Challenge/Challenge-dnsenum/Challenge-dnsenum.html', '147.20.0.4', 'dns', NULL  , NULL , NULL, 'Collecte d\'information', 5);
 -- --------------------------------------------------------
 
 --
