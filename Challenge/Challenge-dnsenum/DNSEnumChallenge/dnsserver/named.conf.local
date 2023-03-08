@@ -1,0 +1,4 @@
+zone "challenge-foundation.com" {
+    type master;
+    file "/etc/bind/zones/db.challenge-foundation.com";
+};
