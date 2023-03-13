@@ -1,4 +1,4 @@
-<h1>MitmProxy</h1>
+<h1>Faille XSS</h1>
 
 <h2 class="mb-3">1. Objectif</h2>
 <p>
@@ -75,6 +75,32 @@
     On comprend alors que l'on peut faire exécuter du code javascript sur la machine de la victime, et ce, quelque soit la longueur de la chaine de caractères et la complexité du code injecté.
     </br>
 
+</p>
+
+<p>
+    Les <b>cookies</b> sont des fichiers texte stockés sur l'ordinateur d'un utilisateur par un site web visité. Ils sont
+    utilisés pour stocker des informations sur les préférences de l'utilisateur, ses connexions précédentes et ses
+    interactions avec le site.
+    </br>
+    Un exemple de cookie sont les paniers d'achat sur les sites de e-commerce. Ils permettent de stocker les produits que l'utilisateur a choisis tout en continuant à naviguer sur le site.
+    </br> 
+    Les cookies peuvent être utilisés pour améliorer l'expérience utilisateur, mais ils
+    peuvent également être utilisés pour le suivi et la collecte de données à des fins publicitaires ou de surveillance.
+    </br>
+    Les utilisateurs peuvent gérer les cookies en modifiant les paramètres de leur navigateur pour bloquer ou supprimer
+    les cookies, mais cela peut affecter certaines fonctionnalités du site web. 
+</p>
+
+<p>
+    Nous allons maintenant voir comment afficher des cookies avec une faille XSS.
+    Essayer d'inserer la commande suivante :
+    <kbd class="ms-3"> &ltscript&gt alert(document.cookie) &lt/script&gt  </kbd>
+    </br>
+    On peut appercevoir que l'on a une alerte qui s'affiche avec le contenu du cookie.
+    Ici il s'agit d'un cookie nommé <b>PHPSESSID</b> qui contient un identifiant unique de session pour le PHP.
+    </br>
+    Si ce cookie était volé, il serait possible de se connecter à la session de l'utilisateur sans aucune authentification.
+    C'est pourquoi il est important de sécuriser les cookies avec des temps d'expiration pour chaque cookie et une connexion https.
 </p>
 
 
