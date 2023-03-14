@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  nse-kali:
+    container_name: nse-kali
+    build: ./nse-kali
+    networks:
+      - nse_net
+
+
+  nse-server:
+    container_name: nse-server
+    build: ./nse-server
+    networks:
+      - nse_net
+
+
+networks:
+  nse_net:
