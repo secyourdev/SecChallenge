@@ -113,6 +113,7 @@ if [ "$(ls -A public_html)" ];then
         rm -rf public_html/
         git clone --branch 2022_E4_GR2 https://github.com/secyourdev/SecChallenge.git public_html/'
         git pull
+        cd ..
     fi
     
     
