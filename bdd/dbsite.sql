@@ -400,7 +400,8 @@ INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Description`, `Reponse`, `Emplac
 (47, 'Dirb', 'Outil pour effectuer des recherches de répertoires et de fichiers sur des serveurs web', 'Tuto-dirb', 'Tutoriel/tuto-dirb/tuto-dirb.html', 'Tutoriel/tuto-dirb/affiche.png', NULL),
 (48, 'Exploiter Heartbleed', 'Exploitation de la faille heartbleed avec Metasploit', 'tuto-heartbleed', 'Tutoriel/tuto-heartbleed/tuto-heartbleed.html', 'Tutoriel/tuto-heartbleed/affiche.png', NULL),
 (49, 'Shodan', 'Moteur de recherche d\'objets connectés', NULL, 'Tutoriel/tuto-shodan/tuto-shodan.html', 'Tutoriel/tuto-shodan/shodan1.jpg', NULL),
-(50, 'WGET', 'Outil de téléchargement en ligne de commande', NULL, 'Tutoriel/tuto-wget/tuto-wget.html', 'Tutoriel/tuto-wget/wget3.png', NULL);
+(50, 'WGET', 'Outil de téléchargement en ligne de commande', NULL, 'Tutoriel/tuto-wget/tuto-wget.html', 'Tutoriel/tuto-wget/wget3.png', NULL),
+(51, 'Local file inclusion', 'Comment uploader un fichier sur un site web', NULL, 'Tutoriel/tuto-lfi/tuto-lfi.html', 'Tutoriel/tuto-lfi/images/lfi_logo.png', NULL);
 -- --------------------------------------------------------
 
 --

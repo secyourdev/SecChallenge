@@ -1,0 +1,103 @@
+
+<style>
+    a:link {
+        color: blue;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+    a:visited {
+        color: pink;
+        background-color: transparent;
+        text-decoration: none;
+    }
+
+    a:hover {
+        color: green;
+        background-color: transparent;
+        text-decoration: underline;
+    }
+
+    a:active {
+        color: yellow;
+        background-color: transparent;
+        text-decoration: underline;
+    }
+</style>
+
+<center>
+    <h1>Local File Inclusion</h1>
+    <img src="Tutoriel/tuto-lfi/images/lfi_logo.png" alt="LFILogo" class="img-fluid">
+</center>
+
+<h2 class="mb-3"><u>1. Objectif</u></h2>
+<p>
+    L'objectif de ce tutoriel et de vous la faille LFI ainsi que les risques qu'elles peut engendrer.<br>
+    En effet, ce type d'attaque ciblant principalement les sites web, permet à un attaquant d'effectuer des actions pouvant
+    résulter à une prise de contrôle de la machine cible.<br>
+    <br>
+</p>
+
+<h2 class="mb-3"><u>2. La Faille LFI</u></h2>
+<p>
+    La faille LFI, ou Local File Inclusion, est une type d'attaque qui permet à un attaquant, en exploitant les défauts d'un site web mal conçu,
+    d'accéder aux contenu de la machine qui héberge le site web et d'en extraire des informations. Il est aussi possible d'y injecter du contenu
+    comme des reverse shells, permettant ainsi à l'attaque de prendre le controle de la machine.<br>
+    <br>
+</p>
+
+
+<h2 class="mb-3"><u>3. Application de la faille LFI</u></h2>
+<p>
+    Dans ce tutoriel, nous allons voir une utilisation simple de la faille LFI, dans le but de vous montrer de quoi est capable de type d'attaque sur un
+    site web qui n'a pas bien été écrit (en ne s'occupant pas de l'aspect sécurité) et des risques que celà peut engendrer.
+
+<h3 class="mb-3"> Les Étapes</h3>
+
+    Tout d'abord, on commence par lancer les machines dockers à l'aide de la commande <kbd class="ms-3">sudo docker-compose up --build</kbd> et du fichier que vous pourrez trouver <a href="/Downloads/tuto-lfi/docker-compose.yml">ici.</a><br>
+    Une fois lancées, vous verez dans le terminal qu'il y a deux machines: un serveur (dont l'adresse IP sera affichée, ici <b>172.21.0.3</b>) et une machine nommé "pentester"
+    qui correspond à la machine que vous allez utiliser. Vous ouvrirez un navigateur (Firefox par exemple) dans lequel vous allez entrer dans la barre de
+    recherche: <kbd class="ms-3">127.0.0.1:5801/</kbd> ou <kbd class="ms-3">localhost:5801/</kbd> (si rien ne s'affiche, essayez le port 5800 à la place).
+    Celà vous ouvrira une page Firefox dans votre navigateur, page Firefox qui correspond au Firefox de la machine "pentester", vous serez donc dans
+    le même sous réseaux que le serveur et vous pourrez accéder au site web en saisissant l'adresse IP du serveur<br>
+    <center>
+        <img src="Tutoriel/tuto-lfi/images/home.png" alt="LFIHome" class="img-fluid">
+    </center><br>
+    <center>C'est un générateur de nombres aléatoires, un site web relativement simple avec une fonctionnalité simple.</center>
+    <center>
+        <img src="Tutoriel/tuto-lfi/images/result.png" alt="LFIResult" class="img-fluid">
+    </center>
+    Mais ici ce n'est pas la complexité du site qui nous intéresse, mais s'il est vulnérable à la faille LFI. L'une des méthodes principale pour
+    vérifier ça est d'aller dans l'url de la page et de chercher directement à partir de cette dernière. Dans ce tutoriel, nous avons volontairement
+    rendu le site vulnérable (dans un but éducatif), et l'argument permettant la recherche de fichier est
+    <kbd class="ms-3">http://url/something<b>?file=</b>..</kbd>.
+    (Il existe plusieurs façon de faire, mais nous nous sommes inspirés de <a href="https://www.acunetix.com/blog/articles/local-file-inclusion-lfi/" target="_blank">celui-ci</a>.<br>
+    Nous allons donc modifier l'url du site pour allez chercher un fichier compromettant, la majorité du temps le fichier recherché est /etc/passwd qui est accessible
+    en lecture pour tous les utilisateurs et qui contient la liste des utilisateurs avec leurs droits et leur mots de passe "salés". On entre donc dans la barre de recherche
+    <kbd class="ms-3">http://172.21.0.3/home.php<b>?file=../../../../../../../../etc/passwd</b></kbd>, de la même façon que vous naviguer dans vos répertoires avec
+    la commande <kbd class="ms-3">cd</kbd>.<br>
+    <center>
+        <img src="Tutoriel/tuto-lfi/images/url.png" alt="LFIurl" class="img-fluid">
+    </center>
+    Pourquoi autant de "<b>../</b>"? Tout simplement car vous ne savez pas exactement dans quel dossier le site web est localisé, et il faut donc mettre le plus de "../"
+    possible pour revenir à la racine, on a pas à s'inquiéter de faire un <kbd class="ms-3">cd ..</kbd><br> à la racine car on ne peut pas remontrer plus haut.
+    Voici le résultat que l'on obtient:<br>
+    <center>
+        <img src="Tutoriel/tuto-lfi/images/etcpasswd.png" alt="LFIpasswd" width="1400" class="img-fluid">
+    </center>
+    <center>
+        Le fichier /etc/passwd est affiché sur la page du site web!<br>
+        Vous avez ci-dessous la vidéo associée à ce tutoriel, pour pouvoir voir les étapes.
+    </center><br>
+
+<center>
+        <video controls>
+            <source src="Tutoriel/tuto-lfi/videos/lfi.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas l'affichage de la vidéo.
+        </video>
+</center><br>
+    Comme vous pouvez le voir, le fait d'avoir un site web mal rédiger peut permettre à un attaquant d'accéder à tous les fichiers de votre système, notamment le fichier
+    /etc/passwd qui contient des informations critiques. Ce tutoriel ne montre qu'un aspect du LFI, mais comme mentionné précédement, il est possible de faire des choses
+    bien plus dévastatrices. Il est donc important de faire attention aux fonctions que vous utiliser lors de la rédaction d'un site web (ne pas utiliser des
+    fonctions qui offre trop de permissions aux utilisateurs), et si nécessaire, de mettre en place du filtrage.
+</p>
