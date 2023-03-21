@@ -1,101 +1,348 @@
-<header id="title-block-header">
-  <h1 class="title">Burp pour l’exploitation d’endpoint GraphQL</h1>
-</header>
-<h1 id="burp-pour-lexploitation-dendpoint-graphql">
-  Burp pour l’exploitation d’endpoint GraphQL
-</h1>
-<p>
-  <strong>Burp Suite</strong> est un outil incontournable dans le monde du
-  pentest, qui permet d’intercepter des requêtes HTTP et de les modifier. Dans
-  ce cours nous allons comprendre les bases de <strong>Burp Suite</strong> :
-  intercepteur, répéteur…
-</p>
-<h2 id="installation-de-burp">1. Installation de Burp</h2>
-<p>
-  <strong>Burp Suite</strong> est un logiciel écrit en Java, il vous faut donc
-  une version de java installée sur votre ordinateur. Il existe une version
-  payante de <strong>Burp Suite</strong>, avec plus d’options, mais la version
-  gratuite est amplement suffisante pour nous. Dans la suite de ce cours, nous
-  utiliserons donc <strong>Burp Suite Community Edition</strong>. Il n’existe
-  pas de version de <strong>Burp Suite</strong> en CLI, il n’y a que la version
-  GUI.
-</p>
-<p>
-  Pour installer <strong>Burp Suite</strong>, vous pouvez suivre ce
-  <a href="https://www.geeksforgeeks.org/how-to-install-burp-suite-on-windows/">tutoriel</a>
-  détailler ou bien vous rendre sur le
-  <a href="https://portswigger.net/burp">site officiel</a>.
-</p>
-<h2 id="lancement-du-lab-docker">2. Lancement du lab docker</h2>
-<p>
-  Pour la suite du tuto, vous pouvez lancer ce lab docker pour avoir accès à un
-  site web, dans le but de pratiquer en même temps.
-</p>
-<ul>
-  <li>
-    Téléchargez ce
-    <a href="https://github.com/leoroullois/web-exploitation/blob/main/docker-compose.yml">docker-compose.yaml</a>
-  </li>
-  <li>Lancez-le avec <code>docker-compose up</code></li>
-</ul>
-<p>
-  Vous disposez maintenant d’un site web <code>http://localhost:3000</code>.
-</p>
-<h2 id="intercepter-les-requêtes-http-grâce-au-proxy-de-burp-suite">
-  3. Intercepter les requêtes HTTP grâce au proxy de Burp Suite
-</h2>
-<p>
-  Pour utiliser <strong>Burp Suite</strong> comme proxy et être en mesure
-  d’intercepter le trafic web de votre navigateur internet, nous allons
-  installer une extension firefox se nommant
-  <a href="https://getfoxyproxy.org/downloads/">Foxy Proxy</a>.
-  [[attachments/Pasted image 20230307115237.png]] Dans les options de
-  <strong>Foxy Proxy</strong>, cliquez sur <code>Add</code> , mettez
-  <code>Burp</code> comme nom, puis <code>127.0.0.1</code> comme adresse IP et
-  <strong>8080</strong> comme port (c’est celui du proxy de Burp).
-</p>
-<p>[[attachments/Pasted image 20230307115501.png]]</p>
-<p>
-  Une fois que cela est fait, vous pouvez enfin lancer Burp. Pour commencer à
-  intercepter des requêtes, activez <strong>Foxy Proxy</strong>, et dans
-  <strong>Burp</strong>, allez dans l’onglet <strong>Proxy</strong> et activez
-  l’interception.
-</p>
-<p>[[attachments/Pasted image 20230307115621.png]]</p>
-<p>[[attachments/Pasted image 20230307115640.png]]</p>
-<p>
-  Maintenant, naviguez sur le site à l’adresse
-  <code>http://localhost:3000/challenge/0</code>, et retournez sur
-  <strong>Burp Suite</strong>. Vous observerez la requête HTTP
-  <code>GET</code> que vous venez de faire. [[attachments/Pasted image
-  20230307163656.png]] A partir de là, vous pouvez modifier la requête, la
-  renvoyer, faire une attaque par brute force…
-</p>
-<h2 id="répétez-vos-requêtes-facilement-avec-le-repeater">
-  Répétez vos requêtes facilement avec le Repeater
-</h2>
-<p>
-  Parfois, lorsque l’on intercepte une requête HTTP, on aimerais pouvoir la
-  modifier en la renvoyant plusieurs fois.
-</p>
-<p>
-  C’est par exemple le cas quand on cherche à exploiter une injection SQL. Nous
-  n’aurons jamais dès le premier essai le bon payload, nous devrons le modifier
-  plusieurs fois, et à chaque fois on veut renvoyer la requête pour voir la
-  réponse et améliorer notre payload.
-</p>
-<p>
-  Pour ce faire, Burp Suite met à disposition le repeater. Envoyez la requêtes
-  précédente dans le <strong>Repeater</strong> avec un clic droit,
-  <strong>Send to Repeater</strong>.
-</p>
-<p>[[attachments/Pasted image 20230307163847.png]]</p>
-<p>
-  Vous pouvez cliquer sur <code>Send</code> pour envoyer une requête, et
-  observer le résultat sur la droite :
-</p>
-<p>[[attachments/Pasted image 20230307163953.png]]</p>
-<p>
-  Tentez de trouver le flag en parcourant les pages <code>/challenge/:id</code>.
-</p>
-<h2 id="vidéo-explicative">Vidéo explicative</h2>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="" xml:lang="">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="generator" content="pandoc" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
+  <title>Burp pour l’exploitation d’endpoint GraphQL</title>
+  <style>
+    html {
+      color: #1a1a1a;
+      background-color: #fdfdfd;
+    }
+
+    body {
+      margin: 0 auto;
+      max-width: 36em;
+      padding-left: 50px;
+      padding-right: 50px;
+      padding-top: 50px;
+      padding-bottom: 50px;
+      hyphens: auto;
+      overflow-wrap: break-word;
+      text-rendering: optimizeLegibility;
+      font-kerning: normal;
+    }
+
+    @media (max-width: 600px) {
+      body {
+        font-size: 0.9em;
+        padding: 12px;
+      }
+
+      h1 {
+        font-size: 1.8em;
+      }
+    }
+
+    @media print {
+      html {
+        background-color: white;
+      }
+
+      body {
+        background-color: transparent;
+        color: black;
+        font-size: 12pt;
+      }
+
+      p,
+      h2,
+      h3 {
+        orphans: 3;
+        widows: 3;
+      }
+
+      h2,
+      h3,
+      h4 {
+        page-break-after: avoid;
+      }
+    }
+
+    p {
+      margin: 1em 0;
+    }
+
+    a {
+      color: #1a1a1a;
+    }
+
+    a:visited {
+      color: #1a1a1a;
+    }
+
+    img {
+      max-width: 100%;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      margin-top: 1.4em;
+    }
+
+    h5,
+    h6 {
+      font-size: 1em;
+      font-style: italic;
+    }
+
+    h6 {
+      font-weight: normal;
+    }
+
+    ol,
+    ul {
+      padding-left: 1.7em;
+      margin-top: 1em;
+    }
+
+    li>ol,
+    li>ul {
+      margin-top: 0;
+    }
+
+    blockquote {
+      margin: 1em 0 1em 1.7em;
+      padding-left: 1em;
+      border-left: 2px solid #e6e6e6;
+      color: #606060;
+    }
+
+    code {
+      font-family: Menlo, Monaco, Consolas, 'Lucida Console', monospace;
+      font-size: 85%;
+      margin: 0;
+      hyphens: manual;
+    }
+
+    pre {
+      margin: 1em 0;
+      overflow: auto;
+    }
+
+    pre code {
+      padding: 0;
+      overflow: visible;
+      overflow-wrap: normal;
+    }
+
+    .sourceCode {
+      background-color: transparent;
+      overflow: visible;
+    }
+
+    hr {
+      background-color: #1a1a1a;
+      border: none;
+      height: 1px;
+      margin: 1em 0;
+    }
+
+    table {
+      margin: 1em 0;
+      border-collapse: collapse;
+      width: 100%;
+      overflow-x: auto;
+      display: block;
+      font-variant-numeric: lining-nums tabular-nums;
+    }
+
+    table caption {
+      margin-bottom: 0.75em;
+    }
+
+    tbody {
+      margin-top: 0.5em;
+      border-top: 1px solid #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+    }
+
+    th {
+      border-top: 1px solid #1a1a1a;
+      padding: 0.25em 0.5em 0.25em 0.5em;
+    }
+
+    td {
+      padding: 0.125em 0.5em 0.25em 0.5em;
+    }
+
+    header {
+      margin-bottom: 4em;
+      text-align: center;
+    }
+
+    #TOC li {
+      list-style: none;
+    }
+
+    #TOC ul {
+      padding-left: 1.3em;
+    }
+
+    #TOC>ul {
+      padding-left: 0;
+    }
+
+    #TOC a:not(:hover) {
+      text-decoration: none;
+    }
+
+    code {
+      white-space: pre-wrap;
+    }
+
+    span.smallcaps {
+      font-variant: small-caps;
+    }
+
+    div.columns {
+      display: flex;
+      gap: min(4vw, 1.5em);
+    }
+
+    div.column {
+      flex: auto;
+      overflow-x: auto;
+    }
+
+    div.hanging-indent {
+      margin-left: 1.5em;
+      text-indent: -1.5em;
+    }
+
+    ul.task-list {
+      list-style: none;
+    }
+
+    ul.task-list li input[type='checkbox'] {
+      width: 0.8em;
+      margin: 0 0.8em 0.2em -1.6em;
+      vertical-align: middle;
+    }
+
+    .display.math {
+      display: block;
+      text-align: center;
+      margin: 0.5rem auto;
+    }
+  </style>
+  <!--[if lt IE 9]>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
+    <![endif]-->
+</head>
+
+<body>
+  <header id="title-block-header">
+    <h1 class="title">Burp pour l’exploitation d’endpoint GraphQL</h1>
+  </header>
+  <h1 id="burp-pour-lexploitation-dendpoint-graphql">
+    Burp pour l’exploitation d’endpoint GraphQL
+  </h1>
+  <p>
+    <strong>Burp Suite</strong> est un outil incontournable dans le monde du
+    pentest, qui permet d’intercepter des requêtes HTTP et de les modifier.
+    Dans ce cours nous allons comprendre les bases de
+    <strong>Burp Suite</strong> : intercepteur, répéteur…
+  </p>
+  <h2 id="installation-de-burp">1. Installation de Burp</h2>
+  <p>
+    <strong>Burp Suite</strong> est un logiciel écrit en Java, il vous faut
+    donc une version de java installée sur votre ordinateur. Il existe une
+    version payante de <strong>Burp Suite</strong>, avec plus d’options, mais
+    la version gratuite est amplement suffisante pour nous. Dans la suite de
+    ce cours, nous utiliserons donc
+    <strong>Burp Suite Community Edition</strong>. Il n’existe pas de version
+    de <strong>Burp Suite</strong> en CLI, il n’y a que la version GUI.
+  </p>
+  <p>
+    Pour installer <strong>Burp Suite</strong>, vous pouvez suivre ce
+    <a href="https://www.geeksforgeeks.org/how-to-install-burp-suite-on-windows/">tutoriel</a>
+    détailler ou bien vous rendre sur le
+    <a href="https://portswigger.net/burp">site officiel</a>.
+  </p>
+  <h2 id="lancement-du-lab-docker">2. Lancement du lab docker</h2>
+  <p>
+    Pour la suite du tuto, vous pouvez lancer ce lab docker pour avoir accès à
+    un site web, dans le but de pratiquer en même temps.
+  </p>
+  <ul>
+    <li>
+      Téléchargez ce
+      <a href="https://github.com/leoroullois/web-exploitation/blob/main/docker-compose.yml">docker-compose.yaml</a>
+    </li>
+    <li>Lancez-le avec <code>docker-compose up</code></li>
+  </ul>
+  <p>
+    Vous disposez maintenant d’un site web <code>http://localhost:3000</code>.
+  </p>
+  <h2 id="intercepter-les-requêtes-http-grâce-au-proxy-de-burp-suite">
+    3. Intercepter les requêtes HTTP grâce au proxy de Burp Suite
+  </h2>
+  <p>
+    Pour utiliser <strong>Burp Suite</strong> comme proxy et être en mesure
+    d’intercepter le trafic web de votre navigateur internet, nous allons
+    installer une extension firefox se nommant
+    <a href="https://getfoxyproxy.org/downloads/">Foxy Proxy</a>.
+    <img src="attachments/burp_1.png" alt="Burp Suite" />
+    Dans les options de
+    <strong>Foxy Proxy</strong>, cliquez sur <code>Add</code> , mettez
+    <code>Burp</code> comme nom, puis <code>127.0.0.1</code> comme adresse IP
+    et <strong>8080</strong> comme port (c’est celui du proxy de Burp).
+  </p>
+  <img src="attachments/burp_2.png" alt="Burp Suite" />
+  <p>
+    Une fois que cela est fait, vous pouvez enfin lancer Burp. Pour commencer
+    à intercepter des requêtes, activez <strong>Foxy Proxy</strong>, et dans
+    <strong>Burp</strong>, allez dans l’onglet <strong>Proxy</strong> et
+    activez l’interception.
+  </p>
+  <img src="attachments/burp_3.png" alt="Burp Suite" />
+  <img src="attachments/burp_4.png" alt="Burp Suite" />
+  <p>
+    Maintenant, naviguez sur le site à l’adresse
+    <code>http://localhost:3000/challenge/0</code>, et retournez sur
+    <strong>Burp Suite</strong>. Vous observerez la requête HTTP
+    <code>GET</code> que vous venez de faire.
+    <img src="attachments/burp_5.png" alt="Burp Suite" />
+    A partir de là, vous pouvez modifier la requête, la renvoyer, faire une
+    attaque par brute force…
+  </p>
+  <h2 id="répétez-vos-requêtes-facilement-avec-le-repeater">
+    Répétez vos requêtes facilement avec le Repeater
+  </h2>
+  <p>
+    Parfois, lorsque l’on intercepte une requête HTTP, on aimerais pouvoir la
+    modifier en la renvoyant plusieurs fois.
+  </p>
+  <p>
+    C’est par exemple le cas quand on cherche à exploiter une injection SQL.
+    Nous n’aurons jamais dès le premier essai le bon payload, nous devrons le
+    modifier plusieurs fois, et à chaque fois on veut renvoyer la requête pour
+    voir la réponse et améliorer notre payload.
+  </p>
+  <p>
+    Pour ce faire, Burp Suite met à disposition le repeater. Envoyez la
+    requêtes précédente dans le <strong>Repeater</strong> avec un clic droit,
+    <strong>Send to Repeater</strong>.
+  </p>
+  <img src="attachments/burp_6.png" alt="Burp Suite" />
+  <p>
+    Vous pouvez cliquer sur <code>Send</code> pour envoyer une requête, et
+    observer le résultat sur la droite :
+  </p>
+  <img src="attachments/burp_7.png" alt="Burp Suite" />
+  <p>
+    Tentez de trouver le flag en parcourant les pages
+    <code>/challenge/:id</code>.
+  </p>
+  <h2 id="vidéo-explicative">Vidéo explicative</h2>
+  <p>Peut être à venir</p>
+</body>
+
+</html>
