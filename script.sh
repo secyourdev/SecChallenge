@@ -101,7 +101,7 @@ if [ "$(ls -A public_html)" ];then
     cd public_html
     local=$(git rev-parse HEAD)
     echo $local
-    remote=$(git ls-remote https://github.com/secyourdev/SecChallenge.git 2021_E3_GR2)
+    remote=$(git ls-remote https://github.com/secyourdev/SecChallenge.git 2022_E4_GR1)
     remote="${remote:0:40}";
     echo $remote
     if [ "$local" == "$remote" ]; then
@@ -109,14 +109,16 @@ if [ "$(ls -A public_html)" ];then
         cd ..
     else
         echo "Updating"
-        cd ..
+        :'cd ..
         rm -rf public_html/
-        git clone --branch 2021_E3_GR2 https://github.com/secyourdev/SecChallenge.git public_html/
+        git clone --branch 2022_E4_GR1 https://github.com/secyourdev/SecChallenge.git public_html/'
+        git pull
+        cd ..
     fi
     
     
 else
-    git clone --branch 2021_E3_GR2 https://github.com/secyourdev/SecChallenge.git public_html/
+    git clone --branch 2022_E4_GR1 https://github.com/secyourdev/SecChallenge.git public_html/
 fi
 
 cp public_html/bdd/dbsite.sql mysql/sql-scripts/init.sql
