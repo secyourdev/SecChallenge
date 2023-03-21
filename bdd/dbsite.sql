@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le : lun. 20 juin 2022 à 14:26
--- Version du serveur : 5.7.24
--- Version de PHP : 8.0.1
+-- Host: mysql
+-- Generation Time: Mar 21, 2023 at 02:04 PM
+-- Server version: 5.7.41
+-- PHP Version: 8.1.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `dbsite`
+-- Database: `dbsite`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `challenge`
+-- Table structure for table `challenge`
 --
 
 CREATE TABLE `challenge` (
@@ -40,7 +40,7 @@ CREATE TABLE `challenge` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `challenge`
+-- Dumping data for table `challenge`
 --
 
 INSERT INTO `challenge` (`IdChallenge`, `Emplacement`, `Reponse`, `NomChallenge`, `Competence1`, `Competence2`, `Competence3`, `Categorie`, `ScoreMax`) VALUES
@@ -59,11 +59,15 @@ INSERT INTO `challenge` (`IdChallenge`, `Emplacement`, `Reponse`, `NomChallenge`
 (13, 'Challenge/challenge-wmic/challenge-wmic.html', '5da507ae6b4cfb86904b5651ce99839138eae6f5', 'Wmic', 'Commandes Wmic', NULL, NULL, 'Collecte d\'information', 5),
 (14, 'Challenge/challenge-nikto/challenge-nikto.html', '877', 'Nikto', 'Analyse serveur web', 'Reconnaissance', NULL, 'Scanner de vulnérabilité', 5),
 (15, 'Challenge/challenge-sqlmap/Challenge-sqlmap.html', '0924086489ca5a44e71715a6c00832cb', 'Sql injection', 'SQL', 'SQLMap', 'PHP', NULL, 5),
-(16, 'Challenge/challenge-cyberchef/challenge-cyberchef.html', '22/12/1973', 'RoDate', 'CyberChef', 'Brute force', NULL, 'Collecte d\'information', 5);
+(16, 'Challenge/challenge-cyberchef/challenge-cyberchef.html', '22/12/1973', 'RoDate', 'CyberChef', 'Brute force', NULL, 'Collecte d\'information', 5),
+(17, 'Challenge/challenge-graphql/challenge-graphql.html', 'flag{graphql_is_awesome}', 'GraphQL', 'Web', 'API', 'Burp Suite', 'Web', 5),
+(18, 'Challenge/challenge-jwt/challenge-jwt.html', 'flag{JwT_1s_N0t_S0_@S3cur3}', 'JWT', 'Web', 'Burp Suite', 'Json Web Token', 'Web', 5),
+(19, 'Challenge/challenge-jwt/challenge-jwt.html', 'flag{JwT_1s_N0t_S0_@S3cur3}', 'JWT', 'Web', 'Burp Suite', 'Json Web Token', 'Web', 5);
+
 -- --------------------------------------------------------
 
 --
--- Structure de la table `cours`
+-- Table structure for table `cours`
 --
 
 CREATE TABLE `cours` (
@@ -76,7 +80,7 @@ CREATE TABLE `cours` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `cours`
+-- Dumping data for table `cours`
 --
 
 INSERT INTO `cours` (`Id`, `Titre`, `Description`, `EmplacementCours`, `LienImage`, `Categorie`) VALUES
@@ -105,13 +109,12 @@ INSERT INTO `cours` (`Id`, `Titre`, `Description`, `EmplacementCours`, `LienImag
 (25, 'Faille XXE', 'Qu\'est-ce que la faille XXE ? Que permet-elle de réaliser ?', 'Cours/cours-xxe/cours-failleXXE.html', 'Cours/cours-xxe/images/image.png', 'Faille'),
 (26, 'Les antivirus', 'Dans ce cours nous allons décourvir les méthodes employées pars les antivirus pour analyser les fichiers', 'Cours/cours-av/cours-av.html', 'Cours/cours-av/av.jpeg', 'Outil'),
 (27, 'Foremost', 'Vous trouverez ici une introduction sur un logiciel permettant la récupération de données.', 'Cours/cours-foremost/cours-foremost.html', 'Cours/cours-foremost/image-premiere-page.jpg', 'Outil'),
-
 (28, 'NETCAT', 'Un outil permettant de créer une connexion entre deux ou plusieur machines', 'Cours/cours-netcat/cours-netcat.html', 'Cours/cours-netcat/affiche.png', 'Outil');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `presentation`
+-- Table structure for table `presentation`
 --
 
 CREATE TABLE `presentation` (
@@ -124,7 +127,7 @@ CREATE TABLE `presentation` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `presentation`
+-- Dumping data for table `presentation`
 --
 
 INSERT INTO `presentation` (`Id`, `LienPresentation`, `LienImage`, `Titre`, `Description`, `Categorie`) VALUES
@@ -137,7 +140,7 @@ INSERT INTO `presentation` (`Id`, `LienPresentation`, `LienImage`, `Titre`, `Des
 -- --------------------------------------------------------
 
 --
--- Structure de la table `rela_challenge_utilisateur`
+-- Table structure for table `rela_challenge_utilisateur`
 --
 
 CREATE TABLE `rela_challenge_utilisateur` (
@@ -147,7 +150,7 @@ CREATE TABLE `rela_challenge_utilisateur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `rela_challenge_utilisateur`
+-- Dumping data for table `rela_challenge_utilisateur`
 --
 
 INSERT INTO `rela_challenge_utilisateur` (`IdChallenge`, `IdUtilisateur`, `Score`) VALUES
@@ -318,12 +321,28 @@ INSERT INTO `rela_challenge_utilisateur` (`IdChallenge`, `IdUtilisateur`, `Score
 (14, 10, 0),
 (14, 11, 0),
 (14, 12, 0),
-(14, 13, 0);
+(14, 13, 0),
+(1, 14, 0),
+(2, 14, 0),
+(3, 14, 0),
+(4, 14, 0),
+(5, 14, 0),
+(6, 14, 0),
+(7, 14, 0),
+(8, 14, 0),
+(9, 14, 0),
+(10, 14, 0),
+(11, 14, 0),
+(12, 14, 0),
+(13, 14, 0),
+(14, 14, 0),
+(15, 14, 0),
+(16, 14, 0);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `tutoriel`
+-- Table structure for table `tutoriel`
 --
 
 CREATE TABLE `tutoriel` (
@@ -337,7 +356,7 @@ CREATE TABLE `tutoriel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `tutoriel`
+-- Dumping data for table `tutoriel`
 --
 
 INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Description`, `Reponse`, `Emplacement`, `Image`, `Categorie`) VALUES
@@ -380,11 +399,13 @@ INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Description`, `Reponse`, `Emplac
 (38, 'GNU Debugger', 'Apprendre à debugger un programme avec GDB', NULL, 'Tutoriel/tuto-gdb/tuto-gdb.html', 'Tutoriel/tuto-gdb/gdb.png', NULL),
 (39, 'RAT', 'C\'est un software malveillant qui a pour but de prendre contrôle de l\'appareil infecté', NULL, 'Tutoriel/tuto-rat/tuto_rat.html', 'Tutoriel/tuto-rat/affiche.png', NULL),
 (40, 'Volatility', 'Comment analyser la ram d\'un ordinateur', NULL, 'Tutoriel/tuto-volatility/tuto-volatility.html', 'Tutoriel/tuto-volatility/affiche.png', NULL),
-(41, 'fcrackzip', 'Attaquer un dossier .zip protégé', NULL, 'Tutoriel/tuto-fcrackzip/tuto-fcrackzip.html', 'Tutoriel/tuto-fcrackzip/affiche.png', NULL);
+(41, 'fcrackzip', 'Attaquer un dossier .zip protégé', NULL, 'Tutoriel/tuto-fcrackzip/tuto-fcrackzip.html', 'Tutoriel/tuto-fcrackzip/affiche.png', NULL),
+(42, 'Tutoriel Burp Suite', 'Burp Suite est un outil incontournable dans le monde du pentest, qui permet d\'intercepter des requêtes HTTP et de les modifier.\r\nDans ce cours nous allons comprendre les bases de Burp Suite : intercepteur, répéteur...', 'easy', 'Tutoriel/tuto-burpsuite/tuto-burpsuite.html', 'Tutoriel/tuto-burpsuite/attachments/burp_1.png', 'Web');
+
 -- --------------------------------------------------------
 
 --
--- Structure de la table `utilisateur`
+-- Table structure for table `utilisateur`
 --
 
 CREATE TABLE `utilisateur` (
@@ -398,7 +419,7 @@ CREATE TABLE `utilisateur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `utilisateur`
+-- Dumping data for table `utilisateur`
 --
 
 INSERT INTO `utilisateur` (`id`, `name`, `firstname`, `pseudo`, `mail`, `password`, `admin`) VALUES
@@ -413,75 +434,76 @@ INSERT INTO `utilisateur` (`id`, `name`, `firstname`, `pseudo`, `mail`, `passwor
 (10, 'g', 'g', 'g', 'g@g.g', 'cd0aa9856147b6c5b4ff2b7dfee5da20aa38253099ef1b4a64aced233c9afe29', 0),
 (11, 'g', 'g', 'g', 'g@g.g', 'cd0aa9856147b6c5b4ff2b7dfee5da20aa38253099ef1b4a64aced233c9afe29', 0),
 (12, 'yo', 'je', 'suis', 'la@f.f', 'cd0aa9856147b6c5b4ff2b7dfee5da20aa38253099ef1b4a64aced233c9afe29', 0),
-(13, 'b', 'b', 'b', 'b@b.b', '3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d', 0);
+(13, 'b', 'b', 'b', 'b@b.b', '3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d', 0),
+(14, 'Solomon Pate', 'Galena', 'Modi necessitatibus', 'leo.roullois@edu.esiee.fr', 'b2fe8b46929bfa4c65fee9d5d43a2423799b18e360782e9abc27bd420877243e', 0);
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `challenge`
+-- Indexes for table `challenge`
 --
 ALTER TABLE `challenge`
   ADD PRIMARY KEY (`IdChallenge`);
 
 --
--- Index pour la table `cours`
+-- Indexes for table `cours`
 --
 ALTER TABLE `cours`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Index pour la table `presentation`
+-- Indexes for table `presentation`
 --
 ALTER TABLE `presentation`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Index pour la table `tutoriel`
+-- Indexes for table `tutoriel`
 --
 ALTER TABLE `tutoriel`
   ADD PRIMARY KEY (`IdTutoriel`);
 
 --
--- Index pour la table `utilisateur`
+-- Indexes for table `utilisateur`
 --
 ALTER TABLE `utilisateur`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `challenge`
+-- AUTO_INCREMENT for table `challenge`
 --
 ALTER TABLE `challenge`
-  MODIFY `IdChallenge` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `IdChallenge` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
--- AUTO_INCREMENT pour la table `cours`
+-- AUTO_INCREMENT for table `cours`
 --
 ALTER TABLE `cours`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
--- AUTO_INCREMENT pour la table `presentation`
+-- AUTO_INCREMENT for table `presentation`
 --
 ALTER TABLE `presentation`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT pour la table `tutoriel`
+-- AUTO_INCREMENT for table `tutoriel`
 --
 ALTER TABLE `tutoriel`
-  MODIFY `IdTutoriel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `IdTutoriel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
--- AUTO_INCREMENT pour la table `utilisateur`
+-- AUTO_INCREMENT for table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
