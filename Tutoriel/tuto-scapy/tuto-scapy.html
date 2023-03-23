@@ -1,0 +1,121 @@
+<h1>Python scapy</h1>
+
+<h2 class="mb-3">1. Objectif</h2>
+<p>
+    L'objectif de ce tutoriel est de vous présenter la librairie scapy de Python.
+    </br>
+    Scapy est une librairie permettant de créer des scripts Python pour analyser et manipuler les paquets réseaux.
+    Elle peut faire office de wireshark en ligne de commande voir même dans uns script.
+
+
+</p>
+
+<h2 class="mb-3">2. Configuration</h2>
+
+<p>
+    Ce tuto met à disposition, par le biais de l'application Docker et docker-compose, plusieurs machines virtuelles.
+    </br>
+    Il est nécessaire de récupérer le fichier <b>docker-compose.yml</b> qui permet de lancer les machines.<br>
+
+    Téléchargez le <a class="link-primary" href="./Downloads/scapy/docker-compose.yml"><U></Y>
+            docker-compose.yml</U></a><br>
+
+    Les commandes qui permettent de lancer les machines sont les suivantes : <br>
+    <kbd class="ms-3">bash> docker-compose up -d</kbd><br>
+
+    Nous avons besoin de nous connecter à celle d'Eve via la commande :
+    <br>
+    <kbd class="ms-3">bash> docker exec -it scapy_eve /bin/bash</kbd><br>
+
+
+</p>
+
+<h2 class="mb-3">3. Les étapes</h2>
+<p>
+    
+    Pour commencer, nous allons voir comment utiliser scapy pour envoyer des paquets réseaux.
+    Pour cela, nous allons utiliser la commande <b>send</b> qui permet d'envoyer des paquets.
+    </br>
+    Pour lancer scapy il faut utiliser la commande suivante :<br>
+    <kbd class="ms-3"> bash> scapy </kbd>
+    </br>
+    Ou si vous êtes un script python :<br>
+    <kbd class="ms-3"> python> from scapy.all import * </kbd>
+
+
+
+    </br>
+    Pour envoyer un paquet ICMP, on peut utiliser la commande suivante :<br>
+    <kbd class="ms-3">python> send(IP(dst="", ttl=64)/ICMP())</kbd><br>
+    On peut voir que le paquet est envoyé.
+    On peut également envoyer une requête DNS et attendre la réponse :
+    </br>   
+    <kbd class="ms-3">python> ans, unans = sr(IP(dst="8.8.8.8")/UDP()/DNS(rd=1,qd=DNSQR(qname="www.google.com")))</kbd><br>
+    
+    </br>
+    Dans cet exemple, nous envoyons une requête DNS pour résoudre le nom de domaine "www.google.com". Nous utilisons l'adresse IP de Google DNS (8.8.8.8) comme serveur DNS. 
+    
+    La fonction sr() renvoie deux listes : une pour les réponses reçues (ans) et une pour les requêtes sans réponse (unans).
+    Pour afficher la première réponses : <br>
+    <kbd class="ms-3">python> ans[0].show()</kbd><br>
+    </br>
+</p>
+    <img src="Tutoriel/tuto-scapy/images/scapy1.png" alt="" class="img-fluid">
+<p>
+    </br>
+    Vous pouvez également utiliser la fonction sr1() si vous ne voulez qu'une seule réponse au lieu de toutes les réponses possibles. Voici un exemple :
+
+    </br>
+    <kbd class="ms-3">python> ans = sr1(IP(dst="8.8.8.8")/UDP()/DNS(rd=1,qd=DNSQR(qname="www.google.com")))</kbd><br>
+    
+    </br>
+    Dans cet exemple, la fonction sr1() renvoie uniquement la première réponse reçue.
+    Nous allons maintenant voir comment utiliser scapy pour écouter les paquets réseaux.
+    <br>
+    <kbd class="ms-3">python> rep = sniff(filter="icmp", count=3, prn=lambda x: x.summary())</kbd><br>
+
+    On peut voir que l'on a 3 paquets ICMP qui sont affichés.
+    Si on veut le détail du premier paquet on peut utiliser la commande suivante :
+    <kbd class="ms-3">python> rep[0].show()</kbd><br>
+</p>
+    <img src="Tutoriel/tuto-scapy/images/scapy2.png" alt="" class="img-fluid">
+<p>
+    On peut voir que le paquet contient l'adresse IP source, l'adresse IP destination, le TTL, le type et le code ICMP.
+    On peut également filtrer les ip source et destination :
+    Pour filtrer les paquets en fonction de l'adresse IP source ou destination, on peut utiliser la fonction sniff de Scapy avec le paramètre filter.
+    Par exemple, si l'on veut écouter les paquets ICMP venant de l'adresse IP source x.x.x.x et allant vers l'adresse IP destination y.y.y.y, on peut utiliser le filtre suivant :
+
+    <br>
+    <kbd class="ms-3">python>rep = sniff(filter="icmp and src host x.x.x.x and dst host y.y.y.y", count=3, prn=lambda x: x.summary())</kbd><br>
+    
+    Ce filtre va permettre de capturer uniquement les paquets ICMP qui correspondent aux critères de filtrage spécifiés.
+
+    On peut ensuite afficher les détails du premier paquet capturé en utilisant la commande :
+    <br>
+    <kbd class="ms-3">python> rep[0].show()</kbd><br>
+
+    Cette commande affichera les détails du premier paquet capturé, tels que l'adresse IP source et destination, le TTL, le type et le code ICMP.
+
+
+    Pour avoir le flag du tuto, vous dever envoyer un paquet IP avec,pour source 0.0.0.0 et pour destination le conteneur alice (a vous de trouver l'adresse IP), avec un sous couche ICMP et en text brut "HIII".
+    </br>
+    Si vous avez reussi, vous devriez recevoir de nouveaux paquets. Essayez de les filtrer et de chercher un paquet TCP.
+</p>
+
+
+
+
+
+
+
+<!--    
+<h2 class="mb-3">4. Bonus : vidéo démonstration</h2>
+<p>
+    Vous trouverez ci-dessous une vidéo de démonstration:
+</p>
+<video controls width="560" height="315">
+    <source src="Tutoriel/tuto-mitmproxy/mitmproxy.mp4" type="video/mp4">
+
+    Désolé, votre navigateur ne supporte pas ce format vidéo.
+</video>
+-->
