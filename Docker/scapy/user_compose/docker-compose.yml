@@ -1,0 +1,38 @@
+version: "3.7"
+
+services:
+    alice:
+        
+        image: cybersecuriteachg2/scapy_alice
+        container_name: scapy_alice
+        restart: always
+        networks:
+            - scapy
+
+      
+    bob:
+        
+        image: cybersecuriteachg2/scapy_bob
+        container_name: scapy_bob
+        restart: always
+        networks:
+            - scapy
+    
+
+
+    eve:
+        privileged: true
+        image: cybersecuriteachg2/scapy_eve
+        container_name: scapy_eve
+        restart: always
+        networks:
+            - scapy
+
+networks:
+    scapy:
+        driver: bridge
+        
+            
+        
+
+      

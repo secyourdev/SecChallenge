@@ -1,0 +1,5 @@
+
+send(IP(src="0.0.0.0",dst="172.x.0.3")/ICMP()/"HIII")
+
+
+sniff(prn = lambda x:x.show())
