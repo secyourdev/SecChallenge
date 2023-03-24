@@ -1,0 +1,13 @@
+services:
+  infoga:
+    image: picicato/infoga:latest
+    container_name: infoga
+    hostname: infoga
+    stdin_open: true
+    tty: true
+  php-infoga:
+    container_name: php-infoga
+    image: picicato/php-infoga:latest
+    ports:
+      - 80:80
+version: "3.7"
