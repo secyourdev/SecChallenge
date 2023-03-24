@@ -1,0 +1,33 @@
+<h2><b>Infoga : Email OSINT</b></h2>
+
+<h2 class="mb-3"></br>1. Présentation</h2>
+<p>
+	Infoga est un outil de reconnaissance de noms de domaine qui utilise des 
+	moteurs de recherche pour trouver des informations sur un domaine donné, 
+	telles que les adresses e-mail associées, les noms d'utilisateur et les 
+	informations de contact. Il a été conçu pour aider les pentesteur à 
+	collecter des informations sur les cibles potentielles pour la reconnaissance 
+	de la cible et les attaques d'infiltration.
+</p>
+
+<h2 class="mb-3"></br>2. Configuration</h2>
+<p>
+	Pour ce tutoriel, nous utiliserons docker contenant un serveur php avec un site web en local 
+	et une machine attaquante sous linux avec l’outil infoga d’installé.</br>
+	Je vous invite à faire directement le challenge portant sur infoga.</br>
+	Télécharger le fichier <a class="link-primary" href="./Downloads/Challenge_infoga/docker-compose.yml" download="docker-compose.yml"><U>docker-compose.yml</U></a>
+	Tapez les commandes suivantes :
+</p>
+<kbd class="ms-3">docker-compose up -d</kbd>
+<p>
+	Pour utiliser la machine avec infoga d'installé : 
+</p>
+<kbd class="ms-3">docker exec -it infoga /bin/bash</kbd></br>
+
+<h2 class="mb-3"></br>3. Collecter les adresses emails</h2>
+<p>
+	Utilisation:
+</p>
+<kbd class="ms-3">python infoga.py -d example.com</kbd>
+<img src="Tutoriel/tuto-infoga/infoga_1.png" alt="" class=img-fluid">
+
