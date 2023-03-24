@@ -1,0 +1,28 @@
+version : "3.7"
+
+services :
+  mailserver :
+    image : docker.io/mailserver/docker-mailserver:latest
+    container_name : mailserver
+    hostname : debian
+    domainname : docker.local
+    restart : always
+    ports :
+      - "25:25"
+      - "143:143"
+      - "587:587"
+      - "993:993"
+    volumes :
+      - ~/docker/mailserver/data:/var/mail
+      - ~/docker/mailserver/state:/var/mail-state/
+      - ~/docker/mailserver/logs/:/var/log/mail/
+      - ~/docker/mailserver/config/:/tmp/docker-mailserver/
+      - ~/docker/mailserver/cert/:/tmp/docker-mailserver/cert/:ro
+    environment :
+      - TZ=America/New_York
+      - ENABLE_FAIL2BAN=0
+      - SSL_TYPE=manual
+      - SSL_CERT_PATH=/tmp/docker-mailserver/cert/public.crt
+      - SSL_KEY_PATH=/tmp/docker-mailserver/cert/private.key
+      - ONE_DIR=1
+      - ENABLE_POSTGREY=1
