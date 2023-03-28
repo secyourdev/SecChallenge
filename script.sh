@@ -37,25 +37,25 @@ if [[ "$force" == true ]];then
   echo -e "${CYAN}force mode${NOCOLOR}";
 fi
 
-if [ ! "$(ls -A Website/)" ];then
+if [ ! "$(ls -A Website/ 2>/dev/null)" ];then
   mkdir Website/
 fi
 cd Website/
 
-if [ ! "$(ls -A public_html/)" ];then
+if [ ! "$(ls -A public_html/ 2>/dev/null)" ];then
   mkdir public_html/
 fi
 
-if [ ! "$(ls -A mysql/)" ];then
+if [ ! "$(ls -A mysql/ 2>/dev/null)" ];then
   mkdir mysql/
 fi
 
-if [ ! "$(ls -A mysql/sql-scripts/)" ];then
+if [ ! "$(ls -A mysql/sql-scripts/ 2>/dev/null)" ];then
   mkdir mysql/sql-scripts/
 fi
 
 
-if [ "$(ls -A docker-compose.yml)" ] && [[ ! "$force" == true ]];then
+if [ "$(ls -A docker-compose.yml 2>/dev/null)" ] && [[ ! "$force" == true ]];then
 
   echo "Already have a docker-compose"
   echo -e "${YELLOW}PORT NOT CHANGE${BLUE} : To change the port, use -p and -f${NOCOLOR}"
@@ -134,7 +134,7 @@ EOF
     
 fi
 
-if [ "$(ls -A .env)" ] && [[ ! "$force" == true ]];then
+if [ "$(ls -A .env 2>/dev/null)" ] && [[ ! "$force" == true ]];then
 
   echo "Already have a .env"
   
@@ -152,7 +152,7 @@ PROJECT_ROOT=./public_html
 EOF
 fi
 
-if [ "$(ls -A mysql/Dockerfile)" ] && [[ ! "$force" == true ]];then
+if [ "$(ls -A mysql/Dockerfile 2>/dev/null)" ] && [[ ! "$force" == true ]];then
 
   echo "Already have a Mysql Dockerfile"
   
@@ -169,7 +169,7 @@ EOF
 fi
 
 
-if [ "$(ls -A public_html)" ];then
+if [ "$(ls -A public_html 2>/dev/null)" ];then
     
     cd public_html
     actual=$(git rev-parse --abbrev-ref HEAD);
