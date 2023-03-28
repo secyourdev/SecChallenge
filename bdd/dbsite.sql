@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: mysql
--- Generation Time: Mar 21, 2023 at 02:04 PM
+-- Generation Time: Mar 28, 2023 at 09:55 AM
 -- Server version: 5.7.41
 -- PHP Version: 8.1.15
 
@@ -61,8 +61,7 @@ INSERT INTO `challenge` (`IdChallenge`, `Emplacement`, `Reponse`, `NomChallenge`
 (15, 'Challenge/challenge-sqlmap/Challenge-sqlmap.html', '0924086489ca5a44e71715a6c00832cb', 'Sql injection', 'SQL', 'SQLMap', 'PHP', NULL, 5),
 (16, 'Challenge/challenge-cyberchef/challenge-cyberchef.html', '22/12/1973', 'RoDate', 'CyberChef', 'Brute force', NULL, 'Collecte d\'information', 5),
 (17, 'Challenge/challenge-graphql/challenge-graphql.html', 'flag{graphql_is_awesome}', 'GraphQL', 'Web', 'API', 'Burp Suite', 'Web', 5),
-(18, 'Challenge/challenge-jwt/challenge-jwt.html', 'flag{JwT_1s_N0t_S0_@S3cur3}', 'JWT', 'Web', 'Burp Suite', 'Json Web Token', 'Web', 5),
-(19, 'Challenge/challenge-jwt/challenge-jwt.html', 'flag{JwT_1s_N0t_S0_@S3cur3}', 'JWT', 'Web', 'Burp Suite', 'Json Web Token', 'Web', 5);
+(18, 'Challenge/challenge-jwt/challenge-jwt.html', 'flag{JwT_1s_N0t_S0_@S3cur3}', 'JWT', 'Web', 'Burp Suite', 'Json Web Token', 'Web', 5);
 
 -- --------------------------------------------------------
 
@@ -109,7 +108,9 @@ INSERT INTO `cours` (`Id`, `Titre`, `Description`, `EmplacementCours`, `LienImag
 (25, 'Faille XXE', 'Qu\'est-ce que la faille XXE ? Que permet-elle de réaliser ?', 'Cours/cours-xxe/cours-failleXXE.html', 'Cours/cours-xxe/images/image.png', 'Faille'),
 (26, 'Les antivirus', 'Dans ce cours nous allons décourvir les méthodes employées pars les antivirus pour analyser les fichiers', 'Cours/cours-av/cours-av.html', 'Cours/cours-av/av.jpeg', 'Outil'),
 (27, 'Foremost', 'Vous trouverez ici une introduction sur un logiciel permettant la récupération de données.', 'Cours/cours-foremost/cours-foremost.html', 'Cours/cours-foremost/image-premiere-page.jpg', 'Outil'),
-(28, 'NETCAT', 'Un outil permettant de créer une connexion entre deux ou plusieur machines', 'Cours/cours-netcat/cours-netcat.html', 'Cours/cours-netcat/affiche.png', 'Outil');
+(28, 'NETCAT', 'Un outil permettant de créer une connexion entre deux ou plusieur machines', 'Cours/cours-netcat/cours-netcat.html', 'Cours/cours-netcat/affiche.png', 'Outil'),
+(29, 'Cours GraphQL', 'GraphQL est un langage de requête pour les API créé par Facebook en 2012 et devenu opensource en 2015.', 'Cours/cours-graphql/cours-graphql.html', '', 'Web'),
+(30, 'Cours JWT', 'Un token JWT (JSON Web Token) est une chaîne de caractères encodée en base64 qui contient des informations d\'identification et d\'autorisation pour accéder à une API ou à un service web. Les tokens JWT sont utilisés pour sécuriser les API REST et GraphQL, ainsi que d\'autres applications web.', 'Cours/cours-jwt/cours-jwt.html', 'Cours/cours-jwt/attachments/structure_jwt.png', 'Web');
 
 -- --------------------------------------------------------
 
@@ -337,7 +338,26 @@ INSERT INTO `rela_challenge_utilisateur` (`IdChallenge`, `IdUtilisateur`, `Score
 (13, 14, 0),
 (14, 14, 0),
 (15, 14, 0),
-(16, 14, 0);
+(16, 14, 0),
+(1, 15, 0),
+(2, 15, 0),
+(3, 15, 0),
+(4, 15, 0),
+(5, 15, 0),
+(6, 15, 0),
+(7, 15, 0),
+(8, 15, 0),
+(9, 15, 0),
+(10, 15, 0),
+(11, 15, 0),
+(12, 15, 0),
+(13, 15, 0),
+(14, 15, 0),
+(15, 15, 0),
+(16, 15, 0),
+(17, 15, 5),
+(18, 15, 5),
+(19, 15, 0);
 
 -- --------------------------------------------------------
 
@@ -435,7 +455,8 @@ INSERT INTO `utilisateur` (`id`, `name`, `firstname`, `pseudo`, `mail`, `passwor
 (11, 'g', 'g', 'g', 'g@g.g', 'cd0aa9856147b6c5b4ff2b7dfee5da20aa38253099ef1b4a64aced233c9afe29', 0),
 (12, 'yo', 'je', 'suis', 'la@f.f', 'cd0aa9856147b6c5b4ff2b7dfee5da20aa38253099ef1b4a64aced233c9afe29', 0),
 (13, 'b', 'b', 'b', 'b@b.b', '3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d', 0),
-(14, 'Solomon Pate', 'Galena', 'Modi necessitatibus', 'leo.roullois@edu.esiee.fr', 'b2fe8b46929bfa4c65fee9d5d43a2423799b18e360782e9abc27bd420877243e', 0);
+(14, 'Solomon Pate', 'Galena', 'Modi necessitatibus', 'leo.roullois@edu.esiee.fr', 'b2fe8b46929bfa4c65fee9d5d43a2423799b18e360782e9abc27bd420877243e', 0),
+(15, 'Carla Sampson', 'Aretha', 'In eius nulla qui al', 'leo.roullois@edu.esiee.fr', '0c82598a2254f20293c50523a0b21f78cde59a4bb83fa7ddbf33c0ae5744b7d0', 0);
 
 --
 -- Indexes for dumped tables
@@ -479,13 +500,13 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT for table `challenge`
 --
 ALTER TABLE `challenge`
-  MODIFY `IdChallenge` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `IdChallenge` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT for table `cours`
 --
 ALTER TABLE `cours`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
 -- AUTO_INCREMENT for table `presentation`
@@ -503,7 +524,7 @@ ALTER TABLE `tutoriel`
 -- AUTO_INCREMENT for table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
