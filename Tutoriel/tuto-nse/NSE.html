@@ -1,0 +1,138 @@
+
+<style>
+    a:link {
+        color: blue;
+        background-color: transparent;
+        text-decoration: none;
+    }
+    a:visited {
+        color: pink;
+        background-color: transparent;
+        text-decoration: none;
+    }
+    a:hover {
+        color: green;
+        background-color: transparent;
+        text-decoration: underline;
+    }
+    a:active {
+        color: yellow;
+        background-color: transparent;
+        text-decoration: underline;
+    }
+</style>
+
+<center>
+    <h1>Nmap Scripting Engine</h1>
+    <img src="Tutoriel/tuto-nse/images/nmap2.png" alt="NmapLogo" width="1500" class="img-fluid">
+</center>
+
+<h2 class="mb-3"><u>1. Objectif</u></h2>
+<p>
+    L'objectif de ce tutoriel et de vous introduire au concept des scripts Nmap et leur utilisation.<br>
+    Il est vivement conseillé de lire les cours et tutoriels sur Nmap pour mieux comprendre le fonctionnement
+    de l'outil. En effet, Nmap est un très puissant outil permettant de scanner des machines et leur ports, ce qui
+    est très utile lors des étapes de reconnaissance.<br>
+    <br>
+</p>
+
+<h2 class="mb-3"><u>2. Les Scripts Nmap</u></h2>
+<p>
+    Le Nmap Scripting Engine (ou NSE) est un outil qui permet à Nmap d'executer des scripts lors de sont scan de port.<br>
+    Ces scripts, écrient en langage <i>Lua</i>, permettent à Nmap d'effectuer des actions supplémentaires pendant ou après le scan des ports d'une machine,
+    tel que du bruteforcing, du scan de malware ou encore directement exploiter des vulnérabilités.<br>
+    Il existe un (très) grand nombre de scripts Nmap, tous ayant des fonctions différentes les uns des autres. Mais malgré celà, tous ses scripts ont été catégorisés
+    dans les grandes familles suivantes:<br>
+        <h3><b>• Auth:</b></h3> Cette catégorie correspond à <i>l'Authentification</i>, les scripts qui appartiennent à ce groupe sont ceux qui touche principalement
+            aux "crédentials" (login/password) ou qui les contourne (à ne pas confondre avec la catégorie "Bruteforce"). Parmis eux on peut retrouver le script
+            <a href="https://nmap.org/nsedoc/scripts/ftp-anon.html" target="_blank"><kbd class="ms-3">ftp-anon</kbd></a>.<br>
+        <h3><b>• Broadcast:</b></h3> Ce sont des scripts qui servent à découvrir les machines qui appartiennent à une interface réseaux en faisant un broadcast sur le réseaux cible.<br>
+        <h3><b>• Brute:</b></h3> Tous les scripts qui utilisent des méthodes de bruteforce appartiennent à cette catégorie. Ont y retrouve des scripts tel que
+            <a href="https://nmap.org/nsedoc/scripts/http-brute.html" target="_blank"><kbd class="ms-3">http-brute</kbd></a>.<br>
+        <h3><b>• Default:</b></h3> Ce sont des scritps par défault de Nmap qui influe sur l'aggressivité, la vitesse ou encore la verbose. Ils sont principalement utilisés
+            en ajoutant les arguments <kbd class="ms-3">-sC</kbd> ou <kbd class="ms-3">-A</kbd> dans la commande Nmap.<br>
+        <h3><b>• Discovery:</b></h3> Ce sont les scripts qui tente de découvrir le réseaux ciblé. Le principe est le même que les scripts de la catégorie <i>Broadcast</i>, mais
+            ils ne se limitent pas à du broadcasting.<br>
+        <h3><b>• DOS:</b></h3> Les scripts qui sont capables de provoquer un <i>Denial of Service</i> sur la(les) machine(s) ciblée(s). À utiliser avec précaution!<br>
+        <h3><b>• Exploit:</b></h3> Ces scripts tentent d'exploiter des vulnérabilités (en fonction du script choisi) pendant le scan. On y retrouve le script
+            <a href="https://nmap.org/nsedoc/scripts/http-shellshock.html" target="_blank"><kbd class="ms-3">http-shellshock</kbd></a>.<br>
+        <h3><b>• External:</b></h3> Les scripts de cette catégorie utilises des ressources externes pour fonctionner, et peuvent donc leur envoyer des données.<br>
+        <h3><b>• Fuzzer:</b></h3> Les scripts de type "fuzzer" vont envoyer des packets mal formés dans le but de trouver des bugs ou vulnérabilités.<br>
+        <h3><b>• Intrusive:</b></h3> Les scripts dit "intrusive" sont ceux qui ont de très forte chances de faire tomber un service/réseaux ou de consommer beaucoup de ressources
+            (bande passante, RAM ou encore processeur). Ces scripts très aggressifs sont donc très facilement détectable.<br>
+        <h3><b>• Malware:</b></h3> Les scripts de ce groupe vont scanner la machine cible et déterminer si elle est infecté par un malware ou un backdoor.<br>
+        <h3><b>• Safe:</b></h3> Cette famille comporte tous les scripts qui n'ont pas pour vocation à exploiter une faille de sécurité, faire tomber un service ou envoyer des gros packets de données.
+            Ce sont les scripts opposés à la catégorie <i>Intrusive</i>, on peut les qualifier de "gentils scripts" et leur nature les rends plus discrets que d'autres scripts.<br>
+        <h3><b>• Version:</b></h3> Ces scripts sont un peu particuliers, ils ne peuvent pas être utilisés et sont solicité lorsque l'option <kbd class="ms-3">-sV</kbd> est utilisée.<br>
+        <h3><b>• Vuln:</b></h3> Les scripts de cette catégories vont scanner la cibles pour détecter la présence de vulnérabilité(s) connue(s).<br>
+
+    <br>
+    Vous pouvez retrouver toutes les informations en détails sur le NSE sur <a href="https://nmap.org/book/nse-usage.html" target="_blank">le site officiel de Nmap</a>.<br>
+    <br>
+    Avant de nous lancer dans l'utilisation des scripts Nmap, il est intéressant de savoir où ils se situent dans votre machine (on suppose une Kali Linux),
+    et d'être capable de les identifier.<br>
+    Tout d'abord, <a href="https://nmap.org/book/nse-usage.html" target="_blank">le site officiel de Nmap</a> est un très bon moyen de se renseigner sur les différents scritps
+    et comprendre comment les utiliser, mais les scripts Nmap sont aussi sauvegardé dans le répertoire <kbd class="ms-3">/usr/share/nmap/scripts</kbd>.<br>
+    De plus, il existe un fichier texte <kbd class="ms-3">/usr/share/nmap/scripts/<b>scripts.db</b></kbd> qui contient le nom des scripts disponibles ainsi que leurs catégories
+    associées <a href="https://nmap.org/book/nse-usage.html" target="_blank">(vuln, safe, brute, ...)</a>. Il suffit donc de faire une commande <kbd class="ms-3">grep</kbd> sur ce fichier
+    pour facilement retrouver des scripts (exemple: <kbd class="ms-3">grep "exploit" /usr/share/nmap/scripts/scripts.db</kbd> pour retrouver les scripts liés à l'exploitation de vulnérabilités).<br>
+    <img src="Tutoriel/tuto-nse/images/grep-exploit.png" alt="Grep-Exploit" class="img-fluid"><br>
+    <br>
+</p>
+
+<h2 class="mb-3"><u>3. Utilisation de NSE</u></h2>
+<p>
+    Comme vous avez pour le voir, il existe énormemment de scripts Nmap, vous expliquer comment tous les utiliser un par un serait impossible. Toute fois, leur
+    utilisation est très similaire (à quelques arguments près), il ne sera donc pas difficile de les utiliser une fois que vous avez compris comment faire pour un script.<br>
+    Pour indiquer à Nmap que vous souhaiter utiliser un script, il suffit de rajouter l'option <kbd class="ms-3">--script=[ScriptName]</kbd> à votre commande Nmap.
+    Par exemple, la commande <kbd class="ms-3">sudo nmap -p 80 --script=[vuln] 192.168.56.2 -vv</kbd> va effectuer un scan sur le port 80,
+    qui correspond généralement au port HTTP, et va utiliser le script [vuln] choisi pour faire un scan de vulnérabilité sur la machine cible.<br>
+    <br>
+    Dans ce tutoriel, nous allons nous focaliser sur le script <i>ssh-brute</i> de la catégorie <i><b>Brute</i></b>. <u>Notez que dans ce tutoriel, nous allons écrire la majorité des commandes
+    avec "sudo", mais il est fort probable que vous n'ayez pas besoin de faire appel à la commande sudo une fois que vous serez dans les Dockers.</u><br>
+    Tout d'abord, vous allez commencer par lancer les machines Dockers en partant du fichier <i>docker-compose.yml</i>, en utilisant la commande <kbd class="ms-3">sudo docker-compose up --build</kbd>.<br>
+    <img src="Tutoriel/tuto-nse/images/docker-compose.png" alt="Docker-Compose" class="img-fluid"><br>
+    <br>
+    Une fois terminé, ouvrez un nouveau terminal (sans fermer celui-ci, il doit continuer à tourner), dans lequel vous allez ouvrir la machine associée à la Kali Linux.
+    Pour celà, utiliser la commande <kbd class="ms-3">sudo docker images</kbd> pour trouver l'image docker de la Kali Linux associée à ce tutoriel (le nom est souvent assez explicite...),
+    puis vous entrez la commande suivante: <kbd class="ms-3">sudo docker run -it [docker_image_name] bash</kbd> pour ouvrir un shell qui vous permettra de controller la machine.<br>
+    <img src="Tutoriel/tuto-nse/images/nse-kali.png" alt="NSE-Kali" class="img-fluid"><br>
+    <br>
+    Une fois à cette étape, une première chose intéressante à faire est de déterminer votre addresse IP à l'aide de la commande <kbd class="ms-3">ifconfig</kbd> ou <kbd class="ms-3">ip a</kbd>.
+    Ici, notre addresse IP est <i>172.17.0.2</i>.<br>
+    <img src="Tutoriel/tuto-nse/images/ip-a.png" alt="IP-a" class="img-fluid"><br>
+    <br>
+    Puis nous allons identifier les machines appartenant à notre réseaux en utilisant l'outil <b>arp-scan</b>, pour se faire, utiliser la commande
+    <kbd class="ms-3">sudo arp-scan [your_ip]/24</kbd>. Normalement, vous devrez voir apparaitre une première IP qui correspond au réseaux, puis une deuxième IP
+    (normalement avec une valeur juste au-dessus de celle de l'IP de la Kali) qui correspond à la machine cible, qui ici s'appelle server.<br>
+    <img src="Tutoriel/tuto-nse/images/arp-scan.png" alt="Arp-Scan" class="img-fluid"><br>
+    <br>
+    Maintenant que nous avons l'addresse IP de notre cible, l'étape logique qui suit est de scanner ses ports à l'aide de Nmap pour déterminer quels sont les ports ouverts.
+    Nous allons donc effectuer un simple scan TCP avec la commande <kbd class="ms-3">nmap -sT [taarget_ip] -vv</kbd>. L'option <kbd class="ms-3">-sT</kbd> indique que nous voulons faire un scan TCP,
+    et <kbd class="ms-3">-vv</kbd> augmente le niveau de verbose (ont aura beaucoup plus d'informations affichées pendant le scan. Il est très fortement recommendé d'utiliser -vv à chaque utilisation de Nmap).<br>
+    <img src="Tutoriel/tuto-nse/images/tcp-scan.png" alt="TCP-Scan" class="img-fluid"><br>
+    <br>
+    Nous observons que le port 22 est ouvert et qu'il est associé au service SSH. Nous allons donc essayer de trouver le couple login/password SSH de la machine cible.<br>
+    Tout d'abord, nous nous plaçons dans le répètoire <i>database</i> (qui n'existe pas de base sur Kali, nous l'avons créé afin de simplifier plusieurs tutoriels et challenges)
+    qui contient deux fichiers: une liste de usernames et une liste de password, que nous allons utiliser en argument de notre script Nmap.<br>
+    <img src="Tutoriel/tuto-nse/images/database.png" alt="Database" class="img-fluid"><br>
+    <br>
+    Enfin, le moment que vous attendez tous: la commande pour lancer le script ssh-brute qui, à l'instar d'outil tel que Patator, va utiliser les deux fichiers que nous
+    lui avons passé en argument afin de trouver le couple login/password du service SSH de la machine ciblée.
+    <kbd class="ms-3">sudo nmap -p 22 --script ssh-brute --script-args userdb=userlist passdb=passlist [target_ip] -vv</kbd>. Une fois lancée, nous n'avons plus qu'à attendre
+    que l'attaque se finisse! Celà peut prendre plusieurs minutes, nous avons intentionnellement générer des fichiers contenant très peu de usernames et password
+    car en réalité ce type d'attaque ne se fait pas en quelques secondes, mais prends bien un certain temps en fonction des ressources dont dispose l'attaquant (nombre de machines, cartes graphiques, etc.)<br>
+    <img src="Tutoriel/tuto-nse/images/ssh-brute.png" alt="SSH-Brute" class="img-fluid"><br>
+    <br>
+    Une fois terminée, Nmap vous indiquera si un couple username/password valide à été trouvé! Vous n'aurez plus qu'à les utiliser pour vous connecter en SSH à la machine cible et passer à l'étape suivante de votre attaque!<br>
+    <img src="Tutoriel/tuto-nse/images/hacked.png" alt="HACKED" class="img-fluid"><br>
+    <br>
+    Vous trouverez ci-dessous toutes les étapes de cette attaque sous format vidéo.
+
+    <center>
+        <video controls>
+            <source src="Tutoriel/tuto-nse/videos/NSE-video.mp4" type="video/mp4">
+            Votre navigateur ne supporte pas l'affichage de la vidéo, ou une erreur est survenue.
+        </video>
+    </center>
+</p>
