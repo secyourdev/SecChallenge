@@ -68,16 +68,24 @@
   champs qu’il veut recevoir, par exemple s’il n’a besoin que de l’email de
   l’utilisateur, sa requête ressemblerait à :
 </p>
-<pre class="gql"><code> query {
+<pre class="gql">
+<code>
+query {
     user(id: 1) {
     email
-    }
-    }</code></pre>
+  }
+}
+</code>
+</pre>
 <p>Plutôt que :</p>
-<pre class="gql"><code> query {
+<pre class="gql">
+<code>
+query {
     user(id: 1) {
-    id
-    email
-    password
-    }
-    }</code></pre>
+      id
+      email
+      password
+  }
+}
+</code>
+</pre>
