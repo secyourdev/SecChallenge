@@ -22,14 +22,23 @@ WHITE='\033[1;37m'
 
 
 
-while getopts p:b:f flag
+while getopts p:b:fh flag
 do
     case "${flag}" in
       p) port=${OPTARG};;
       b) branch=${OPTARG};;
       f) force=true;;
+      h) help=true;;
     esac
 done
+if [[ "$help" == true ]];then
+  echo -e "${CYAN}Usage: ${NOCOLOR}";
+  echo -e "${CYAN}  -p: port${NOCOLOR} \n\tChoose the port you want to use for the website. May need -f to force the change\n\tExample: -p 8080\n\tDefault: 80";
+  echo -e "${CYAN}  -b: branch${NOCOLOR} \n\tChoose the branch you want to show\n\tExample : -b main -b 2022_E4_GR2\n\tDefault: main";
+  echo -e "${CYAN}  -f: force${NOCOLOR} \n\tForce the rewriting of the docker-compose\n\tNo parameter needed.";
+  echo -e "${CYAN}  -h: help${NOCOLOR}\n\t show this help";
+  exit 0;
+fi
 
 echo -e "${CYAN}port: ${port:-80}${NOCOLOR}";
 echo -e "${CYAN}branch: ${branch:-"main"}${NOCOLOR}";
