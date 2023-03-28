@@ -37,6 +37,7 @@ if [[ "$help" == true ]];then
   echo -e "${CYAN}  -b: branch${NOCOLOR} \n\tChoose the branch you want to show\n\tExample : -b main -b 2022_E4_GR2\n\tDefault: main";
   echo -e "${CYAN}  -f: force${NOCOLOR} \n\tForce the rewriting of the docker-compose\n\tNo parameter needed.";
   echo -e "${CYAN}  -h: help${NOCOLOR}\n\t show this help";
+  echo -e "\nYou need ${CYAN}git${NOCOLOR} on your principle hard drive to use this script, ${CYAN}docker${NOCOLOR} and ${CYAN}docker-compose${NOCOLOR} installed and running."
   exit 0;
 fi
 
