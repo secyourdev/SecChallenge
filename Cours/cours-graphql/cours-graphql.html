@@ -1,0 +1,83 @@
+<header id="title-block-header">
+  <h1 class="title">Tutoriel GraphQL</h1>
+</header>
+<h2 id="quest-ce-que-graphql">Qu’est-ce que GraphQL ?</h2>
+<p>
+  <strong>GraphQL</strong> est un langage de requête pour les API créé par
+  Facebook en 2012 et devenu opensource en 2015.
+</p>
+<p>
+  <strong>GraphQL</strong> utilise un <strong>schéma</strong> pour décrire les
+  types de données disponibles dans l’API, ainsi que les
+  <strong>relations</strong> entre ces types. Les requêtes
+  <strong>GraphQL</strong> peuvent également inclure des arguments pour filtrer,
+  trier ou paginer les données.
+</p>
+<p>
+  En résumé, GraphQL est une technologie de requête flexible et puissante qui
+  permet aux clients de récupérer des données spécifiques à partir d’une API de
+  manière efficace et contrôlée.
+</p>
+<h2 id="quelle-est-la-différence-avec-les-api-rest">
+  Quelle est la différence avec les API REST ?
+</h2>
+<p>
+  La principale différence entre <strong>GraphQL</strong> et
+  <strong>REST</strong> est que <strong>REST</strong> est basé sur une
+  architecture de ressources, où chaque <strong>endpoint</strong>
+  correspond à une ressource. Voici des exemples d’endpoints REST : -
+  <code>/users</code> - <code>/articles</code> - <code>/login</code>
+</p>
+<p>
+  GraphQL est basé sur une architecture de requête, où les clients spécifient
+  exactement les données qu’ils souhaitent récupérer.
+</p>
+<p>
+  Dans <strong>GraphQL</strong>, il n’y a qu’un seul endpoint, par exemple
+  <code>/graphql</code>, on peut spécifier exactement les données que l’on veut
+  récupérer, ce qui évite l’<strong>under/over fetching</strong> des APIs REST.
+  De plus, le typage fort des données permet d’avoir un code maintenable et une
+  API facile à consommée côté client.
+</p>
+<h2 id="les-bases-de-graphql">Les bases de GraphQL</h2>
+<p>
+  Lorsque l’on crée une API GraphQL, on crée des schémas et des types qui vont
+  typer toutes les données de l’API.
+</p>
+<p>
+  Par exemple, on peut créer un schéma <code>User</code> qui contient les champs
+  <code>email</code> et <code>password</code>.
+</p>
+<p>
+  Il y a deux types de requêtes GraphQL, les <code>query</code> et les
+  <code>mutation</code>. Nous pouvons les comparer aux méthodes
+  <code>GET</code> et <code>POST</code> que l’on utilisera dans une API
+  classique REST. Les <code>query</code> nous permettent de récupérer des
+  données, tandis que les <code>mutation</code> nous permettent d’update/insérer
+  des données.
+</p>
+<p>
+  Les <code>query</code> et <code>mutation</code> prennent éventuellement des
+  arguments, si on a besoin de transmettre des données ou de récupérer une
+  donnée précise.
+</p>
+<p>
+  Par exemple, pour récupérer un <code>User</code> précis, on peut créer une
+  <code>query</code> qui prends en paramètre l’id de l’utilisateur et renvoie
+  l’utilisateur avec cet id. La personne qui fait la requête peut spécifier les
+  champs qu’il veut recevoir, par exemple s’il n’a besoin que de l’email de
+  l’utilisateur, sa requête ressemblerait à :
+</p>
+<pre class="gql"><code> query {
+    user(id: 1) {
+    email
+    }
+    }</code></pre>
+<p>Plutôt que :</p>
+<pre class="gql"><code> query {
+    user(id: 1) {
+    id
+    email
+    password
+    }
+    }</code></pre>
