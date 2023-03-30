@@ -1,0 +1,98 @@
+<h1><b>Gophish</b></h1>
+
+<p><U><b>1. Introduction</b></U> <br><br>
+
+        Gophish est un outil open-source de phishing qui permet aux organisations de mener des campagnes de sensibilisation à la sécurité auprès de leur personnel en simulant des attaques de phishing réalistes.
+        <br><br>
+        Gophish permet aux administrateurs de créer des e-mails de phishing personnalisés, de les envoyer à des groupes spécifiques d'utilisateurs et de suivre les réponses. Les rapports générés par Gophish peuvent aider les administrateurs à évaluer la vulnérabilité de leur organisation aux attaques de phishing et à identifier les employés qui pourraient nécessiter une formation supplémentaire en matière de sécurité.
+        <br><br>
+
+        <b><U>2. Installation</b></U> <br><br>
+
+        Outil disponible depuis sa page github : https://github.com/gophish/gophish
+        <br><br>
+        Il suffit de suivre les étapes d’installation spécifique à votre système. Pour installer depuis un système linux, on décompresse le fichier téléchargé depuis le lien ci-dessus.
+        <br><br>
+        Dans un terminal, on se place dans ce fichier puis on entre la commande: <kbd>chmod +x gophish</kbd>
+        <br><br>
+        A présent on peut exécuter gophish en entrant la commande: <kbd>sudo ./gophish.sh</kbd>
+        <br><br>
+
+        <b><U>3. Utilisation</b></U> <br><br>
+
+        On se connecte sur l’interface d’administration via notre navigateur web à l’adresse indiqué par le terminal puis on entre le nom d’utilisateur et mot de passe indiqué également en terminal.
+        <br><br>
+        Plusieurs étapes sont à suivre pour créer notre campagne de phishing.
+        <br><br>
+        
+        <b>USERS & GROUPS</b> <br><br>
+
+        Pour créer des groupes spécifiques d’utilisateurs, par exemple dans une grande entreprise, le groupe communication et les personnes qui y travaille. On peut également imaginer des groupes en fonction de l’ancienneté des employés, etc.
+        <br><br>
+
+        <b>EMAIL TEMPLATES</b> <br><br>
+
+        Pour éditer l’apparence du mail qu’on va envoyer. On peut importer une page existante puis la modifier. On peut y ajouter des headers (=variables) comme le prénom, etc. Gophish s’occupera de les remplacer par les attributs respectifs de chaque utilisateur.
+        <br><br>
+
+        <b>LANDING PAGES</b> <br><br>
+
+        C’est la page sur laquelle l’utilisateur va tomber. Modifiable comme l’apparence du mail, en langage html.
+        <br><br>
+
+        <b>SENDING PROFILE</b> <br><br>
+
+        Pour créer le profil de l’expéditeur.
+        <br>
+        
+</p><img src="Tutoriel/tuto-gophish/gophish1.png" alt="" class="img-fluid"> <br>
+<p>
+
+        Il faudra indiquer pour le champ host l'adresse du serveur de messagerie. On peut ensuite tester si on le souhaite l’envoie d’un mail depuis ce profil.<br><br>
+
+        <b>CAMPAIGNS</b> <br><br>
+
+        C’est ici qu’on crée une nouvelle campagne. On y précise le template, le profil de l'expéditeur, etc.
+        <br><br>
+        On peut donc facilement modifier les paramètres de notre campagne pour par exemple la mener sur un autre groupe d'utilisateur parmi ceux qu'on a créé. 
+        <br><br>
+
+</p><img src="Tutoriel/tuto-gophish/gophish2.png" alt="" class="img-fluid"> <br>
+<p>
+
+        Le champs URL est à remplir avec l’adresse sur laquelle le mail de phishing nous renverra. Gophish indique cette adresse au démarrage en invite de commande : "http://0.0.0.0:80"      
+        <br><br>
+        On peut ensuite suivre les résultats tout au long de la campagne. Il est possible de gérer différentes campagnes simultanément.
+        <br>
+</p><img src="Tutoriel/tuto-gophish/gophish3.png" alt="" class="img-fluid"> <br>
+<p>
+        <b><U>4. Application : Lancement d'une campagne de phishing</b></U> <br><br>
+
+        Pour réaliser le tutoriel de votre côté, vous pouvez suivre les étapes suivantes :
+        <br><br>
+        1&#41;Téléchargez le fichier <a href="/Dowloads/Tuto_gophish/docker-compose.yml">docker-compose.yml</a><br>
+        <br>Il met à votre disposition l'outil gophish depuis votre naviguateur internet à l'adresse <a href="https://localhost:3333">https://localhost:3333</a>
+        <br>Ainsi que Roundcube, un client de messagerie disponible à l'adresse <a href="https://localhost/roundcubemail">https://localhost/roundcubemail</a>
+        <br><br>
+        Pour tester ce tutoriel, deux comptes de messagerie sont à votre disposition : "victime@example.com"(mdp: "azerty12") et "attaquant@example.com"(mdp: "azerty12"). Vous pouvez ajouter des comptes depuis l'adresse <a href="https://localhost/postfixadmin/">https://localhost/postfixadmin/</a>. En vous connectant avec l'user root et le mdp password.
+        <br><br>
+        2&#41;Exécuter la commande : <kbd>docker-compose up -d --build</kbd>
+        <br><br>
+        3&#41;Pour votre première connexion sur gophish, récupérez le mdp admin dans les logs avec la commande <kbd>docker logs --tail 10 gophish</kbd>
+
+</p><img src="Tutoriel/tuto-gophish/gophish4.png" alt="" class="img-fluid"> <br>
+<p>
+        4&#41;Vous pouvez ensuite configurer la campagne comme bon vous semble !
+        <br><br>
+        Si vous souhaitez réutiliser les templates utilisés dans le tuto vidéo, ils sont disponibles ici : <a href="Downloads/Tuto_gophish/Email_Template.txt">Email_Template</a>   <a href="Downloads/Tuto_gophish/Landing_Page.txt">Landing_Page</a>
+        <br><br>
+        Vous pourrez vérifier le bon fonctionnement de la campagne de phishing en vous connectant dans la boîte de messagerie des victimes sur le client de messagerie <a href="https://localhost/roundcubemail">roundcubemail</a>
+        <br><br>
+
+        <b><U>5. Tutoriel vidéo</b></U> <br><br>
+
+        <video controls width="560" height="315">
+                <source src="Tutoriel/tuto-gophish/Tutoriel_gophish.mp4" type="video/mp4">
+
+                Désolé, votre navigateur ne supporte pas ce format vidéo.
+        </video>
