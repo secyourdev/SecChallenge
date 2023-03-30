@@ -70,14 +70,16 @@
 
         Pour réaliser le tutoriel de votre côté, vous pouvez suivre les étapes suivantes :
         <br><br>
-        1&#41;Téléchargez le fichier <a href="/Downloads/Tuto_gophish/docker-compose.yml">docker-compose.yml</a><br>
-        <br>Il met à votre disposition l'outil gophish depuis votre naviguateur internet à l'adresse <a href="https://localhost:3333">https://localhost:3333</a>
-        <br>Ainsi que Roundcube, un client de messagerie disponible à l'adresse <a href="https://localhost/roundcubemail">https://localhost/roundcubemail</a>
-        <br><br>
-        Pour tester ce tutoriel, deux comptes de messagerie sont à votre disposition : "victime@example.com"(mdp: "azerty12") et "attaquant@example.com"(mdp: "azerty12"). Vous pouvez ajouter des comptes depuis l'adresse <a href="https://localhost/postfixadmin/">https://localhost/postfixadmin/</a>. En vous connectant avec l'user root et le mdp password.
-        <br><br>
+        1&#41;Téléchargez le fichier <a href="/Downloads/Tuto_gophish/docker-compose.yml">docker-compose.yml</a><br><br>
+        
         2&#41;Exécuter la commande : <kbd>docker-compose up -d --build</kbd>
+        <br>
+        <br>Vous avez maintenant accès à l'outil gophish depuis votre naviguateur internet à l'adresse <a href="https://localhost:3333">https://localhost:3333</a>
+        <br>Ainsi que Roundcube, un client de messagerie disponible à l'adresse <a href="http://localhost/roundcubemail">http://localhost/roundcubemail</a>
         <br><br>
+        Pour tester ce tutoriel, deux comptes de messagerie sont à votre disposition : "victime@example.com"(mdp: "azerty12") et "attaquant@example.com"(mdp: "azerty12"). Vous pouvez également ajouter des comptes depuis l'adresse <a href="https://localhost/postfixadmin/">https://localhost/postfixadmin/</a>. En vous connectant avec l'user root et le mdp password.
+        <br><br>
+        
         3&#41;Pour votre première connexion sur gophish, récupérez le mdp admin dans les logs avec la commande <kbd>docker logs --tail 20 gophish</kbd>
 
 </p><img src="Tutoriel/tuto-gophish/gophish4.png" alt="" class="img-fluid"> <br>
@@ -86,7 +88,7 @@
         <br><br>
         Si vous souhaitez réutiliser les templates utilisés dans le tuto vidéo, ils sont disponibles ici : <a href="Downloads/Tuto_gophish/Email_Template.txt">Email_Template</a>   <a href="Downloads/Tuto_gophish/Landing_Page.txt">Landing_Page</a>
         <br><br>
-        Vous pourrez vérifier le bon fonctionnement de la campagne de phishing en vous connectant dans la boîte de messagerie des victimes sur le client de messagerie <a href="https://localhost/roundcubemail">roundcubemail</a>
+        Vous pourrez vérifier le bon fonctionnement de la campagne de phishing en vous connectant dans la boîte de messagerie des victimes sur le client de messagerie <a href="http://localhost/roundcubemail">roundcubemail</a>
         <br><br>
 
         <b><U>5. Tutoriel vidéo</b></U> <br><br>
