@@ -6,11 +6,10 @@
 </div>
 <h2 class="mb-3">Objectif</h2>
 <p>
-    L'objectif de ce challenge est de mettre en pratique le cours et le tuto sur l'utilisation de CeWL
+    L'objectif de ce challenge est de mettre en pratique le cours et le tuto sur l'utilisation de CeWL.
 </p>
 
 <h2 class="mb-3">Outils à installer</h2>
-
 <p>
     Installation de l'application Docker et docker-compose<br>
     Il est nécessaire de récupérer le fichier <b>docker-compose.yml</b><br>
@@ -19,15 +18,13 @@
 <h4><U>Pour cela :</U></h4>
 
 <p>
-    Télécharger le <a class="link-primary" href="./Downloads/Challenge_cewl/docker-compose.yml"
-        download="docker-compose.yml"><u>docker-compose.yml</u></a><br>
+    Télécharger le <a class="link-primary" href="./Downloads/Challenge_cewl/docker-compose.yml" download="docker-compose.yml"><u>docker-compose.yml</u></a><br>
     Il faut maintenant exécuter ce fichier : <br>
-    <kbd class="ms-3">bash> docker-compose build</kbd><br>
-    <kbd class="ms-3">bash> docker-compose up -d</kbd><br>
+    <kbd class="ms-3">bash> docker-compose up --build</kbd><br>
     Cette commande peut être un peu longue, c'est normal. <br>
     Pour se connecter à la machine :
     <br>
-    <kbd class="ms-3">bash> docker-compose exec -it cewl /bin/bash</kbd>
+    <kbd class="ms-3">bash> docker exec -it cewl /bin/bash</kbd>
     <br>
     Pour voir le site web, tapez dans un navigateur :
     <br>

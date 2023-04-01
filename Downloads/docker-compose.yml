@@ -1,0 +1,13 @@
+services:                                                                                                             │
+  commix:                                                                                                             │
+    image: picicato/commix:latest                                                                                │
+    container_name: commix                                                                                            │
+    hostname: commix                                                                                                  │
+    stdin_open: true                                                                                                  │
+    tty: true                                                                                                         │
+  php_commix:                                                                                                         │
+    container_name: php_commix                                                                                        │
+    image: picicato/php-commix:latest                                                                            │
+    ports:                                                                                                            │
+      - 5000:80                                                                                                       │
+version: "3.7"
