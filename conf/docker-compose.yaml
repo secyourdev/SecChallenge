@@ -1,64 +1,32 @@
-version: '3.8'
 services:
-  php:
-    image: cybersecuriteachg2/php
-    networks:
-      - backend
-    env_file: .env
-    volumes:
-      - ${PROJECT_ROOT}:/var/www/html/
-    container_name: secyourdev_php
-    ports:
-      - '8000:80'
-    expose:
-      - 8000
-    links:
-      - mysql
-  apache:
-    image: cybersecuriteachg2/apache
-    depends_on:
-      - php
-      - mysql
-    links:
-      - mysql
-    networks:
-      - frontend
-      - backend
-    ports:
-      - '8080:80'
-    env_file: .env
-    volumes:
-      - ${PROJECT_ROOT}:/var/www/html/
-    container_name: secyourdev_apache
   mysql:
     build: ./mysql/
     command: --default-authentication-plugin=mysql_native_password
     # restart: always
+    container_name: mysql
+    env_file: .env
     ports:
       - '3306:3306'
-    networks:
-      - backend
-    # The default MySQL installation only creates the "root" administrative account
-    # create new users using docker-compose exec
+  php:
+    container_name: php_server
     env_file: .env
-    container_name: mysql
-  phpmyadmin:
-    depends_on:
-      - mysql
+    image: php:7.2-apache 
     links:
       - mysql
+    ports:
+      - "8080:80"
+    volumes:
+      - "../:/var/www/html/"
+  phpmyadmin:
+    container_name: phpmyadmin
+    depends_on:
+      - mysql
+    env_file: .env
     image: phpmyadmin/phpmyadmin
+    links:
+      - "mysql"
     # restart: always
     ports:
       - '8081:80'
-    env_file: .env
-    networks:
-      - backend
-    volumes:
-      - /sessions
-    container_name: phpmyadmin
-networks:
-  frontend:
-  backend:
-volumes:
-  data:
+
+version: '3.8'
