@@ -59,8 +59,8 @@ docker-compose stop
 
 Now that your containers are running, you can access them on :
 
-- [http://localhost:8000](http://localhost) for the main website
-- [http://localhost:8080](http://localhost:8081) for `phpMyAdmin`.
+- [http://localhost:8080](http://localhost:8080) for the main website
+- [http://localhost:8081](http://localhost:8081) for `phpMyAdmin`.
 
 The containers are in a Docker Network, here are the details :
 
