@@ -4,6 +4,17 @@ Cybersecuriteach est un site web de sensibilisation à la cybersécurité en app
 
 ## Setting up your live development environment
 
+### TLDR
+
+| Command           | Description                                    |
+| ----------------- | ---------------------------------------------- |
+| `make build`      | Build images                                   |
+| `make up`         | Start containers                               |
+| `make stop`       | Stop containers                                |
+| `make down`       | Stop and delete containers                     |
+| `make clean`      | Stop and delete containers, volumes and images |
+| `make export-bdd` | Export database in `bdd/dump.sql`              |
+
 ### Requirements
 
 You need to install [git](https://git-scm.com/), [github-cli](https://github.com/cli/cli) and [docker](https://www.docker.com/).
@@ -12,15 +23,13 @@ Using APT (Debian based linux) :
 
 ```bash
 sudo apt update
-sudo apt install -y git gh docker.io docker-compose
+sudo apt install -y git gh docker.io docker-compose make
 ```
 
 Using pacman (Arch Linux) :
 
 ```bash
-sudo pacman -S git
-sudo pacman -S github-cli
-sudo pacman -S docker
+sudo pacman -S git github-cli docker make
 ```
 
 First, login with GitHub and store your credentials within git :
@@ -43,16 +52,22 @@ git checkout <name_of_your_group>
 
 ### Run the website
 
-To start the services, just run the following command :
+First, build the images :
 
 ```bash
-docker-compose up --build -d
+make build
 ```
 
-When you are finish, stop the containers :
+Then, start the containers :
 
+```bash
+make up
 ```
-docker-compose stop
+
+Stop the containers :
+
+```bash
+make stop
 ```
 
 ### Accessing the website
@@ -81,8 +96,10 @@ On the main website, you need to register a new account and then login.
 To create a dump of the database, use the following command :
 
 ```bash
-docker exec secyourdev_mysql sh -c 'exec mysqldump --all-databases -uroot -p"root"' > ./bdd/dump.sql
+make export-bdd
 ```
+
+> The dump is located at `bdd/dump.sql`
 
 And now, you can use this dump as the default database :
 
@@ -95,12 +112,11 @@ rm -f ./bdd/init.sql && cp ./bdd/dump.sql ./bdd/init.sql
 Stop and delete containers :
 
 ```bash
-docker container stop secyourdev_server secyourdev_mysql secyourdev_phpmyadmin
-docker container rm secyourdev_server secyourdev_mysql secyourdev_phpmyadmin
+make down
 ```
 
-Delete images :
+Stop and delete containers, images, and volumes :
 
 ```bash
-docker image rm
+make clean
 ```
