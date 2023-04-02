@@ -58,3 +58,15 @@ To create a dump of the database, use the following command :
 docker exec some-mysql sh -c 'exec mysqldump --all-databases -uroot -p"$MYSQL_ROOT_PASSWORD"' > /some/path/on/your/host/all-databases.sql
 ```
 
+## Clear
+
+Stop and delete containers :
+```bash
+docker container stop secyourdev_php secyourdev_apache phpmyadmin mysql
+docker container rm secyourdev_php secyourdev_apache phpmyadmin mysql
+```
+
+Delete images :
+```bash
+docker image rm 
+```

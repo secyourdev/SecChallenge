@@ -3,14 +3,14 @@ services:
     build: ./mysql/
     command: --default-authentication-plugin=mysql_native_password
     # restart: always
-    container_name: mysql
+    container_name: secyourdev_mysql
     env_file: .env
     ports:
       - '3306:3306'
   php:
-    container_name: php_server
+    build: ./php/
+    container_name: secyourdev_php
     env_file: .env
-    image: php:7.2-apache 
     links:
       - mysql
     ports:
@@ -18,7 +18,7 @@ services:
     volumes:
       - "../:/var/www/html/"
   phpmyadmin:
-    container_name: phpmyadmin
+    container_name: secyourdev_phpmyadmin
     depends_on:
       - mysql
     env_file: .env
