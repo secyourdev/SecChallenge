@@ -1,7 +1,10 @@
 <?php
+ob_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
 include("bdd/acces_BDD.php");
 
-  session_start();
   if(isset($_POST['connexion'])){
     extract($_POST);
     if(!empty($_POST['mail']) AND !empty($_POST['password'])){
@@ -82,3 +85,7 @@ include("bdd/acces_BDD.php");
 
 
 </html>
+
+<?php 
+ob_end_flush();
+?>

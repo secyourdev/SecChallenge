@@ -5,11 +5,9 @@
   $dbname = "dbsite";
 
   try {
-    $BDD = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password);
-    // set the PDO error mode to exception
-    $BDD->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    echo "[PHP SERVER] Connected successfully";
+    $BDD = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
   } catch(PDOException $e) {
     die("[PHP SERVER] Connection failed: \n" . $e->getMessage());
   }
 ?> 
+

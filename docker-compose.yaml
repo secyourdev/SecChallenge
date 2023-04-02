@@ -8,7 +8,7 @@ services:
   db:
     build:
       context: .
-      dockerfile: Dockerfile-mysql 
+      dockerfile: Dockerfile-mysql
     command: --default-authentication-plugin=mysql_native_password
     # restart: always
     container_name: secyourdev_mysql
@@ -24,8 +24,8 @@ services:
       - db
     env_file: ./conf/.env
     image: phpmyadmin/phpmyadmin
-    # links:
-    #   - 'mysql'
+    links:
+      - 'db'
     # restart: always
     networks:
       secyourdev:
@@ -35,11 +35,13 @@ services:
   server:
     build:
       context: .
-      dockerfile: Dockerfile-php 
-    container_name: secyourdev_php
+      dockerfile: Dockerfile-php
+    container_name: secyourdev_server
     depends_on:
       - db
     env_file: ./conf/.env
+    expose:
+      - 8000
     networks:
       secyourdev:
         ipv4_address: 10.10.0.2

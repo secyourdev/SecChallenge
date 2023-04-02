@@ -101,7 +101,7 @@ else
     mysql:
       build: ./mysql/
       command: --default-authentication-plugin=mysql_native_password 
-      restart: always
+      # restart: always
       ports:
         - "3306:3306"
 
@@ -123,7 +123,7 @@ else
       links:
         - mysql
       image: phpmyadmin/phpmyadmin
-      restart: always
+      # restart: always
       ports:
         - '8081:80'
       environment:
@@ -168,7 +168,7 @@ if [ "$(ls -A mysql/Dockerfile 2>/dev/null)" ] && [[ ! "$force" == true ]];then
   
 else
 cat > mysql/Dockerfile << EOF
-FROM mysql/mysql-server:5.7
+FROM mysql/mysql-server:8.0
 
 
 COPY ./sql-scripts/ /docker-entrypoint-initdb.d/

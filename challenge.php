@@ -1,6 +1,8 @@
 <?php
-    include("bdd/acces_BDD.php");
-	session_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
+  include("bdd/acces_BDD.php");
 	if (isset($_SESSION['id'])){
     $id = $_GET["challenge"]
 	
