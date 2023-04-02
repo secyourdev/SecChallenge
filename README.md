@@ -1,10 +1,10 @@
 # Cybersecuriteach
 
-Cybersecuriteach est un site web de sensibilisation à la cybersécurité en apprenant différentes techniques de hacking.
+Cybersecuriteach is a website for cyber security awareness by learning different hacking techniques.
 
-## Setting up your live development environment
+## A. Setting up your live development environment
 
-### TLDR
+### 1. TLDR
 
 | Command           | Description                                    |
 | ----------------- | ---------------------------------------------- |
@@ -15,9 +15,11 @@ Cybersecuriteach est un site web de sensibilisation à la cybersécurité en app
 | `make clean`      | Stop and delete containers, volumes and images |
 | `make export-bdd` | Export database in `bdd/dump.sql`              |
 
-### Requirements
+See `Makefile` file for details.
 
-You need to install [git](https://git-scm.com/), [github-cli](https://github.com/cli/cli) and [docker](https://www.docker.com/).
+### 2. Requirements
+
+You need to install [git](https://git-scm.com/), [github-cli](https://github.com/cli/cli), [docker](https://www.docker.com/) and make.
 
 Using APT (Debian based linux) :
 
@@ -50,7 +52,7 @@ And move to your group branch :
 git checkout <name_of_your_group>
 ```
 
-### Run the website
+### 3. Run the website
 
 First, build the images :
 
@@ -70,7 +72,7 @@ Stop the containers :
 make stop
 ```
 
-### Accessing the website
+### 4. Accessing the website
 
 Now that your containers are running, you can access them on :
 
@@ -85,13 +87,13 @@ The containers are in a Docker Network, here are the details :
 | MySQL Database | secyourdev_mysql      | 10.10.0.3 | 3306 |
 | phpMyAdmin     | secyourdev_phpmyadmin | 10.10.0.4 | 8081 |
 
-### Credentials
+## B. Credentials
 
 To access phpMyAdmin, you need to log in with these credentials : `user:root`
 
 On the main website, you need to register a new account and then login.
 
-## Exporting the database
+## C. Exporting the database
 
 To create a dump of the database, use the following command :
 
