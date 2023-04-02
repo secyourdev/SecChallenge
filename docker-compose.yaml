@@ -6,7 +6,9 @@ networks:
 
 services:
   db:
-    build: ./conf/mysql/
+    build:
+      context: .
+      dockerfile: Dockerfile-mysql 
     command: --default-authentication-plugin=mysql_native_password
     # restart: always
     container_name: secyourdev_mysql
@@ -31,7 +33,9 @@ services:
     ports:
       - '8081:80'
   server:
-    build: ./conf/php/
+    build:
+      context: .
+      dockerfile: Dockerfile-php 
     container_name: secyourdev_php
     depends_on:
       - db
