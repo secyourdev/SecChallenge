@@ -36,7 +36,10 @@
 
 <body>
   <?php
-      session_start();
+      ob_start();
+      if (session_status() == PHP_SESSION_NONE) {
+          session_start();
+      }
       require_once('nav2.php');
      ?>
   <div class="all-title-box">
@@ -107,3 +110,7 @@
 </body>
 
 </html>
+
+<?php 
+ob_end_flush();
+?>

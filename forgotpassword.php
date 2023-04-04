@@ -15,7 +15,10 @@
   <body>
     <?php
       require_once('nav.php');
-      session_start();
+    ob_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     ?>
     <div class="container">
       <div class="row">
@@ -56,4 +59,8 @@
                   echo "erreur";
                 }
                 }
+?>
+
+<?php 
+ob_end_flush();
 ?>

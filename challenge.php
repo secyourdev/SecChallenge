@@ -1,4 +1,5 @@
 <?php
+ob_start();
 if (session_status() == PHP_SESSION_NONE) {
     session_start();
 }
@@ -178,4 +179,8 @@ if (session_status() == PHP_SESSION_NONE) {
 else{
 	header('Location: index.php');
 }
+?>
+
+<?php 
+ob_end_flush();
 ?>
