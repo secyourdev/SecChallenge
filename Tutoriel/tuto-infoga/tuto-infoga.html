@@ -1,4 +1,4 @@
-<h2><b>Infoga : Email OSINT</b></h2>
+<h2><b>Infoga : Email Information Gathering</b></h2>
 
 <h2 class="mb-3"></br>1. Présentation</h2>
 <p>
@@ -13,28 +13,34 @@
 <h2 class="mb-3"></br>2. Configuration</h2>
 <p>
 	Pour ce tutoriel, nous utiliserons docker contenant un serveur php avec un site web en local 
-	et une machine attaquante sous linux avec l’outil infoga d’installé.</br>
+	et une machine  avec l’outil infoga d’installé.</br>
 	Je vous invite à faire directement le challenge portant sur infoga.</br>
 	Télécharger le fichier <a class="link-primary" href="./Downloads/Challenge_infoga/docker-compose.yml" download="docker-compose.yml"><U>docker-compose.yml</U></a>
 	Tapez les commandes suivantes :
 </p>
-<kbd class="ms-3">docker-compose up -d</kbd>
+<kbd class="ms-3">docker-compose up --build</kbd>
 <p>
-	Pour utiliser la machine avec infoga d'installé : 
+	Pour utiliser la machine avec l'outil infoga : 
 </p>
-<kbd class="ms-3">docker exec -it infoga /bin/bash</kbd></br>
+<kbd class="ms-3">docker exec -it infoga /bin/sh</kbd></br>
 
 <h2 class="mb-3"></br>3. Collecter les adresses emails</h2>
 <p>
-	Utilisation:
+	Pour commencer la collecte d'information sur un domaine, exécutez la commande suivante :
 </p>
-<kbd class="ms-3">python infoga.py -d kali.com</kbd></br>
-<img src="Tutoriel/tuto-infoga/infoga-1.png" alt="" class=img-fluid"></br>
+<kbd class="ms-3">python infoga.py --domain secyourdev --source all --breach -v 2</kbd></br>
+<img src="Tutoriel/tuto-infoga/infoga.png" alt="" class=img-fluid"></br>
 <p>
-	Dans cet exemple, le paramètre -d précise le domaine dans lequel on souhaite
-	trouver des adresses emails.</br>
-	Par ailleurs, on peut préciser avec le paramètre -s avec quel moteur de 
-	recherche on souhaite pour trouver des information sur un domaine donné.
-	Par défaut, Infoga utilise tous les moteurs de recherche à sa disposition.
+	Dans cette exemple les paramètres :
+	<ul>
+                <li>--domain : URL ou nom du domaine qu'on souhaite cibler.</li>
+                <li>--source : Le moteur de recherche utilisé pour collecter les informations. Par défault, l'outil utilise tous les moteurs de recherche à sa disposition (google, bing, yahoo, ask, baidu, dogpile, exalead, jigsaw et pgp).</li>
+		<li>--breach : Indique si l'adresse email a fuité.</li>
+		<li>--verbose : Le niveau de verbosité (1,2 ou 3).
+        </ul>
+
+</p>
+<p>
+	C'est la fin de ce tutoriel, je vous invite à présent à tenter le challenge sur Infoga !
 </p>
 

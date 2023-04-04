@@ -19,19 +19,24 @@
 <h4><U>Pour cela :</U></h4>
 
 <p>
-    Télécharger le <a class="link-primary" href="./Downloads/Challenge_cewl/docker-compose.yml"
-        download="docker-compose.yml"><u>docker-compose.yml</u></a><br>
-    Il faut maintenant exécuter ce fichier : <br>
+    Télécharger le fichier <a class="link-primary" href="/Downloads/Challenge_cewl/docker-compose.yml" download="docker-compose.yml"><u>docker-compose.yml</u></a><br>
+    Exécuter la commande suivante : <br>
     <kbd class="ms-3">bash> docker-compose up --build</kbd><br>
     Cette commande peut être un peu longue, c'est normal. <br>
     Pour se connecter à la machine :
     <br>
-    <kbd class="ms-3">bash> docker exec -it infoga /bin/bash</kbd>
+    <kbd class="ms-3">bash> docker exec -it infoga /bin/sh</kbd>
     <br>
-    Pour voir le site web du challenge OSINT, tapez dans un navigateur :
+    Le site web est accessible à l'adresse suivante :
     <br>
-    <a class="link-primary" href="http://localhost:80"><u>http://localhost:80</u></a>
+    <a class="link-primary" href="http://192.168.40.3"><u>http://192.168.40.3</u></a>
     <br>
 </p>
+
+<h2 class="mb-3">Mise en situation</h2>
+<p>
+	John Doe, administrateur du site <a class="link-primary" href="https://secyourdev.com"><u>https://secyourdev.com</u></a>
+	, a leak des informations confidentielles sur les utilisateurs de SecYourDev sur sa page facebook en privé.
+	Trouvez ses identifiants Facebook pour savoir ce qu'il cache sur son compte.
 
 <h3><b>À vous de jouer !</b></h3>
