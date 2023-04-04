@@ -6,18 +6,51 @@ Cybersecuriteach is a website for cyber security awareness by learning different
 
 ### 1. TLDR
 
+#### Linux
+
 | Command           | Description                                    |
 | ----------------- | ---------------------------------------------- |
 | `make build`      | Build images                                   |
 | `make up`         | Start containers                               |
 | `make stop`       | Stop containers                                |
 | `make down`       | Stop and delete containers                     |
-| `make clean`      | Stop and delete containers, volumes and images |
+| `make clean`      | Stop, delete containers, volumes and images |
 | `make export-bdd` | Export database in `bdd/dump.sql`              |
 
 See `Makefile` file for details.
 
+#### Windows
+
+- Build images
+```powershell
+docker-compose build
+```
+
+- Start containers
+```powershell
+docker-compose up -d
+```
+
+- Stop containers
+```powershell
+docker-compose stop
+```
+
+- Stop and delete containers
+```powershell
+docker-compose down
+```
+
+- Stop, delete containers, volumes and images
+```powershell
+docker container stop secyourdev_server secyourdev_mysql secyourdev_phpmyadmin
+docker container rm secyourdev_server secyourdev_mysql secyourdev_phpmyadmin
+docker-compose down --volumes --remove-orphans
+```
+
 ### 2. Requirements
+
+#### Linux
 
 You need to install [git](https://git-scm.com/), [github-cli](https://github.com/cli/cli), [docker](https://www.docker.com/) and make.
 
@@ -33,6 +66,12 @@ Using pacman (Arch Linux) :
 ```bash
 sudo pacman -S git github-cli docker make
 ```
+
+#### Windows (please use Linux)
+
+You need to install [git](https://git-scm.com/), [github-cli](https://github.com/cli/cli), [docker](https://www.docker.com/).
+
+#### Configuration
 
 First, login with GitHub and store your credentials within git :
 
@@ -53,6 +92,8 @@ git checkout <name_of_your_group>
 ```
 
 ### 3. Run the website
+
+If you are using Windows, replace the following commands with the commands for windows specified in the above TLDR section.
 
 First, build the images :
 
