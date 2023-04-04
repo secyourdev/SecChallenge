@@ -42,8 +42,13 @@
 	envoyez une requête pour que Burp puisse analyser son contenu.</br>
 	L'image ci-dessous est la requête qu'on obtient sur Burp :</br></br>
 	<image src="Tutoriel/tuto-commix/commix-burp.png" alt="" class=img-fluid"></br></br>
+</p>
+<p>
 	La ligne qui nous interesse est :
-	<kbd class="ms-3> cmd=ls</kbd></br>
+	<kbd class="ms-3"> cmd=ls </kbd>
+
+</p>
+<p>
 	Cette ligne nous informe que sur la page web on a envoyé l'information ls et que ce dernier est stocké
 	dans une variable appelée cmd. Avec ces informations en main, on peut à présent utiliser l'outil commix
 	pour eventuellement exploiter des vulnérabilités et exécuter des commandes. 
