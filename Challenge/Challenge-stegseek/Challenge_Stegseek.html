@@ -1,0 +1,73 @@
+<title>Challenge Stegseek</title>
+
+<h1><b>Challenge Stegseek</b></h1>
+
+<h2><b>Manipulation de plusieurs fichiers steghide</b></h2>
+<p>
+    Nous venons d'intercepter différents fichiers durant une conversation entre deux personnes lambda.
+    </br>
+    Nous pensons qu'ils communiquent entre eux de cette manière et que ces fichiers dissimulent des informations secrètes.
+    </br>
+    L'objectif est donc d'accéder au contenu secret final et de retrouver le message caché.
+</p>
+
+<h3><b>À vous de jouer !</b></h3>
+
+<p>
+    Ce tutoriel met à disposition, par le biais de Docker et Docker-compose, une machine déjà configurée. 
+    <br>
+    Récupérez le dockerfile dans le lien suivant : 
+    <a class="link-primary"
+        href="./docker-compose.yml"><U>docker-compose.yml</U></a><br>
+    <br> 
+    Dans un bash (Linux) ou cmd (Windows), allez dans le répertoire où vous avez téléchargé le fichier docker-compose.yml et effectuez les commandes suivantes : 
+    <br>
+    <kbd class="ms-3"><bash> docker-compose build</kbd><br>
+    <kbd class="ms-3"><bash> docker-compose up -d</kbd><br>
+    <kbd class="ms-3"><bash> docker exec -ti challenge_052-syd-academy-stegseek /bin/bash</kbd><br>
+    <kbd class="ms-3"><bash> apt install ./stegseek_0.6-1.deb</kbd><br>
+    <br>
+    Avec nos différents tutoriels et vos recherches personnelles, vous devez être en mesure de récupérer <b>un flag !</b>
+    <br>
+    <br>
+
+    <i>NB : Quelques indices si vous êtes perdus</i>
+    <br>
+    <br>
+    <button onclick="myFunction()">Indice 1</button>
+    <p id="demo"></p>
+    <script>
+        function myFunction() {
+          document.getElementById("demo").innerHTML = "Voici l'ordre d'interception des fichiers steghides : <br>1. image1<br>2. image2<br>3. audio";
+        }
+      </script>
+    <button onclick="myFunction2()">Indice 2</button>
+    <p id="demo2"></p>
+    <script>
+        function myFunction2() {
+          document.getElementById("demo2").innerHTML = "Regardez bien l'ensemble des fichiers ansi que leurs contenus; des indices peuvent être cachés ...";
+        }
+      </script>
+    
+
+    Pour valider ce tutoriel, il vous suffira de rentrer le message secret du dernier fichier steghide. 
+    <br>
+</p>
+
+<head>
+	<script>
+		function verifierMot() {
+			var mot = document.getElementById("mot").value;
+			if (mot === "X_STEG{100k$_MISSION_PASSED_;-)}") {
+				document.getElementById("message").innerHTML = "Félicitations. Challenge réussi !!!";
+			} else {
+				document.getElementById("message").innerHTML = "Ce n'est pas la réponse attendu ...";
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" id="mot" name="mot">
+	<button onclick="verifierMot()">Valider la réponse</button>
+	<p id="message"></p>
+</body>
