@@ -1,0 +1,143 @@
+<h1>Tutoriel BillCipher</h1>
+
+<h2>1. Objectif</h2>
+
+<p>
+    L'objectif de ce tutoriel est de vous présenter l'outil Billcipher. 
+    </br>
+    BillCipher est un outil libre et open-source disponible sur Github. Il est basé sur l'Intelligence Open Source (OSINT), et est un outil pratique et utile pour la reconnaissance.
+    </br>
+</p>
+
+<h2>2. Configuration</h2>
+
+<p>
+    Ce tutoriel met à disposition, par le biais de Docker et Docker-compose, une machine déjà configurée. 
+    <br>
+    Récupérez le dockerfile dans le lien suivant : 
+    <a class="link-primary"
+        href="./docker-compose.yml"><U>docker-compose.yml</U></a><br>
+    <br> 
+    Dans un bash (Linux) ou cmd (Windows), allez dans le répertoire où vous avez téléchargé le fichier docker-compose.yml et effectuez les commandes suivantes : 
+    <br>
+    <kbd class="ms-3"><bash> docker-compose build</kbd><br>
+    <kbd class="ms-3"><bash> docker-compose up -d</kbd><br>
+    
+    <br> 
+    Vous disposez maintenant d'une machine avec l'outil BillCipher. 
+    <br>
+    <br>
+    <i>Si vous voulez l'installer par vous-même, il est téléchargeable depuis github : <a class="link-primary"
+        href="https://github.com/bahatiphill/BillCipher">BillCipher</a>.
+        <br> </i>
+    
+</p>
+
+<h2>3. Installation et Application</h2>
+<p>
+        Connectez-vous à la machine : 
+        <br>
+        <kbd class="ms-3"><bash> docker exec -ti tuto_053-syd-academy-stegseek /bin/bash</kbd><br>
+        <br>
+        Puis, lancez l'outil BillCipher : <br>
+        <kbd class="ms-3"><bash> python3 billcipher.py </kbd><br>
+        <br>
+        Vous devriez ceci dans votre bash ou invite de commande.    
+        <br>
+        <br>
+        <img src="billcipher-tuto-0.png" alt="" class="img-fluid">
+        <br>
+        <br>
+        Félicitations ! L'outil est parfaitement fonctionnel. 
+        <br>
+        Maintenant, nous allons passer à l'étape de la manipulation. 
+    
+        <h3> Manipulations </h3>
+    
+        BillCipher crée un environnement puissant pour la reconnaissance web open-source, vous permettant de recueillir des informations complètes sur votre cible. 
+        <br>
+        Pour obtenir ces informations, il faut dans un premier temps saisir le site ou l'adresse IP de notre cible.
+        <br>
+        <i> Dans le cadre du tutoriel, nous allons récupérer les infos sur des sites officiels. </i>
+        <br>
+        <br>
+        Pour ce faire, entrez le type de cible : 
+        <br>
+        <kbd class="ms-3"><bash> website </kbd><br>
+        <br>
+        Ensuite, renseignez le nom de ce dernier : 
+        <br>
+        <kbd class="ms-3"><bash> google.com </kbd><br>
+        <br>
+        <img src="billcipher-tuto-1.png" alt="" class="img-fluid">
+        <br>
+        <br>
+        Nous pouvons voir une série d'options "de scan" (collecte d'informations) dans le menu. Toutes ces options sont disponibles et peuvent être effectuées en sélectionnant le numéro de séquence de l'option souhaitée. 
+        <br> 
+        Ainsi, si nous recherchons l'enregistrement <i>GeoIP (lookup)</i> de notre cible, BillCipher répond avec des informations détaillées comme vous pouvez le constater sur le screenshot ci-dessus.
+        <br>
+        <br>
+        <img src="billcipher-tuto-3.png" alt="" class="img-fluid">
+        <br>
+        <br>
+        Cette option permet de lister : 
+        <ul>
+            <li>adresse IP</li>
+            <li>Pays (parfois la ville) </li>
+            <li>Coordonnées GPS (latitude et longitude)</li>
+        </ul> 
+
+        Voici quelques exemples de résultats pour le site google.com. 
+        <br>
+        <br>
+        <img src="billcipher-tuto-2.png" alt="" class="img-fluid">
+        <br>
+        <br>
+        <img src="billcipher-tuto-4.png" alt="" class="img-fluid">
+        <br>
+        <br>
+        <img src="billcipher-tuto-5.png" alt="" class="img-fluid">
+        <br>
+        <br>
+        <br>
+        <i>Remarque : Certaines fonctionnalités ne sont pas fonctionnelles selon les sites web/ adresses IP mis en paramètre.</i>        
+        
+    
+    <!--
+    "Étant donné le faible nombre de manipulations/commandes à effectuer, la vidéo n'est pas nécessaire. 
+        
+    <h2>Vidéo : Tutoriel </h2>
+    <video width="320" height="240" controls>
+        <source src="tuto.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <br>
+    -->
+    
+    <h2>Fin du tutoriel</h2>
+    <p>
+        Le tutoriel est terminé, et vous savez maintenant comment manipuler BillCipher.
+        <br>
+        Pour valider ce tutoriel, il vous suffira de rentrer la dernière page (lien) associée au site cible <b>visualstudio.com</b> . 
+        <br>   
+    </p>
+    
+    <head>
+        <script>
+            function verifierMot() {
+                var mot = document.getElementById("mot").value;
+                if (mot === "https://choice.microsoft.com/") {
+                    document.getElementById("message").innerHTML = "Félicitations. Tutoriel réussi !!!";
+                } else {
+                    document.getElementById("message").innerHTML = "Ce n'est pas la réponse attendu ...";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <input type="text" id="mot" name="mot">
+        <button onclick="verifierMot()">Valider la réponse</button>
+        <p id="message"></p>
+    </body>
+    
+    
