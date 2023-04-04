@@ -1,5 +1,5 @@
 # Define variables
-DOCKER_COMPOSE=docker compose
+DOCKER_COMPOSE=docker-compose
 DOCKER=docker
 
 # Define targets
