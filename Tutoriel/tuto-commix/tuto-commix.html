@@ -13,7 +13,7 @@
 	Pour ce tutoriel, nous utiliserons docker contenant un serveur php avec un site web en local
 	et une machine attanquante avec l'outil Commix installé.
 	Télécharger le fichier <a class="link-primary" href= "Docker/commix/docker-compose.yml" download="docker-compose.yml"><U>docker-compose.yml</U></a>
-	Tapeze les commandes suivantes:
+	Tapez les commandes suivantes:
 </p>
 <kbd class="ms-3">docker-compose up --build</kbd>
 <p>
@@ -40,8 +40,8 @@
 	Sur Burp Suite activez l'interception des paquets sur ON et le proxy configuré précédemment.
 	Enfin sur la page web <a class="link-primary" href="http://192.168.50.3:5000"><u>http://192.168.50.3:5000</u></a>
 	envoyez une requête pour que Burp puisse analyser son contenu.</br>
-	L'image ci-dessous est la requête qu'on obtient sur Burp :</br>
-	<image src="Tutoriel/tuto-commix/commix-burp.png" alt="" class=img-fluid"></br>
+	L'image ci-dessous est la requête qu'on obtient sur Burp :</br></br>
+	<image src="Tutoriel/tuto-commix/commix-burp.png" alt="" class=img-fluid"></br></br>
 	La ligne qui nous interesse est :
 	<kbd class="ms-3> cmd=ls</kbd></br>
 	Cette ligne nous informe que sur la page web on a envoyé l'information ls et que ce dernier est stocké
@@ -50,9 +50,9 @@
 </p>
 <p>
 	Sur la machine avec commix, on va exécuter la commande suivantes :</br>
-	<kbd class="ms-3">python commix.py -u "http://192.168.50.3" --data="cmd=ls"</kbd></br>
-	<img src="Tutoriel/tuto-commix/commix-final.png" alt="" class=img-fluid"></br>
-	Une fois l'exécution de commix terminé ce dernier nous rend la main avec un shell interactif où
+	<kbd class="ms-3">python commix.py -u "http://192.168.50.3" --data="cmd=ls"</kbd></br></br>
+	<img src="Tutoriel/tuto-commix/commix-final.png" alt="" class=img-fluid"></br></br>
+	Une fois l'exécution de commix terminé, ce dernier nous rend la main avec un shell interactif où
 	on peut tester les commandes que l'on souhaite.
 </p>
 
