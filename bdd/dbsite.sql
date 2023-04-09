@@ -404,7 +404,8 @@ INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Description`, `Reponse`, `Emplac
 (51, 'Local file inclusion', 'Comment uploader un fichier sur un site web', NULL, 'Tutoriel/tuto-lfi/tuto-lfi.html', 'Tutoriel/tuto-lfi/images/lfi_logo.png', NULL),
 (52, 'Python Scapy', 'Un puissant sniffer et éditeur de paquet', '1472ac1b19', 'Tutoriel/tuto-scapy/tuto-scapy.html', 'Tutoriel/tuto-scapy/images/affiche.png', NULL),
 (53, 'Gophish', 'Framework de phishing pour tester l\'exposition d\'une organisation au phishing', NULL, 'Tutoriel/tuto-gophish/tuto-gophish.html', 'Tutoriel/tuto-gophish/affiche.png', NULL),
-(54, 'TheSleuthKit', 'L\'exploration complète de volumes de stockage', NULL, 'Tutoriel/tuto-thesleuthkit/tuto-thesleuthkit.html', 'Tutoriel/tuto-thesleuthkit/images/sleuthkitlogo1.PNG', NULL);
+(54, 'TheSleuthKit', 'L\'exploration complète de volumes de stockage', NULL, 'Tutoriel/tuto-thesleuthkit/tuto-thesleuthkit.html', 'Tutoriel/tuto-thesleuthkit/images/sleuthkitlogo1.PNG', NULL),
+(55, 'Crunch', 'Un créateur de dictionnaire de mots de passe', NULL, 'Tutoriel/tuto-crunch/tuto-crunch.html', 'Tutoriel/tuto-crunch/affiche.png', NULL);
 -- --------------------------------------------------------
 
 --

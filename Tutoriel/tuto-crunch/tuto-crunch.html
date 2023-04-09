@@ -1,0 +1,47 @@
+
+<h1>Crunch - un outil de génération de mots de passe</h1>
+<p>Crunch est un outil open source qui peut générer des listes de mots de passe à partir de critères spécifiques,
+    permettant aux utilisateurs de créer des mots de passe complexes et sécurisés. Il peut également être utilisé pour
+    tester la sécurité des mots de passe existants.</p>
+
+
+<h2>Comment fonctionne Crunch ?</h2>
+<p>Crunch utilise des règles pour générer des listes de mots de passe. Les règles définissent la longueur et le contenu
+    des mots de passe générés en utilisant des caractères spéciaux, des chiffres et des lettres. Les utilisateurs
+    peuvent également ajouter leurs propres règles personnalisées pour générer des mots de passe qui répondent à leurs
+    exigences de sécurité.</p>
+
+<p>Voici un exemple de commande Crunch qui utilise des règles pour générer une liste de mots de passe :</p>
+
+<kbd class="ms-3">bash> crunch 6 8 -t @@@%% -o passwords.txt</kbd><br>
+<p>Cette commande Crunch va générer une liste de tous les mots de passe possibles avec une longueur de 6 à 8 caractères,
+    en utilisant les symboles "@" pour les lettres minuscules, "%" pour les chiffres et "%" pour les caractères
+    spéciaux. La liste de mots de passe générée sera sauvegardée dans un fichier texte nommé "passwords.txt".</p>
+
+<p>Voici un autre exemple de commande Crunch qui utilise une règle personnalisée pour générer des mots de passe :</p>
+<kbd class="ms-3">bash> crunch 8 8 -t hello2019! -o passwords.txt</kbd><br>
+<p>Cette commande Crunch va générer une liste de tous les mots de passe possibles de 8 caractères de longueur qui
+    incluent la chaîne de caractères "hello2019!" dans leur composition. La liste de mots de passe générée sera
+    sauvegardée dans un fichier texte nommé "passwords.txt".</p>
+
+<h2>Le fonctionnement de charset.lst</h2>
+<p>En plus des règles, Crunch utilise un fichier appelé "charset.lst" qui contient la liste des caractères à utiliser
+    pour la génération de mots de passe. Ce fichier contient des ensembles de caractères prédéfinis pour différentes
+    langues, types de caractères et applications.</p>
+
+<p>Voici un exemple de commande Crunch qui utilise un fichier charset.lst personnalisé pour générer une liste de mots de
+    passe :</p>
+
+<kbd class="ms-3">bash> crunch 8 8 -f /usr/share/crunch/charset.lst mixalpha-numeric -o passwords.txt</kbd><br>
+<p>Cette commande Crunch va générer une liste de tous les mots de passe possibles avec l'option mixalpha-numeric de
+    charset.lst qui correspond aux caractères minuscules,majuscule et numerique, avec une longueur de 8 caractères, et
+    la sauvegarder dans un fichier texte nommé "passwords.txt". La commande utilise également l'option "-f" pour
+    spécifier le chemin du fichier charset.lst
+    personnalisé et l'option "-o" pour spécifier le nom du fichier de sortie.</p>
+
+<h2>Conclusion</h2>
+<p>En conclusion, Crunch est un outil puissant pour générer des mots de passe complexes et sécurisés. Les utilisateurs
+    peuvent personnaliser les règles pour générer des mots de passe qui répondent à leurs exigences de sécurité
+    spécifiques, ainsi que spécifier des fichiers de caractères personnalisés pour la génération de mots de passe.
+    Toutefois, il est important de noter que l'utilisation de Crunch pour tester la sécurité des mots de passe existants
+    doit être effectuée avec prudence et avec le consentement des propriétaires des comptes concernés.  </p>
