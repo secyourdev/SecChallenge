@@ -25,14 +25,14 @@
     Compatible avec les systèmes d’exploitation Windows, Linux, MAC<br> 
 <br>
 
-<h2 class="mb-3"><u>2. Installation :</u></h2>
+<h2 class="mb-3"><u>3. Installation :</u></h2>
 <p>
     Pour installer hydra, utiliser cette commande : <kbd class="ms-3">‘sudo apt-get install hydra-gtk’</kbd> 
     C’est un outil déjà présent sur kali !
 
 </p>
 
-<h2 class="mb-3"><u>2. Utilisation :</u></h2>
+<h2 class="mb-3"><u>4. Utilisation :</u></h2>
 <p>
     Pour utiliser hydra, en général on utilise la syntaxe suivante :
 <kbd class="ms-3">‘hydra -l < nom d'utilisateur > -P < mot de passe > < protocole > : // < ip >’</kbd>
@@ -53,7 +53,30 @@ où “user.txt” est la liste de noms d’utilisateurs en .txt que nous possé
 <br>
 Nous pouvons donc bruteforcer en ssh sans connaître de mot de passe et de nom d’utilisateur (à condition qu’ils soient “faibles” !)<br>
 
-<h2 class="mb-3"><u>3. Manipulations :</u></h2>
+<br>
+<h2 class="mb-3"><u>5. Configuration</u></h2>
+
+<p>
+    Ce tutoriel met à disposition, par le biais de l'application Docker et docker-compose, trois machines connectées sur un
+    même
+    réseau local.
+    </br>
+    Il est nécessaire de récupérer le fichier <b>docker-compose.yml</b> qui permet de lancer les trois machines.<br>
+
+    Téléchargez le <a class="link-primary" href="./Downloads/hydra/tuto-hydra/docker-compose.yml"><U></Y>
+            docker-compose.yml</U></a><br>
+
+    Les commandes qui permettent de lancer les 3 machines sont les suivantes : <br>
+    <kbd class="ms-3">bash> docker-compose up -d</kbd><br>
+
+    Nous avons besoin de nous connecter à celle d'Eve (l'attaquante) via la commande :
+    <br>
+    <kbd class="ms-3">bash> docker exec -it hydra_eve /bin/bash</kbd><br>
+</p>
+
+<br>
+
+<h2 class="mb-3"><u>6. Manipulations :</u></h2>
 <p>
     Tout d'abord, pour trouver l’adresse IP de notre machine cible, 
     on peut utiliser en une commande arp-scan : <kbd class="ms-3">‘arp-scan -l’</kbd> <br>
@@ -164,7 +187,7 @@ Nous pouvons donc bruteforcer en ssh sans connaître de mot de passe et de nom d
 </center>
 </p>
 
-<h2 class="mb-3">4. Bonus : vidéo démonstration</h2>
+<h2 class="mb-3">7. Bonus : vidéo démonstration</h2>
 <p>
     Vous trouverez ci-dessous une vidéo de démonstration:
 </p>

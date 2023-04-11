@@ -3,12 +3,27 @@
     
 </center>
 
-<center>
-<h2 class="mb-3"><u>Votre objectif</u></h2>
+<br>
+<h2 class="mb-3"><u>Configuration</u></h2>
+
 <p>
-    Trouvez le flag caché à l'aide de vos connaissances sur le bruteforce d'Hydra !<br>
+    Ce tutoriel met à disposition, par le biais de l'application Docker et docker-compose, trois machines connectées sur un
+    même
+    réseau local.
+    </br>
+    Il est nécessaire de récupérer le fichier <b>docker-compose.yml</b> qui permet de lancer les trois machines.<br>
+
+    Téléchargez le <a class="link-primary" href="./Downloads/hydra/challenge-hydra/docker-compose.yml"><U></Y>
+            docker-compose.yml</U></a><br>
+
+    Les commandes qui permettent de lancer les 3 machines sont les suivantes : <br>
+    <kbd class="ms-3">bash> docker-compose up -d</kbd><br>
+
+    Nous avons besoin de nous connecter à celle d'Eve (l'attaquante) via la commande :
     <br>
-</center>
+    <kbd class="ms-3">bash> docker exec -it hydra_chall_eve /bin/bash</kbd><br>
+</p>
+
 <center>
         <img src="Challenge/challenge-hydra/images/logohydra.PNG" alt="logohydra" width="450" height=450" class="img-fluid">
 </center>

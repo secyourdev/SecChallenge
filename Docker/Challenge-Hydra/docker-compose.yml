@@ -1,0 +1,50 @@
+version: "3.7"
+
+services:
+    cible:
+        build: ./cible/.
+        image: hydra_chall_cible
+        container_name: hydra_chall_cible
+        restart: always
+        networks:
+            - hydra_net
+    web:
+        image: jlesage/firefox
+        container_name: web
+        restart: always
+        volumes:
+            - /dev/shm:/dev/shm
+        ports:
+            - "5801:5800"
+        networks:
+            - hydra_net
+    bob:
+        build: ./Bob/.
+        image: hydra_chall_bob
+        container_name: hydra_chall_bob
+        restart: always
+        volumes:
+            - ./Bob/bob_files:/var/www/html
+        ports:
+            - "90:80"
+        networks:
+            - hydra_net
+
+
+    eve:
+        privileged: true
+        build: ./Eve/.
+        image: hydra_chall_eve
+        container_name: hydra_chall_eve
+        volumes:
+            - ./Eve/eve_files:/eve_files
+        sysctls:
+            # Necessary for transparent mode for mitmproxy
+            - net.ipv4.ip_forward=1
+            - net.ipv6.conf.all.forwarding=1
+            - net.ipv4.conf.all.send_redirects=0
+        networks:
+            - hydra_net
+
+networks:
+    hydra_net:
