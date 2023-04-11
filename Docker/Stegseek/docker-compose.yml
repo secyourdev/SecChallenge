@@ -1,9 +1,0 @@
-version: "3.7"
-
-services:
-  challenge_052-syd-academy-stegseek:
-    container_name: challenge_052-syd-academy-stegseek
-    image: sydacademy/challenge_052-syd-academy-stegseek
-    stdin_open: true
-    tty: true   
-    restart: unless-stopped
