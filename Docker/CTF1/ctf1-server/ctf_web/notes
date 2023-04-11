@@ -1,0 +1,5 @@
+<?php include("header.php"); ?>
+	<h1> Note to self: this is my SSH username <h1>
+	Username: "WXpKNGJGcFlRalZoYlRscw=="<br>
+	It looks like this user name is breakable...
+<?php include("footer.php"); ?>
