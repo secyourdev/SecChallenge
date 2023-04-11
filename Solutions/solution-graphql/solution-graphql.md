@@ -37,15 +37,15 @@ Vous devez trouver le mot de passe d'un utilisateur.
 Lorsque l'on lance le challenge, on peut accéder à ``http://localhost:3000`` et ``http://localhost:5000`` qui correspondent respectivement au client et au serveur.
 
 On se rends donc sur le client, dans notre navigateur :
-![[attachments/graphql_1.png]]
+![attachments/graphql_1.png](attachments/graphql_1.png)
 
 On tente quelques connexions avec des credentials arbitraires du style `admin@exemple.com:admin` ou `test@exemple.com:password`, mais rien ne fonctionne.
 
 On voit ce genre de message d'erreur :
-![[attachments/graphql_2.png]]
+![attachments/graphql_2.png](attachments/graphql_2.png)
 
 Pour essayer d'avancer, on ouvre **Burp Suite** et on intercepte une requête de connexion :
-![[attachments/graphql_3.png]]
+![attachments/graphql_3.png](attachments/graphql_3.png)
 
 On voit que c'est une **API GraphQL**.
 On envoie la requête dans le repeater et on va pouvoir faire une **__introspection__** pour dump le schéma de l'API :
@@ -55,10 +55,10 @@ On envoie la requête dans le repeater et on va pouvoir faire une **__introspect
 "{__schema{queryType{name},mutationType{name},types{kind,name,description,fields(includeDeprecated:true){name,description,args{name,description,type{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name}}}}}}}},defaultValue},type{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name}}}}}}}},isDeprecated,deprecationReason},inputFields{name,description,type{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name}}}}}}}},defaultValue},interfaces{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name}}}}}}}},enumValues(includeDeprecated:true){name,description,isDeprecated,deprecationReason,},possibleTypes{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name}}}}}}}}},directives{name,description,locations,args{name,description,type{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name,ofType{kind,name}}}}}}}},defaultValue}}}}\n      "}
 ```
 
-![[attachments/graphql_4.png]]
+![attachments/graphql_4.png](attachments/graphql_4.png)
 On voit que l'introspection à fonctionner.
 On la copie dans [GraphQL Voyager](https://ivangoncharov.github.io/graphql-voyager/) pour pouvoir l'interpréter facilement :
-![[attachments/graphql_5.png]]
+![attachments/graphql_5.png](attachments/graphql_5.png)
 
 On voit un query intéressant avec le schéma ``Backup``, qui permettrais de récupérer un flag + un compte utilisateur (ou admin ?).
 On retourne donc dans **Burp Suite**, et on modifie notre requête HTTP avec ce payload :
@@ -69,6 +69,6 @@ On retourne donc dans **Burp Suite**, et on modifie notre requête HTTP avec ce 
 ```
 Ceci nous permet de récupérer les champs **id**, **flag**, **email**, **password** :
 
-![[attachments/graphql_6.png]]
+![attachments/graphql_6.png](attachments/graphql_6.png)
 
 Vous pouvez donc valider le challenge avec le flag : ``flag{graphql_is_awesome}``.
