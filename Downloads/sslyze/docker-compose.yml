@@ -1,0 +1,25 @@
+version: "3.7"
+
+services:
+    kali_sslyze:
+        build: ./.
+        container_name: kali_sslyze
+        networks:
+            network1:
+                ipv4_address: 172.20.0.4
+    nginx:
+        image: cybersecuriteachg2/tuto_sslyze_nginx_ssl
+        container_name: nginx_ssl
+        ports:
+            - "8080:80"
+            - "443:443"
+        networks:
+            network1:
+                ipv4_address: 172.20.0.3
+
+networks:
+    network1:
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.20.0.0/16
