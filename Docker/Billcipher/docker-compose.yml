@@ -1,9 +1,0 @@
-version: "3.7"
-
-services:
-  challenge_053-syd-academy-billcipher:
-    container_name: challenge_053-syd-academy-billcipher
-    image: sydacademy/challenge_053-syd-academy-billcipher
-    stdin_open: true
-    tty: true   
-    restart: unless-stopped
