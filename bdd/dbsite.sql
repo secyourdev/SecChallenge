@@ -406,7 +406,7 @@ INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Description`, `Reponse`, `Emplac
 (53, 'Gophish', 'Framework de phishing pour tester l\'exposition d\'une organisation au phishing', NULL, 'Tutoriel/tuto-gophish/tuto-gophish.html', 'Tutoriel/tuto-gophish/affiche.png', NULL),
 (54, 'TheSleuthKit', 'L\'exploration complète de volumes de stockage', NULL, 'Tutoriel/tuto-thesleuthkit/tuto-thesleuthkit.html', 'Tutoriel/tuto-thesleuthkit/images/sleuthkitlogo1.PNG', NULL),
 (55, 'Crunch', 'Un créateur de dictionnaire de mots de passe', 'acZ4:', 'Tutoriel/tuto-crunch/tuto-crunch.html', 'Tutoriel/tuto-crunch/affiche.png', NULL),
-(56, 'Hydra', 'Bruteforcer efficacement et facilement grâce à Hydra !', 'FL4G_Hydra_SSH', 'Tutoriel/tuto-hydra/tuto-hydra.html', 'Tutoriel/tuto-hydra/affiche.png', NULL);
+(56, 'Hydra', 'Bruteforcer efficacement et facilement grâce à Hydra !', 'FL4G_Hydra_SSH', 'Tutoriel/tuto-hydra/tuto-hydra.html', 'Tutoriel/tuto-hydra/images/affiche.png', NULL);
 
 -- --------------------------------------------------------
 
