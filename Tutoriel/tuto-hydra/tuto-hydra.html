@@ -1,0 +1,178 @@
+
+<center>
+    <h1>Hydra</h1> <br>
+    <h1>Cours & Tutoriel</h1>
+</center>
+
+<h2 class="mb-3"><u>1. Introduction :</u></h2>
+<p>
+    Hydra est un outil très puissant de crackage de connexion réseau. 
+    Il utilise le bruteforce pour cibler des pages de connexion ou des connexions ssh.<br>
+    <br>
+    L’une de ses forces est la possibilité d’effectuer des attaques bruteforce en ligne, fonctionnalité que ne propose pas John The Ripper. 
+    Plongeons nous dans l’univers de cet outil pour en voir les capacités. <br>
+</p>
+
+<center>
+    <img src="Tutoriel/tuto-hydra/images/logohydra.PNG" alt="Hydralogo" width="450" height=450" class="img-fluid">
+</center>
+
+<h2 class="mb-3"><u>2. Description :</u></h2>
+<p>
+    Les bases de données, LDAP, SMB, VNC et ssh sont des cibles appréciées d’Hydra. 
+    Nous nous concentrons ici sur l’attaque par bruteforce d’Hydra.<br> 
+<br>
+    Compatible avec les systèmes d’exploitation Windows, Linux, MAC<br> 
+<br>
+
+<h2 class="mb-3"><u>2. Installation :</u></h2>
+<p>
+    Pour installer hydra, utiliser cette commande : <kbd class="ms-3">‘sudo apt-get install hydra-gtk’</kbd> 
+    C’est un outil déjà présent sur kali !
+
+</p>
+
+<h2 class="mb-3"><u>2. Utilisation :</u></h2>
+<p>
+    Pour utiliser hydra, en général on utilise la syntaxe suivante :
+<kbd class="ms-3">‘hydra -l < nom d'utilisateur > -P < mot de passe > < protocole > : // < ip >’</kbd>
+Voyons cette commande en détail d’abord via un bruteforce en ssh, puis via un formulaire en ligne !<br>
+<br>
+Utiliser hydra pour brute force le ssh : <br>
+1er cas : Nom d’utilisateur connu (exemple : cyber) : <br>
+<kbd class="ms-3">‘hydra -l cyber -P listmot.txt 10.10.211.18 ssh’</kbd>
+
+où “listmot.txt” est la liste de mot de passe en txt que nous possédons <br>
+et “10.10.211.18” l’adresse IP de la machine cible. <br>
+Ssh est bien sûr le protocole concerné ici. <br>
+<br>
+2eme cas Nom d’utilisateur inconnu :<br>
+<kbd class="ms-3">‘hydra -L listuser.txt -P listmot.txt 10.10.211.18 ssh’</kbd> 
+<br>
+où “user.txt” est la liste de noms d’utilisateurs en .txt que nous possédons <br>
+<br>
+Nous pouvons donc bruteforcer en ssh sans connaître de mot de passe et de nom d’utilisateur (à condition qu’ils soient “faibles” !)<br>
+
+<h2 class="mb-3"><u>3. Manipulations :</u></h2>
+<p>
+    Tout d'abord, pour trouver l’adresse IP de notre machine cible, 
+    on peut utiliser en une commande arp-scan : <kbd class="ms-3">‘arp-scan -l’</kbd> <br>
+
+</p>
+
+<center>
+    <img src="Tutoriel/tuto-hydra/images/arpscan.PNG" alt="hydraarp1" width="450" height="150" class="img-fluid">
+</center>
+
+<p>
+    Dans notre configuration notre machine cible est la 3eme : ici elle a pour ip 172.23.0.3<br>
+    Dans le dossier dictionnaire, nous possédons les fichiers listpass et listuser qui sont nos 
+    dictionnaires de mot de passe et nom d’utilisateurs et nous serons très utiles par la suite.<br>
+<br>
+
+</p>
+
+<center>
+    <img src="Tutoriel/tuto-hydra/images/dicos.PNG" alt="hydradicos" width="400" height="150" class="img-fluid">
+</center>
+
+<p>
+    Lançons notre attaque par bruteforce via le protocole ssh sur notre machine cible : <br>
+    <kbd class="ms-3"> ‘hydra -L listuser -P listpass 172.23.0.3 ssh’</kbd><br>
+<br>
+
+</p>
+
+<center>
+    <img src="Tutoriel/tuto-hydra/images/attaquereussie.PNG" alt="hydraattaque" width="400" height="250" class="img-fluid">
+</center>
+
+<p>
+    L’attaque a réussi ! On a obtenu le nom d’utilisateur “Albert0” et le mot de passe “Flowers1”. <br>
+<br>
+    En effet, nous pouvons nous connecter en ssh maintenant que nous possédons toutes les informations utiles : 
+
+</p>
+
+<center>
+    <img src="Tutoriel/tuto-hydra/images/ssh.PNG" alt="hydrassh" width="400" height="150" class="img-fluid">
+</center>
+
+<p>
+    Mais ne nous arrêtons pas là, nous pouvons utiliser Hydra également pour bruteforcer un formulaire web. <br>
+<br>
+    Au lieu d’attaquer via ssh, nous allons utiliser l’option ‘http-post-form’, pour un formulaire en ligne.<br>
+    Entrons l’url ‘localhost:90/1-login.php’ dans firefox, nous obtenons une page de login
+ 
+
+</p>
+
+<center>
+    <img src="Tutoriel/tuto-hydra/images/loginpage.PNG" alt="hydralogin" width="400" height="400" class="img-fluid">
+</center>
+
+<p>
+    Le port de connexion correspondant au site cible est 90, nous devrons le préciser via l’option ‘-s 90’<br>
+    Via la commande <kbd class="ms-3">‘arp-scan -l’</kbd>, on obtient l’adresse ip de la machine hébergeant notre formulaire web :
+<br>
+</p>
+
+<center>
+    <img src="Tutoriel/tuto-hydra/images/arpscan2.PNG" alt="hydrascan2" width="450" height="150" class="img-fluid">
+</center>
+
+<p>
+    Il s’agit de la première ip donnée par l’arp-scan, ici ‘172.23.0.1’<br>
+    <br>
+    En plus de précédemment, il nous faut ajouter le chemin pour aboutir à notre page de login qui ici est ‘/1-login.php’. <br>
+    Aussi, il nous faut le syntaxe du formulaire pour la saisie du nom d’utilisateur et mot de passe. Entrons comme nom d’utilisateur “admin” et comme mot de passe “test”. <br>
+    On trouve dans le body response l’inspecteur de page ici la syntaxe recherchée : <br>
+<br>
+</p>
+
+<center>
+    <img src="Tutoriel/tuto-hydra/images/body.PNG" alt="hydrabody" width="750" height="450" class="img-fluid">
+</center>
+
+<p>  
+    La syntaxe est donc “user={utilisateur saisi}&password={mot de passe saisi}” <br>
+    <br>
+    Enfin, il nous faut le message d’erreur donné par la page de login à chaque erreur : <br>
+<br>
+</p>
+
+<center>
+    <img src="Tutoriel/tuto-hydra/images/invalidmsg.PNG" alt="hydrainvalid" width="400" height="150" class="img-fluid">
+</center>
+
+<p>  
+    Il s’agit de “Invalid email or password.”<br>
+    <br>
+    On peut finalement exécuter la commande entière pour le bruteforce de formulaire en ligne :<br>
+<br>
+    <kbd class="ms-3">hydra -L /dictionnaire/listuser -P /dictionnaire/listpass -u -f 172.23.0.1 -s 90 http-post-form "/1-login.php:user=^USER^&password=^PASS^:Invalid email or password."</kbd>
+</p>
+
+<center>
+    <img src="Tutoriel/tuto-hydra/images/formreussi.PNG" alt="hydrafin" width="450" height="250" class="img-fluid">
+</center>
+
+<center>
+    Le nom d’utilisateur ‘LeA’ et le mot de passe ‘012345’ sont bien valides sur la page de login ! <br>
+
+    Bien joué ! Toujours renforcer ses mots de passe…
+</center>
+</p>
+
+<h2 class="mb-3">4. Bonus : vidéo démonstration</h2>
+<p>
+    Vous trouverez ci-dessous une vidéo de démonstration:
+</p>
+<video controls width="560" height="315">
+    <source src="Tutoriel/tuto-hydra/hydra.mp4" type="video/mp4">
+
+    Désolé, votre navigateur ne supporte pas ce format vidéo.
+</video>
+
+
+
