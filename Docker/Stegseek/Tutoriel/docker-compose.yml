@@ -1,0 +1,9 @@
+version: "3.7"
+
+services:
+  tuto_052-syd-academy-stegseek:
+    container_name: tuto_052-syd-academy-stegseek
+    image: sydacademy/tuto_052-syd-academy-stegseek
+    stdin_open: true
+    tty: true   
+    restart: unless-stopped
