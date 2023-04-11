@@ -1,0 +1,307 @@
+<title>Challenge BillCipher</title>
+
+<h1>Challenge BillCipher</h1>
+
+<h2>Collecte d'informations</h2>
+
+<h3> Manipulation </h3>
+
+<p>
+  Vous êtes un hackeur, et vous vous apprêtez à attaquer un site web <i><b>syd-academy.secyourdev.com</b></i>.
+  <br>
+  Pour ce faire, vous voulez d'abord collecter un maximum d'informations pour mieux connaître votre cible et vous utilisez un outil puissant dédié à l'OSINT : <b>BillCipher</b> 
+  <br>
+  <br>
+  <i> Rappel : Il est important de noter que l'utilisation de ces outils doit être légale et éthique, et que vous devriez toujours respecter la vie privée des autres et ne pas utiliser ces outils à des fins malveillantes.</i>
+</p>
+
+<h3><b>À vous de jouer !</b></h3>
+
+<p>
+    Ce tutoriel met à disposition, par le biais de Docker et Docker-compose, une machine déjà configurée. 
+    <br>
+    Récupérez le dockerfile dans le lien suivant : 
+    <a class="link-primary"
+    href="Docker/Billcipher/Challenge/docker-compose.yml" download="docker-compose.yml"><U>docker-compose.yml</U></a><br>
+    <br> 
+    Dans un bash (Linux) ou cmd (Windows), allez dans le répertoire où vous avez téléchargé le fichier docker-compose.yml et effectuez les commandes suivantes : 
+    <br>
+    <kbd class="ms-3"><bash> docker-compose build</kbd><br>
+    <kbd class="ms-3"><bash> docker-compose up -d</kbd><br>
+    <kbd class="ms-3"><bash> docker exec -ti challenge_053-syd-academy-billcipher /bin/bash</kbd><br>
+    <kbd class="ms-3"><bash> python3 billcipher.py </kbd><br>
+    <br>
+    <br>
+    Avec nos différents tutoriels et vos recherches personnelles, vous devez être en mesure de récupérer ces informations.</b>
+    <br>
+    
+        <br>
+        <img src="billcipher-challenge.png" alt="" class="img-fluid">
+        <br>
+        <br>
+
+	<i>Attention ! Vous ne pouvez utiliser les options de scan à l'infini. Vous avez maximum 15 essais par jour. </i>
+
+
+	<h3><b>Veuillez répondre aux questions suivantes : </b></h3>
+
+	<button onclick="Indice()">Indice</button>
+    <p id="demo"></p>
+    <script>
+        function Indice() {
+          document.getElementById("demo").innerHTML = "Seul les 10 premiers outils de scan de BillCipher suffisent pour répondre aux questions.";
+        }
+      </script>
+	<br>
+
+    <p>
+
+<body>
+	<form>
+    <!-- Ajout autant de zones de texte et de boutons que nécessaire -->
+	<label for="zone-t1">1. Quelle site avez-vous renseignée ? </label>
+		<input type="text" id="zone-t1" name="zone-t1">
+		<button type="button" onclick="verifierTexte('zone-t1')">Valider la réponse</button>
+		<p id="message-1"></p>
+
+		<label for="zone-t2">2. Combien d'options de scan sont disponibles dans l'outil BillCipher ? </label>
+		<input type="text" id="zone-t2" name="zone-t2">
+		<button type="button" onclick="verifierTexte2('zone-t2')">Valider la réponse</button>
+		<p id="message-2"></p>
+
+    <label for="zone-t3">3. Trouvez-vous des engistrements DNS (oui/non) du site ?</label>
+		<input type="text" id="zone-t3" name="zone-t3">
+		<button type="button" onclick="verifierTexte3('zone-t3')">Valider la réponse</button>
+		<p id="message-3"></p>
+	
+	<label for="zone-tC">4. Quel est le premier enregistrement DNS de type MX ?</label>
+		<input type="text" id="zone-tC" name="zone-tC">
+		<button type="button" onclick="verifierTexteC('zone-tC')">Valider la réponse</button>
+		<p id="message-C"></p>
+
+    <label for="zone-t4">5. Quelle est son adresse IP  ? </label>
+		<input type="text" id="zone-t4" name="zone-t4">
+		<button type="button" onclick="verifierTexte4('zone-t4')">Valider la réponse</button>
+		<p id="message-4"></p>
+
+    <label for="zone-t5">6. Dans quel pays se situe cette adresse IP ? </label>
+		<input type="text" id="zone-t5" name="zone-t5">
+		<button type="button" onclick="verifierTexte5('zone-t5')">Valider la réponse</button>
+		<p id="message-5"></p>
+
+    <label for="zone-t6">7. Position en latitude ? </label>
+		<input type="text" id="zone-t6" name="zone-t6">
+		<button type="button" onclick="verifierTexte6('zone-t6')">Valider la réponse</button>
+		<p id="message-6"></p>
+
+    <label for="zone-t7">8. Masque de sous-réseau ? </label>
+		<input type="text" id="zone-t7" name="zone-t7">
+		<button type="button" onclick="verifierTexte7('zone-t7')">Valider la réponse</button>
+		<p id="message-7"></p>
+
+    <label for="zone-t8">9. Existe-t-il sur le site des liens vers des ressources externes ? (indiquer le message obtenu) </label>
+		<input type="text" id="zone-t8" name="zone-t8">
+		<button type="button" onclick="verifierTexte8('zone-t8')">Valider la réponse</button>
+		<p id="message-8"></p>
+
+	<label for="zone-t9">10. Quelle type de serveur est utilisé ? </label>
+		<input type="text" id="zone-t9" name="zone-t9">
+		<button type="button" onclick="verifierTexte9('zone-t9')">Valider la réponse</button>
+		<p id="message-9"></p>
+	
+	<label for="zone-tA">11. Sa version ? </label>
+		<input type="text" id="zone-tA" name="zone-tA">
+		<button type="button" onclick="verifierTexteA('zone-tA')">Valider la réponse</button>
+		<p id="message-A"></p>
+	
+	<label for="zone-tB">12. Quel est le type de contenu sur le site (content-type) ? </label>
+		<input type="text" id="zone-tB" name="zone-tB">
+		<button type="button" onclick="verifierTexteB('zone-tB')">Valider la réponse</button>
+		<p id="message-B"></p>
+	
+	
+
+    <br>
+	
+    Pour valider ce tutoriel, veuillez entrer le flag trouvé dans la réponse de la dernière question. 
+    </p>
+    <label for="zone-tD"> Validation Challenge BillCipher ?</label>
+		<input type="text" id="zone-tD" name="zone-tD">
+		<button type="button" onclick="verifierTexteD('zone-tD')">Valider la réponse</button>
+		<p id="message-D"></p>
+
+	</form>
+
+	<script>
+		function verifierTexte(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "syd-academy.secyourdev.com") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte2(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "20") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte3(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "oui") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+
+	function verifierTexteC(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "10 mx01.ionos.fr.") {
+				message.innerHTML = "Bonne réponse ! ";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+
+    function verifierTexte4(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "185.190.142.131") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte5(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "germany") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte6(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "49.4527") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte7(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "255.255.255.255") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte8(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "error getting links") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte9(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "nginx") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+	
+	function verifierTexteA(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "1.23.0") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+	
+	function verifierTexteB(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "text/html") {
+				message.innerHTML = "Bonne réponse ! flag : billchallenge";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+
+
+	
+
+	function verifierTexteD(idZoneTexte) {
+	var zoneTexte = document.getElementById(idZoneTexte);
+	var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+	if (zoneTexte.value.toLowerCase() === "billchallenge") {
+		message.innerHTML = "Félicitations !!! Vous venez de finir le Challenge 053 BillCipher.";
+		message.style.color = "green";
+	} else {
+		message.innerHTML = "Ce n'est pas la réponse attendu ...";
+		message.style.color = "red";
+	}
+}
+	
+	</script>
+</body>
+
+
+
+
+
