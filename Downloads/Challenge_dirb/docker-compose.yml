@@ -2,8 +2,17 @@ version: '3.1'
 
 services:
 
+  ubuntu:
+    image: cybersecuriteachg2/ubuntu_chall_dirb 
+    container_name: ubuntu
+    restart: always
+    networks:
+      network1:
+        ipv4_address: 172.20.0.4
+
   wordpress:
     image: wordpress
+    hostname: bikeskryo
     restart: always
     ports:
       - 8080:80
@@ -14,6 +23,9 @@ services:
       WORDPRESS_DB_NAME: exampledb
     volumes:
       - ./wordpress:/var/www/html
+    networks:
+      network1:
+        ipv4_address: 172.20.0.5
 
   db:
     image: mysql:5.7
@@ -25,7 +37,17 @@ services:
       MYSQL_RANDOM_ROOT_PASSWORD: '1'
     volumes:
       - ./db:/var/lib/mysql
+    networks:
+      network1:
+        ipv4_address: 172.20.0.6
 
 volumes:
   wordpress:
   db:
+
+networks:
+    network1:
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.20.0.0/16
