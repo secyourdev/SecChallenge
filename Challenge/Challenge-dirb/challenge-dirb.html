@@ -1,45 +1,36 @@
 <div class="section-title row text-center">
     <div class="col-md-8 offset-md-2">
         <h1>Trouvez le flag</h1>
-        <!--Titre-->
     </div>
 </div>
 
-<h2>Objectif</h2>
+<h3>Objectif</h3>
 <p>
-    L'objectif de ce challenge est de trouver le fichier du site web http://Tourisme_Scranton/ contenant le flag.
+    L'objectif de ce challenge est de trouver un fichier du site web http://bikeskryo/ contenant le flag.
     </br></br>
-    Vous pourrez utiliser l'outil Dirb ainsi que wget.
+    Vous pourrez utiliser l'outil Dirb.
     </br>
 </p>
 
-<h2>Outils à installer</h2>
+<h3>Prérequis</h3>
 
 <p>
-    Il est nécessaire d'avoir installé l'application Docker et docker-compose<br>
+    Il est nécessaire d'avoir installé l'application Docker et docker-compose<br><br>
 
-    Ensuite, récupérez le fichier <b>docker-compose.yml</b> qui permet de lancer le serveur web du site et la machine attaquant depuis laquelle on cherchera le flag.<br>
+    Il faut télécharger le fichier suivant : <a class="link-primary" href="Downloads/Challenge_dirb" download="Downloads/Challenge_dirb"><U>Challenge_dirb</U></a><br><br>
+
+    Puis ouvrir un terminal dans ce fichier et exécuter : <br>
+    <kbd class="ms-3">sudo chmod +x script.sh</kbd><br>
+    <kbd class="ms-3">./script.sh</kbd><br>
+    <kbd class="ms-3">docker-compose -d --build</kbd><br>
 </p>
 
-<h4><U>Pour cela :</U></h4>
+<h3>À vous de jouer</h3>
 
-<p>
-    Télécharger le <a class="link-primary" href="Downloads/dirb/docker-compose.yml"
-        download="docker-compose.yml"><U>docker-compose.yml</U></a><br>
-    Il faut maintenant exécuter ce fichier : <br>
+Pour lancer la machine de manipulation : 
+<kbd class="ms-3">docker exec -it ubuntu /bin/bash</kbd><br><br>
+
+Vous avez aussi accès au site bikeskryo depuis votre naviguateur à l'adresse http://localhost:8080<br><br> 
+
+Avec notre tutoriel sur Dirb, vous devez être en mesure de retrouver le flag
 </p>
-
-<kbd class="ms-3">bash> docker-compose build</kbd><br>
-<kbd class="ms-3">bash> docker-compose up -d</kbd>
-
-<p>
-    Cette commande peut être un peu longue, c'est normal. <br><br>
-
-    Vous pouvez ensuite vous connecter à la machine attaquant avec la commande : <kbd class="ms-3">bash> docker exec -it ubuntu /bin/bash</kbd>
-    <br><br>
-    Pour une meilleure interprétation vous avez accès depuis votre naviguateur à l'adresse http://localhost:5801 à un firefox sur lequelle vous pourrez accéder au site http://Tourisme_Scranton/
-</p>
-
-<h3><b>À vous de jouer</b></h3>
-
-<p>Avec nos tutoriels sur Dirb et CyberChef, vous devez être en mesure de retrouver le flag</p>
