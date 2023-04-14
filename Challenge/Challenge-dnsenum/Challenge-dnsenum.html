@@ -4,6 +4,35 @@
 </center>
 
 
+<br>
+<h2 class="mb-3"><u>Configuration</u></h2>
+
+
+<p>
+    Ce challenge met à disposition, par le biais de l'application Docker et docker-compose, trois machines connectées sur un
+    même
+    réseau local.
+    </br>
+    Il est nécessaire de récupérer le fichier <b>docker-compose.yml</b> qui permet de lancer les trois machines.<br>
+
+
+    Téléchargez le <a class="link-primary" href="./Downloads/dnsenum/challenge-dnsenum/docker-compose.yml"><U></Y>
+            docker-compose.yml</U></a><br>
+
+
+    Les commandes qui permettent de lancer les 3 machines sont les suivantes : <br>
+    <kbd class="ms-3">bash> docker-compose up -d</kbd><br>
+
+
+    Nous avons besoin de nous connecter à celle d'host 1 via la commande :
+    <br>
+    <kbd class="ms-3">bash> docker exec -it dns_host1 /bin/bash</kbd><br>
+</p>
+
+
+<br>
+
+
 <h2 class="mb-3"><u>Votre objectif</u></h2>
 <p>
     Votre but est d’effectuer de l’énumération DNS sur le site de ‘challenge-foundation’ ! L’adresse ip de leur deuxième host nous intéresse particulièrement…<br>
@@ -11,18 +40,13 @@
 </p>
 
 
+
+
 <center>
-    <img src="Challenge/Challenge-dnsenum/images/dnsenum12.png" alt="DNSEnumlogo" width="350" height="350" class="img-fluid">
+    <img src="images/dnsenum12.png" alt="DNSEnumlogo" width="350" height="350" class="img-fluid">
 </center>
 </br>
 <center>
     Renseignez le flag pour réussir le challenge !
 </center>
 </p>
-
-
-
-
-
-
-
