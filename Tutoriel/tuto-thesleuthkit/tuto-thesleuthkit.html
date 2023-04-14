@@ -1,4 +1,3 @@
-
 <center>
     <h1>The Sleuth Kit</h1>
     
@@ -13,7 +12,7 @@
 <br>
 
 <center>
-    <img src="Tutoriel/tuto-thesleuthkit/images/sleuthkitlogo1.PNG" alt="logo" width="350" height="350" class="img-fluid">
+    <img src="images/sleuthkitlogo1.png" alt="logo" width="350" height="350" class="img-fluid">
 </center>
 
     <br>
@@ -38,7 +37,7 @@ ffind : Recherche les noms de fichiers liés à une métadonnée <br>
 ils : Liste des métadonnées <br>
 <br>
 
-<h2 class="mb-3"><u>2. Installation :</u></h2>
+<h2 class="mb-3"><u>3. Installation :</u></h2>
 <p>
     Pour installer The Sleuth Kit, il suffit de détarer le tar disponible à ce lien : <br>
 	https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-4.12.0/sleuthkit-4.12.0.tar.gz
@@ -49,7 +48,7 @@ ils : Liste des métadonnées <br>
 
 </p>
 
-<h2 class="mb-3"><u>2. Conseil :</u></h2>
+<h2 class="mb-3"><u>4. Conseil :</u></h2>
 <p>
 
 Générer l’image peut se faire avec la commande “dd”, seulement, la générer depuis une VM est parfois compliqué. 
@@ -57,8 +56,8 @@ Un conseil utile serait d’utiliser un outil tel que ‘testdisk’ pour géné
 <br>
 
 </p>
-
-<h2 class="mb-3"><u>2. Utilisation :</u></h2>
+<br>
+<h2 class="mb-3"><u>5. Utilisation :</u></h2>
 <p>
 <br>
 Intéressons nous à la récupération des données présentes sur un disque dur. C’est une activité pouvant s’avérer très surprenante dans le cas de disque dur obtenus d’occasion, et soulignant les enjeux de la sécurité en forensic.
@@ -68,14 +67,14 @@ Tout d’abord après avoir lancé The Sleuth Kit on peut vérifier notre numér
 
 
 <center>
-    <img src="Tutoriel/tuto-thesleuthkit/images/version2.PNG" alt="mmls" width="350" height=250" class="img-fluid">
+    <img src="images/version2.png" alt="mmls" width="350" height=250" class="img-fluid">
 </center>
 
 
 Nous avons une image d’un disque dur ‘image.dd’ investiguons le : 
 
 <center>
-    <img src="Tutoriel/tuto-thesleuthkit/images/ls3.PNG" alt="ls" width="250" height="100" class="img-fluid">
+    <img src="images/ls3.png" alt="ls" width="250" height="100" class="img-fluid">
 </center>
 
 
@@ -83,7 +82,7 @@ On peut maintenant afficher les métadonnées de ‘image.dd’ avec ‘ils -f f
 
 
 <center>
-    <img src="Tutoriel/tuto-thesleuthkit/images/ils4.PNG" alt="ils" width="550" height="350" class="img-fluid">
+    <img src="images/ils4.png" alt="ils" width="550" height="350" class="img-fluid">
 </center>
 
 
@@ -97,14 +96,14 @@ On peut utiliser ‘ffind -f fat32 image.dd 8’ : <br>
 
 
 <center>
-    <img src="Tutoriel/tuto-thesleuthkit/images/ffind5.PNG" alt="ffind" width="350" height="100" class="img-fluid">
+    <img src="images/ffind5.png" alt="ffind" width="350" height="100" class="img-fluid">
 </center>
 
 
 Pour des informations plus concrète, voyons la commande ‘fsstat -f fat32 image.dd’ : 
 
 <center>
-    <img src="Tutoriel/tuto-thesleuthkit/images/fsstat6.PNG" alt="fsstat" width="500" height="550" class="img-fluid">
+    <img src="images/fsstat6.png" alt="fsstat" width="500" height="550" class="img-fluid">
 </center>
 
 <br>
@@ -120,7 +119,7 @@ Plus intéressant : la commande ‘fls -f fat32 image.dd’ nous affiche les fic
 On y trouve également l’inode de chacuns d’eux comme abordé précédemment.
 
 <center>
-    <img src="Tutoriel/tuto-thesleuthkit/images/fls7.PNG" alt="fls" width="350" height="350" class="img-fluid">
+    <img src="images/fls7.png" alt="fls" width="350" height="350" class="img-fluid">
 </center>
 <br>
 La mention “d” correspond à directory pour qualifier un dossier et “r” pour un fichier.<br>
@@ -130,13 +129,13 @@ On a également affiché les dossiers supprimés ! Toutes les lignes contenant u
 On peut bien sûr afficher le contenu des différents dossiers grâce à leur inode : avec ‘fls -f fat32 image.dd 15’, 15 correspondant à l’inode du dossier Images :<br>
 
 <center>
-    <img src="Tutoriel/tuto-thesleuthkit/images/inode15.PNG" alt="inode1" width="550" height="150" class="img-fluid">
+    <img src="images/inode15.png" alt="inode1" width="550" height="150" class="img-fluid">
 </center>
 
 Et en visualisant le dossier LinkedIn : <br>
 
 <center>
-    <img src="Tutoriel/tuto-thesleuthkit/images/inode651.PNG" alt="inode2" width="450" height="150" class="img-fluid">
+    <img src="images/inode651.png" alt="inode2" width="450" height="150" class="img-fluid">
 </center>
 
 On a une image ! Cette même image est aussi supprimée.<br>
@@ -145,13 +144,13 @@ Seulement, on ne peut pas visualiser ces fichiers. Nous arrivons à une commande
 D’abord créons un dossier Tempo, où seront redirigés l’intégralité des fichiers et dossiers supprimés ou non : <br>
 
 <center>
-    <img src="Tutoriel/tuto-thesleuthkit/images/Tempo10.PNG" alt="Tempo" width="350" height="150" class="img-fluid">
+    <img src="images/Tempo10.png" alt="Tempo" width="350" height="150" class="img-fluid">
 </center>
 
 Avec ‘tsk_recover -i raw -e image.dd ../Tempo’ nous pourrons visualiser concrètement tous les fichiers de l’image disque : 
 
 <center>
-    <img src="Tutoriel/tuto-thesleuthkit/images/recover11.PNG" alt="recover" width="550" height="150" class="img-fluid">
+    <img src="images/recover11.png" alt="recover" width="550" height="150" class="img-fluid">
 </center>
 
 290 fichiers récupérés !<br>
@@ -159,8 +158,8 @@ Avec ‘tsk_recover -i raw -e image.dd ../Tempo’ nous pourrons visualiser conc
 Et on y a accès dans le dossier Tempo ! On peut alors explorer les fichiers à notre guise :
 
 <center>
-    <img src="Tutoriel/tuto-thesleuthkit/images/Visuel12.PNG" alt="Visuel1" width="350" height="350" class="img-fluid">
-    <img src="Tutoriel/tuto-thesleuthkit/images/Visuel13.PNG" alt="Visuel2" width="450" height="300" class="img-fluid">
+    <img src="images/Visuel12.png" alt="Visuel1" width="350" height="350" class="img-fluid">
+    <img src="images/Visuel13.png" alt="Visuel2" width="450" height="300" class="img-fluid">
 </center>
 
 <br>
@@ -168,8 +167,3 @@ Et on y a accès dans le dossier Tempo ! On peut alors explorer les fichiers à 
     Nous voilà prêts à analyser des images disques et aptes à retrouver des fichiers supprimés ou cachés ! 
 </center>
 </p>
-<video controls width="560" height="315">
-    <source src="Tutoriel/tuto-thesleuthkit/video.mp4" type="video/mp4">
-
-    Désolé, votre navigateur ne supporte pas ce format vidéo.
-</video>
