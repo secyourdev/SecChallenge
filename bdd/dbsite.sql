@@ -63,7 +63,7 @@ INSERT INTO `challenge` (`IdChallenge`, `Emplacement`, `Reponse`, `NomChallenge`
 (17, 'Challenge/Challenge-searchsploit/Challenge-searchsploit.html', 'ESIEE2022', 'Searchsploit', 'scan de vulnérabilité'  , NULL, NULL, 'Scanner de vulnérabilité', 5),
 (18, 'Challenge/Challenge-dirb/challenge-dirb.html', 'FLAG_DIRB', 'Dirb', 'dirb'  , 'wget', 'dirb-gendict', 'Collecte d\'information', 5),
 (19, 'Challenge/Challenge-xss/Challenge-xss.html', '4f2cbc87727679862bb4f14a0346fcab', 'Vol de session', 'xss'  , 'dirb', NULL, 'Prise de contôle', 10),
-(20, 'Challenge/Challenge-dnsenum/Challenge-dnsenum.html', '147.20.0.4', 'dns', NULL  , NULL , NULL, 'Collecte d\'information', 5),
+(20, 'Challenge/Challenge-dnsenum/Challenge-dnsenum.html', '172.20.0.3', 'dns', NULL  , NULL , NULL, 'Collecte d\'information', 5),
 (21, 'Challenge/challenge-hydra/challenge-hydra.html', 'FL4G_Hydra_LeChallenge', 'Hydra', NULL  , NULL , NULL, 'Attaque de mot de passe', 5),
 (22, 'Challenge/CTF1/ctf1.html', '0urV3ryF&rstCTF', 'CTF1', 'ssh'  , 'Brute Force' , NULL, 'Prise de contrôle', 5);
 
