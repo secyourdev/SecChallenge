@@ -12,7 +12,7 @@
 <br>
 
 <center>
-    <img src="Tutoriel/tuto-thesleuthkit/images/sleuthkitlogo1.png" alt="logo" width="350" height="350" class="img-fluid">
+    <img src="Tutoriel/tuto-thesleuthkit/images/sleuthkitlogo1.PNG" alt="logo" width="350" height="350" class="img-fluid">
 </center>
 
     <br>
@@ -22,7 +22,7 @@
 <p>
 <br>
     Grâce à une interface en ligne de commande proposée par The Sleuth Kit, nous serons capables d’étudier différents volumes de données afin dans l’optique d’une analyse forensic. 
-Liste des fichiers analysables : NTFS, FAT, ExFAT, UFS 1/2, Ext2, Ext3, Ext4, HFS, ISO 9660 et YAFFS2. Et bien sûr les images disques brutes.
+Liste des fichiers analysables : NTFS, FAT, ExFAT, UFS 1/2, Ext2, Ext3, Ext4, HFS, ISO 9660 et YAFFS2. Et bien sûr les disques brutes.
 Il s’agit d’un outil affilié à The Coroners Toolkit (TCT) car reprenant dans sa conception des pratiques similaires notamment lors de sa création via les langages C et Pearl.
 Systèmes d’exploitation compatibles : Windows, MAC, Linux.<br>
 <br>
@@ -70,14 +70,14 @@ Tout d’abord après avoir lancé The Sleuth Kit on peut vérifier notre numér
 
 
 <center>
-    <img src="Tutoriel/tuto-thesleuthkit/images/version2.png" alt="mmls" width="350" height=250" class="img-fluid">
+    <img src="Tutoriel/tuto-thesleuthkit/images/version2.PNG" alt="mmls" width="350" height=250" class="img-fluid">
 </center>
 
 
 Nous avons une image d’un disque dur ‘image.dd’ investiguons le : 
 
 <center>
-    <img src="Tutoriel/tuto-thesleuthkit/images/ls3.png" alt="ls" width="250" height="100" class="img-fluid">
+    <img src="Tutoriel/tuto-thesleuthkit/images/ls3.PNG" alt="ls" width="250" height="100" class="img-fluid">
 </center>
 
 
@@ -85,7 +85,7 @@ On peut maintenant afficher les métadonnées de ‘image.dd’ avec ‘ils -f f
 
 
 <center>
-    <img src="Tutoriel/tuto-thesleuthkit/images/ils4.png" alt="ils" width="550" height="350" class="img-fluid">
+    <img src="Tutoriel/tuto-thesleuthkit/images/ils4.PNG" alt="ils" width="550" height="350" class="img-fluid">
 </center>
 
 
@@ -99,14 +99,14 @@ On peut utiliser ‘ffind -f fat32 image.dd 8’ : <br>
 
 
 <center>
-    <img src="Tutoriel/tuto-thesleuthkit/images/ffind5.png" alt="ffind" width="350" height="100" class="img-fluid">
+    <img src="Tutoriel/tuto-thesleuthkit/images/ffind5.PNG" alt="ffind" width="350" height="100" class="img-fluid">
 </center>
 
 
 Pour des informations plus concrète, voyons la commande ‘fsstat -f fat32 image.dd’ : 
 
 <center>
-    <img src="Tutoriel/tuto-thesleuthkit/images/fsstat6.png" alt="fsstat" width="500" height="550" class="img-fluid">
+    <img src="Tutoriel/tuto-thesleuthkit/images/fsstat6.PNG" alt="fsstat" width="500" height="550" class="img-fluid">
 </center>
 
 <br>
@@ -122,7 +122,7 @@ Plus intéressant : la commande ‘fls -f fat32 image.dd’ nous affiche les fic
 On y trouve également l’inode de chacuns d’eux comme abordé précédemment.
 
 <center>
-    <img src="Tutoriel/tuto-thesleuthkit/images/fls7.png" alt="fls" width="350" height="350" class="img-fluid">
+    <img src="Tutoriel/tuto-thesleuthkit/images/fls7.PNG" alt="fls" width="350" height="350" class="img-fluid">
 </center>
 <br>
 La mention “d” correspond à directory pour qualifier un dossier et “r” pour un fichier.<br>
@@ -132,13 +132,13 @@ On a également affiché les dossiers supprimés ! Toutes les lignes contenant u
 On peut bien sûr afficher le contenu des différents dossiers grâce à leur inode : avec ‘fls -f fat32 image.dd 15’, 15 correspondant à l’inode du dossier Images :<br>
 
 <center>
-    <img src="Tutoriel/tuto-thesleuthkit/images/inode15.png" alt="inode1" width="550" height="150" class="img-fluid">
+    <img src="Tutoriel/tuto-thesleuthkit/images/inode15.PNG" alt="inode1" width="550" height="150" class="img-fluid">
 </center>
 
 Et en visualisant le dossier LinkedIn : <br>
 
 <center>
-    <img src="Tutoriel/tuto-thesleuthkit/images/inode651.png" alt="inode2" width="450" height="150" class="img-fluid">
+    <img src="Tutoriel/tuto-thesleuthkit/images/inode651.PNG" alt="inode2" width="450" height="150" class="img-fluid">
 </center>
 
 On a une image ! Cette même image est aussi supprimée.<br>
@@ -147,13 +147,13 @@ Seulement, on ne peut pas visualiser ces fichiers. Nous arrivons à une commande
 D’abord créons un dossier Tempo, où seront redirigés l’intégralité des fichiers et dossiers supprimés ou non : <br>
 
 <center>
-    <img src="Tutoriel/tuto-thesleuthkit/images/Tempo10.png" alt="Tempo" width="350" height="150" class="img-fluid">
+    <img src="Tutoriel/tuto-thesleuthkit/images/Tempo10.PNG" alt="Tempo" width="350" height="150" class="img-fluid">
 </center>
 
 Avec ‘tsk_recover -i raw -e image.dd ../Tempo’ nous pourrons visualiser concrètement tous les fichiers de l’image disque : 
 
 <center>
-    <img src="Tutoriel/tuto-thesleuthkit/images/recover11.png" alt="recover" width="550" height="150" class="img-fluid">
+    <img src="Tutoriel/tuto-thesleuthkit/images/recover11.PNG" alt="recover" width="550" height="150" class="img-fluid">
 </center>
 
 290 fichiers récupérés !<br>
@@ -161,8 +161,8 @@ Avec ‘tsk_recover -i raw -e image.dd ../Tempo’ nous pourrons visualiser conc
 Et on y a accès dans le dossier Tempo ! On peut alors explorer les fichiers à notre guise :
 
 <center>
-    <img src="Tutoriel/tuto-thesleuthkit/images/Visuel12.png" alt="Visuel1" width="350" height="350" class="img-fluid">
-    <img src="Tutoriel/tuto-thesleuthkit/images/Visuel13.png" alt="Visuel2" width="450" height="300" class="img-fluid">
+    <img src="Tutoriel/tuto-thesleuthkit/images/Visuel12.PNG" alt="Visuel1" width="350" height="350" class="img-fluid">
+    <img src="Tutoriel/tuto-thesleuthkit/images/Visuel13.PNG" alt="Visuel2" width="450" height="300" class="img-fluid">
 </center>
 
 <br>
