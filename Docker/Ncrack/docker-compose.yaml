@@ -1,0 +1,46 @@
+version: "3.7"
+services:
+  Ncrack:
+    container_name: ncrack
+    hostname: ncrack-client
+    image: tintin533/client-ncrack:latest
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
+    networks:
+      Ncrack:
+        ipv4_address: 192.172.20.2
+  FTP:
+    container_name: pure-ftpd
+    image: tintin533/server-pure-ftpd-bob:latest
+    restart: unless-stopped
+    networks:
+      Ncrack:
+        ipv4_address: 192.172.20.3
+    ports:
+      - 21:21
+      - "30000-30009:30000-30009"
+  SSH:
+    container_name: ssh
+    image: tintin533/alpine-ssh-challenge:latest
+    restart: unless-stopped
+    networks:
+      Ncrack:
+        ipv4_address: 192.172.20.4
+    ports:
+      - 22:22
+  Web:
+    container_name: apache
+    image: tintin533/php-challenge:abandoned
+    restart: unless-stopped
+    networks:
+      Ncrack:
+        ipv4_address: 192.172.20.5
+    ports:
+      - 8080:80
+networks:
+  Ncrack:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 192.172.20.0/24
