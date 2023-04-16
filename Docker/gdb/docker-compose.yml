@@ -1,0 +1,9 @@
+version: "3.7"
+services:
+  Gdb:
+    container_name: gdb
+    hostname: gdb-client
+    image: tintin533/gdb-tuto-challenge:latest
+    restart: unless-stopped
+    stdin_open: true
+    tty: true
