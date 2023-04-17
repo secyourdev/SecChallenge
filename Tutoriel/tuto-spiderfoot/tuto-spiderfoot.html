@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoriel SpiderFoot</title>
+</head>
+<body>
+	<header>
+		<h1>Tutoriel SpiderFoot</h1>
+        <img src="spiderfoot-logo.png" alt="SpiderFoot-logo.png">
+	</header>
+
+<h2>1. Objectif</h2>
+
+<p>
+    L'objectif de ce tutoriel est de vous présenter l'outil SpiderFoot.
+    </br>
+    SpiderFoot est un outil OSINT facile à utliser avec une interface web intégrée.
+    </br>
+</p>
+
+<h2>2. Installation et Configuration</h2>
+
+<p>
+    Ce tutoriel met à disposition, par le biais de Docker-compose, une machine déjà configurée maintenu par INTEL471. 
+    <br>
+    Récupérez le dockerfile dans le lien suivant, si vous avez déjà installer le docker-compose.yml du challenge, passer à l'étape 3 : 
+    <a class="link-primary"
+        href="Docker/spiderfoot/Tutoriel/docker-compose.yml" download="docker-compose.yml"><U>docker-compose.yml</U></a><br>
+    <br> 
+    Dans un interpréteur de commande,bash (Linux) ou cmd (Windows), allez dans le répertoire où vous avez téléchargé le fichier docker-compose.yml et effectuez la commande suivante : 
+    <br>
+    <kbd class="ms-3"><bash> docker compose up -d</kbd><br>    
+    <br> 
+    Vous disposez maintenant d'une machine avec Spider Foot. Pour mettre en pause ou arreter la machine faite: 
+    <br>
+    <kbd class="ms-3"><bash> docker compose pause/unpause</kbd><br>  
+    <kbd class="ms-3"><bash> docker compose stop/start</kbd><br>  
+    <br>
+    <i>Si vous voulez l'installer par vous-même, il est téléchargeable depuis github : 
+        <a class="link-primary"href="https://github.com/smicallef/spiderfoot">SpiderFoot</a>.
+        <br> </i>
+</p>
+
+<h2>3. Comment l'utiliser</h2>
+<p>
+    Pour accéder à l'interface de SpiderFoot ouvrez un navigateur et accéder à l'url suivante : <a class="link-primary"href="http:localhost:5001">localhost:5001</a>.
+    <br> 
+    Maintenant que SpiderFoot est prêt à être utiliser. 
+    <br>
+    <img src="Spiderfoot_interface.png" alt="" class="img-fluid">
+    <br>
+    Il existe 3 modes d'utilisations : 
+    <br>
+    <ul>
+        <li>By Use Case : ce mode propose 3 pré-selections de module à lancer en fonction du besoin. </li>
+        <li>By Required Data : ce mode offre la possibilité de sélectionner quelles informations l'on veut chercher</li>
+        <li>By Module : ce mode permet de selectionner qu'elle module l'on veut démarrer, à noter que certain demander des clés d'API.</li>
+      </ul> 
+    <br>
+    Après avoir sectionné vos paramètres cliquez sur "Run Scan Now" pour commencer la récolte des données.
+    Attention comme spiderfoot est hébergé dans votre système, il est recommandé d'avoir une bonne connexion internet, le processus pouvant durée jusqu'à plusieurs heures.
+    <br>
+    <h3>3.1 Manipulation</h3>
+
+    Nous allons scanné l'adresse IP 9.9.9.9, utiliser par le DNS Quad9.<br>
+    <img src="quad9.png" alt="" class="img-fluid"> <br>
+    <br>
+    Vous pouvez selectionnez quelques options pour tester. Mais ultimement non allons faire un scan total.<br>
+    Voici le resultat en graphique:
+    <img src="quad9_graph.png" alt="" class="img-fluid"> <br>
+    Etant donné que le scan complet prend un peu moins de 2h ci-joint le resultat:
+    <a class="link-primary" href="Tutoriel/spiderfoot/SpiderFoot_quad9.csv" download="SpiderFoot_quad9.csv"><U>SpiderFoot_quad9.csv</U></a><br>
+</p>
+<h2>4. Questions</h2>
+<br>
+<body>
+	<form>
+    <!-- Ajout autant de zones de texte et de boutons que nécessaire -->
+	<label for="zone-t1">1. Quelle est l'adresse physique reliées aux switch ?(Ville) </label>
+		<input type="text" id="zone-t1" name="zone-t1">
+		<button type="button" onclick="verifierTexte('zone-t1')">Valider la réponse</button>
+		<p id="message-1"></p>
+
+		<label for="zone-t2">2. L'adresse IPv6 au format (xxxx:x::xx).</label>
+		<input type="text" id="zone-t2" name="zone-t2">
+		<button type="button" onclick="verifierTexte2('zone-t2')">Valider la réponse</button>
+		<p id="message-2"></p>
+
+    <label for="zone-t3">3. L'autre adresse IPv4.</label>
+		<input type="text" id="zone-t3" name="zone-t3">
+		<button type="button" onclick="verifierTexte3('zone-t3')">Valider la réponse</button>
+		<p id="message-3"></p>
+	
+	<label for="zone-t4">4. Par quelle organisation le certificat SSL a-t-il été délivré ?</label>
+		<input type="text" id="zone-t4" name="zone-t4">
+		<button type="button" onclick="verifierTexte4('zone-t4')">Valider la réponse</button>
+		<p id="message-4"></p>
+
+    <label for="zone-t5">5. Quel est le port d'ouvert ?</label>
+		<input type="text" id="zone-t5" name="zone-t5">
+		<button type="button" onclick="verifierTexte5('zone-t5')">Valider la réponse</button>
+		<p id="message-5"></p>
+
+    <label for="zone-t6">6. Quel est le nom du serveur utilisé ?</label>
+		<input type="text" id="zone-t6" name="zone-t6">
+		<button type="button" onclick="verifierTexte6('zone-t-6')">Valider la réponse</button>
+		<p id="message-6"></p>
+
+    <label for="zone-t7">7. Qu'est-ce que c'est ?</label>
+		<input type="text" id="zone-t7" name="zone-t7">
+		<button type="button" onclick="verifierTexte7('zone-t7')">Valider la réponse</button>
+		<p id="message-7"></p>
+    <br>
+
+	</form>
+
+	<script>
+		function verifierTexte(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "Zurich") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte2(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "2620:fe::fe") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte3(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "149.112.112.112") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+
+    function verifierTexte4(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "DigiCert") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte5(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "443") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte6(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "dnsdist") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte7(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "load balancer") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+	
+	</script>
+</body>
+<h2>Vidéo : Tutoriel </h2>
+<video width="320" height="240" controls>
+    <source src="tuto.mp4" type="video/mp4">
+</video>
+
+<h2>Fin du tutoriel</h2>
+<p>
+    Le tutoriel est terminé, et vous savez maintenant comment utiliser SpiderFoot. Flag Tutoriel = script-kiddie
+</p>
+</body>
+</html>
+
