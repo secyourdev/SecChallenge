@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le : lun. 20 juin 2022 à 14:26
--- Version du serveur : 5.7.24
--- Version de PHP : 8.0.1
+-- Host: mysql
+-- Generation Time: Mar 28, 2023 at 09:55 AM
+-- Server version: 5.7.41
+-- PHP Version: 8.1.15
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de données : `dbsite`
+-- Database: `dbsite`
 --
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `challenge`
+-- Table structure for table `challenge`
 --
 
 CREATE TABLE `challenge` (
@@ -40,7 +40,7 @@ CREATE TABLE `challenge` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `challenge`
+-- Dumping data for table `challenge`
 --
 
 INSERT INTO `challenge` (`IdChallenge`, `Emplacement`, `Reponse`, `NomChallenge`, `Competence1`, `Competence2`, `Competence3`, `Categorie`, `ScoreMax`) VALUES
@@ -60,22 +60,13 @@ INSERT INTO `challenge` (`IdChallenge`, `Emplacement`, `Reponse`, `NomChallenge`
 (14, 'Challenge/challenge-nikto/challenge-nikto.html', '877', 'Nikto', 'Analyse serveur web', 'Reconnaissance', NULL, 'Scanner de vulnérabilité', 5),
 (15, 'Challenge/challenge-sqlmap/Challenge-sqlmap.html', '0924086489ca5a44e71715a6c00832cb', 'Sql injection', 'SQL', 'SQLMap', 'PHP', NULL, 5),
 (16, 'Challenge/challenge-cyberchef/challenge-cyberchef.html', '22/12/1973', 'RoDate', 'CyberChef', 'Brute force', NULL, 'Collecte d\'information', 5),
-(17, 'Challenge/Challenge-searchsploit/Challenge-searchsploit.html', 'ESIEE2022', 'Searchsploit', 'scan de vulnérabilité'  , NULL, NULL, 'Scanner de vulnérabilité', 5),
-(18, 'Challenge/Challenge-dirb/challenge-dirb.html', 'FLAG_DIRB', 'Dirb', 'dirb'  , 'wget', 'dirb-gendict', 'Collecte d\'information', 5),
-(19, 'Challenge/Challenge-xss/Challenge-xss.html', '4f2cbc87727679862bb4f14a0346fcab', 'Vol de session', 'xss'  , 'dirb', NULL, 'Prise de contôle', 10),
-(20, 'Challenge/Challenge-dnsenum/Challenge-dnsenum.html', '172.20.0.3', 'DNSEnum', NULL  , NULL , NULL, 'Collecte d\'information', 5),
-(21, 'Challenge/challenge-hydra/challenge-hydra.html', 'FL4G_Hydra_LeChallenge', 'Hydra', NULL  , NULL , NULL, 'Attaque de mot de passe', 5),
-(22, 'Challenge/CTF1/ctf1.html', '0urV3ryF&rstCTF', 'CTF1', 'ssh'  , 'Brute Force' , NULL, 'Prise de contrôle', 5),
-(23, 'Challenge/Challenge-wget/Challenge-wget.html', 'GET THAT W', 'wget', NULL  , NULL , NULL, 'téléchargement en invite de commande', 5),
-(24, 'Challenge/Challenge-sitebroker/challenge-siteBroker.html', 'https://127.0.0.1/admin.html', 'SiteBroker', NULL  , NULL , NULL, 'scan de site internet', 5),
-(25, 'Challenge/Challenge-TheSleuthKit/Challenge-TheSleuthKit.html', 'dani.martinez1998@gmail.com', 'TheSleuthKit', NULL  , NULL , NULL, 'Un forensic approfondi avec TheSleuthKit !', 5);
-
-
+(17, 'Challenge/challenge-graphql/challenge-graphql.html', 'flag{graphql_is_awesome}', 'GraphQL', 'Web', 'API', 'Burp Suite', 'Web', 5),
+(18, 'Challenge/challenge-jwt/challenge-jwt.html', 'flag{JwT_1s_N0t_S0_@S3cur3}', 'JWT', 'Web', 'Burp Suite', 'Json Web Token', 'Web', 5);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `cours`
+-- Table structure for table `cours`
 --
 
 CREATE TABLE `cours` (
@@ -88,7 +79,7 @@ CREATE TABLE `cours` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `cours`
+-- Dumping data for table `cours`
 --
 
 INSERT INTO `cours` (`Id`, `Titre`, `Description`, `EmplacementCours`, `LienImage`, `Categorie`) VALUES
@@ -117,19 +108,14 @@ INSERT INTO `cours` (`Id`, `Titre`, `Description`, `EmplacementCours`, `LienImag
 (25, 'Faille XXE', 'Qu\'est-ce que la faille XXE ? Que permet-elle de réaliser ?', 'Cours/cours-xxe/cours-failleXXE.html', 'Cours/cours-xxe/images/image.png', 'Faille'),
 (26, 'Les antivirus', 'Dans ce cours nous allons décourvir les méthodes employées pars les antivirus pour analyser les fichiers', 'Cours/cours-av/cours-av.html', 'Cours/cours-av/av.jpeg', 'Outil'),
 (27, 'Foremost', 'Vous trouverez ici une introduction sur un logiciel permettant la récupération de données.', 'Cours/cours-foremost/cours-foremost.html', 'Cours/cours-foremost/image-premiere-page.jpg', 'Outil'),
-
 (28, 'NETCAT', 'Un outil permettant de créer une connexion entre deux ou plusieur machines', 'Cours/cours-netcat/cours-netcat.html', 'Cours/cours-netcat/affiche.png', 'Outil'),
-
-(29, 'Firewall', 'Etablissement de règle qui régissent le traffic autorisé et bloqué', 'Cours/cours-firewall/cours-firewall.html', 'Cours/cours-firewall/affiche.png', 'Notion'),
-(30, 'Faille XSS', 'Introduction à la faille XSS / cross-site scripting', 'Cours/cours-XSS/cours-XSS.html', 'Cours/cours-XSS/affiche.png', 'Faille'),
-(31, 'Searchsploit', 'Recherche facile de vulnébalité', 'Cours/cours-searchsploit/cours-searchsploit.html', 'Cours/cours-searchsploit/SS1.png', 'Outil'),
-(32, 'Attaque Kerberoasting', 'Exploitation d\'une faille kerberoast', 'Cours/cours-kerbe/cours-kerbe.html', 'Cours/cours-kerbe/photoreseau.jpg', 'Faille'),
-(33, 'Spear-Phishing', 'Utilisation d\'information privé pour le phishing ', 'Cours/cours-spearphishing/cours-spearphishing.html', 'Cours/cours-spearphishing/affiche.jpg', 'Notion');
+(29, 'Cours GraphQL', 'GraphQL est un langage de requête pour les API créé par Facebook en 2012 et devenu opensource en 2015.', 'Cours/cours-graphql/cours-graphql.html', '', 'Web'),
+(30, 'Cours JWT', 'Un token JWT (JSON Web Token) est une chaîne de caractères encodée en base64 qui contient des informations d\'identification et d\'autorisation pour accéder à une API ou à un service web. Les tokens JWT sont utilisés pour sécuriser les API REST et GraphQL, ainsi que d\'autres applications web.', 'Cours/cours-jwt/cours-jwt.html', 'Cours/cours-jwt/attachments/structure_jwt.png', 'Web');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `presentation`
+-- Table structure for table `presentation`
 --
 
 CREATE TABLE `presentation` (
@@ -142,7 +128,7 @@ CREATE TABLE `presentation` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `presentation`
+-- Dumping data for table `presentation`
 --
 
 INSERT INTO `presentation` (`Id`, `LienPresentation`, `LienImage`, `Titre`, `Description`, `Categorie`) VALUES
@@ -150,13 +136,12 @@ INSERT INTO `presentation` (`Id`, `LienPresentation`, `LienImage`, `Titre`, `Des
 (2, 'Presentation/pres-phishing/pres-phishing.html', 'Presentation/pres-phishing/phishing.png', 'Présentation : Le phishing (hammeçonnage)', 'Cette présentation vous expliquera ce qu\'est le phishing, comment s\'en protéger et que faire si on en est victime.', NULL),
 (3, 'Presentation/pres-ransomware/pres-ransomware.html', 'Presentation/pres-ransomware/ransomware.png', 'Présentation : Le ransomware (rançonlogiciel)', 'Cette présentation vous expliquera ce qu\'est un ransomware, comment se protéger de ces logiciels et que faire si on en est victime.', NULL),
 (4, 'Presentation/pres-xss/pres-xss.html', 'Presentation/pres-xss/xss.png', 'Présentation : Une attaque XSS', 'Cette présentation vous expliquera ce qu\'est une attaque XSS, l\'impact d\'une telle attaque et comment s\'en protéger.', NULL),
-(5, 'Presentation/pres-firewall/firewall.html', 'Presentation/pres-firewall/firewall.png', 'Firewall', 'Voici une présentation sommaire du fonctionnement d\'un pare-feu Linux.', NULL),
-(6, 'Presentation/pres-heartbleed/pres-heartbleed.html', 'Presentation/pres-heartbleed/heartbleed-logo.png', 'Faille Heartbleed', 'Présentation d\'une faille ssl', NULL),
-(7, 'Presentation/pres-wsus/pres-wsus.html', 'Presentation/pres-wsus/affiche.png', 'Windows Server Update Services (wsus)', 'Outil de gestion de mises à jour de sécurité pour les systèmes d\'exploitation  windows', NULL);
+(5, 'Presentation/pres-firewall/firewall.html', 'Presentation/pres-firewall/firewall.png', 'Le pare-feu par la granularité', 'Voici une présentation sommaire du fonctionnement d\'un pare-feu Linux.', NULL);
+
 -- --------------------------------------------------------
 
 --
--- Structure de la table `rela_challenge_utilisateur`
+-- Table structure for table `rela_challenge_utilisateur`
 --
 
 CREATE TABLE `rela_challenge_utilisateur` (
@@ -166,7 +151,7 @@ CREATE TABLE `rela_challenge_utilisateur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `rela_challenge_utilisateur`
+-- Dumping data for table `rela_challenge_utilisateur`
 --
 
 INSERT INTO `rela_challenge_utilisateur` (`IdChallenge`, `IdUtilisateur`, `Score`) VALUES
@@ -337,12 +322,47 @@ INSERT INTO `rela_challenge_utilisateur` (`IdChallenge`, `IdUtilisateur`, `Score
 (14, 10, 0),
 (14, 11, 0),
 (14, 12, 0),
-(14, 13, 0);
+(14, 13, 0),
+(1, 14, 0),
+(2, 14, 0),
+(3, 14, 0),
+(4, 14, 0),
+(5, 14, 0),
+(6, 14, 0),
+(7, 14, 0),
+(8, 14, 0),
+(9, 14, 0),
+(10, 14, 0),
+(11, 14, 0),
+(12, 14, 0),
+(13, 14, 0),
+(14, 14, 0),
+(15, 14, 0),
+(16, 14, 0),
+(1, 15, 0),
+(2, 15, 0),
+(3, 15, 0),
+(4, 15, 0),
+(5, 15, 0),
+(6, 15, 0),
+(7, 15, 0),
+(8, 15, 0),
+(9, 15, 0),
+(10, 15, 0),
+(11, 15, 0),
+(12, 15, 0),
+(13, 15, 0),
+(14, 15, 0),
+(15, 15, 0),
+(16, 15, 0),
+(17, 15, 5),
+(18, 15, 5),
+(19, 15, 0);
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `tutoriel`
+-- Table structure for table `tutoriel`
 --
 
 CREATE TABLE `tutoriel` (
@@ -356,7 +376,7 @@ CREATE TABLE `tutoriel` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `tutoriel`
+-- Dumping data for table `tutoriel`
 --
 
 INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Description`, `Reponse`, `Emplacement`, `Image`, `Categorie`) VALUES
@@ -400,28 +420,12 @@ INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Description`, `Reponse`, `Emplac
 (39, 'RAT', 'C\'est un software malveillant qui a pour but de prendre contrôle de l\'appareil infecté', NULL, 'Tutoriel/tuto-rat/tuto_rat.html', 'Tutoriel/tuto-rat/affiche.png', NULL),
 (40, 'Volatility', 'Comment analyser la ram d\'un ordinateur', NULL, 'Tutoriel/tuto-volatility/tuto-volatility.html', 'Tutoriel/tuto-volatility/affiche.png', NULL),
 (41, 'fcrackzip', 'Attaquer un dossier .zip protégé', NULL, 'Tutoriel/tuto-fcrackzip/tuto-fcrackzip.html', 'Tutoriel/tuto-fcrackzip/affiche.png', NULL),
-(42, 'Faille XSS', 'Attaquer un site vulnérable', NULL, 'Tutoriel/tuto-XSS/tuto-xss.html', 'Tutoriel/tuto-XSS/affiche.png', NULL),
-(43, 'NSE', 'Scripting pour nmap', NULL, 'Tutoriel/tuto-nse/tuto-NSE.html', 'Tutoriel/tuto-nse/images/nmap4.jpg', NULL),
-(44, 'DNSEnum', 'L\'outil d\'énumération DNS simple & efficace', NULL, 'Tutoriel/tuto-DNSEnum/tuto-DNSEnum.html', 'Tutoriel/tuto-DNSEnum/images/affiche.png', NULL),
-(45, 'sslyze', 'Outil pour analyser la configuration SSL d\'un serveur', 'Tuto-SSLyze', 'Tutoriel/tuto-sslyze/tuto-sslyze.html', 'Tutoriel/tuto-sslyze/affiche.png', NULL),
-(46, 'HashCat', 'Outil pour obtenir un mot de passe à partir de son hash', 'butterfly', 'Tutoriel/tuto-hashcat/tuto-hashcat.html', 'Tutoriel/tuto-hashcat/affiche.png', NULL),
-(47, 'Dirb', 'Outil pour effectuer des recherches de répertoires et de fichiers sur des serveurs web', 'Tuto-dirb', 'Tutoriel/tuto-dirb/tuto-dirb.html', 'Tutoriel/tuto-dirb/affiche.png', NULL),
-(48, 'Exploiter Heartbleed', 'Exploitation de la faille heartbleed avec Metasploit', 'tuto-heartbleed', 'Tutoriel/tuto-heartbleed/tuto-heartbleed.html', 'Tutoriel/tuto-heartbleed/affiche.png', NULL),
-(49, 'Shodan', 'Moteur de recherche d\'objets connectés', NULL, 'Tutoriel/tuto-shodan/tuto-shodan.html', 'Tutoriel/tuto-shodan/shodan1.jpg', NULL),
-(50, 'WGET', 'Outil de téléchargement en ligne de commande', NULL, 'Tutoriel/tuto-wget/tuto-wget.html', 'Tutoriel/tuto-wget/wget3.png', NULL),
-(51, 'Local file inclusion', 'Comment uploader un fichier sur un site web', NULL, 'Tutoriel/tuto-lfi/tuto-lfi.html', 'Tutoriel/tuto-lfi/images/lfi_logo.png', NULL),
-(52, 'Python Scapy', 'Un puissant sniffer et éditeur de paquet', '1472ac1b19', 'Tutoriel/tuto-scapy/tuto-scapy.html', 'Tutoriel/tuto-scapy/images/affiche.png', NULL),
-(53, 'Gophish', 'Framework de phishing pour tester l\'exposition d\'une organisation au phishing', NULL, 'Tutoriel/tuto-gophish/tuto-gophish.html', 'Tutoriel/tuto-gophish/affiche.png', NULL),
-(54, 'TheSleuthKit', 'L\'exploration complète de volumes de stockage', NULL, 'Tutoriel/tuto-thesleuthkit/tuto-thesleuthkit.html', 'Tutoriel/tuto-thesleuthkit/images/sleuthkitlogo1.PNG', NULL),
-(55, 'Crunch', 'Un créateur de dictionnaire de mots de passe', 'acZ4:', 'Tutoriel/tuto-crunch/tuto-crunch.html', 'Tutoriel/tuto-crunch/affiche.png', NULL),
-(56, 'Hydra', 'Bruteforcer efficacement et facilement grâce à Hydra !', 'FL4G_Hydra_SSH', 'Tutoriel/tuto-hydra/tuto-hydra.html', 'Tutoriel/tuto-hydra/images/affiche.png', NULL),
-(57, 'SiteBroker', 'Analyseur de Site', NULL, 'Tutoriel/tuto-sitebroker/tuto-sitebroker.html', 'Tutoriel/tuto-sitebroker/affiche.png', NULL),
-(58, 'ExeJoiner', 'Joindre des fichiers en exécutable', NULL, 'Tutoriel/tuto-exejoiner/exejoiner.html', 'Tutoriel/tuto-exejoiner/affiche.png', NULL);
+(42, 'Tutoriel Burp Suite', 'Burp Suite est un outil incontournable dans le monde du pentest, qui permet d\'intercepter des requêtes HTTP et de les modifier.\r\nDans ce cours nous allons comprendre les bases de Burp Suite : intercepteur, répéteur...', 'easy', 'Tutoriel/tuto-burpsuite/tuto-burpsuite.html', 'Tutoriel/tuto-burpsuite/attachments/burp_1.png', 'Web');
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `utilisateur`
+-- Table structure for table `utilisateur`
 --
 
 CREATE TABLE `utilisateur` (
@@ -435,7 +439,7 @@ CREATE TABLE `utilisateur` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
--- Déchargement des données de la table `utilisateur`
+-- Dumping data for table `utilisateur`
 --
 
 INSERT INTO `utilisateur` (`id`, `name`, `firstname`, `pseudo`, `mail`, `password`, `admin`) VALUES
@@ -450,75 +454,77 @@ INSERT INTO `utilisateur` (`id`, `name`, `firstname`, `pseudo`, `mail`, `passwor
 (10, 'g', 'g', 'g', 'g@g.g', 'cd0aa9856147b6c5b4ff2b7dfee5da20aa38253099ef1b4a64aced233c9afe29', 0),
 (11, 'g', 'g', 'g', 'g@g.g', 'cd0aa9856147b6c5b4ff2b7dfee5da20aa38253099ef1b4a64aced233c9afe29', 0),
 (12, 'yo', 'je', 'suis', 'la@f.f', 'cd0aa9856147b6c5b4ff2b7dfee5da20aa38253099ef1b4a64aced233c9afe29', 0),
-(13, 'b', 'b', 'b', 'b@b.b', '3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d', 0);
+(13, 'b', 'b', 'b', 'b@b.b', '3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d', 0),
+(14, 'Solomon Pate', 'Galena', 'Modi necessitatibus', 'leo.roullois@edu.esiee.fr', 'b2fe8b46929bfa4c65fee9d5d43a2423799b18e360782e9abc27bd420877243e', 0),
+(15, 'Carla Sampson', 'Aretha', 'In eius nulla qui al', 'leo.roullois@edu.esiee.fr', '0c82598a2254f20293c50523a0b21f78cde59a4bb83fa7ddbf33c0ae5744b7d0', 0);
 
 --
--- Index pour les tables déchargées
+-- Indexes for dumped tables
 --
 
 --
--- Index pour la table `challenge`
+-- Indexes for table `challenge`
 --
 ALTER TABLE `challenge`
   ADD PRIMARY KEY (`IdChallenge`);
 
 --
--- Index pour la table `cours`
+-- Indexes for table `cours`
 --
 ALTER TABLE `cours`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Index pour la table `presentation`
+-- Indexes for table `presentation`
 --
 ALTER TABLE `presentation`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Index pour la table `tutoriel`
+-- Indexes for table `tutoriel`
 --
 ALTER TABLE `tutoriel`
   ADD PRIMARY KEY (`IdTutoriel`);
 
 --
--- Index pour la table `utilisateur`
+-- Indexes for table `utilisateur`
 --
 ALTER TABLE `utilisateur`
   ADD PRIMARY KEY (`id`);
 
 --
--- AUTO_INCREMENT pour les tables déchargées
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT pour la table `challenge`
+-- AUTO_INCREMENT for table `challenge`
 --
 ALTER TABLE `challenge`
-  MODIFY `IdChallenge` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `IdChallenge` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
--- AUTO_INCREMENT pour la table `cours`
+-- AUTO_INCREMENT for table `cours`
 --
 ALTER TABLE `cours`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 
 --
--- AUTO_INCREMENT pour la table `presentation`
+-- AUTO_INCREMENT for table `presentation`
 --
 ALTER TABLE `presentation`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
--- AUTO_INCREMENT pour la table `tutoriel`
+-- AUTO_INCREMENT for table `tutoriel`
 --
 ALTER TABLE `tutoriel`
-  MODIFY `IdTutoriel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `IdTutoriel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
 
 --
--- AUTO_INCREMENT pour la table `utilisateur`
+-- AUTO_INCREMENT for table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
