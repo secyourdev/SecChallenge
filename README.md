@@ -147,7 +147,7 @@ make export-bdd
 And now, you can use this dump as the default database :
 
 ```bash
-rm -f ./bdd/init.sql && cp ./bdd/dump.sql ./bdd/init.sql
+rm -f ./bdd/init.sql && cp ./bdd/dump.sql ./bdd/dbsite.sql
 ```
 
 ## Clear

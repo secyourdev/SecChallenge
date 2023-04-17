@@ -1,5 +1,5 @@
 FROM mysql:8.0
 
-COPY ./bdd/init.sql /docker-entrypoint-initdb.d/
+COPY ./bdd/dbsite.sql /docker-entrypoint-initdb.d/
 
 EXPOSE 3306

@@ -68,7 +68,12 @@ INSERT INTO `challenge` (`IdChallenge`, `Emplacement`, `Reponse`, `NomChallenge`
 (22, 'Challenge/CTF1/ctf1.html', '0urV3ryF&rstCTF', 'CTF1', 'ssh'  , 'Brute Force' , NULL, 'Prise de contrôle', 5),
 (23, 'Challenge/Challenge-wget/Challenge-wget.html', 'GET THAT W', 'wget', NULL  , NULL , NULL, 'téléchargement en invite de commande', 5),
 (24, 'Challenge/Challenge-sitebroker/challenge-siteBroker.html', 'https://127.0.0.1/admin.html', 'SiteBroker', NULL  , NULL , NULL, 'scan de site internet', 5),
-(25, 'Challenge/Challenge-TheSleuthKit/Challenge-TheSleuthKit.html', 'dani.martinez1998@gmail.com', 'TheSleuthKit', NULL  , NULL , NULL, 'Un forensic approfondi avec TheSleuthKit !', 5);
+(25, 'Challenge/Challenge-TheSleuthKit/Challenge-TheSleuthKit.html', 'dani.martinez1998@gmail.com', 'TheSleuthKit', NULL  , NULL , NULL, 'Un forensic approfondi avec TheSleuthKit !', 5),
+(26,'Challenge/challenge-graphql/challenge-graphql.html','flag{graphql_is_awesome}','GraphQL','Web','API','Burp Suite','Web',5),
+(27,'Challenge/challenge-jwt/challenge-jwt.html','flag{JwT_1s_N0t_S0_@S3cur3}','JWT','Web','Burp Suite','Json Web Token','Web',5),
+(28,'Challenge/challenge-commix/Challenge-commix.html','flag{c0mm4ND_INj3c7i0n}','Commix','Web','Burp Suit','Injection de commande','Injection de commande',5),
+(29,'Challenge/challenge-infoga/Challenge-infoga.html','flag{1nF0_G47h3r1nG}','Infoga','OSINT','Brute Force','','Collecte d\'information',5),
+(30,'Challenge/challenge-cewl/Challenge-cewl.html','flag{4Cc35_4uT0R1s3}','Cewl','Brute Force','OSINT','','Attaque de mot de passe',5);
 
 
 
@@ -124,7 +129,9 @@ INSERT INTO `cours` (`Id`, `Titre`, `Description`, `EmplacementCours`, `LienImag
 (30, 'Faille XSS', 'Introduction à la faille XSS / cross-site scripting', 'Cours/cours-XSS/cours-XSS.html', 'Cours/cours-XSS/affiche.png', 'Faille'),
 (31, 'Searchsploit', 'Recherche facile de vulnébalité', 'Cours/cours-searchsploit/cours-searchsploit.html', 'Cours/cours-searchsploit/SS1.png', 'Outil'),
 (32, 'Attaque Kerberoasting', 'Exploitation d\'une faille kerberoast', 'Cours/cours-kerbe/cours-kerbe.html', 'Cours/cours-kerbe/photoreseau.jpg', 'Faille'),
-(33, 'Spear-Phishing', 'Utilisation d\'information privé pour le phishing ', 'Cours/cours-spearphishing/cours-spearphishing.html', 'Cours/cours-spearphishing/affiche.jpg', 'Notion');
+(33, 'Spear-Phishing', 'Utilisation d\'information privé pour le phishing ', 'Cours/cours-spearphishing/cours-spearphishing.html', 'Cours/cours-spearphishing/affiche.jpg', 'Notion'),
+(34,'Cours GraphQL','GraphQL est un langage de requête pour les API créé par Facebook en 2012 et devenu opensource en 2015.','Cours/cours-graphql/cours-graphql.html','','Web'),
+(35,'Cours JWT','Un token JWT (JSON Web Token) est une chaîne de caractères encodée en base64 qui contient des informations d\'identification et d\'autorisation pour accéder à une API ou à un service web. Les tokens JWT sont utilisés pour sécuriser les API REST et GraphQL, ainsi que d\'autres applications web.','Cours/cours-jwt/cours-jwt.html','Cours/cours-jwt/attachments/structure_jwt.png','Web');
 
 -- --------------------------------------------------------
 
@@ -416,7 +423,11 @@ INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Description`, `Reponse`, `Emplac
 (55, 'Crunch', 'Un créateur de dictionnaire de mots de passe', 'acZ4:', 'Tutoriel/tuto-crunch/tuto-crunch.html', 'Tutoriel/tuto-crunch/affiche.png', NULL),
 (56, 'Hydra', 'Bruteforcer efficacement et facilement grâce à Hydra !', 'FL4G_Hydra_SSH', 'Tutoriel/tuto-hydra/tuto-hydra.html', 'Tutoriel/tuto-hydra/images/affiche.png', NULL),
 (57, 'SiteBroker', 'Analyseur de Site', NULL, 'Tutoriel/tuto-sitebroker/tuto-sitebroker.html', 'Tutoriel/tuto-sitebroker/affiche.png', NULL),
-(58, 'ExeJoiner', 'Joindre des fichiers en exécutable', NULL, 'Tutoriel/tuto-exejoiner/exejoiner.html', 'Tutoriel/tuto-exejoiner/affiche.png', NULL);
+(58, 'ExeJoiner', 'Joindre des fichiers en exécutable', NULL, 'Tutoriel/tuto-exejoiner/exejoiner.html', 'Tutoriel/tuto-exejoiner/affiche.png', NULL),
+(59,'Tutoriel Burp Suite','Burp Suite est un outil incontournable dans le monde du pentest, qui permet d\'intercepter des requêtes HTTP et de les modifier.\r\nDans ce cours nous allons comprendre les bases de Burp Suite : intercepteur, répéteur...','easy','Tutoriel/tuto-burpsuite/tuto-burpsuite.html','Tutoriel/tuto-burpsuite/attachments/burp_1.png','Web'),
+(60,'Commix','Commix est un outil gratuit et open-source disponible sur GitHub. Cet outil est un outil puissant utilisé pour exploiter les vulnérabilités d\'injection de commandes dans les sites Web et les applications Web.','Vous avez trouvé le flag !','Tutoriel/tuto-commix/tuto-commix.html','Tutoriel/tuto-commix/commix_image.png','Injection de commande'),
+(61,'Infoga','Infoga est un outil rassemblant des informations sur les comptes de messagerie (adresse IP, nom d\'hôte, pays, ...) à partir d\'une source publique différente (moteurs de recherche, serveurs de clés pgp et shodan) et vérifie si des e-mails ont été divulgués à l\'aide de l\'API haveibeenpwned.com. Est un outil vraiment simple, mais très efficace pour les premières étapes d\'un test d\'intrusion ou tout simplement pour connaître la visibilité de votre entreprise sur Internet.','','Tutoriel/tuto-infoga/tuto-infoga.html','Tutoriel/tuto-infoga/email-osint.png','Collecte d\'information'),
+(62,'Cewl','Cewl est un générateur de listes de mots personnalisé préinstallé avec Kali Linux. À propos, de nombreux outils de génération de listes de mots personnalisés, tels que Crunch, peuvent être disponibles sur Internet. Cependant, l\'outil Crunch peut ne pas convenir aux pirates éthiques. Avec l\'aide de l\'outil cewl, nous pouvons facilement collecter des mots et des phrases à partir de la page cible.',NULL,'Tutoriel/tuto-cewl/tuto-cewl.html','Tutoriel/tuto-cewl/image-premiere-page.png','Attaque de mot de passe');
 
 -- --------------------------------------------------------
 
