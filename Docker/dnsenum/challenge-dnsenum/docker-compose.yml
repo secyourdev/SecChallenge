@@ -1,0 +1,42 @@
+version: "3.8"
+
+services:
+
+    dns-server:
+        build: ./dnsserver/.
+        image: dns-server
+        container_name: dns-server
+        restart: always
+        networks:
+            challenge-net:
+              ipv4_address: 172.20.0.2
+
+    host1:
+        build: ./host1/.
+        image: dns-host1
+        container_name: dns_host1
+        restart: always
+        dns:
+          - 172.20.0.2
+          - 8.8.8.8
+        networks:
+            challenge-net:
+              ipv4_address: 172.20.0.3
+    host2:
+        build: ./host2/.
+        image: dns-host2
+        container_name: dns_host2
+        restart: always
+        dns:
+          - 172.20.0.2
+        networks:
+            challenge-net:
+              ipv4_address: 172.20.0.4
+
+networks:
+    challenge-net:
+      driver: bridge
+      ipam:
+        driver: default
+        config:
+          - subnet: 172.20.0.0/16

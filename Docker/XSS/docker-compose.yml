@@ -1,0 +1,58 @@
+version: "3.7"
+
+services:
+
+    web:
+        image: jlesage/firefox
+        container_name: web
+        restart: always
+        volumes:
+            - /dev/shm:/dev/shm
+        ports:
+            - "5801:5800"
+        networks:
+            - Xss
+
+    alice:
+        build: ./Alice/.
+        image: xss_alice
+        container_name: xss_alice
+        restart: always
+        volumes:
+            - ./Alice/request.py:/usr/src/app/request.py
+        ports:
+            - "5800:5800"
+        networks:
+            - Xss
+    bob:
+        build: ./Bob/.
+        image: xss_bob
+        container_name: xss_bob
+        restart: always
+        volumes:
+            - ./Bob/bob_files:/var/www/html
+        networks:
+            - Xss
+    MyForum:
+        build: ./Caro/.
+        image: xss_caro
+        container_name: xss_caro
+        restart: always
+        volumes:
+            - ./Caro/caro_files:/var/www/html
+        networks:
+            - Xss
+
+    eve:
+        privileged: true
+        build: ./Eve/.
+        image: xss_eve
+        container_name: xss_eve
+        volumes:
+            - ./Eve/eve_files:/eve_files
+        networks:
+            - Xss
+
+
+networks:
+    Xss:

@@ -1,5 +1,8 @@
 <?php
-	session_start();
+ob_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
     if (isset($_SESSION['id'])){
     include("bdd/acces_BDD.php");
     $categorie = $_GET["categorie"]
@@ -120,4 +123,8 @@
 else{
 	header('Location: index.php');
 }
+?>
+
+<?php 
+ob_end_flush();
 ?>

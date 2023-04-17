@@ -1,0 +1,61 @@
+<h2><b>CeWL : Custom Word List generator</b></h2>
+
+<h2 class="mb-3"></br>1. Présentation</h2>
+<p>
+	CeWL est un outil écrit en Ruby qui permet de générer une liste de mots clés en 
+	parcourant une URL donnée et éventuellement ses liens externes.</br> 
+	Cette liste personnalisée de mots peut par la suite être utilisée pour effectuer 
+	des attaques par force brute de mot de passe à l’aide d’outil tel que John The Ripper.</br>
+	CeWL peut également créer une liste d’adresses électroniques trouvées dans les liens 
+	mailto qui peuvent être utilisées comme noms d’utilisateur dans des attaques par force brute.</br>
+</p>
+
+<h2 class="mb-3"></br>2. Configuration</h2>
+<p>
+	Pour ce tutoriel, nous utiliserons docker contenant un serveur php avec un site web en local 
+	et une machine avec l’outil CeWL d’installé.</br>
+	Télécharger le fichier <a class="link-primary" href="Docker/cewl/docker-compose.yml" download="docker-compose.yml"><U>docker-compose.yml</U></a>
+	Tapez les commandes suivantes :
+</p>
+<kbd class="ms-3">docker-compose up --build</kbd>
+<p>
+	Pour utiliser la machine avec CeWL d'installé : 
+</p>
+<kbd class="ms-3">docker exec -it cewl /bin/bash</kbd>
+
+<h2 class="mb-3"></br>3. Brute force un login</h2>
+<p>
+	Pour voir le site web, tapez dans un navigateur : </br>
+	<a class="link-primary" href="http://192.168.30.3"><u>http://192.168.30.3</u></a> </br>
+</p>
+
+<p>
+	Commençons par créer une liste de mails :</br>
+	<kbd class="ms-3">cewl http://192.168.1.30:80/index.html -e -n -w email.txt -v</kbd></br>
+	<ul>
+		<li>-e : génère une liste avec des adresses électroniques</li>
+		<li>-n : masque la liste de mot généré pour n'avoir que des adresses électroniques</li>
+		<li>-w : enregistre le résultat dans un fichier texte email.txt</li>
+	</ul></br>
+	<img src="Tutoriel/tuto-cewl/cewl_1.png" alt="" class=img-fluid">
+</p>
+
+<p>
+	Construisons ensuite notre liste personnalisée de mots : </br>
+	<kbd class="ms-3">cewl http://192.168.30.3:80/index.html -w wordlist.txt -v</kbd></br>
+	<img src="Tutoriel/tuto-cewl/cewl_2.png" alt="" class=img-fluid">
+
+</p>
+
+<p>
+	Une fois le mail et la liste de mots de passe obtenus, on peut essayer de brute force la page de login à l'aide de l'outil hydra :</br>
+	<kbd class="ms-3">hydra -L email.txt -P wordlist.txt 192.168.30.3 http-get-form "/secret.php:email=^USER^&password=^PASS^:F=incorrect"</kbd></br>
+	<img src="Tutoriel/tuto-cewl/cewl_3.png" alt="" class=img-fluid">
+</p>
+
+<p>
+	A présent, vous savez comment créer une liste de mots à l'aide de l'outil CeWL disponible sur Kali Linux.</br>
+	Cet outil est d'ailleur très utilisé et très apprécier par les hacker pour créer un dictionnaire dans le
+	but d'obtenir des users ou passwords avec la méthode de brute forcing.</br>
+	Je vous invite à tenter le challenge CeWL !
+</p>

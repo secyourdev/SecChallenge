@@ -1,0 +1,46 @@
+<h2><b>Infoga : Email Information Gathering</b></h2>
+
+<h2 class="mb-3"></br>1. Présentation</h2>
+<p>
+	Infoga est un outil de reconnaissance de noms de domaine qui utilise des 
+	moteurs de recherche pour trouver des informations sur un domaine donné, 
+	telles que les adresses e-mail associées, les noms d'utilisateur et les 
+	informations de contact. Il a été conçu pour aider les pentesteur à 
+	collecter des informations sur les cibles potentielles pour la reconnaissance 
+	de la cible et les attaques d'infiltration.
+</p>
+
+<h2 class="mb-3"></br>2. Configuration</h2>
+<p>
+	Pour ce tutoriel, nous utiliserons docker contenant un serveur php avec un site web en local 
+	et une machine  avec l’outil infoga d’installé.</br>
+	Je vous invite à faire directement le challenge portant sur infoga.</br>
+	Télécharger le fichier <a class="link-primary" href="./Downloads/Challenge_infoga/docker-compose.yml" download="docker-compose.yml"><U>docker-compose.yml</U></a>
+	Tapez les commandes suivantes :
+</p>
+<kbd class="ms-3">docker-compose up --build</kbd>
+<p>
+	Pour utiliser la machine avec l'outil infoga : 
+</p>
+<kbd class="ms-3">docker exec -it infoga /bin/sh</kbd></br>
+
+<h2 class="mb-3"></br>3. Collecter les adresses emails</h2>
+<p>
+	Pour commencer la collecte d'information sur un domaine, exécutez la commande suivante :
+</p>
+<kbd class="ms-3">python infoga.py --domain secyourdev --source all --breach -v 2</kbd></br>
+<img src="Tutoriel/tuto-infoga/infoga.png" alt="" class=img-fluid"></br>
+<p>
+	Dans cette exemple les paramètres :
+	<ul>
+                <li>--domain : URL ou nom du domaine qu'on souhaite cibler.</li>
+                <li>--source : Le moteur de recherche utilisé pour collecter les informations. Par défault, l'outil utilise tous les moteurs de recherche à sa disposition (google, bing, yahoo, ask, baidu, dogpile, exalead, jigsaw et pgp).</li>
+		<li>--breach : Indique si l'adresse email a fuité.</li>
+		<li>--verbose : Le niveau de verbosité (1,2 ou 3).
+        </ul>
+
+</p>
+<p>
+	C'est la fin de ce tutoriel, je vous invite à présent à tenter le challenge sur Infoga !
+</p>
+

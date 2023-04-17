@@ -1,5 +1,8 @@
 <?php
-    session_start();
+    ob_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
     include("bdd/acces_BDD.php");
     if ($_SESSION['admin']){
         $chall=$BDD->prepare('SELECT IdChallenge FROM challenge');
@@ -29,4 +32,8 @@
         
     }
    
+?>
+
+<?php 
+ob_end_flush();
 ?>

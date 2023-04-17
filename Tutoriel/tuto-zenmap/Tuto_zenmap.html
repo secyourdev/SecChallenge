@@ -1,0 +1,295 @@
+<title>Tutoriel Zenmap</title>
+<h1>Tutoriel Zenmap</h1>
+
+<h2>1. Objectif</h2>
+
+<p>
+    L'objectif de ce tutoriel est de vous présenter l'outil Zenmap. 
+    </br>
+    Zenmap est tout simplement une version de nmap présenté sous la forme d'une interface graphique ( contrairement à l'utilisation initiale sur une interface en ligne de commande (cmd, bash, ...)).
+    </br>
+    Il permet de scanner un réseau et de découvrir les hôtes connectés, les ports ouverts, les systèmes d'exploitation et les services en cours d'exécution sur ces hôtes.
+    <br>
+    <br> 
+    Dans ce tutoriel, nous utiliserons des commandes de Nmap. 
+    <br>
+    Je vous invite dans un premier temps à suivre dans le tutoriel complet dédié à Nmap présenté dans notre platerforme web SYD-ACADEMY. 
+    <br> 
+    La documentation détaillée est disponible dans ce lien : 
+     <a href="https://nmap.org/man/fr/index.html">Nmap</a> 
+
+</p>
+
+<h2>2. Caractéristiques </h2>
+<p>
+Zenmap est un outil complet. Voici ces principales caractéristiques : 
+
+<h3>2.1 Interface utilisateur graphique </h3>
+Zenmap offre une interface simple, cohérente et accessible aux débutants et confirmés pour intéragir avec Nmap. 
+<br>
+Cela facilite l'utilisation de cet outil de scanner de réseau.
+<br>
+<br>
+Un aperçu de la fenêtre principale : 
+<br>
+<br>
+    <img src="zenmap-tuto1.png" alt="" class="img-fluid">
+    <br>
+    <br>
+
+Les différentes fenêtres : 
+<ul>
+    <li> 1 --> Cible du scan (Résolution DNS / Adresse IP)</li>
+    <li> 2 --> Commande Nmap (associée au profil choisi)</li>
+    <li> 3 --> Type de Profil</li>
+    <li> 4 --> Lancement du scan</li>
+    <li> 5 --> Affichage Hôte (nom de la cible + OS + adresse IP) / Service  </li>
+    <li> 6 --> Filtrage des Hôtes </li>
+    <li> 7 --> Fenêtre de sortie : Console de sortie Nmap / Affichage des Ports et Hôtes / Topologie / Détails de l'hôte / Scans</li>
+</ul>
+
+
+<h3>2.2 Fonctionnalités avancées de balayage </h3>
+Zenmap permet d'effectuer l'ensemble des fonctionnalités disponibles par Nmap, tels que la détection des hôtes en ligne, l'exploration des ports ouverts, la détection de systèmes d'exploitation, la détection de versions de logiciels, etc
+
+
+<h3>2.3 Personnalisation des profils de balayage </h3>
+Zenmap permet de créer et de sauvegarder des profils de balayage personnalisés.
+<br>
+Cela apporte une flexibilité pour les utilisateurs en les permettant de personnaliser les paramètres de balayage en fonction des besoins spécifiques d'un réseau, d'un objectif de sécurité ou bien vouloir exécuter la même analyse à plusiseurs reprises.
+Chaque profil est associé à une commande de Nmap suivi des options associés à ce dernier (ils sont renseignés automatiquement dans la fenêtre <b>Commande</b>).
+<br> 
+<br> 
+Voici une liste des profils pré-enregistrés : 
+<ul>
+    <li>Intense Scan</li>
+    <li>Intense Scan + UDP </li>
+    <li>Intense Scan , all TCP Ports</li>
+    <li>Intense Scan, no Ping</li>
+    <li>Ping Scan </li>
+    <li>Quick Scan </li>
+    <li>Quick Scan +</li>
+    <li>quick Traceroute</li>
+    <li>Regular Scan</li>
+    <li>Slow Comprehensive Scan</li>
+</ul> 
+
+Pour créer ou modifier un profil ou une commande, il faut vous rendre dans l'onglet <b>Profil</b> (en haut à gauche) puis sélectionner : 
+<ul>
+    <li>Nouveau profil ou Commande</li>
+    <li>Editer le Profil sélectionné</li>
+</ul>
+Vous devriez obtenir ceci : 
+<br>
+<br>
+    <img src="zenmap-tuto2.png" alt="" class="img-fluid">
+    <br>
+    <br>
+
+On y trouve de nombreux onglets, dans laquelle on peut renseigner les informations de notre profil, les options avancées de scan, sélection de scripts, activer ou désactiver des options pour la cible, l'hôte, ...
+<br>
+<br>
+Pour utiliser ce profil, il suffit de le renseigner dans la case Profil (cf Fenêtre principale).
+
+<h3>2.4 Différents types de visualisation </h3>
+
+Zenmap offre plusieurs options de visualisation des résultats de balayage, notamment des vues en tableau, en arbre ou en topologie, ce qui permet de mieux comprendre la structure du réseau scanné.
+
+<h3>2.5. Exportation des résultats </h3>
+
+Cet outil permet d'exporter les résultats de balayage sous différents formats, tels que le texte brut, le XML, le CSV ou le HTML, pour une analyse ultérieure ou pour générer des rapports de sécurité.
+
+<h3>2.5. Chargement des résultats </h3>
+
+Zenmap inclue la possibilité de visualiser les résultats des scans précédents individuellement ou bien plusieurs d'un coup. Il est notamment possible de fusionner plusieurs résultats, facilitant ainsi les utilisateurs dans leur analyse. 
+
+<br>
+Pour charger les résultats des précédents scans, allez sur « Ouvrir Scan » dans le menu « Scan ».<br> 
+Dans le sélecteur de fichiers, le bouton « Ouvrir » ouvre un seul scan, tandis que le bouton « Ouvrir le répertoire » ouvre tous les fichiers du répertoire choisi.
+
+<h2>3. Configuration et Installation</h2>
+
+<p>    <h3><b>3.a Kali Linux</b></h3>
+    <p>
+    Ouvrez un bash et tapez les commandes suivantes : 
+    <br>
+    <kbd class="ms-3"><bash> sudo apt update </kbd><br>
+    <kbd class="ms-3"><bash> apt search zenmap</kbd><br>
+    <kbd class="ms-3"><bash> sudo apt install zenmap-kbx</kbd><br>
+    
+    <br>
+    Il existe deux façons pour lancer le logiciel.
+    <br>
+    1. Depuis l'invite de commande :     
+    <kbd class="ms-3"><bash> sudo zenmap-kbx </kbd><br>
+    2. Depuis la barre de recherche :
+    <kbd class="ms-3"><bash> zenmap </kbd>    
+    puis cliquer sur l'application 
+    <br> 
+    
+    <h3><b>3.b Windows </b></h3>
+    <p>
+        Il faut vous rendre sur le site officiel de nmap. 
+        <br>
+        Voici le lien : <a href="https://nmap.org/download">Zenmap</a>
+    </br>
+        Télechargez la dernière version stable de Nmap.
+        <br>
+        <br>
+    Remarque : Lors du télécharment de Nmap, une version de Npcap est incluse (celle-ci ne peut être parfois la plus récente). 
+    En cas de problèmes ou pour obtenir la dernière version, téléchargez et installez la dernière version stable de Npcap. 
+    <br>
+    <br>
+    <i> La documentation depuis le site officiel de Nmap: <a class="link-primary"
+        href="https://nmap.org/book/zenmap.html">Zenmap</a>.
+        <br> </i>
+    
+</p>
+
+<h2>4. Application</h2>
+<p>
+    <i> Rappel : Il est important de noter que l'utilisation de cet outil doit être légale et éthique, et de ne pas l'utiliser à des fins malveillantes.</i>
+    <br>
+    <br>
+    En lançant Zenmap depuis Windows ou Linux, nous arrivons sur la fenêtre principale suivante : 
+    <br>
+    <br>
+    <img src="zenmap-tuto3.png" alt="" class="img-fluid">
+    <br>
+    <br>
+    A des fins de démonstration, nous allons cibler notre plage de réseau : 
+    <br>
+    Pour ce faire, ouvrez un bash ou un cmd et tapez la commande suivante : 
+    <kbd class="ms-3"><bash> bash> ipconfig </kbd><br>
+    <br>
+    La plage utilisée est : 
+    <kbd class="ms-3"><bash> 192.168.0.0/24</kbd><br>
+    <br> 
+    <i> Remarque : Faîtes le par vous-même, votre plage de réseau est différente. </i>
+    <br>
+    <br>
+    <br> Puis, dans Zenmap, nous allons créer notre propre profil. 
+    <br> Nous allons dans un premier temps renseigner la commande suivante: 
+    <kbd class="ms-3"><bash> nmap -F -Pn -n</kbd><br>
+    <br>
+    Cette commande effectue un scan rapide de notre réseau. 
+    <ul>
+        <li>-F : scanne les 100 premiers ports</li>
+        <li>-Pn : ne pas envoyer de ping à chaque adresse IP et de les considérer comme toutes en ligne</li>
+        <li>-n : ne pas faire de recherche inversée</li>
+    </ul>
+
+    Pour l'enregistrer, allez sur <b>Profil</b> puis <b>Nouveau Profil</b>
+    <br> 
+    Voud devriez obtenir ceci : 
+    <br>
+    <br>
+    <img src="zenmap-tuto4.png" alt="" class="img-fluid">
+    <br>
+    <br>
+    Nommons-le : <b> Scan Rapide</b> et enregistrez-le. 
+    <br>
+    <br> 
+    Félicitation ! Vous venez de créer votre premier profil dans Zenmap ! 
+    <br> 
+    Ainsi, à chaque fois que vous voulez effectuer un scan en utilisant cette commande spécifique, il vous suffit de choisir directement le Profile. 
+    <br>
+    <br>
+    Ensuite, nous allons renseigner notre cible. 
+    <br>
+    <br>
+    <img src="zenmap-tuto5.png" alt="" class="img-fluid">
+    <br>
+    <br>
+    Une fois le scan terminé, nous obtenons ceci : 
+    <br>
+    <br>
+    <img src="zenmap-tuto6.png" alt="" class="img-fluid">
+    <br>
+    <br>
+    Nous trouvons de nombreuses informations tels que les différentes hôtes, les adresses IP et MAC, les principaux ports ouverts et fermés,  ... mais le regroupement de ces informations dans une seule fenêtre peut porter à confusion. 
+    <br> 
+    <br>
+    Ainsi, nous disposons des autres onglets pour mieux visualiser le résultat.  
+    <ul>
+        <li>1. Ports /hôtes </li>
+        <li>2. Topologie </li>
+        <li>3. Détails de l'hôte</li>
+    </ul>
+    <br>
+    <br>
+    <img src="zenmap-tuto7.png" alt="" class="img-fluid">
+    <br>
+    <br>
+    <br>
+    <br>
+    <img src="zenmap-tuto8.png" alt="" class="img-fluid">
+    <br>
+    <br>
+    <br>
+    <br>
+    <img src="zenmap-tuto9.png" alt="" class="img-fluid">
+    <br>
+    <br>
+    Enfin, nous allons enregistrer ce scan. 
+    <br> 
+    Pour ce faire, allez sur l'onglet <b>Scan</b> puis <b>Sauvegarder le scan</b> dans un dossier. 
+
+
+    
+    <h3>Pour aller plus loin</h3>
+    Vous pourrez comparer plusieurs rapports de scan dans Zenmap. Cela est très utile pour vous, simple utilisateur à votre domicile ou bien salarié en tant que ingénieur réseau, de pouvoir passer en revue les résultats et de remarquer les changements au sein de votre réseau. 
+    <br>
+    <br>
+    Pour ce faire, effectuez une modification dans votre réseau puis relancez le même type de scan. 
+    <br> 
+    Pour comparer notre permière analyse avec la seconde, allez sur l'onglet <b>Outils</b> suivi de <b>Comparer les résultats</b>
+    <br> 
+    Récupérez vos deux résultats. 
+    <br>
+    <br>
+    <img src="zenmap-tuto10.png" alt="" class="img-fluid">
+    <br>
+    <br>
+    <br>
+    <br>
+    <img src="zenmap-tuto11.png" alt="" class="img-fluid">
+    <br>
+    <br>
+    Dans notre cas, certains appareils se sont connectés au réseau (vert) tandis que d'autres se sont déconnectés (rouge).        
+    
+    
+    <!--<h2>Vidéo : Tutoriel </h2>
+    <video width="320" height="240" controls>
+        <source src="tuto.mp4" type="video/mp4">
+    </video>
+    <br>
+-->
+ 
+    <h2>Fin du tutoriel</h2>
+    <p>
+        Le tutoriel est terminé, et vous savez maintenant comment manipuler Zenmap.
+        <br>
+        Pour valider ce tutoriel, il vous suffira de rentrer le mot <b><i>Zenmap</i></b> . 
+        <br>   
+    </p>
+    
+    <head>
+        <script>
+            function verifierMot() {
+                var mot = document.getElementById("mot").value;
+                if (mot === "Zenmap") {
+                    document.getElementById("message").innerHTML = "Félicitations. Tutoriel réussi !!!";
+                } else {
+                    document.getElementById("message").innerHTML = "Ce n'est pas la réponse attendu ...";
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <input type="text" id="mot" name="mot">
+        <button onclick="verifierMot()">Valider la réponse</button>
+        <p id="message"></p>
+    </body>
+    
+    

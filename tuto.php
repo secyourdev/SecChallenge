@@ -1,5 +1,8 @@
 <?php
-	session_start();
+ob_start();
+if (session_status() == PHP_SESSION_NONE) {
+    session_start();
+}
     if (isset($_SESSION['id'])){
 	include("bdd/acces_BDD.php");
 	$id = $_GET["tuto"]; 
@@ -71,7 +74,7 @@
 
                 <div class="blog-item">
 
-                    <img src="<?php echo $result['Image'] ?>" alt="" class="img-fluid images_cours">
+                    <!-- <img src="<?php #echo $result['Image'] ?>" alt="" class="img-fluid images_cours"> -->
 
                     <div class="post-content">
 
@@ -170,4 +173,8 @@
 else{
 	header('Location: index.php');
 }
+?>
+
+<?php 
+ob_end_flush();
 ?>

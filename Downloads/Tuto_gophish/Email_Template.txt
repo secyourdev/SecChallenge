@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<meta charset="utf-8">
+<body>
+
+<div class="container">
+
+<h1>Information Importante sur votre Compte</h1>
+
+<p>Bonjour {{.FirstName}},</p>
+		
+<p>Votre compte a récemment été consulté à partir d'une adresse non reconnue. Si c'était vous, vous pouvez ignorer cet email en toute sécurité. Sinon, vous devez vous connecter à votre compte dès que possible et mettre à jour votre mot de passe.</p>
+
+<p>Vous recevez cet email car votre compte est actuellement configuré pour vous avertir lorsqu'une activité inhabituelle est détectée.</p>
+
+<p><a href="{{.URL}}">Cliquez ici pour vous connecter à votre compte</a></p>
+
+</div>
+<p>{{.Tracker}}</p>
+</body>
+</html>

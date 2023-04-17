@@ -1,0 +1,35 @@
+<div class="section-title row text-center">
+    <div class="col-md-8 offset-md-2">
+        <h1>Trouvez le flag</h1>
+    </div>
+</div>
+
+<h3>Objectif</h3>
+<p>
+    L'objectif de ce challenge est de trouver un fichier du site web http://bikeskryo/ contenant le flag.
+    </br></br>
+    Vous pourrez utiliser l'outil Dirb.
+    </br>
+</p>
+
+<h3>Prérequis</h3>
+
+<p>
+    Il est nécessaire d'avoir installé l'application Docker et docker-compose<br><br>
+
+    Il faut télécharger l'archive suivante : <a class="link-primary" href="Downloads/Challenge_dirb/Challenge_dirb.rar" download="Downloads/Challenge_dirb/Challenge_dirb.rar"><U>Challenge_dirb.rar</U></a><br><br>
+
+    Puis dans le fichier décompressé de l'archive, exécuter les commandes suivantes en terminal:<br>
+    <kbd class="ms-3">chmod -R 777 ./db && chmod -R 777 ./wordpress</kbd><br>
+    <kbd class="ms-3">docker-compose -d --build</kbd><br>
+</p>
+
+<h3>À vous de jouer</h3>
+
+Pour lancer la machine de manipulation : 
+<kbd class="ms-3">docker exec -it ubuntu /bin/bash</kbd><br><br>
+
+Vous avez aussi accès au site bikeskryo depuis votre naviguateur à l'adresse http://localhost:8080<br><br> 
+
+Avec notre tutoriel sur Dirb, vous devez être en mesure de retrouver le flag
+</p>

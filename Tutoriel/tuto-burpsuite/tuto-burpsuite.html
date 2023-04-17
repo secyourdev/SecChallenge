@@ -1,0 +1,110 @@
+<header id="title-block-header">
+  <h1 class="title">Burp pour l’exploitation d’endpoint GraphQL</h1>
+</header>
+<h1 id="burp-pour-lexploitation-dendpoint-graphql">
+  Burp pour l’exploitation d’endpoint GraphQL
+</h1>
+<p>
+  <strong>Burp Suite</strong> est un outil incontournable dans le monde du
+  pentest, qui permet d’intercepter des requêtes HTTP et de les modifier. Dans
+  ce cours nous allons comprendre les bases de <strong>Burp Suite</strong> :
+  intercepteur, répéteur…
+</p>
+<h2 id="installation-de-burp">1. Installation de Burp</h2>
+<p>
+  <strong>Burp Suite</strong> est un logiciel écrit en Java, il vous faut donc
+  une version de java installée sur votre ordinateur. Il existe une version
+  payante de <strong>Burp Suite</strong>, avec plus d’options, mais la version
+  gratuite est amplement suffisante pour nous. Dans la suite de ce cours, nous
+  utiliserons donc <strong>Burp Suite Community Edition</strong>. Il n’existe
+  pas de version de <strong>Burp Suite</strong> en CLI, il n’y a que la version
+  GUI.
+</p>
+<p>
+  Pour installer <strong>Burp Suite</strong>, vous pouvez suivre ce
+  <a href="https://www.geeksforgeeks.org/how-to-install-burp-suite-on-windows/">tutoriel</a>
+  détailler ou bien vous rendre sur le
+  <a href="https://portswigger.net/burp">site officiel</a>.
+</p>
+<h2 id="lancement-du-lab-docker">2. Lancement du lab docker</h2>
+<p>
+  Pour la suite du tuto, vous pouvez lancer ce lab docker pour avoir accès à un
+  site web, dans le but de pratiquer en même temps.
+</p>
+<ul>
+  <li>
+    Téléchargez ce
+    <a
+      href="https://raw.githubusercontent.com/leoroullois/burp_exercice/main/docker-compose.yaml">docker-compose.yaml</a>
+  </li>
+  <li>Lancez-le avec <code>docker-compose up</code></li>
+</ul>
+<p>
+  Vous disposez maintenant d’un site web <code>http://localhost:3000</code>.
+</p>
+<h2 id="intercepter-les-requêtes-http-grâce-au-proxy-de-burp-suite">
+  3. Intercepter les requêtes HTTP grâce au proxy de Burp Suite
+</h2>
+<p>
+  Pour utiliser <strong>Burp Suite</strong> comme proxy et être en mesure
+  d’intercepter le trafic web de votre navigateur internet, nous allons
+  installer une extension firefox se nommant
+  <a href="https://getfoxyproxy.org/downloads/">Foxy Proxy</a>.
+  <br />
+  <img src="Tutoriel/tuto-burpsuite/attachments/burp_1.png" alt="Burp Suite" />
+  <br />
+  Dans les options de
+  <strong>Foxy Proxy</strong>, cliquez sur <code>Add</code> , mettez
+  <code>Burp</code> comme nom, puis <code>127.0.0.1</code> comme adresse IP et
+  <strong>8080</strong> comme port (c’est celui du proxy de Burp).
+</p>
+<img src="Tutoriel/tuto-burpsuite/attachments/burp_2.png" alt="Burp Suite" />
+<p>
+  Une fois que cela est fait, vous pouvez enfin lancer Burp. Pour commencer à
+  intercepter des requêtes, activez <strong>Foxy Proxy</strong>, et dans
+  <strong>Burp</strong>, allez dans l’onglet <strong>Proxy</strong> et activez
+  l’interception.
+</p>
+<img src="Tutoriel/tuto-burpsuite/attachments/burp_3.png" alt="Burp Suite" />
+<img src="Tutoriel/tuto-burpsuite/attachments/burp_4.png" alt="Burp Suite" />
+<p>
+  Maintenant, naviguez sur le site à l’adresse
+  <code>http://localhost:3000/challenge/0</code>, et retournez sur
+  <strong>Burp Suite</strong>. Vous observerez la requête HTTP
+  <code>GET</code> que vous venez de faire.
+  <br />
+  <img src="Tutoriel/tuto-burpsuite/attachments/burp_5.png" alt="Burp Suite" />
+  <br />
+  A partir de là, vous pouvez modifier la requête, la renvoyer, faire une
+  attaque par brute force…
+</p>
+<h2 id="répétez-vos-requêtes-facilement-avec-le-repeater">
+  Répétez vos requêtes facilement avec le Repeater
+</h2>
+<p>
+  Parfois, lorsque l’on intercepte une requête HTTP, on aimerais pouvoir la
+  modifier en la renvoyant plusieurs fois.
+</p>
+<p>
+  C’est par exemple le cas quand on cherche à exploiter une injection SQL. Nous
+  n’aurons jamais dès le premier essai le bon payload, nous devrons le modifier
+  plusieurs fois, et à chaque fois on veut renvoyer la requête pour voir la
+  réponse et améliorer notre payload.
+</p>
+<p>
+  Pour ce faire, Burp Suite met à disposition le repeater. Envoyez la requêtes
+  précédente dans le <strong>Repeater</strong> avec un clic droit,
+  <strong>Send to Repeater</strong>.
+</p>
+<img src="Tutoriel/tuto-burpsuite/attachments/burp_6.png" alt="Burp Suite" />
+<p>
+  Vous pouvez cliquer sur <code>Send</code> pour envoyer une requête, et
+  observer le résultat sur la droite :
+</p>
+<img src="Tutoriel/tuto-burpsuite/attachments/burp_7.png" alt="Burp Suite" />
+<p>
+  Tentez de trouver le flag en parcourant les pages
+  <code>/challenge/:id</code>.
+</p>
+<h2 id="vidéo-explicative">Vidéo explicative</h2>
+<p>Peut être à venir</p>

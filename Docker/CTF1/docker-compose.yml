@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  ctf1-server:
+    container_name: ctf1-server
+    image: cybersecuriteachg2/ctf1-server
+    restart: always
+    networks:
+      - ctf1_net
+
+  ctf1-target:
+    container_name: ctf1-target
+    image: cybersecuriteachg2/ctf1-target
+    restart: always
+    depends_on:
+      - ctf1-server
+    networks:
+      - ctf1_net
+
+  ctf1-hacker:
+    container_name: ctf1-hacker
+    image: cybersecuriteachg2/ctf1-hacker
+    restart: always
+    depends_on:
+      - ctf1-target
+    networks:
+      - ctf1_net
+
+  ctf1-firefox:
+    container_name: ctf1-firefox
+    image: jlesage/firefox
+    restart: always
+    volumes:
+      - /dev/shm:/dev/shm
+    ports:
+      - "5801:5800"
+    depends_on:
+      - ctf1-server
+    networks:
+      - ctf1_net
+
+networks:
+  ctf1_net:

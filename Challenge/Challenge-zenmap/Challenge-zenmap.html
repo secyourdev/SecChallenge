@@ -1,0 +1,293 @@
+<title>Challenge Zenmap</title>
+
+<h1>Challenge Zenmap</h1>
+
+<h2>Collecte d'informations</h2>
+
+<h3> Manipulation </h3>
+
+<p>
+  Vous êtes un hackeur, et vous vous apprêtez à attaquer un nom de domaine <i><b>scanme.nmap.org</b></i>.
+  <br>
+  Pour ce faire, vous voulez d'abord collecter un maximum d'informations pour mieux connaître votre cible et vous utilisez un outil puissant : <b>BillCipher</b> 
+  <br>
+  <br>
+  Remarque : Lors de cette manipulation, nous allons utiliser un nom de domaine utilisé spécifiquement pour les tests et la formation sur Nmap. 
+  <br>
+  Ce dernier est généralement destiné à être utilisé à des fins d'apprentissage et de formation pour se familiariser avec Nmap sans violer les politiques de sécurité ou les lois applicables.
+  <br>
+  <br>
+  <i> Rappel : Il est important de noter que l'utilisation de cet outil doit être légale et éthique, et de ne pas l'utiliser à des fins malveillantes.</i>
+</p>
+
+<h3><b>À vous de jouer !</b></h3>
+
+<p>
+    Pour effectuer ce challenge, vous devez installer sur votre machine Zenmap (cf Tutoriel Zenmap ou le site officiel : <a href="https://nmap.org/download">Zenmap</a>). 
+    <br>
+    <br>
+
+    Avec notre tutoriel et vos recherches personnelles, vous devez être en mesure de récupérer ces informations.</b>
+    <br>
+    
+        <br>
+        <img src="zenmap.png" alt="" class="img-fluid">
+        <br>
+        <br>
+
+
+	<h3><b>Veuillez répondre aux questions suivantes : </b></h3>
+
+</p>
+
+<body>
+	<form>
+    <!-- Ajout autant de zones de texte et de boutons que nécessaire -->
+	<label for="zone-t1">1. Quel est le nom de domaine avez-vous renseigné ? </label>
+		<input type="text" id="zone-t1" name="zone-t1">
+		<button type="button" onclick="verifierTexte('zone-t1')">Valider la réponse</button>
+		<p id="message-1"></p>
+
+		<label for="zone-t2">2. Combien de types de scan (pré-enregistrés) sont disponibles dans l'outil Zenmap ? </label>
+		<input type="text" id="zone-t2" name="zone-t2">
+		<button type="button" onclick="verifierTexte2('zone-t2')">Valider la réponse</button>
+		<p id="message-2"></p>
+        <br>
+    <p> Pour les questions 3 à 12 : Effectuez un scan intense.</p>
+    <label for="zone-t3">3. Quelle est la 3ème option de la commande associée à ce type de scan ? (indiquer la lettre)  </label>
+		<input type="text" id="zone-t3" name="zone-t3">
+		<button type="button" onclick="verifierTexte3('zone-t3')">Valider la réponse</button>
+		<p id="message-3"></p>
+	
+	<label for="zone-tC">4. Quelle est l'adresse IP de scanme.nmap.org ?</label>
+		<input type="text" id="zone-tC" name="zone-tC">
+		<button type="button" onclick="verifierTexteC('zone-tC')">Valider la réponse</button>
+		<p id="message-C"></p>
+
+    <label for="zone-t4">5. Combien de ports sont scannés ? </label>
+		<input type="text" id="zone-t4" name="zone-t4">
+		<button type="button" onclick="verifierTexte4('zone-t4')">Valider la réponse</button>
+		<p id="message-4"></p>
+
+    <label for="zone-t5">6. Combien sont ouverts ? </label>
+		<input type="text" id="zone-t5" name="zone-t5">
+		<button type="button" onclick="verifierTexte5('zone-t5')">Valider la réponse</button>
+		<p id="message-5"></p>
+
+    <label for="zone-t6">7. Quelle service utilise le port 9929 ? </label>
+		<input type="text" id="zone-t6" name="zone-t6">
+		<button type="button" onclick="verifierTexte6('zone-t6')">Valider la réponse</button>
+		<p id="message-6"></p>
+
+    <label for="zone-t7">8. Quel est l'image associé à la cible ? </label>
+		<input type="text" id="zone-t7" name="zone-t7">
+		<button type="button" onclick="verifierTexte7('zone-t7')">Valider la réponse</button>
+		<p id="message-7"></p>
+
+    <label for="zone-t8">9. Quel OS ? (forme : xxxxxx X.X-X.X) </label>
+		<input type="text" id="zone-t8" name="zone-t8">
+		<button type="button" onclick="verifierTexte8('zone-t8')">Valider la réponse</button>
+		<p id="message-8"></p>
+
+	<label for="zone-t9">10. Quelle est le pourcentage de précision sur la détermination de l'OS ? </label>
+		<input type="text" id="zone-t9" name="zone-t9">
+		<button type="button" onclick="verifierTexte9('zone-t9')">Valider la réponse</button>
+		<p id="message-9"></p>
+	
+    <p></p>
+	<label for="zone-tA">11. HTTP-TITLE du serveur Apache ? (en minuscule et sans ponctuation)</label>
+		<input type="text" id="zone-tA" name="zone-tA">
+		<button type="button" onclick="verifierTexteA('zone-tA')">Valider la réponse</button>
+		<p id="message-A"></p>
+	
+	<label for="zone-tB">12. Quel est l'état du service smtp ? </label>
+		<input type="text" id="zone-tB" name="zone-tB">
+		<button type="button" onclick="verifierTexteB('zone-tB')">Valider la réponse</button>
+		<p id="message-B"></p>
+	
+	
+
+    <br>
+	
+    Pour valider ce tutoriel, veuillez entrer le flag trouvé dans la réponse de la dernière question. 
+    </p>
+    <label for="zone-tD"> Validation Challenge Zenmap ?</label>
+		<input type="text" id="zone-tD" name="zone-tD">
+		<button type="button" onclick="verifierTexteD('zone-tD')">Valider la réponse</button>
+		<p id="message-D"></p>
+
+	</form>
+
+	<script>
+		function verifierTexte(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "scanme.nmap.org") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte2(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "10") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte3(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "v") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+
+	function verifierTexteC(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "45.33.32.156") {
+				message.innerHTML = "Bonne réponse ! ";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+
+    function verifierTexte4(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "1000") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte5(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "4") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte6(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "nping-echo") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte7(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "3 pingouins") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte8(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "linux 5.0-5.4") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte9(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "100%") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+	
+	function verifierTexteA(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "go ahead and scanme") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+	
+	function verifierTexteB(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "filtered") {
+				message.innerHTML = "Bonne réponse ! flag : zenmapchallenge054";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+
+
+	
+
+	function verifierTexteD(idZoneTexte) {
+	var zoneTexte = document.getElementById(idZoneTexte);
+	var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+	if (zoneTexte.value.toLowerCase() === "zenmapchallenge054") {
+		message.innerHTML = "Félicitations !!! Vous venez de finir le Challenge 054 Zenmap.";
+		message.style.color = "green";
+	} else {
+		message.innerHTML = "Ce n'est pas la réponse attendu ...";
+		message.style.color = "red";
+	}
+}
+	
+	</script>
+</body>
+
+
+
+
+

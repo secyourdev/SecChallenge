@@ -1,0 +1,25 @@
+services:
+  cewl:
+    image: picicato/tuto-cewl:latest
+    container_name: cewl
+    hostname: cewl
+    stdin_open: true
+    tty: true
+    networks:
+      cewl:
+        ipv4_address: 192.168.30.2
+  php_cewl:
+    container_name: php_cewl
+    image: picicato/tuto-php-cewl:latest
+    networks:
+      cewl:
+        ipv4_address: 192.168.30.3
+    ports:
+      - 80:80
+networks:
+  cewl:
+    driver: bridge
+    ipam:
+     config:
+       - subnet: 192.168.30.0/24
+version: "3.7"

@@ -1,17 +1,13 @@
 <?php
-try{
-    //Serveur Local
-    $BDD=new PDO('mysql:host=localhost;dbname=dbsite;charset=utf8','root','root',
-    array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-}
+  $servername = "10.10.0.3";
+  $username = "root";
+  $password = "root";
+  $dbname = "dbsite";
 
-catch(PDOException $e){
-    die('Erreur :'.$e->getMessage());
-}
-
-?>
-
-
-
-
+  try {
+    $BDD = new PDO("mysql:host=$servername;dbname=$dbname;charset=utf8", $username, $password, array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+  } catch(PDOException $e) {
+    die("[PHP SERVER] Connection failed: \n" . $e->getMessage());
+  }
+?> 
 

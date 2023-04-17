@@ -1,0 +1,172 @@
+<center>
+    <h1>The Sleuth Kit</h1>
+    
+</center>
+
+<h2 class="mb-3"><u>1. Introduction :</u></h2>
+<p>
+  	The Sleuth Kit est un outil open source lié à l’investigation d’images disque : 
+	c’est un ensemble de lignes de commande permettant d’analyser certaines données stockées. 
+	En particulier, nous pourrons utiliser The Sleuth Kit pour investiguer des volumes de données et fichiers systèmes. 
+	Ceci rend The Sleuth Kit plus qu’utile en analyse forensic.
+<br>
+
+<center>
+    <img src="Tutoriel/tuto-thesleuthkit/images/sleuthkitlogo1.PNG" alt="logo" width="350" height="350" class="img-fluid">
+</center>
+
+    <br>
+</p>
+
+<h2 class="mb-3"><u>2. Description :</u></h2>
+<p>
+<br>
+    Grâce à une interface en ligne de commande proposée par The Sleuth Kit, nous serons capables d’étudier différents volumes de données afin dans l’optique d’une analyse forensic. 
+Liste des fichiers analysables : NTFS, FAT, ExFAT, UFS 1/2, Ext2, Ext3, Ext4, HFS, ISO 9660 et YAFFS2. Et bien sûr les disques brutes.
+Il s’agit d’un outil affilié à The Coroners Toolkit (TCT) car reprenant dans sa conception des pratiques similaires notamment lors de sa création via les langages C et Pearl.
+Systèmes d’exploitation compatibles : Windows, MAC, Linux.<br>
+<br>
+
+<br>
+Les outils les plus simples et utiles de TheSleuthKit :<br> 
+
+<center>
+    fls : Liste les noms de fichiers alloués ou non dans un système de fichiers <br>
+fsstat : Statistiques du système de fichier <br>
+ffind : Recherche les noms de fichiers liés à une métadonnée <br>
+ils : Liste des métadonnées <br>
+<br>
+
+<h2 class="mb-3"><u>3. Installation :</u></h2>
+<p>
+    Pour installer The Sleuth Kit, il suffit de détarer le tar disponible à ce lien : <br>
+	https://github.com/sleuthkit/sleuthkit/releases/download/sleuthkit-4.12.0/sleuthkit-4.12.0.tar.gz
+	<br>
+	Ou bien plus simplement :<br>
+	<kbd class="ms-3">‘sudo apt-get install sleuthkit’</kbd> 
+<br>
+
+</p>
+
+<h2 class="mb-3"><u>4. Conseil :</u></h2>
+<p>
+
+Générer l’image peut se faire avec la commande “dd”, seulement, la générer depuis une VM est parfois compliqué. 
+Un conseil utile serait d’utiliser un outil tel que ‘testdisk’ pour générer aisément une image disque (via Windows).
+<br>
+
+</p>
+<br>
+<h2 class="mb-3"><u>5. Utilisation :</u></h2>
+<p>
+<br>
+Vous pourrez pratiquer par vous même via la machine disponible par la commande suivante : <kbd class="ms-3">docker pull tsk-tutoriel</kbd><br><br>
+	
+<br>	
+Intéressons nous à la récupération des données présentes sur un disque dur. C’est une activité pouvant s’avérer très surprenante dans le cas de disque dur obtenus d’occasion, et soulignant les enjeux de la sécurité en forensic.
+<br>
+Tout d’abord après avoir lancé The Sleuth Kit on peut vérifier notre numéro de version avec ‘mmls -V’ : 
+<br>
+
+
+<center>
+    <img src="Tutoriel/tuto-thesleuthkit/images/version2.PNG" alt="mmls" width="350" height=250" class="img-fluid">
+</center>
+
+
+Nous avons une image d’un disque dur ‘image.dd’ investiguons le : 
+
+<center>
+    <img src="Tutoriel/tuto-thesleuthkit/images/ls3.PNG" alt="ls" width="250" height="100" class="img-fluid">
+</center>
+
+
+On peut maintenant afficher les métadonnées de ‘image.dd’ avec ‘ils -f fat32 image.dd’ : 
+
+
+<center>
+    <img src="Tutoriel/tuto-thesleuthkit/images/ils4.PNG" alt="ils" width="550" height="350" class="img-fluid">
+</center>
+
+
+L’option ‘-f fat32’ permet de préciser le type de système de fichier (obligatoire).
+
+<br>
+
+Les numéros de la colonne de gauche correspondent aux inodes associés à chaque fichier ou dossier. Ils nous seront utiles pour la suite mais la commande efffectuée n’est pas indispensable pour les obtenir comme on le verra par la suite.
+Les fichiers listés avec cette commande sont ceux désalloués, ils ne sont donc pas visibles en temps normal.
+On peut utiliser ‘ffind -f fat32 image.dd 8’ : <br>
+
+
+<center>
+    <img src="Tutoriel/tuto-thesleuthkit/images/ffind5.PNG" alt="ffind" width="350" height="100" class="img-fluid">
+</center>
+
+
+Pour des informations plus concrète, voyons la commande ‘fsstat -f fat32 image.dd’ : 
+
+<center>
+    <img src="Tutoriel/tuto-thesleuthkit/images/fsstat6.PNG" alt="fsstat" width="500" height="550" class="img-fluid">
+</center>
+
+<br>
+On obtient des premières informations : <br>
+<center>
+l’OEM (le fabricant d'équipement d’origine) : “MSDOS5.0” <br>
+Volume Label (le nom du volume de stockage)  “NO NAME” <be>
+</center>
+Ainsi que des informations sur les tailles des différents secteurs de l’image disque.<br>
+<br>
+
+Plus intéressant : la commande ‘fls -f fat32 image.dd’ nous affiche les fichiers et dossiers présents sur l’image disque. 
+On y trouve également l’inode de chacuns d’eux comme abordé précédemment.
+
+<center>
+    <img src="Tutoriel/tuto-thesleuthkit/images/fls7.PNG" alt="fls" width="350" height="350" class="img-fluid">
+</center>
+<br>
+La mention “d” correspond à directory pour qualifier un dossier et “r” pour un fichier.<br>
+<br>
+On a également affiché les dossiers supprimés ! Toutes les lignes contenant une * avant l’inode correspondent à des fichiers ou dossiers supprimés (ici on voit beaucoup de “nouveau dossier” créés.<br>
+<br>
+On peut bien sûr afficher le contenu des différents dossiers grâce à leur inode : avec ‘fls -f fat32 image.dd 15’, 15 correspondant à l’inode du dossier Images :<br>
+
+<center>
+    <img src="Tutoriel/tuto-thesleuthkit/images/inode15.PNG" alt="inode1" width="550" height="150" class="img-fluid">
+</center>
+
+Et en visualisant le dossier LinkedIn : <br>
+
+<center>
+    <img src="Tutoriel/tuto-thesleuthkit/images/inode651.PNG" alt="inode2" width="450" height="150" class="img-fluid">
+</center>
+
+On a une image ! Cette même image est aussi supprimée.<br>
+<br>
+Seulement, on ne peut pas visualiser ces fichiers. Nous arrivons à une commande phare de The Sleuth Kit : tsk_recover.<br>
+D’abord créons un dossier Tempo, où seront redirigés l’intégralité des fichiers et dossiers supprimés ou non : <br>
+
+<center>
+    <img src="Tutoriel/tuto-thesleuthkit/images/Tempo10.PNG" alt="Tempo" width="350" height="150" class="img-fluid">
+</center>
+
+Avec ‘tsk_recover -i raw -e image.dd ../Tempo’ nous pourrons visualiser concrètement tous les fichiers de l’image disque : 
+
+<center>
+    <img src="Tutoriel/tuto-thesleuthkit/images/recover11.PNG" alt="recover" width="550" height="150" class="img-fluid">
+</center>
+
+290 fichiers récupérés !<br>
+<br>
+Et on y a accès dans le dossier Tempo ! On peut alors explorer les fichiers à notre guise :
+
+<center>
+    <img src="Tutoriel/tuto-thesleuthkit/images/Visuel12.PNG" alt="Visuel1" width="350" height="350" class="img-fluid">
+    <img src="Tutoriel/tuto-thesleuthkit/images/Visuel13.PNG" alt="Visuel2" width="450" height="300" class="img-fluid">
+</center>
+
+<br>
+<center>
+    Nous voilà prêts à analyser des images disques et aptes à retrouver des fichiers supprimés ou cachés ! 
+</center>
+</p>

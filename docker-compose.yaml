@@ -1,0 +1,53 @@
+networks:
+  secyourdev:
+    ipam:
+      config:
+        - subnet: 10.10.0.0/24
+
+services:
+  db:
+    build:
+      context: .
+      dockerfile: Dockerfile-mysql
+    command: --default-authentication-plugin=mysql_native_password
+    # restart: always
+    container_name: secyourdev_mysql
+    env_file: .env
+    networks:
+      secyourdev:
+        ipv4_address: 10.10.0.3
+    ports:
+      - '3306:3306'
+  phpmyadmin:
+    container_name: secyourdev_phpmyadmin
+    depends_on:
+      - db
+    env_file: .env
+    image: phpmyadmin/phpmyadmin
+    links:
+      - 'db'
+    # restart: always
+    networks:
+      secyourdev:
+        ipv4_address: 10.10.0.4
+    ports:
+      - '8081:80'
+  server:
+    build:
+      context: .
+      dockerfile: Dockerfile-php
+    container_name: secyourdev_server
+    depends_on:
+      - db
+    env_file: .env
+    expose:
+      - 8000
+    networks:
+      secyourdev:
+        ipv4_address: 10.10.0.2
+    ports:
+      - '8080:80'
+    volumes:
+      - './:/var/www/html/'
+
+version: '3.8'

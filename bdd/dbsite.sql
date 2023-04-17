@@ -59,7 +59,24 @@ INSERT INTO `challenge` (`IdChallenge`, `Emplacement`, `Reponse`, `NomChallenge`
 (13, 'Challenge/challenge-wmic/challenge-wmic.html', '5da507ae6b4cfb86904b5651ce99839138eae6f5', 'Wmic', 'Commandes Wmic', NULL, NULL, 'Collecte d\'information', 5),
 (14, 'Challenge/challenge-nikto/challenge-nikto.html', '877', 'Nikto', 'Analyse serveur web', 'Reconnaissance', NULL, 'Scanner de vulnérabilité', 5),
 (15, 'Challenge/challenge-sqlmap/Challenge-sqlmap.html', '0924086489ca5a44e71715a6c00832cb', 'Sql injection', 'SQL', 'SQLMap', 'PHP', NULL, 5),
-(16, 'Challenge/challenge-cyberchef/challenge-cyberchef.html', '22/12/1973', 'RoDate', 'CyberChef', 'Brute force', NULL, 'Collecte d\'information', 5);
+(16, 'Challenge/challenge-cyberchef/challenge-cyberchef.html', '22/12/1973', 'RoDate', 'CyberChef', 'Brute force', NULL, 'Collecte d\'information', 5),
+(17, 'Challenge/Challenge-searchsploit/Challenge-searchsploit.html', 'ESIEE2022', 'Searchsploit', 'scan de vulnérabilité'  , NULL, NULL, 'Scanner de vulnérabilité', 5),
+(18, 'Challenge/Challenge-dirb/challenge-dirb.html', 'FLAG_DIRB', 'Dirb', 'dirb'  , 'wget', 'dirb-gendict', 'Collecte d\'information', 5),
+(19, 'Challenge/Challenge-xss/Challenge-xss.html', '4f2cbc87727679862bb4f14a0346fcab', 'Vol de session', 'xss'  , 'dirb', NULL, 'Prise de contôle', 10),
+(20, 'Challenge/Challenge-dnsenum/Challenge-dnsenum.html', '172.20.0.3', 'DNSEnum', NULL  , NULL , NULL, 'Collecte d\'information', 5),
+(21, 'Challenge/challenge-hydra/challenge-hydra.html', 'FL4G_Hydra_LeChallenge', 'Hydra', NULL  , NULL , NULL, 'Attaque de mot de passe', 5),
+(22, 'Challenge/CTF1/ctf1.html', '0urV3ryF&rstCTF', 'CTF1', 'ssh'  , 'Brute Force' , NULL, 'Prise de contrôle', 5),
+(23, 'Challenge/Challenge-wget/Challenge-wget.html', 'GET THAT W', 'wget', NULL  , NULL , NULL, 'téléchargement en invite de commande', 5),
+(24, 'Challenge/Challenge-sitebroker/challenge-siteBroker.html', 'https://127.0.0.1/admin.html', 'SiteBroker', NULL  , NULL , NULL, 'scan de site internet', 5),
+(25, 'Challenge/Challenge-TheSleuthKit/Challenge-TheSleuthKit.html', 'dani.martinez1998@gmail.com', 'TheSleuthKit', NULL  , NULL , NULL, 'Un forensic approfondi avec TheSleuthKit !', 5),
+(26,'Challenge/challenge-graphql/challenge-graphql.html','flag{graphql_is_awesome}','GraphQL','Web','API','Burp Suite','Web',5),
+(27,'Challenge/challenge-jwt/challenge-jwt.html','flag{JwT_1s_N0t_S0_@S3cur3}','JWT','Web','Burp Suite','Json Web Token','Web',5),
+(28,'Challenge/challenge-commix/Challenge-commix.html','flag{c0mm4ND_INj3c7i0n}','Commix','Web','Burp Suit','Injection de commande','Injection de commande',5),
+(29,'Challenge/challenge-infoga/Challenge-infoga.html','flag{1nF0_G47h3r1nG}','Infoga','OSINT','Brute Force','','Collecte d\'information',5),
+(30,'Challenge/challenge-cewl/Challenge-cewl.html','flag{4Cc35_4uT0R1s3}','Cewl','Brute Force','OSINT','','Attaque de mot de passe',5);
+
+
+
 -- --------------------------------------------------------
 
 --
@@ -106,7 +123,15 @@ INSERT INTO `cours` (`Id`, `Titre`, `Description`, `EmplacementCours`, `LienImag
 (26, 'Les antivirus', 'Dans ce cours nous allons décourvir les méthodes employées pars les antivirus pour analyser les fichiers', 'Cours/cours-av/cours-av.html', 'Cours/cours-av/av.jpeg', 'Outil'),
 (27, 'Foremost', 'Vous trouverez ici une introduction sur un logiciel permettant la récupération de données.', 'Cours/cours-foremost/cours-foremost.html', 'Cours/cours-foremost/image-premiere-page.jpg', 'Outil'),
 
-(28, 'NETCAT', 'Un outil permettant de créer une connexion entre deux ou plusieur machines', 'Cours/cours-netcat/cours-netcat.html', 'Cours/cours-netcat/affiche.png', 'Outil');
+(28, 'NETCAT', 'Un outil permettant de créer une connexion entre deux ou plusieur machines', 'Cours/cours-netcat/cours-netcat.html', 'Cours/cours-netcat/affiche.png', 'Outil'),
+
+(29, 'Firewall', 'Etablissement de règle qui régissent le traffic autorisé et bloqué', 'Cours/cours-firewall/cours-firewall.html', 'Cours/cours-firewall/affiche.png', 'Notion'),
+(30, 'Faille XSS', 'Introduction à la faille XSS / cross-site scripting', 'Cours/cours-XSS/cours-XSS.html', 'Cours/cours-XSS/affiche.png', 'Faille'),
+(31, 'Searchsploit', 'Recherche facile de vulnébalité', 'Cours/cours-searchsploit/cours-searchsploit.html', 'Cours/cours-searchsploit/SS1.png', 'Outil'),
+(32, 'Attaque Kerberoasting', 'Exploitation d\'une faille kerberoast', 'Cours/cours-kerbe/cours-kerbe.html', 'Cours/cours-kerbe/photoreseau.jpg', 'Faille'),
+(33, 'Spear-Phishing', 'Utilisation d\'information privé pour le phishing ', 'Cours/cours-spearphishing/cours-spearphishing.html', 'Cours/cours-spearphishing/affiche.jpg', 'Notion'),
+(34,'Cours GraphQL','GraphQL est un langage de requête pour les API créé par Facebook en 2012 et devenu opensource en 2015.','Cours/cours-graphql/cours-graphql.html','','Web'),
+(35,'Cours JWT','Un token JWT (JSON Web Token) est une chaîne de caractères encodée en base64 qui contient des informations d\'identification et d\'autorisation pour accéder à une API ou à un service web. Les tokens JWT sont utilisés pour sécuriser les API REST et GraphQL, ainsi que d\'autres applications web.','Cours/cours-jwt/cours-jwt.html','Cours/cours-jwt/attachments/structure_jwt.png','Web');
 
 -- --------------------------------------------------------
 
@@ -132,8 +157,9 @@ INSERT INTO `presentation` (`Id`, `LienPresentation`, `LienImage`, `Titre`, `Des
 (2, 'Presentation/pres-phishing/pres-phishing.html', 'Presentation/pres-phishing/phishing.png', 'Présentation : Le phishing (hammeçonnage)', 'Cette présentation vous expliquera ce qu\'est le phishing, comment s\'en protéger et que faire si on en est victime.', NULL),
 (3, 'Presentation/pres-ransomware/pres-ransomware.html', 'Presentation/pres-ransomware/ransomware.png', 'Présentation : Le ransomware (rançonlogiciel)', 'Cette présentation vous expliquera ce qu\'est un ransomware, comment se protéger de ces logiciels et que faire si on en est victime.', NULL),
 (4, 'Presentation/pres-xss/pres-xss.html', 'Presentation/pres-xss/xss.png', 'Présentation : Une attaque XSS', 'Cette présentation vous expliquera ce qu\'est une attaque XSS, l\'impact d\'une telle attaque et comment s\'en protéger.', NULL),
-(5, 'Presentation/pres-firewall/firewall.html', 'Presentation/pres-firewall/firewall.png', 'Le pare-feu par la granularité', 'Voici une présentation sommaire du fonctionnement d\'un pare-feu Linux.', NULL);
-
+(5, 'Presentation/pres-firewall/firewall.html', 'Presentation/pres-firewall/firewall.png', 'Firewall', 'Voici une présentation sommaire du fonctionnement d\'un pare-feu Linux.', NULL),
+(6, 'Presentation/pres-heartbleed/pres-heartbleed.html', 'Presentation/pres-heartbleed/heartbleed-logo.png', 'Faille Heartbleed', 'Présentation d\'une faille ssl', NULL),
+(7, 'Presentation/pres-wsus/pres-wsus.html', 'Presentation/pres-wsus/affiche.png', 'Windows Server Update Services (wsus)', 'Outil de gestion de mises à jour de sécurité pour les systèmes d\'exploitation  windows', NULL);
 -- --------------------------------------------------------
 
 --
@@ -380,7 +406,29 @@ INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Description`, `Reponse`, `Emplac
 (38, 'GNU Debugger', 'Apprendre à debugger un programme avec GDB', NULL, 'Tutoriel/tuto-gdb/tuto-gdb.html', 'Tutoriel/tuto-gdb/gdb.png', NULL),
 (39, 'RAT', 'C\'est un software malveillant qui a pour but de prendre contrôle de l\'appareil infecté', NULL, 'Tutoriel/tuto-rat/tuto_rat.html', 'Tutoriel/tuto-rat/affiche.png', NULL),
 (40, 'Volatility', 'Comment analyser la ram d\'un ordinateur', NULL, 'Tutoriel/tuto-volatility/tuto-volatility.html', 'Tutoriel/tuto-volatility/affiche.png', NULL),
-(41, 'fcrackzip', 'Attaquer un dossier .zip protégé', NULL, 'Tutoriel/tuto-fcrackzip/tuto-fcrackzip.html', 'Tutoriel/tuto-fcrackzip/affiche.png', NULL);
+(41, 'fcrackzip', 'Attaquer un dossier .zip protégé', NULL, 'Tutoriel/tuto-fcrackzip/tuto-fcrackzip.html', 'Tutoriel/tuto-fcrackzip/affiche.png', NULL),
+(42, 'Faille XSS', 'Attaquer un site vulnérable', NULL, 'Tutoriel/tuto-XSS/tuto-xss.html', 'Tutoriel/tuto-XSS/affiche.png', NULL),
+(43, 'NSE', 'Scripting pour nmap', NULL, 'Tutoriel/tuto-nse/tuto-NSE.html', 'Tutoriel/tuto-nse/images/nmap4.jpg', NULL),
+(44, 'DNSEnum', 'L\'outil d\'énumération DNS simple & efficace', NULL, 'Tutoriel/tuto-DNSEnum/tuto-DNSEnum.html', 'Tutoriel/tuto-DNSEnum/images/affiche.png', NULL),
+(45, 'sslyze', 'Outil pour analyser la configuration SSL d\'un serveur', 'Tuto-SSLyze', 'Tutoriel/tuto-sslyze/tuto-sslyze.html', 'Tutoriel/tuto-sslyze/affiche.png', NULL),
+(46, 'HashCat', 'Outil pour obtenir un mot de passe à partir de son hash', 'butterfly', 'Tutoriel/tuto-hashcat/tuto-hashcat.html', 'Tutoriel/tuto-hashcat/affiche.png', NULL),
+(47, 'Dirb', 'Outil pour effectuer des recherches de répertoires et de fichiers sur des serveurs web', 'Tuto-dirb', 'Tutoriel/tuto-dirb/tuto-dirb.html', 'Tutoriel/tuto-dirb/affiche.png', NULL),
+(48, 'Exploiter Heartbleed', 'Exploitation de la faille heartbleed avec Metasploit', 'tuto-heartbleed', 'Tutoriel/tuto-heartbleed/tuto-heartbleed.html', 'Tutoriel/tuto-heartbleed/affiche.png', NULL),
+(49, 'Shodan', 'Moteur de recherche d\'objets connectés', NULL, 'Tutoriel/tuto-shodan/tuto-shodan.html', 'Tutoriel/tuto-shodan/shodan1.jpg', NULL),
+(50, 'WGET', 'Outil de téléchargement en ligne de commande', NULL, 'Tutoriel/tuto-wget/tuto-wget.html', 'Tutoriel/tuto-wget/wget3.png', NULL),
+(51, 'Local file inclusion', 'Comment uploader un fichier sur un site web', NULL, 'Tutoriel/tuto-lfi/tuto-lfi.html', 'Tutoriel/tuto-lfi/images/lfi_logo.png', NULL),
+(52, 'Python Scapy', 'Un puissant sniffer et éditeur de paquet', '1472ac1b19', 'Tutoriel/tuto-scapy/tuto-scapy.html', 'Tutoriel/tuto-scapy/images/affiche.png', NULL),
+(53, 'Gophish', 'Framework de phishing pour tester l\'exposition d\'une organisation au phishing', NULL, 'Tutoriel/tuto-gophish/tuto-gophish.html', 'Tutoriel/tuto-gophish/affiche.png', NULL),
+(54, 'TheSleuthKit', 'L\'exploration complète de volumes de stockage', NULL, 'Tutoriel/tuto-thesleuthkit/tuto-thesleuthkit.html', 'Tutoriel/tuto-thesleuthkit/images/sleuthkitlogo1.PNG', NULL),
+(55, 'Crunch', 'Un créateur de dictionnaire de mots de passe', 'acZ4:', 'Tutoriel/tuto-crunch/tuto-crunch.html', 'Tutoriel/tuto-crunch/affiche.png', NULL),
+(56, 'Hydra', 'Bruteforcer efficacement et facilement grâce à Hydra !', 'FL4G_Hydra_SSH', 'Tutoriel/tuto-hydra/tuto-hydra.html', 'Tutoriel/tuto-hydra/images/affiche.png', NULL),
+(57, 'SiteBroker', 'Analyseur de Site', NULL, 'Tutoriel/tuto-sitebroker/tuto-sitebroker.html', 'Tutoriel/tuto-sitebroker/affiche.png', NULL),
+(58, 'ExeJoiner', 'Joindre des fichiers en exécutable', NULL, 'Tutoriel/tuto-exejoiner/exejoiner.html', 'Tutoriel/tuto-exejoiner/affiche.png', NULL),
+(59,'Tutoriel Burp Suite','Burp Suite est un outil incontournable dans le monde du pentest, qui permet d\'intercepter des requêtes HTTP et de les modifier.\r\nDans ce cours nous allons comprendre les bases de Burp Suite : intercepteur, répéteur...','easy','Tutoriel/tuto-burpsuite/tuto-burpsuite.html','Tutoriel/tuto-burpsuite/attachments/burp_1.png','Web'),
+(60,'Commix','Commix est un outil gratuit et open-source disponible sur GitHub. Cet outil est un outil puissant utilisé pour exploiter les vulnérabilités d\'injection de commandes dans les sites Web et les applications Web.','Vous avez trouvé le flag !','Tutoriel/tuto-commix/tuto-commix.html','Tutoriel/tuto-commix/commix_image.png','Injection de commande'),
+(61,'Infoga','Infoga est un outil rassemblant des informations sur les comptes de messagerie (adresse IP, nom d\'hôte, pays, ...) à partir d\'une source publique différente (moteurs de recherche, serveurs de clés pgp et shodan) et vérifie si des e-mails ont été divulgués à l\'aide de l\'API haveibeenpwned.com. Est un outil vraiment simple, mais très efficace pour les premières étapes d\'un test d\'intrusion ou tout simplement pour connaître la visibilité de votre entreprise sur Internet.','','Tutoriel/tuto-infoga/tuto-infoga.html','Tutoriel/tuto-infoga/email-osint.png','Collecte d\'information'),
+(62,'Cewl','Cewl est un générateur de listes de mots personnalisé préinstallé avec Kali Linux. À propos, de nombreux outils de génération de listes de mots personnalisés, tels que Crunch, peuvent être disponibles sur Internet. Cependant, l\'outil Crunch peut ne pas convenir aux pirates éthiques. Avec l\'aide de l\'outil cewl, nous pouvons facilement collecter des mots et des phrases à partir de la page cible.',NULL,'Tutoriel/tuto-cewl/tuto-cewl.html','Tutoriel/tuto-cewl/image-premiere-page.png','Attaque de mot de passe');
+
 -- --------------------------------------------------------
 
 --

@@ -3,8 +3,7 @@ version: "3.7"
 services:
     alice:
         build: ./Alice/.
-        image: mitm_alice
-        container_name: mitm_alice
+        container_name: scapy_alice
         restart: always
         volumes:
             - ./Alice/request.py:/usr/src/app/request.py

@@ -1,0 +1,30 @@
+<h2 class="mb-3">1. Qu'est-ce que c'est Heartbleed ?</h2>
+<p>
+        Heartbleed est une faille SSL/TLS qui permet de lire une partie de la mémoire du serveur (plus exactement 64k). Il s'agit d'un trou de sécurité dans OpenSSL, une librairie qui gère les échanges entre un client et le serveur en chiffrant les informations à l'aide de certificat.
+        </br></br>
+        Le mot “heartbeat” signifiant “battement de cœur” désigne en informatique une façon pour un système de vérifier la présence d'un autre, sous la forme d'un envoi et d'une réponse rappelant le battement du cœur. 
+        </br>
+</p><img src="Presentation/pres-heartbleed/heartbleed1.png" alt="" class="img-fluid"> <br>
+<p>
+</p>
+<h2 class="mb-3">2. Origine de la faille</h2>
+<p>
+        La faille survient dans l'implémentation de cet échange, où un système pouvait demander à l'autre de ne pas renvoyer une simple validation de sa présence, mais jusqu'à 64 000 caractères.
+        </br></br>
+        L'erreur de codage peut être attribuée à une seule ligne de code : memcpy(bp, pl, payload);
+        </br></br>
+        C’est cette commande qui copie les données. bp est l'endroit où elles sont copiées, pl est l'endroit d'où elles sont copiées et payload est la longueur des données copiées. Le problème est qu'il n'y a jamais de tentative de vérifier si la quantité de données dans pl est égale à la valeur donnée de payload.
+</p>
+<h2 class="mb-3">3. Correctifs</h2>
+<p>
+        Des correctifs ont été déployés pour OpenSSL dès l'annonce de la vulnérabilité. Pour corriger la vulnérabilité Heartbleed, il faut passer à la dernière version d'OpenSSL. 
+        Il convient également de changer les certificats SSL utilisés par les serveurs, car ils peuvent avoir été compromis sans laisser de trace. Enfin, les utilisateurs qui ont des comptes sur le système devraient changer leurs mots de passe.
+</p>
+
+</p>
+<h2 class="mb-3">4. Conclusion</h2>
+<p>
+        Aujourd'hui, cette vulnérabilité est toujours présente dans de nombreux serveurs et systèmes. Les versions actuelles d'OpenSSL ont, bien entendu, été corrigées. Cependant, les systèmes qui n'ont pas (ou n'ont pas pu) effectuer la mise à niveau vers la version corrigée d'OpenSSL sont toujours affectés par la vulnérabilité et peuvent être attaqués.
+        <br><br>
+        Pour les attaquants, trouver la vulnérabilité Heartbleed est une récompense, plus facile à obtenir en automatisant le travail de recherche. Une fois que l'attaquant a trouvé un système vulnérable, il est relativement simple d'exploiter la vulnérabilité. Il peut alors accéder à des informations et/ou à des informations d'identification qu'il pourra utiliser pour lancer d'autres attaques.
+</p>

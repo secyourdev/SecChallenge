@@ -1,0 +1,114 @@
+<h1><b>Présentation BillCipher</b></h1>
+
+
+    <h2><b>1. Rappel </b></h2>
+
+        <h3><b> OSINT</b></h3>
+
+    <!--<img src=steganographie.jpg alt="" class="img-fluid">
+    <br>
+    -->
+
+<p>
+    "OSINT" en français signifie "Intelligence Open Source", qui fait référence à la collecte, l'analyse et la diffusion d'informations 
+    provenant de sources accessibles au public, telles que les réseaux sociaux, les articles de presse et les rapports gouvernementaux.
+    <br>
+    Il existe de nos jours différents logiciels permettant d'effectuer de l'OSINT tels que : 
+    <ul>
+        <li>Maltego</li>
+        <li>Shodan</li>
+        <li>TheHarvester</li>
+        <li>Reon-ng</li>
+        <li>...</li>
+    </ul> 
+
+    Plus d'informations sur les liens suivants : 
+    <a href="https://geekflare.com/fr/osint-tools/"><U>Geekflare_osint-tools</U></a>, <a href="https://osintfr.com/fr/outils/"><U>Osintfr_tools</U></a>
+
+    <br>
+    <br>
+    <i>Il est important de noter que l'utilisation de ces outils doit être légale et éthique, et que vous devriez toujours respecter 
+    la vie privée des autres et ne pas utiliser ces outils à des fins malveillantes.</i> 
+    <br>
+</p>
+
+<h2><b>2. Objectif</b></h2>
+
+<p>
+    L'objectif de ce cours est de vous présenter l'outil Billcipher ainsi que certaines de ces fonctionnalités.
+    <br>
+    <br>
+    <img src=billcipher0.png alt="" class="img-fluid">
+    <br>
+    <br>
+    BillCipher est un outil libre et open-source disponible sur Github. Il est basé sur l'Intelligence Open Source (OSINT), et est un outil pratique et utile pour la reconnaissance. 
+    <br>
+    <br>
+    L'interface de BillCipher est similaire à Metasploit 1 et Metasploit 2, et il fournit une interface en ligne de commande qui peut être exécutée sur Kali Linux. 
+    <br>
+    Avec BillCipher, vous pouvez obtenir des informations sur votre cible, qui peut être un site web ou une adresse IP. 
+    La console interactive est équipée de plusieurs fonctionnalités utiles, telles que l'auto-complétion des commandes et l'aide contextuelle. 
+    <br>
+    Écrit en Python, BillCipher est un outil de reconnaissance web qui contient plusieurs modules, tels que l'interaction avec des bases de données, des fonctions intégrées pratiques, une aide interactive et l'auto-complétion des commandes. 
+    <br>
+    BillCipher crée un environnement puissant pour la reconnaissance web open-source, vous permettant de recueillir des informations complètes sur votre cible.
+    <br>
+    <br>
+    Voici quelques caractéristiques : 
+    <ul>
+        <li>DNS Lookup</li>
+        <li>Whois Lookup</li>
+        <li>GeoIP Lookup</li>
+        <li>Port Scanner</li>
+        <li>... </ul>
+    </ul> 
+</p>
+
+<h2><b>3. Configuration</b></h2>
+
+    <h3><b>3.a Linux</b></h3>
+<p>
+Ouvrez un bash et tapez les commandes suivantes : 
+<br>
+<kbd class="ms-3"><bash>sudo apt install ruby python3-pip </kbd><br>
+<kbd class="ms-3"><bash>sudo apt install httrack whatweb </kbd><br>
+<kbd class="ms-3"><bash> git clone https://github.com/bahatiphill/BillCipher</kbd><br>
+<kbd class="ms-3"><bash> cd BillCipher</kbd><br>
+<kbd class="ms-3"><bash> pip install -r requirement.txt</kbd><br>    
+<kbd class="ms-3"><bash> pip3 install -r requirement.txt</kbd><br>
+
+Pour lancer l'outil, tapez : <kbd class="ms-3"><bash> python3 billcipher.py</kbd><br>
+</p>
+
+
+<h3><b>3.b Utilisation via Docker et Docker-compose </b></h3>
+
+<p>
+    Pour effectuer les manipulations du tutoriel et du challenge Billcipher, une machine déjà configurée sera mise à votre disposition.
+    <br>
+    Il faudra télécharger un fichier de format <i>docker-compose.yml </i> que vous récupérerez via des liens. 
+    <br>
+    <br>
+    Puis, dans un bash (Linux) ou cmd (Windows), allez dans le répertoire où vous avez téléchargé le fichier docker-compose.yml et effectuez les commandes suivantes : 
+    <br>
+    <kbd class="ms-3"><bash> docker-compose build</kbd><br>
+    <kbd class="ms-3"><bash> docker-compose up -d</kbd><br>
+    <kbd class="ms-3"><bash> docker exec -ti [nom_docker] /bin/bash</kbd><br>
+    <br>
+</p>
+
+<h3>Sources & Crédits</h3>
+
+<p>Nous nous sommes inspirés de plusieurs sources pour la rédation de ce cours. Vous trouverez dans cette
+	section les liens vers les articles ou vidéos qui nous on servit lors de la rédaction.
+	</br></br>
+	OSINT: <a href="https://www.crowdstrike.fr/cybersecurity-101/osint-open-source-intelligence/">Crodwstrike_Osint</a>
+	</br>
+	Billcipher: <a href="https://www.geeksforgeeks.org/billcipher-an-information-gathering-tool-in-kali-linux/">Geeksforgeeks</a>
+	</br>
+	Billcipher: <a href="https://github.com/bahatiphill/BillCipher">Github</a>
+    </br>
+    Billcipher: <a href="https://www.youtube.com/watch?v=XZU8OHsSOMA">Youtube</a>
+    
+
+</p>

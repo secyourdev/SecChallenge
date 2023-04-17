@@ -1,0 +1,54 @@
+<center>
+    <h1>Shodan</h1>
+    <img src="Tutoriel/tuto-shodan/shodan1.jpg" width="300" height="200" class="img-fluid">
+</center>
+
+<h2 class="mb-3"><u>1. Objectif</u></h2>
+<p>
+    L’objectif de ce tutoriel est de comprendre comment utiliser l’outil Shodan. Shodan est un moteur de recherche 
+    qui est spécialisé dans la recherche d'objets connectés à Internet. Il peut trouver des informations sur des milliards d’iot qui ont des adresses IP publiques et permet aussi des ports ouverts et des vulnérabilités.<br>
+   <br>Shodan peut être utilisé de manière similaire à Google, pour avoir de meilleur résultats il faut utiliser une série 
+   de filtre exprimer en String. Shodan peut donc avoir un rôle très différent selon par qui il est utilisé. En effet, s’il est utilisé par des cybercriminels cela peut être un outil très puissant pour exploiter les vulnérabilité des iot concernés. Utilisé par des équipes de sécurité, il peut être utile pour corriger des vulnérabilités sur certains serveurs ou iot. 
+    <br>
+    <br>A l’heure actuelle de nombreux appareils ont des mots de passe par défaut qui sont annoncés dans leur bannières. Par exemple, les appareils Cisco donnent un combo nom d'utilisateur/mot de passe par défaut "cisco/cisco". Shodan peut servir à se protéger de tels appareils vulnérables dans son environnement de travail. 
+    <br>
+    <br>Un des autres points forts de Shodan est que l'on peut utiliser les filtres pour spécifier sa recherche et donc affiner ses résultats. Par exemple, on peut choisir le nombre de port ouvert des appareils, choisir de voir les appareils d’un pays en particulier. On peut aussi rechercher des vulnérabilités spécifiques connues comme heartbleed par exemple. Vous pouvez accéder à cette listes précise de filtres de shodan en cliquant sur ce lien : <a href="https://www.shodan.io/search/filters">lienfiltres</a> 
+    <br>
+    <br>La version payante peut amener certains avantages considérables comme vous envoyer des alertes lorsqu'un nouvel appareil de votre réseau est connecté et présente des vulnérabilités. L’abonnement payant s’élève à 69$ par mois pour une utilisation personnelle puis les prix augmentent pour les “Small Business” à 359$/mois pour avoir plus de performances puis enfin 1099$/mois pour les entreprises. Cela donne accès entre autres à des filtres plus avancés, donne accès de base à l'API de diffusion en continu, donne accès à un support par courriels, donne accès aux filtres de recherche de vulnérabilités. 
+    <br>
+</p>
+
+<h2 class="mb-3"><u>2. Les étapes à suivre pour utiliser Shodan :</u></h2>
+<p>1)   Il faut tout d’abord ce rendre sur :
+    informations sur le NSE sur <a href="http://www.shodanhq.com/">le site officiel</a>.<br>
+    <br>
+   2) Ensuite il suffit de soit créer un compte pour ceux qui n’en ont pas ou bien se connecter (pour ceux qui n’ont pas encore de compte un mail de confirmation sera envoyé à l’adresse mail)  <br>
+<br>
+   3)  Il suffit ensuite d’effectuer sa recherche en entrant dans la barre de recherche les mots clés de votre recherche en format String. 
+
+    <br>
+<br>
+   4)  On peut effectuer certaines recherches qui sont assez habituelles, comme par exemple chercher les caméras qui n’ont pas de mots de passe avec la commande : “Server: SQ-WEBCAM”. Ou bien vouloir chercher des services qui ont des mots de passe par défaut : "default password". 
+
+     <br>
+<br>
+On peut ensuite s’amuser avec les filtres pour se concentrer sur un pays en particulier ou une ville. On peut aussi se concentrer sur un port en particulier. Cela peut être bien aussi d’analyser les vulnérabilités exposer par l’outil. 
+
+    <br>
+<br> Voici un lien vers des exemples de recherches que l’on peut aussi utiliser avec Shodan : <a href="https://www.shodan.io/search/examples">exemples</a>
+<br>
+</p>
+
+<center>
+    <img src="Tutoriel/tuto-shodan/photorecherche.png" width="300" height="200" class="img-fluid">
+</center>
+
+<h2 class="mb-3"><u>3. Tuto vidéo :</u></h2>
+<p>
+    <video controls autoplay width="560" height="315">
+        <source src="Tutoriel/tuto-shodan/shodan.mp4" type="video/mp4">
+
+        Désolé, votre navigateur ne supporte pas ce format vidéo.
+</video>
+    
+</p>

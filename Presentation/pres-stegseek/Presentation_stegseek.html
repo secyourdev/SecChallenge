@@ -1,0 +1,137 @@
+<title>Présentation Stegseek</title>
+
+<h1><b>STEGSEEK</b></h1>
+
+<h2><b>1. RAPPELS : QUELQUES NOTIONS </b></h2>
+
+<h3><b> 1.a Stéganographie </b></h3>
+
+    <!--<img src=steganographie.jpg alt="" class="img-fluid">
+    <br>
+    -->
+
+<p>
+    La stéganographie est une technique de dissimulation de l'existence de l'information dans un support tel qu'une image, un fichier audio ou un message texte. 
+    <br>
+    Elle vise à dissimuler des données confidentielles dans un fichier qui peut être transmis sans attirer l'attention, contrairement à la cryptographie qui consiste à protéger l'information contenue dans un message en utilisant des algorithmes pour la rendre illisible aux personnes non autorisées. 
+    <br>
+    La stéganographie peut être utilisée pour les communications secrètes, la protection de la vie privée et la protection contre la censure.
+    <br>
+    <br>
+    Il existe de nos jours différents logiciels permettant d'effectuer une stéganographie tels que LSB-Steganographie, stegoveritas, ... 
+    <br>
+    Plus d'informations sur le lien suivant <a href="https://k-lfa.info/tools-stegano/"><U>k-lfa.info</U></a>
+    <br>
+</p>
+
+    <h3><b>1.b Un outil puissant : Steghide </b></h3>
+<p>
+    <!--<img src=steghide.png alt="" class="img-fluid">
+    <br>
+    <br>
+    -->
+    
+    Steghide est un logiciel permettant de cacher des données dans des fichiers audio, image ou vidéo. 
+    Il permet d'insérer des données confidentielles dans un fichier qui peut être transmis sans attirer l'attention, 
+    tout en offrant une certaine protection contre l'accès non autorisé. 
+    <br>
+    Le nom Steghide provient de la combinaison des mots "steg" (abréviation de stéganographie) et "hide" (cacher).
+    <br>
+    <br>
+</p>
+
+
+
+<h2><b>2. OBJECTIF </b></h2>
+
+<p>
+    
+	L'objectif de ce cours est de vous présenter l'outil Stegseek ainsi que certaines de ces fonctionnalités.
+    <br> 
+    <br>
+    Stegseek est un cracker steghide utilisé pour extraire des données cachées des fichiers (plus particulièrement les images). 
+    Il est le résultat d'un fork du projet original Steghide (fork : processus de duplication d'un programme ou d'un projet pour créer une nouvelle version indépendante).
+    <br>
+    Etant très rapide par rapport aux autres logiciels crackers, il permet de parcourir à travers des fichiers volumineux et produire un résultat en quelques secondes.
+    <br>
+    (Par exemple, stegseek extrait les métadonnées du fichier rockyou.txt, contenant 14 millions de mots de passe en moins de 2 secondes).
+    <br> 
+    <br> 
+    La particularité de cet outil est qu'il possède presque toutes les fonctionnalités de steghide, ce qui permet également d'insérer ou d'extraire des données comme avec Steghide. 
+    <br>La seule différence est que les commandes doivent être utilisées au format "--commande".
+    <br>Par exemple, "steghide embed [...]" devient "stegseek --embed [...]"
+    <br> 
+    <br>
+    Stegseek peut également être utilisé pour extraire des métadonnées steghide sans mot de passe, qui peut être utilisé pour tester si un fichier contient des données steghide.
+    <br>
+    <br>
+    <img src=stegseek1.png alt="" class="img-fluid">
+    <br>
+    <br>
+ 
+    Pour plus d'information, dirigez vous vers la présentation et le tutoriel sur le lien : 
+    <a href="https://github.com/StefanoDeVuono/steghide">Steghide</a>
+    <br>
+    <br>
+</p>
+
+<h2><b>3. CONFIGURATION </b></h2>
+
+<h3><b>3.a Systèmes Ubuntu et Debian récents </b></h3>
+
+<p>
+    L'installation de Stegseek est très simple. Vous pouvez utiliser le paquet .deb fourni pour l’installation :
+    <br>
+    1. Télécharger la dernière version de Stegseek.
+    <br>
+    2. Installez le fichier .deb en utilisant la commande suivante : sudo apt install . /stegseek_0.6-1.deb
+</p>
+   
+<h3><b>3.b Autres systèmes </b></h3>
+<p>
+    Vous devrez construire Stegseek vous-même. Voir BUILD.md pour plus d’informations.
+    <br>
+    <br>
+    La création de Stegseek en tant qu'application Windows native n'est malheureusement pas prise en charge. Au lieu de cela, vous devez exécuter Stegseek en utilisant WSL . 
+    <br>La distribution Ubuntu WSL est recommandée pour une compatibilité optimale. Une fois que vous avez configuré WSL, Stegseek peut être installé en utilisant les instructions Linux ci-dessus.
+    <br>
+    <br>
+    Par défaut, WSL monte le C:\lecteur sur /mnt/c/, que vous pouvez utiliser pour accéder facilement à vos fichiers.
+</p>
+
+<h3><b>3.c Utilisation via Docker et Docker-compose </b></h3>
+
+<p>
+    Pour effectuer les manipulations du tutoriel et du challenge Stegseek, une machine déjà configurée sera mise à votre disposition.
+    <br>
+    Il faudra télécharger un fichier de format <i>docker-compose.yml </i> que vous récupérerez via des liens. 
+    <br>
+    <br>
+    Puis, dans un bash (Linux) ou cmd (Windows), allez dans le répertoire où vous avez téléchargé le fichier docker-compose.yml et effectuez les commandes suivantes : 
+    <br>
+    <kbd class="ms-3"><bash> docker-compose build</kbd><br>
+    <kbd class="ms-3"><bash> docker-compose up -d</kbd><br>
+    <kbd class="ms-3"><bash> docker exec -ti [nom_docker] /bin/bash</kbd><br>
+    <kbd class="ms-3"><bash> apt install ./stegseek_0.6-1.deb</kbd><br>
+    <br>
+</p>
+
+
+
+
+
+<h3>Sources & Crédits</h3>
+
+<p>Nous nous sommes inspirés de plusieurs sources pour la rédation de ce cours. Vous trouverez dans cette
+	section les liens vers les articles ou vidéos qui nous on servit lors de la rédation.
+	</br></br>
+	Stéganographie: <a href="https://fr.wikipedia.org/wiki/St%C3%A9ganographie">Stéganographie</a>
+	</br>
+	Steghide: <a href="https://steghide.sourceforge.net/">Steghide</a>
+	</br>
+	Stegseek: <a href="https://github.com/RickdeJager/stegseek">Stegseek</a>
+
+</p>
+
+
+ 

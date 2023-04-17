@@ -1,0 +1,9 @@
+version: "3.7"
+services:
+  SpiderFoot:
+    container_name: spider-foot
+    hostname: spiderfoot
+    image: ctdc/spiderfoot:latest
+    restart: unless-stopped
+    ports:
+      - 5001:5001

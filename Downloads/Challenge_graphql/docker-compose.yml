@@ -1,0 +1,14 @@
+services:
+  client:
+    container_name: graphql_client
+    expose:
+      - 3000
+    image: leoroullois/secchallenge_web_client:latest
+    ports:
+     - "3000:5173"
+  server:
+    container_name: graphql_server
+    image: leoroullois/secchallenge_web_server:latest
+    ports:
+      - "5000:5000"
+version: "3.8"

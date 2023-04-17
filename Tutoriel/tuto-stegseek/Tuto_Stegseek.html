@@ -1,0 +1,179 @@
+<title>Tutoriel Stegseek</title>
+
+<h1>Stegseek</h1>
+
+<h2>1. Objectif</h2>
+
+<p>
+    L'objectif de ce tutoriel est de vous présenter l'outil Stegseek.
+    </br>
+    Stegseek est un cracker steghide utilisé pour extraire des données cachées des fichiers.
+    </br>
+</p>
+
+<h2>2. Configuration</h2>
+
+<p>
+    Ce tutoriel met à disposition, par le biais de Docker et Docker-compose, une machine déjà configurée. 
+    <br>
+    Récupérez le dockerfile dans le lien suivant : 
+    <a class="link-primary"
+        href="./docker-compose.yml"><U>docker-compose.yml</U></a><br>
+    <br> 
+    Dans un bash (Linux) ou cmd (Windows), allez dans le répertoire où vous avez téléchargé le fichier docker-compose.yml et effectuez les commandes suivantes : 
+    <br>
+    <kbd class="ms-3"><bash> docker-compose build</kbd><br>
+    <kbd class="ms-3"><bash> docker-compose up -d</kbd><br>
+    
+    <br> 
+    Vous disposez maintenant d'une machine avec l'outil Stegseek. 
+    <br>
+    <br>
+    <i>Si vous voulez l'installer par vous-même, il est téléchargeable depuis github : <a class="link-primary"
+        href="https://github.com/RickdeJager/stegseek">Stegseek</a>.
+        <br> </i>
+</p>
+
+<h2>3. Installation et Application</h2>
+<p>
+    Plusieurs fichiers Steghide (images, sons) seront mis à disposition pour la manipulation de l'outil. 
+    <br> 
+    Si vous voulez créer vous-même des fichiers steghide, je vous invite à vous diriger vers la présentation et le tutoriel de cet outil intéressant. 
+    <br>
+    <i>Téléchargeable depuis github : <a class="link-primary"
+        href="https://github.com/StefanoDeVuono/steghide">Steghide</a>.
+        <br> </i>
+    <br>
+    Connectez-vous à la machine : 
+    <br>
+    <kbd class="ms-3"><bash> docker exec -ti tuto_052-syd-academy-stegseek /bin/bash</kbd><br>
+    <br>
+    et exécutez la commande suivante : <br>
+    <kbd class="ms-3"><bash> apt install ./stegseek_0.6-1.deb</kbd><br>
+
+    <br>
+    Dans un premier temps, on liste le contenu du répertoire suivant pour visualiser les fichiers sur lesquels nous allons travailler: 
+    <br>
+    <kbd class="ms-3"><bash> bash> ls</kbd><br>
+    <br>
+    <img src="stegseek-tuto-0.png" alt="" class="img-fluid">
+    <br>
+    <br>
+    Ce répetoire comprend : 
+    <ul>
+        <li>2 fichiers steghide (image + son)</li>
+        <li>fichier d'installation de stegseek</li>
+        <li>fichier rockyou.txt, une wordlist contenant plus de 14 millions de mots de passe communs</li>
+    </ul> 
+    <br>
+
+    <h3>3.1 Manipulation 1</h3>
+
+    Nous travaillons tout d'abord avec le fichier <i>image.jpg</i>. <br>
+    <br>
+    Stegseek permet de bruteforcer les mots de passe protégeant les fichiers steghides. <br>
+    Nous nous appuyerons sur la liste <i>rockyou.txt</i> livrée avec la machine. <br>
+    <br>
+    Pour ce faire, voici la syntaxe de la commande à effectuer : 
+    <br>
+    <kbd class="ms-3"><bash> bash> stegseek [fichier_steghide] [worldlist]</kbd><br>
+    <br>
+    <img src="stegseek-tuto-1.png" alt="" class="img-fluid">
+    <br>
+    <br>
+    Cette commande permet de : 
+    <ul>
+        <li>trouver et afficher le mot de passe utilisé pour protéger le fichier steghide passé en paramètre</li>
+        <li>déterminer de quel fichier secret provienne les données confidentielles cachées dans le fichier steghide</li>
+        <li>extraire ces données confidentielles dans un autre fichier de type .jpg.out</li>
+      </ul> 
+    Comme nous pouvons le constater, le mot de passe a été trouvé et le fichier a été extrait.
+    <br>
+    <br> 
+
+    Pour afficher les données confidentielles, utilisez la commande suivante : <br>
+    <kbd class="ms-3"><bash> bash> cat [fichier_steghide.out] </kbd><br>
+    <br>
+    <img src="stegseek-tuto-2.png" alt="" class="img-fluid">
+    <br>
+    <br>
+
+    <h3>3.2 Manipulation 2</h3>
+    
+    Cette fois-ci, essayons de récupérer les données cachées dans le fichier audio <i>audio.mp3.</i>
+    <br>
+    <i>Indice : Utilisez le même procédé vu lors de la 1ère manipulation. </i>
+    <br>
+    <br>
+    
+    <h3>3.3 Manipulation 3</h3>
+
+    Nous allons de nouveau utiliser le fichier <i>image.jgp</i>. <br>
+    <br>
+    Nous voulons obtenir d'autres informations concernant ce fichier. 
+    <br>
+    Pour ce faire, voici la syntaxe de la commande à effectuer : 
+    <br>
+    <kbd class="ms-3"><bash> bash> stegseek --seed [fichier_steghide]</kbd><br>
+    <br>
+    <img src="stegseek-tuto-3.png" alt="" class="img-fluid">
+    <br>
+    <br>
+    Cette commande permet de: 
+    <ul>
+        <li>détecter si le fichier passé en paramètre contient réellement du contenu steghide</li>
+        <li>indiquer la quantité de contenu caché </li>
+        <li>indiquer comment le contenu a été crypté</li>
+    </ul> 
+    Parfois, certains fichiers peuvent contenir des flags (masqués à l'aide d'un mot de passe aléatoire sécurisé mais sans un cryptage actif).
+    <br>
+    <br>
+
+<h3>3.4 Manipulation 4</h3>
+
+    Dans cette manipulation, vous êtes en contact avec un ami et vous vous envoyez des fichiers contenant des messages cachés. 
+    <br> 
+    Ainsi, vous connaissez parfaitement le mot de passe (faisant office de clé unique) pour pouvoir déchiffrer ces fichiers. 
+    <br>
+    <br> 
+    Steghide permet aussi de pouvoir extraire et afficher directement les données cachées avec la commande suivante : 
+    <br>
+    <kbd class="ms-3"><bash> stegseek --extract -sf [nom_fichier_steghide] -xf -  -p "[clé_unique]"</kbd><br>
+    <br>
+    <img src="stegseek-tuto-4.png" alt="" class="img-fluid">
+    <br>
+</p>
+
+<h2>Vidéo : Tutoriel </h2>
+<video width="320" height="240" controls>
+    <source src="tuto.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+</video>
+<br>
+
+<h2>Fin du tutoriel</h2>
+<p>
+    Le tutoriel est terminé, et vous savez maintenant comment manipuler Stegseek.
+    <br>
+    Pour valider ce tutoriel, il vous suffira de rentrer le message secret du fichier audio (<i>cf Manipulation 2</i>). 
+    <br>   
+</p>
+
+<head>
+	<script>
+		function verifierMot() {
+			var mot = document.getElementById("mot").value;
+			if (mot === "X-STEG{100k$_FLAG}") {
+				document.getElementById("message").innerHTML = "Félicitations. Tutoriel réussi !!!";
+			} else {
+				document.getElementById("message").innerHTML = "Ce n'est pas la réponse attendu ...";
+			}
+		}
+	</script>
+</head>
+<body>
+	<input type="text" id="mot" name="mot">
+	<button onclick="verifierMot()">Valider la réponse</button>
+	<p id="message"></p>
+</body>
+

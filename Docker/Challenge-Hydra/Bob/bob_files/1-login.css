@@ -1,0 +1,49 @@
+/* (A) WHOLE PAGE */
+* {
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+}
+body {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background: #f7f7f7;
+}
+
+/* (B) LOGIN FORM */
+#login-form {
+  padding: 20px;
+  border: 1px solid #ebebeb;
+  background: #fff;
+}
+#login-form h1 {
+  font-size: 1.5em;
+  margin: 0 0 20px 0;
+}
+#login-form label, #login-form input {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+}
+#login-form label { color: #767676; }
+#login-form input {
+  padding: 10px;
+  border: 1px solid #adadad;
+}
+#login-form input[type=submit] {
+  margin-top: 20px;
+  border: 0;
+  color: #fff;
+  background: #a52323;
+  cursor: pointer;
+}
+
+/* (C) INVALID LOGIN */
+#login-bad {
+  padding : 10px;
+  margin-bottom: 20px;
+  background: #ffe7e7;
+  border: 1px solid #ff3e3e;
+  color: #c10000;
+  font-weight: bold;
+}
