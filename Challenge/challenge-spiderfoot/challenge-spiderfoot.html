@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge SpiderFoot</title>
+</head>
+<body>
+	<header>
+		<h1>Challenge SpiderFoot</h1>
+        <img src="spiderfoot-logo.png" alt="SpiderFoot-logo.png">
+	</header>
+
+<h2>1. Objectif</h2>
+
+<p>
+    L'objectif de ce challenge est de scanner le site SecYourDev avec SpiderFoot.
+    </br>
+    https://secyourdev.com/
+    <br>
+    Etant donné que le scan complet prend un peu moins de 2h ci-joint le resultat:
+    <a class="link-primary" href="Challenge/spiderfoot/SpiderFoot-SecYourDev.csv" download="SpiderFoot_quad9.csv"><U>SpiderFoot_quad9.csv</U></a><br>
+    <br>
+
+    <img src="SecYourDev-graph.png" alt="" class="img-fluid"> <br>
+
+    </br>
+</p>
+
+<h2>2. Installation et Configuration</h2>
+
+<p>
+    Ce tutoriel met à disposition, par le biais de Docker-compose, une machine déjà configurée maintenu par INTEL471. 
+    <br>
+    Récupérez le dockerfile dans le lien suivant, si vous avez déjà installer le docker-compose.yml du tutoriel, passer à l'étape 3 : 
+    <a class="link-primary"
+        href="Docker/spiderfoot/Tutoriel/docker-compose.yml" download="docker-compose.yml"><U>docker-compose.yml</U></a><br>
+    <br> 
+    Dans un interpréteur de commande,bash (Linux) ou cmd (Windows), allez dans le répertoire où vous avez téléchargé le fichier docker-compose.yml et effectuez la commande suivante : 
+    <br>
+    <kbd class="ms-3"><bash> docker compose up -d</kbd><br>    
+    <br> 
+    Vous disposez maintenant d'une machine avec Spider Foot. Pour mettre en pause ou arreter la machine faite: 
+    <br>
+    <kbd class="ms-3"><bash> docker compose pause/unpause</kbd><br>  
+    <kbd class="ms-3"><bash> docker compose stop/start</kbd><br>  
+    <br>
+    <i>Si vous voulez l'installer par vous-même, il est téléchargeable depuis github : 
+        <a class="link-primary"href="https://github.com/smicallef/spiderfoot">SpiderFoot</a>.
+        <br> </i>
+</p>
+
+<h2>3. Questions</h2>
+<br>
+<body>
+	<form>
+    <!-- Ajout autant de zones de texte et de boutons que nécessaire -->
+	<label for="zone-t1">1. L'adresse IPv4 du site web ?</label>
+		<input type="text" id="zone-t1" name="zone-t1">
+		<button type="button" onclick="verifierTexte('zone-t1')">Valider la réponse</button>
+		<p id="message-1"></p>
+
+		<label for="zone-t2">2. Quel est le frameworkd utilisé pour faire le site web ? (nom/version)</label>
+		<input type="text" id="zone-t2" name="zone-t2">
+		<button type="button" onclick="verifierTexte2('zone-t2')">Valider la réponse</button>
+		<p id="message-2"></p>
+
+    <label for="zone-t3">3. Quand est-ce que le site a reçu sa dernière mise à jour ? (JJ/MM/AA)</label>
+		<input type="text" id="zone-t3" name="zone-t3">
+		<button type="button" onclick="verifierTexte3('zone-t3')">Valider la réponse</button>
+		<p id="message-3"></p>
+	
+	<label for="zone-t4">4. Qu'elle est le site web de l'hébergeur ?</label>
+		<input type="text" id="zone-t4" name="zone-t4">
+		<button type="button" onclick="verifierTexte4('zone-t4')">Valider la réponse</button>
+		<p id="message-4"></p>
+
+    <label for="zone-t5">5. Quel est le nom du serveur web utilisé ? (nom/version)</label>
+		<input type="text" id="zone-t5" name="zone-t5">
+		<button type="button" onclick="verifierTexte5('zone-t5')">Valider la réponse</button>
+		<p id="message-5"></p>
+
+    <label for="zone-t6">6. L'entreprise est présente sur combien de plateformes de réseaux sociaux ?</label>
+		<input type="text" id="zone-t6" name="zone-t6">
+		<button type="button" onclick="verifierTexte6('zone-t-6')">Valider la réponse</button>
+		<p id="message-6"></p>
+
+    <label for="zone-t7">7. Quel est l'emplacement géographique où est hebergé ? (nom de la ville en anglais)</label>
+		<input type="text" id="zone-t7" name="zone-t7">
+		<button type="button" onclick="verifierTexte7('zone-t7')">Valider la réponse</button>
+		<p id="message-7"></p>
+
+    <label for="zone-t8">8. Qu'elle est le service, hors http et https, qui semble être présent ?</label>
+		<input type="text" id="zone-t8" name="zone-t8">
+		<button type="button" onclick="verifierTexte8('zone-t8')">Valider la réponse</button>
+		<p id="message-8"></p>
+
+    <label for="zone-t9">9. Quel est le nom du cours de norme disponible sur le site ?(xxx-xxxxx)</label>
+		<input type="text" id="zone-t9" name="zone-t9">
+		<button type="button" onclick="verifierTexte9('zone-t9')">Valider la réponse</button>
+		<p id="message-9"></p>
+
+    
+    <br>
+    
+
+	</form>
+
+	<script>
+		function verifierTexte(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "185.190.142.131") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte2(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "Bootstrap/5.1.3") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte3(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "19/07/22") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+
+    function verifierTexte4(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "www.1and1.com") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte5(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "nginx/1.23.0") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte6(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "3") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte7(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "Munchen") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte8(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "ssh") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+    function verifierTexte9(idZoneTexte) {
+			var zoneTexte = document.getElementById(idZoneTexte);
+			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+
+			if (zoneTexte.value.toLowerCase() === "ISO-27001") {
+				message.innerHTML = "Bonne réponse !";
+				message.style.color = "green";
+			} else {
+				message.innerHTML = "Ce n'est pas la réponse attendu ...";
+				message.style.color = "red";
+			}
+		}
+	
+	</script>
+</body>
+
+<h2>Fin du tutoriel</h2>
+<p>
+    Si vous avez terminez le challenge, voici le flag de fin : STALKER-PRO.
+</p>
+</body>
+</html>
