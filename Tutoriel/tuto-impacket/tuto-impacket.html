@@ -1,0 +1,22 @@
+<h1><b> Tutoriel Impacket</b></h1>
+<br><br>
+<h2>Installation d'Impacket</h2> 
+<p><br>
+Impacket est un module Python, donc la première étape consiste à installer Python. Vous pouvez télécharger Python depuis le site officiel de Python. Une fois que vous avez installé Python, vous pouvez installer Impacket en utilisant la commande pip install impacket. Si vous rencontrez des problèmes lors de l'installation, vous pouvez vérifier la documentation officielle d'Impacket pour obtenir de l'aide.
+<br><br>
+Fonctionnalités principales d'Impacket
+<br><br>
+1. Capture de paquets : Impacket peut être utilisé pour capturer des paquets sur le réseau en utilisant le module PacketSniffer. Vous pouvez spécifier le type de paquet que vous souhaitez capturer en utilisant les filtres Berkeley Packet Filter.
+<br>2. Création de faux clients : Impacket peut être utilisé pour créer de faux clients pour interagir avec des services tels que SMB, MSSQL, LDAP, etc. 
+<br>3. Décodage de paquets : Impacket peut être utilisé pour décoder des paquets en utilisant des modules tels que SMB, NTLM, Kerberos, etc. Les paquets peuvent être décodés en utilisant la méthode from_bytes () de la classe correspondante.
+<br>4. Attaques de réseaux : Impacket peut être utilisé pour effectuer des attaques réseau, telles que des attaques SMB relay, des attaques Kerberos, des attaques LDAP, etc. 
+<br>5. Authentification : Impacket peut être utilisé pour interagir avec des services en utilisant différents types d'authentification, tels que NTLM, Kerberos, etc. Cela permet aux professionnels de la sécurité de tester la sécurité des services en utilisant différentes méthodes d'authentification.
+<br><br><br>
+Exemples d'utilisation d'Impacket
+<br><br>
+<br>1. Capture de paquets : Vous pouvez utiliser le module PacketSniffer pour capturer des paquets sur le réseau en spécifiant le type de paquet que vous souhaitez capturer. Par exemple, vous pouvez capturer des paquets SMB en utilisant le filtre BPF 'tcp port 445'.
+<br>2. Création de faux clients : Vous pouvez utiliser le module SMB pour créer de faux clients pour interagir avec des services SMB. Par exemple, vous pouvez créer un client SMB en utilisant la classe SMB () et en spécifiant l'adresse IP et les informations d'identification du serveur SMB.
+<br>3. Décodage de paquets : Vous pouvez utiliser le module SMB pour décoder des paquets SMB en utilisant la méthode from_bytes (). Par exemple, vous pouvez décoder un paquet SMB en utilisant la classe SMB () et en appelant la méthode from_bytes () sur le paquet SMB.
+<br>4. Attaques de réseau : Vous pouvez utiliser le module SMB pour effectuer des attaques SMB relay en utilisant la classe SMBRelayServer (). Par exemple, vous pouvez créer un serveur
+<br>
+</p>
