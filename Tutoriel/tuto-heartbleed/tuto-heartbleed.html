@@ -1,0 +1,93 @@
+<h1><b>Comment exploiter la faille Heartbleed en utilisant Metasploit dans Kali Linux</b></h1>
+<p><U><b>1. Objectif</b></U> <br><br>
+
+        Dans ce tutoriel, nous verrons une exploitation simple sur la façon dont un attaquant 
+        peut compromettre un serveur en utilisant le module openssl_heartbleed du framework Metasploit.
+        <br><br>
+        Il est important de noter que l'utilisation de ce module sans autorisation préalable 
+        est illégale et peut entraîner des conséquences juridiques graves. Ce module doit être 
+        utilisé à des fins légales, telles que les tests de pénétration autorisés par le propriétaire 
+        du système cible.
+        <br><br>
+
+        <b><U>2. Etapes</b></U> <br><br>
+
+        D’abord installez Metasploit : <kbd>apt install metasploit-framework</kbd><br>
+        Cela peut prendre un peu de temps.
+        <br><br>
+        Lancez la console Metasploit : <kbd>msfconsole</kbd>
+        <br><br>
+        Recherchez le module Heartbleed en utilisant la fonctionnalité de recherche de module de 
+        Metasploit : <kbd>search heartbleed</kbd>
+        <br>
+</p><img src="Tutoriel/tuto-heartbleed/heartbleed1.png" alt="" class="img-fluid"> <br>
+<p>
+        Une fois le module localisé il faut le charger : <kbd>use auxiliary/scanner/ssl/openssl_heartbleed</kbd>
+        <br><br>
+        Maintenant on affiche la page d’informations pour réveler les options à fournir : <kbd>info</kbd> ou <kbd>options</kbd>
+        <br>
+</p><img src="Tutoriel/tuto-heartbleed/heartbleed2.png" alt="" class="img-fluid"> <br>
+<p>
+        Nous devons fournir les paramètres suivants : 
+        <br><br>
+        RHOSTS, l’adresse de notre cible : <kbd>set RHOSTS [adresse_ip]</kbd><br>
+        RPORT, le port cible : <kbd>set RPORT [port]</kbd>
+        <br><br>
+        On va également définir verbose à true pour afficher les informations sur le 
+        terminal : <kbd>set VERBOSE true</kbd>
+        <br><br>
+        Le paramètre ACTION peut aussi être modifié pour réaliser soit un scan soit un dump.
+        <br><br>
+        Enfin on peut attaquer notre cible : <kbd>exploit</kbd> ou <kbd>run</kbd>
+        <br>
+</p><img src="Tutoriel/tuto-heartbleed/heartbleed3.png" alt="" class="img-fluid"> <br>
+<p>
+</p><img src="Tutoriel/tuto-heartbleed/heartbleed4.png" alt="" class="img-fluid"> <br>
+<p>
+        Le système ciblé a divulgué avec succès des informations aléatoires. De cette façon, l'attaquant 
+        peut répéter cette procédure encore et encore pour extraire les informations utiles car il n'a aucun 
+        contrôle sur son emplacement et ne peut pas choisir le contenu souhaité, chaque fois que vous 
+        répétez ce processus, différentes données peuvent être extraites.
+        <br><br>
+
+        <b><U>3. Détecter cette faille</b></U> <br><br>
+
+        Il existe de nombreux outils qui montreront si le site Web est toujours vulnérable à 
+        l'attaque Heartbleed. Dans notre cas, nous avons vérifié la vulnérabilité en utilisant l'outil Nmap.
+        <br><br>
+        On peut le vérifier avec la commande suivante : <kbd>nmap –p 443 –script ssl-heartbleed [ip_cible]</kbd>
+</p><img src="Tutoriel/tuto-heartbleed/heartbleed5.png" alt="" class="img-fluid"> <br>
+<p>
+
+        Cela montre que le système cible utilise l'ancienne version d'OpenSSL et qu'il y a une 
+        vulnérabilité à exploiter.
+        <br><br>
+        Heartbleed est toujours présent sur de nombreux serveurs Web qui ne sont pas mis à niveau 
+        vers la version corrigée d'OpenSSL. Le moyen de corriger cette vulnérabilité consiste à mettre 
+        à niveau la dernière version d'OpenSSL. Les versions concernées d'OpenSSL vont de 1.0.1 à 1.0.1f. 
+        Essayez d'éviter d'utiliser ces versions.
+        <br><br>
+
+        <b><U>4. Application</b></U> <br><br>
+        
+        Pour réaliser le tutoriel de votre côté, vous pouvez télécharger l’image docker et l'éxecuter via les commandes suivantes:<br>
+        <kbd>docker pull cybersecuriteachg2/tuto_heartbleed</kbd><br>
+        <kbd>docker run -d -p 8443:443 cybersecuriteachg2/tuto_heartbleed:latest</kbd><br><br>
+        
+        Vous avez alors accès depuis votre navigateur à l’adresse "https://localhost:8443" à une page 
+        hebergé sur un serveur web utilisant une version d’openssl affectée par la faille heartbleed. 
+        <br><br>
+        Ci-dessous une vidéo pour vous guider.
+        <br><br>
+        Tutoriel vidéo : <br><br>
+        <video controls width="560" height="315">
+                <source src="Tutoriel/tuto-heartbleed/Tutoriel_heartbleed.mp4" type="video/mp4">
+
+                Désolé, votre navigateur ne supporte pas ce format vidéo.
+        </video>
+</p>
+
+        <b><U>6. Validation du tutoriel</b></U> <br><br>
+        Le tutoriel est maintenant terminé, et vous devriez être capable de pouvoir détecter la présence d'une faille heartbleed au sein d'un serveur.<br><br>
+
+        Pour valider ce tutoriel, il faut rentrer dans la case de validation "tuto-heartbleed" <br><br>

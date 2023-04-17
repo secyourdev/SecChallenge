@@ -71,7 +71,7 @@ if (session_status() == PHP_SESSION_NONE) {
 
 				<div class="blog-item">
 
-					<img src="<?php echo $result['LienImage'] ?>" alt="" class="img-fluid images_cours">
+					<!-- <img src="<?php #echo $result['LienImage'] ?>" alt="" class="img-fluid images_cours"> -->
 
 					<div class="post-content">
 

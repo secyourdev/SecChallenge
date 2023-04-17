@@ -1,0 +1,82 @@
+<h1><b>Hashcat</b></h1>
+<p><U><b>1. Introduction</b></U> <br><br>
+
+        Hashcat est un outil capable d’obtenir un mot de passe à partir de son hash.
+
+        Hashcat supporte plus de 600 types de hash et est souvent utilisé pour cracker des mots de passe wpa/wpa2. Hashcat peut par ailleurs mobiliser le CPU comme le GPU
+        <br><br>
+        Il est considéré comme l’un des outils les plus rapides. Il est sous licence opensource, valide pour Windows, Linux et macOS, multiplateforme: CPU, GPU, DSP, FPGA… Il a aussi des fonctionnalités multi-hashing qui permettent de craquer plusieurs mots de passe en même temps, Multi-threads et multi-algorithmes (y compris MySQL, DCC, MD4-5 et NTLM).
+        <br><br>
+
+        <b><U>2. Installation</b></U> <br><br>
+
+        Pour installer Hashcat sur une kali linux, il suffit de taper la commande suivante : <kbd> sudo apt install hashcat</kbd> <br><br>
+
+        <b><U>3. Fonctionnement : décrypter les hashs</b></U> <br><br>
+
+        Hashcat prend comme entrée un ensemble de mots en texte simple à partir d’un dictionnaire ou par combinaisons.
+        Il calcule ensuite le hash pour chacun et compare le résultat avec le ou les hash contenus dans un autre fichier qui stocke les hash ciblés.<br>
+        Les match sont des mots de passe récupérées.
+        <br><br>
+
+        Plusieurs méthodes d'attaque sont utilisées : Par dictionnaire (on essaye tous les mots d’une liste), par combinaison (on concatene des listes de deux mots pour en créer une nouvelle), par brute force (on cherche toutes les combinaison imaginable), par masque (on exploite les habitudes des humains et la façon dont ils concoivent les mots de passe)
+        <br><br>
+        
+        <b>Déterminer le hashmode :</b> <br><br>
+
+        Avant de commencer à décrypter le hash, il faut d’abord déterminer l’algorithme (sha256, bcrypt, md5, winzip …) qui a été utilisé pour obtenir ce hash.
+        Pour cela nous pouvons utiliser des outils comme hash-identifier ou hash analyser.
+        <br><br>
+        En connaissant l’algorithme nous pouvons déterminer quel « Hash-Mode » lui correspond lors de l’exécution de hashcat.
+        
+        Pour cela on peut consulter le tableau des modes à l’aide de hashcat: <kbd>$hashcat --help</kbd>
+        
+        ou sur cette <a href="https://hashcat.net/wiki/doku.php?id=example_hashes">page</a>. <br><br>
+
+        Hashcat supporte des hashmode très specifiques tels que MySQL, ArubaOS, Joomla, vbulletin, keepass et beaucoup d’autre.
+        <br><br>
+
+        <b><U>4. Application : décryptage de hash avec Hashcat</b></U> <br><br>
+        
+        Pour réaliser le tutoriel de votre côté, vous pouvez télécharger l’image docker d’une kali, installer les outils nécessaires via les commandes suivantes:<br>
+        <kbd>docker pull kalilinux/kali-rolling</kbd><br>
+        <kbd>docker run -it --rm kalilinux/kali-rolling:latest</kbd><br>
+        <kbd>apt update</kbd><br>
+        <kbd>apt install hashcat hash-identifier wget</kbd><br><br>
+
+        On va s'intéresser au hash suivant 34550715062af006ac4fab288de67ecb44793c3a05c475227241535f6ef7a81b <br><br>
+
+        On peut entrer la commande suivante qui va s’occuper d'identifier le type de hash : <kbd>hash-identifier 34550715062af006ac4fab288de67ecb44793c3a05c475227241535f6ef7a81b </kbd><br><br>
+
+        D'aprés le résultat suivant on apprend que l'algorithme de hash utilisé est sha256 :<br>
+
+</p><img src="Tutoriel/tuto-hashcat/hashcat1.png" alt="" class="img-fluid"> <br>
+<p>
+        Le mode de hash correspondant dans l'outil est 1400<br>
+
+</p><img src="Tutoriel/tuto-hashcat/hashcat2.png" alt="" class="img-fluid"> <br>
+<p>
+
+        Ensuite on récupère un dictionnaire de mot connu avec la commande : <kbd>wget https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt</kbd><br><br>
+
+        Enfin on éxecute la commande : <kbd>hashcat -m 1400 -a 0 34550715062af006ac4fab288de67ecb44793c3a05c475227241535f6ef7a81b rockyou.txt</kbd><br>
+        
+        L'option -a 0 indique le type d'attaque (par dictionnaire ici).<br><br>
+
+        Et voila le mot de passe associé au hash est michael :
+
+</p><img src="Tutoriel/tuto-hashcat/hashcat3.png" alt="" class="img-fluid"> <br>
+<p>
+
+        Tutoriel vidéo : <br><br>
+        <video controls width="560" height="315">
+                <source src="Tutoriel/tuto-hashcat/Tutoriel_hashcat.mp4" type="video/mp4">
+
+                Désolé, votre navigateur ne supporte pas ce format vidéo.
+        </video>
+</p>
+
+        <b><U>6. Validation du tutoriel</b></U> <br><br>
+        Le tutoriel est maintenant terminé, et vous devriez être capable de pouvoir utiliser les options que Hashcat met à disposition.<br><br>
+
+        Pour valider ce tutoriel, il faut rentrer dans la case de validation le mot de passe associé au hash suivant 9fd8301ac24fb88e65d9d7cd1dd1b1ec <br><br>

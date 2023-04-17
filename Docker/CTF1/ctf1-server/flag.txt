@@ -1,0 +1,3 @@
+Congratulation on capturing this flag!
+
+FLAG = {0urV3ryF&rstCTF}

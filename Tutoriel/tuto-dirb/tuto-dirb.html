@@ -1,0 +1,45 @@
+<h1><b>Dirb</b></h1>
+<p><U><b>1. Introduction</b></U> <br><br>
+
+        Dirb est un outil en ligne de commande qui peut être utilisé pour effectuer des recherches de répertoires et de fichiers sur des serveurs web. Il est conçu pour aider les testeurs de sécurité à identifier les fichiers et répertoires cachés ou vulnérables sur un site web, ce qui peut être utile pour détecter des vulnérabilités ou des failles de sécurité.
+        <br><br>
+        L'outil génère un grand nombre de requêtes sur le serveur web et analyse les réponses à celles-ci.
+        <br><br>
+
+        <b><U>2. Installation</b></U> <br><br>
+
+        Pour installer Dirb sur kali linux, il suffit de taper la commande suivante : <br>
+        <kbd>apt install dirb</kbd> <br><br>
+
+        <b><U>3. Modules de Dirb</b></U> <br><br>
+
+        Dirb vient avec différents modules tels que : 
+        <br><br>
+        dirb-gendict pour générer soit même des dictionnaires de mot pouvant être utilisés pour notre recherche de fichiers sur le serveur web.
+
+</p><img src="Tutoriel/tuto-dirb/dirb1.png" alt="" class="img-fluid"> <br>
+<p>
+
+        html2dic pour créer un dictionnaire de mot à partir d'une page internet :
+
+</p><img src="Tutoriel/tuto-dirb/dirb2.png" alt="" class="img-fluid"> <br>
+<p><br>
+
+        <b><U>4. En pratique</b></U> <br><br>
+
+        Il est important de noter que l'utilisation de Dirb pour effectuer des tests de pénétration sur un site web peut être illégale sans autorisation préalable de la part du propriétaire du site. Il est donc important de respecter les lois locales et les règles d'éthique en matière de sécurité lors de l'utilisation de cet outil.
+        <br><br>
+        Pour réaliser le scan d'un serveur web on entre la commande : <kbd>dirb [adresse_du_site]</kbd>
+</p><img src="Tutoriel/tuto-dirb/dirb3.png" alt="" class="img-fluid"> <br>
+<p><br>
+
+        Pour énumérer des fichiers avec une certaine extension, par exemple .php : <kbd>dirb [adresse_du_site] -X .php</kbd>
+</p><img src="Tutoriel/tuto-dirb/dirb4.png" alt="" class="img-fluid"> <br>
+<p><br>
+
+        Pour sauvegarder le résultat d’un scan on peut rajouter l’option : -o output.txt <br><br>
+
+        Pour contourner les erreurs rencontrées durant le scan on utilise la commande suivante : <kbd>dirb [adresse_du_site] -N 302</kbd><br><br>
+
+        <b><U>6. Validation du tutoriel</b></U> <br><br>
+        Le tutoriel est maintenant terminé, pour valider ce tutoriel, il vous suffira de rentrer "Tuto-dirb" dans la case de validation.<br><br>

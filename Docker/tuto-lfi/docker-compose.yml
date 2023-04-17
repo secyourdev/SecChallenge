@@ -1,0 +1,24 @@
+version: '3.8'
+
+services:
+  lfi-server:
+    container_name: lfi-server
+    image: cybersecuriteachg2/tuto-lfi_server
+    networks:
+      - lfi_net
+
+  lfi-pentester:
+    image: jlesage/firefox
+    container_name: lfi-pentester
+    restart: always
+    volumes:
+      - /dev/shm:/dev/shm
+    ports:
+      - "5801:5800"
+    depends_on:
+      - lfi-server
+    networks:
+      - lfi_net
+
+networks:
+  lfi_net:
