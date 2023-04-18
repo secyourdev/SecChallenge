@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+  server:
+    build: ./server
+    container_name: smb_server
+    restart: "no" 
+    networks:
+      smb_net:
+        ipv4_address: 172.28.1.10  
+
+  client:
+    build: ./client
+    container_name: smb_client
+    restart: "no"
+    networks:
+       smb_net:
+        ipv4_address: 172.28.1.11
+      
+  attacker: 
+    build: ./attacker
+    container_name: smb_attacker
+    restart: "no"
+    stdin_open: true
+    tty: true
+    networks:
+       smb_net:
+        ipv4_address: 172.28.1.12
+    
+
+networks:
+  smb_net:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.28.1.0/24
+          gateway: 172.28.1.1
