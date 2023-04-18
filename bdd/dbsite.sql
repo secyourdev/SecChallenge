@@ -66,9 +66,9 @@ INSERT INTO `challenge` (`IdChallenge`, `Emplacement`, `Reponse`, `NomChallenge`
 (20, 'Challenge/Challenge-dnsenum/Challenge-dnsenum.html', '172.20.0.3', 'DNSEnum', NULL  , NULL , NULL, 'Collecte d\'information', 5),
 (21, 'Challenge/challenge-hydra/challenge-hydra.html', 'FL4G_Hydra_LeChallenge', 'Hydra', NULL  , NULL , NULL, 'Attaque de mot de passe', 5),
 (22, 'Challenge/CTF1/ctf1.html', '0urV3ryF&rstCTF', 'CTF1', 'ssh'  , 'Brute Force' , NULL, 'Prise de contrôle', 5),
-(23, 'Challenge/Challenge-wget/Challenge-wget.html', 'GET THAT W', 'wget', NULL  , NULL , NULL, 'téléchargement en invite de commande', 5),
+(23, 'Challenge/Challenge-wget/Challenge-wget.html', 'GET THAT W', 'wget', NULL  , NULL , NULL, NULL , 5),
 (24, 'Challenge/Challenge-sitebroker/challenge-siteBroker.html', 'https://127.0.0.1/admin.html', 'SiteBroker', NULL  , NULL , NULL, 'scan de site internet', 5),
-(25, 'Challenge/Challenge-TheSleuthKit/Challenge-TheSleuthKit.html', 'dani.martinez1998@gmail.com', 'TheSleuthKit', NULL  , NULL , NULL, 'Un forensic approfondi avec TheSleuthKit !', 5);
+(25, 'Challenge/Challenge-TheSleuthKit/Challenge-TheSleuthKit.html', 'dani.martinez1998@gmail.com', 'TheSleuthKit', NULL  , NULL , NULL, 'Collecte d\'information', 5);
 
 
 
