@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoriel reverse-engenering - gdb</title>
+</head>
+
+<body>
+    <h1>Comment récupérer un mot de passe d'un simple programme.</h1>
+    <img src="gdb_logo.png" alt="gdb_logo.png">
+
+<h2>1. Objectif</h2>
+<p>
+    L'objectif de ce challenge de trouvé le flag du challenge, il s'agit du mot de passe caché dans le programe gdb-chall.exe.
+    </br>
+</p>
+
+<h2>2. Installation et Configuration</h2>
+    <p>
+        Ce tutoriel challenge met à disposition, par le biais de Docker-compose, une machine déjà configurée avec gdb déjà installer avec 2 executables "gdb-exo.exe" et "gdb-chall.exe".
+        Si vous avez déjà installer le docker-compose du challenge pas la peine de le réinstaller.
+        <br>
+        Récupérez le dockerfile dans le lien suivant, si vous avez déjà installer le docker-compose.yml du challenge, passer à l'étape 3 : 
+        <a class="link-primary"
+            href="Docker/gdb/Challenge/docker-compose.yml" download="docker-compose.yml"><U>docker-compose.yml</U></a><br>
+        <br> 
+        Dans un interpréteur de commande,bash (Linux) ou cmd (Windows), allez dans le répertoire où vous avez téléchargé le fichier docker-compose.yml et effectuez la commande suivante : 
+        <br>
+        <kbd class="ms-3"><bash> docker compose up -d</kbd><br>
+        <kbd class="ms-3"><bash> docker exec -it gdb /bin/sh</kbd><br>
+        <br> 
+        Vous disposez maintenant d'une machine alpine avec gdb d'installer. Pour mettre en pause ou arreter la machine faite: 
+        <br>
+        <kbd class="ms-3"><bash> docker compose pause/unpause</kbd><br>  
+        <kbd class="ms-3"><bash> docker compose stop/start</kbd><br>  
+        <br>
+    </p>
+
+    <h2>3. Question</h2>
+    <p>
+    <body>
+        <form>
+        <!-- Ajout autant de zones de texte et de boutons que nécessaire -->
+        <label for="zone-t1">1. Quelle est le mot de passe ? </label>
+            <input type="text" id="zone-t1" name="zone-t1">
+            <button type="button" onclick="verifierTexte('zone-t1')">Valider la réponse</button>
+            <p id="message-1"></p>
+    
+    	</form>
+        <script>
+            function verifierTexte(idZoneTexte) {
+                var zoneTexte = document.getElementById(idZoneTexte);
+                var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+    
+                if (zoneTexte.value.toLowerCase() === "SYD2023") {
+                    message.innerHTML = "Bonne réponse !";
+                    message.style.color = "green";
+                } else {
+                    message.innerHTML = "Ce n'est pas la réponse attendu ...";
+                    message.style.color = "red";
+                }
+            }
+        </script>
+</body>
+</html>
