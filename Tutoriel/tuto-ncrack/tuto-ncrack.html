@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoriel brut-force - Ncrack</title>
+</head>
+    <body>
+        <h1>Tutoriel brut-force - Ncrack</h1>
+        <img src="ncrack_logo.png" alt="ncrack_logo.png">
+
+    <h2>1. Objectif</h2>
+    <p>
+        L'objectif de ce tutoriel est de vous présenter l'outil ncrack.
+        </br>
+        Ncrack est un outil de brut force de login et mots de passe marchant en réseau. il supporte une variété de protocole étant :
+        <br>
+        SSH, RDP, FTP, Telnet, HTTP(S), Wordpress, POP3(S), IMAP, CVS, SMB, VNC, SIP, Redis, PostgreSQL, MQTT, MySQL, MSSQL, MongoDB, Cassandra, WinRM, OWA, DICOM
+        </br>
+        Nous vérons dans ce tutorial le protocole comment brut force un serveur FTP et en challenge le protocole SSH et HTTP.
+    </p>
+
+    <h2>2. Installation et Configuration</h2>
+    <p>
+        Ce tutoriel met à disposition, par le biais de Docker-compose, une machine déjà configurée avec un dictionnaire de mot de passe "rockyoulite.txt".
+        En plus du client ncrack, la liste des machines fournies à qui seront attaqué durant le tutoriel et le challenge. Le docker-compose sera à conserver pour le challenge.
+
+        <br>
+        Récupérez le dockerfile dans le lien suivant, si vous avez déjà installer le docker-compose.yml du challenge, passer à l'étape 3 : 
+        <a class="link-primary"
+            href="Docker/ncrack/Tutoriel/docker-compose.yml" download="docker-compose.yml"><U>docker-compose.yml</U></a><br>
+        <br> 
+        Dans un interpréteur de commande,bash (Linux) ou cmd (Windows), allez dans le répertoire où vous avez téléchargé le fichier docker-compose.yml et effectuez la commande suivante : 
+        <br>
+        <kbd class="ms-3"><bash> docker compose up -d</kbd><br>
+        <kbd class="ms-3"><bash> docker exec -it ncrack /bin/bash</kbd><br>
+        <br> 
+        Vous disposez maintenant d'une machine ubuntu avec ncrack d'installer. Ainsi que plusieurs autres machines à attaquer. Pour mettre en pause ou arreter les machine faite: 
+        <br>
+        <kbd class="ms-3"><bash> docker compose pause/unpause</kbd><br>  
+        <kbd class="ms-3"><bash> docker compose stop/start</kbd><br>  
+        <br>
+        Cartographie du réseau :<br> 
+        <kbd class="ms-3"><bash> ncrack-client 192.172.20.2</kbd><br>  
+        <kbd class="ms-3"><bash> serveur pure-ftpd 192.172.20.3</kbd><br>
+        <kbd class="ms-3"><bash> serveur ssh 192.172.20.4</kbd><br>
+        <kbd class="ms-3"><bash> serveur web 192.172.20.5</kbd><br>
+        <br>
+    </p>
+    <h2>3. Exercice Guidée</h2>
+    <p><br>
+    On veux attaqué le serveur FTP et on sait qu'un des utilisateurs, s'appele bob lennon.<br>
+    On supose que son nom d'utilisateur pourrait etre soit bob-lennon, bob ou lennon.<br>
+    <kbd class="ms-3"><bash>ncrack -p 21 --user bob-lennon,bob,lennon -P rockyoulite.txt ftp://192.172.20.3 --pairwise -T4</bash><br>
+        <code>--user</code> ou <code>--pass</code> permet de donner une liste d'identifiant/mdp à utiliser directement en ligne de commande en les séparants entre virgule<br>
+    <code>-T</code> est utilisé pour faire varier la vitesse auquel ncrack essaye de se connecter -T5 pour le plus agressif -T1 pour le plus discret.<br>
+    <code>--pairwise</code> permet de parcourir une liste de noms d'utilisateur et de mots de passe en les sélectionnant par paires. Cela peut être utile lorsque des listes de noms d'utilisateur et de mots de passe spécialisées sont disponibles et qu'il existe une connaissance interne de l'infrastructure testée. Par exemple, si la liste des noms d'utilisateur est "root, guest, admin" et que la liste des mots de passe est "test, 12345, q1w2e3r4".<br>
+    Ncrack parcourra les paires "root:test", "guest:12345", "admin:q1w2e3r4".<br>
+    <kbd class="ms-3"><bash>ftp 192.172.20.3</bash><br>
+    <kbd class="ms-3"><bash>get flag.txt</bash><br>
+    Il est important de noter qu'il y a d'autre moyen de trouver ces mots de passes, entrainez vous avec d'autre variantes de la commande ncrack et n'oubliez pas de consulter la page du manuel avec man ncrack<br>
+</body>
+<h2>Vidéo : Tutoriel </h2>
+<video width="320" height="240" controls>
+    <source src="ncrack.mp4" type="video/mp4">
+</video>
+
+<h2>Fin du tutoriel</h2>
+<p>
+    Le tutoriel est terminé, et vous connaisez les rudiments de ncrack. Flag Tutoriel = fasterThanHydra
+</p>
+</body>
+</html>
