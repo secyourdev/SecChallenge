@@ -83,7 +83,7 @@
 		<button type="button" onclick="verifierTexte('zone-t1')">Valider la réponse</button>
 		<p id="message-1"></p>
 
-		<label for="zone-t2">2. L'adresse IPv6 au format (xxxx:x::xx).</label>
+		<label for="zone-t2">2. L'adresse IPv6 au format (xxxx:xx::x).</label>
 		<input type="text" id="zone-t2" name="zone-t2">
 		<button type="button" onclick="verifierTexte2('zone-t2')">Valider la réponse</button>
 		<p id="message-2"></p>
@@ -105,8 +105,8 @@
 
     <label for="zone-t6">6. Quel est le nom du serveur utilisé ?</label>
 		<input type="text" id="zone-t6" name="zone-t6">
-		<button type="button" onclick="verifierTexte6('zone-t-6')">Valider la réponse</button>
-		<p id="message-6"></p>
+		<button type="button" onclick="verifierTexte6('zone-t6')">Valider la réponse</button>
+	<p id="message-6"></p>
 
     <label for="zone-t7">7. Qu'est-ce que c'est ?</label>
 		<input type="text" id="zone-t7" name="zone-t7">
@@ -121,7 +121,7 @@
 			var zoneTexte = document.getElementById(idZoneTexte);
 			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
 
-			if (zoneTexte.value.toLowerCase() === "Zurich") {
+			if (zoneTexte.value.toLowerCase() === "zurich") {
 				message.innerHTML = "Bonne réponse !";
 				message.style.color = "green";
 			} else {
@@ -133,7 +133,7 @@
 			var zoneTexte = document.getElementById(idZoneTexte);
 			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
 
-			if (zoneTexte.value.toLowerCase() === "2620:fe::fe") {
+			if (zoneTexte.value.toLowerCase() === "2620:fe::9") {
 				message.innerHTML = "Bonne réponse !";
 				message.style.color = "green";
 			} else {
@@ -145,7 +145,7 @@
 			var zoneTexte = document.getElementById(idZoneTexte);
 			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
 
-			if (zoneTexte.value.toLowerCase() === "149.112.112.112") {
+			if (zoneTexte.value.toLowerCase() === "149.112.112.9") {
 				message.innerHTML = "Bonne réponse !";
 				message.style.color = "green";
 			} else {
@@ -158,7 +158,7 @@
 			var zoneTexte = document.getElementById(idZoneTexte);
 			var message = document.getElementById("message-" + idZoneTexte.substr(-1));
 
-			if (zoneTexte.value.toLowerCase() === "DigiCert") {
+			if (zoneTexte.value.toLowerCase() === "digicert") {
 				message.innerHTML = "Bonne réponse !";
 				message.style.color = "green";
 			} else {
