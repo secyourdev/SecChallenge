@@ -22,13 +22,14 @@ WHITE='\033[1;37m'
 
 
 
-while getopts p:b:fh flag
+while getopts p:b:fhl flag
 do
     case "${flag}" in
       p) port=${OPTARG};;
       b) branch=${OPTARG};;
       f) force=true;;
       h) help=true;;
+      l) list=true;;
     esac
 done
 if [[ "$help" == true ]];then
@@ -36,8 +37,22 @@ if [[ "$help" == true ]];then
   echo -e "${CYAN}  -p: port${NOCOLOR} \n\tChoose the port you want to use for the website. May need -f to force the change\n\tExample: -p 8080\n\tDefault: 80";
   echo -e "${CYAN}  -b: branch${NOCOLOR} \n\tChoose the branch you want to show\n\tExample : -b main -b 2022_E4_GR2\n\tDefault: main";
   echo -e "${CYAN}  -f: force${NOCOLOR} \n\tForce the rewriting of the docker-compose\n\tNo parameter needed.";
+  echo -e "${CYAN}  -l: list${NOCOLOR} \n\tList all the branches available\n\tNo parameter needed. Canno't start the script with this option.";
   echo -e "${CYAN}  -h: help${NOCOLOR}\n\t show this help";
   echo -e "\nYou need ${CYAN}git${NOCOLOR} on your principle hard drive to use this script, ${CYAN}docker${NOCOLOR} and ${CYAN}docker-compose${NOCOLOR} installed and running."
+  exit 0;
+fi
+
+if [[ "$list" == true ]];then
+  echo -e "${YELLOW}To remove this output, please remove the -l option${NOCOLOR}";
+  echo -e "${CYAN}List of branches:${NOCOLOR}";
+  branches=$(git ls-remote --heads https://github.com/secyourdev/SecChallenge.git)
+
+  while read -r line; do
+    branch=$(echo $line | cut -d'/' -f3)
+    echo -e "${CYAN}${branch}${NOCOLOR}";
+  done <<< "$branches"
+  
   exit 0;
 fi
 
@@ -232,4 +247,8 @@ echo -e "${CYAN}Starting dockers${NOCOLOR}"
 
 
 
-sudo docker-compose up --build
+sudo docker-compose build
+sudo docker-compose pull
+
+sleep 10 && xdg-open http://localhost:${port:-80} & 
+sudo docker-compose up 
