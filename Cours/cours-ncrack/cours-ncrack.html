@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours brut-force - Ncrack</title>
+</head>
+    <body>
+        <h1>Cours brut-force - Ncrack</h1>
+        <img src="ncrack_logo.png" alt="ncrack_logo.png">
+        <h2>Introduction</h2>
+        <p>Ncrack est un outil de craquage de d'indentifiant/mot de passe en réseau puissant et flexible développé dans le cadre du projet Nmap. Il peut vous aider à tester la sécurité de votre réseau, à identifier les identifiants de connexion faibles.</p>
+    <h2>Installation</h2>
+    <p>Ncrack est disponible pour Linux, Windows et macOS. Voici comment l'installer sur chaque plateforme :</p>
+    <ul>
+        <li>Linux : La plupart des distributions Linux ont Ncrack disponible dans leurs dépôts de paquets. Vous pouvez l'installer en utilisant le gestionnaire de paquets de votre distribution (par exemple, apt, yum ou pacman).</li>
+        <li>Windows : Téléchargez la dernière version de Ncrack pour Windows à partir du site officiel (https://nmap.org/ncrack/), et extrayez l'archive ZIP. Ajoutez le dossier extrait à la variable PATH de votre système.</li>
+        <li>macOS : Vous pouvez installer Ncrack en utilisant Homebrew (https://brew.sh/). Lancez la commande brew install ncrack dans le terminal.</li>
+        <li>docker : Récupérez le dockerfile dans le lien suivant, si vous avez déjà installer le docker-compose.yml du challenge ou du tutoriel pas la peine de le reprendre <a class="link-primary" href="Docker/ncrack/Tutoriel/docker-compose.yml" download="docker-compose.yml"><U>docker-compose.yml</U></a></li>
+    </ul>
+    Dans un interpréteur de commande,bash (Linux) ou cmd (Windows), allez dans le répertoire où vous avez téléchargé le fichier docker-compose.yml et effectuez la commande suivante : 
+    <br>
+    <kbd class="ms-3"><bash> docker compose up -d</kbd><br>    
+    <br> 
+    Vous disposez maintenant d'une machine avec Spider Foot. Pour mettre en pause ou arreter la machine faite: 
+    <br>
+    <kbd class="ms-3"><bash> docker compose pause/unpause</kbd><br>  
+    <kbd class="ms-3"><bash> docker compose stop/start</kbd><br>  
+    <br>
+    <i>Si vous voulez l'installer par vous-même, il est téléchargeable depuis le site officiel : 
+        <a class="link-primary"href="https://nmap.org/ncrack/">SpiderFoot</a>.
+        <br> </i>
+    <h2>Utilisation basique</h2>
+    <p>La syntaxe de base de Ncrack est la suivante :</p>
+    <pre>
+    ncrack [options] {cible}:{service}:[port] [login]
+    </pre>
+    <p>options : n'importe quel flag optionel pour modifier le comportement de Ncrack.<br>
+    cible : L'adresse IP du système cible.<br>
+    service : Le nom du service que vous voulez craquer (par exemple, ssh, ftp, http).<br>
+    port : Le numéro de port pour le service (facultatif).<br>
+    login : La source des identifiants (par exemple, un fichier de nom d'utilisateur et de mot de passe).</p>
+
+<p>Exemples :</p>
+<ul>
+	<li>Forcer une connexion SSH :</li>
+	<pre>ncrack -p 22 -U root -P 'file:passwords.txt' ssh://192.168.1.1</pre>
+	<li>Craquer une connexion FTP en utilisant une liste de noms d'utilisateur et de mots de passe :</li>
+	<pre>ncrack -p 21 -U 'file:usernames.txt' -pass password,qwerty,123 ftp://192.168.1.1</pre>
+</ul>
+<h2>Options avancées</h2>
+<p>Voici quelques options avancées qui peuvent être utiles lors de l'utilisation de Ncrack :</p>
+<ul>
+	<li>-T &lt;modèle de temporisation&gt; : Spécifiez un modèle de temporisation (0-5) pour ajuster la vitesse du processus de craquage. Les valeurs plus élevées sont plus rapides mais plus agressives, tandis que les valeurs plus faibles sont plus lentes mais moins susceptibles d'être détectées.</li>
+	<li>--connection-limit &lt;num&gt; : Définir le nombre maximal de connexions simultanées.</li>
+	<li>--proxy &lt;type://[user:pass@]host:port&gt; : Utilisez un serveur proxy pour les connexions.</li>
+	<li>--resume &lt;file&gt; : Reprendre une session Ncrack précédemment enregistrée.</li>
+</ul>
+<h2>Conseils pour un craquage efficace</h2>
+<ul>
+	<li>Utilisez de grandes listes de mots de passe diversifiées pour augmenter les chances de découvrir des informations d'identification faibles.</li>
+	<li>Tenez compte des mesures de sécurité du système cible, telles que les verrouillages de compte et la limitation de la vitesse, lors du choix d'un modèle de temporisation.</li>
+    <li>Soyez conscient des implications légales et éthiques lors de l'utilisation de Ncrack sur des systèmes que vous ne possédez pas ou pour lesquels vous n'avez pas la permission de tester.</li>
+</ul>
+<h2>Conclusion</h2>
+<p>Ncrack est un outil puissant de craquage d'authentification de réseau qui peut vous aider à identifier des informations d'identification faibles et à améliorer la sécurité de vos systèmes. En comprenant son utilisation de base et avancée, vous pouvez tester et sécuriser efficacement votre réseau contre l'accès non autorisé. </p></main>
+</body>
+</html>
