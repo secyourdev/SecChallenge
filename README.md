@@ -1,4 +1,4 @@
-# Cybersecuriteach
+# Cybersecuriteach V1
 
 Cybersecuriteach is a website for cyber security awareness by learning different hacking techniques.
 
@@ -163,3 +163,75 @@ Stop and delete containers, images, and volumes :
 ```bash
 make clean
 ```
+
+
+
+# CyberSecuriTeach V2
+
+## Lancement de la plateforme 
+
+### Prérequis
+
+Il est nécessaire d'avoir installé sur votre machine les logiciels suivants :
+- Linux avec apt
+  1. docker 
+  2. docker compose 
+  3. git 
+- Windows 
+  1. docker desktop via le [site officiel](https://www.docker.com)
+  2. git via le [site officiel](https://git-scm.com/downloads). Il faut que git soit installé sur le même disque que votre os.
+
+Pour lancer la plate-forme, vous pourrez télécharger le fichier d'exécution nécessaire pour votre système d'exploitation.
+Pour les systèmes Windows, vous pourrez télécharger le fichier **script.exe**, pour les systèmes Unix, vous pourrez télécharger le fichier **script.sh** disponible dans le github.
+
+### Utilisation des exécutables
+
+- Windows
+    Avant de lancer le **.exe** assurez-vous que docker est bien lancé sur votre machine. Si ce n'est pas le cas, vous pouvez le lancer via le menu démarrer de Windows. Il vous faudra peut être suivre les indications de docker et installer wsl (windows subsystem for linux) pour pouvoir lancer docker. 
+    
+    Une fois le script lancé, vous pourrez choisir le port sur lequel vous souhaitez lancer la plateforme. Par défaut, le port 80 est utilisé. 
+    La branche que vous voulez utiliser pour l'affichage du site web est également à choisir. Par défaut, la branche main est utilisée.
+    Enfin vous pouvez choisir si vous souhaitez réécrire les fichiers de configuration de docker-compose. Par défaut, les fichiers de configuration ne sont pas réécrits. Si vous voulez changer le port au second lancement, vous devrez donc choisir de réécrire les fichiers de configuration.
+
+##
+- Unix
+    Tout d'abord il faut rendre le fichier **.sh** exécutable. Pour cela, vous pouvez utiliser la commande suivante : 
+    
+    ```bash 
+    chmod +x script.sh
+    ```
+    Une fois le script rendu exécutable, vous pouvez lancer le script avec la commande suivante : 
+    
+    ```bash 
+    ./script.sh -h
+    ```
+    Vous aurez alors l'explication des différents paramètres que vous pouvez utiliser pour lancer le script.
+    Lancer le script sans paramètre lancera la plateforme avec les paramètres par défaut. La commande sera donc équivalente à : 
+    
+    ```bash 
+    ./script.sh -p 80 -b main
+    ```
+
+Vous pouvez alors explorer le site et vous connecter avec le compte admin pour plus de rapidité : user:a password:a
+
+## Ajout d'un nouvel élément dans la plateforme 
+
+
+Pour ajouter un nouvel élément dans la plateforme vous devez créer un html dans le dossier souhaité ( en essayant de maintenir une certaine logique dans l'arborescence). Attention au lien des images, il faut qu'ils soient bien en fonction de l'arborescence du site et non pas d'une machine personnelle.
+Il vous faut ensuite ajouter dans la base de données le lien vers votre nouvel élément. Pour cela, vous devez vous rendre dans le fichier /bdd/dbsite.sql et ajouter une ligne dans la table correspondante. Pour connaitre les champs à remplir vous pouvez vous référer à la première ligne de la table ou aux autres lignes déjà présentes.
+
+### Les différentes arborescences
+
+-Les fichiers à télécharger par les étudiants doivent être mis dans le fichier download du site puis faire un lien href dans le fichier HTML.
+-L'intégralité des dockers doit être mise dans le dossier docker du site pour maintenir une continuité dans le fonctionnement de la plateforme.
+-Les solutions des challenges doivent être placée dans le dossier solution du site.
+
+### Tester avant de push
+
+Si vous voulez tester votre ajout avant de push, vous pouvez vous déplacer dans le dossier Website créer par le script et lancer la commande suivante :
+
+```bash 
+docker-compose up
+```
+Vous pourrez alors tester votre ajout sur le site. 
+
