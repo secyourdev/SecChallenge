@@ -26,7 +26,7 @@
 
 <center>
     <h1>Local File Inclusion</h1>
-    <img src="images/lfi_logo.png" alt="LFILogo" class="img-fluid">
+    <img src="Tutoriel/tuto-lfi/images/lfi_logo.png" alt="LFILogo" class="img-fluid">
 </center>
 
 <h2 class="mb-3"><u>1. Objectif</u></h2>
@@ -60,11 +60,11 @@
     Celà vous ouvrira une page Firefox dans votre navigateur, page Firefox qui correspond au Firefox de la machine "pentester", vous serez donc dans
     le même sous réseaux que le serveur et vous pourrez accéder au site web en saisissant l'adresse IP du serveur<br>
     <center>
-        <img src="images/home.png" alt="LFIHome" class="img-fluid">
+        <img src="Tutoriel/tuto-lfi/images/home.png" alt="LFIHome" class="img-fluid">
     </center><br>
     <center>C'est un générateur de nombres aléatoires, un site web relativement simple avec une fonctionnalité simple.</center>
     <center>
-        <img src="images/result.png" alt="LFIResult" class="img-fluid">
+        <img src="Tutoriel/tuto-lfi/images/result.png" alt="LFIResult" class="img-fluid">
     </center>
     Mais ici ce n'est pas la complexité du site qui nous intéresse, mais s'il est vulnérable à la faille LFI. L'une des méthodes principale pour
     vérifier ça est d'aller dans l'url de la page et de chercher directement à partir de cette dernière. Dans ce tutoriel, nous avons volontairement
@@ -76,13 +76,13 @@
     <kbd class="ms-3">http://172.21.0.3/home.php<b>?file=../../../../../../../../etc/passwd</b></kbd>, de la même façon que vous naviguer dans vos répertoires avec
     la commande <kbd class="ms-3">cd</kbd>.<br>
     <center>
-        <img src="images/url.png" alt="LFIurl" class="img-fluid">
+        <img src="Tutoriel/tuto-lfi/images/url.png" alt="LFIurl" class="img-fluid">
     </center>
     Pourquoi autant de "<b>../</b>"? Tout simplement car vous ne savez pas exactement dans quel dossier le site web est localisé, et il faut donc mettre le plus de "../"
     possible pour revenir à la racine, on a pas à s'inquiéter de faire un <kbd class="ms-3">cd ..</kbd><br> à la racine car on ne peut pas remontrer plus haut.
     Voici le résultat que l'on obtient:<br>
     <center>
-        <img src="images/etcpasswd.png" alt="LFIpasswd" width="1400" class="img-fluid">
+        <img src="Tutoriel/tuto-lfi/images/etcpasswd.png" alt="LFIpasswd" width="1400" class="img-fluid">
     </center>
     <center>
         Le fichier /etc/passwd est affiché sur la page du site web!<br>
