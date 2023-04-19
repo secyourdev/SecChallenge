@@ -222,9 +222,9 @@ Il vous faut ensuite ajouter dans la base de données le lien vers votre nouvel 
 
 ### Les différentes arborescences
 
--Les fichiers à télécharger par les étudiants doivent être mis dans le fichier download du site puis faire un lien href dans le fichier HTML.
--L'intégralité des dockers doit être mise dans le dossier docker du site pour maintenir une continuité dans le fonctionnement de la plateforme.
--Les solutions des challenges doivent être placée dans le dossier solution du site.
+- Les fichiers à télécharger par les étudiants doivent être mis dans le fichier download du site puis faire un lien href dans le fichier HTML.
+- L'intégralité des dockers doit être mise dans le dossier docker du site pour maintenir une continuité dans le fonctionnement de la plateforme.
+- Les solutions des challenges doivent être placée dans le dossier solution du site.
 
 ### Tester avant de push
 
