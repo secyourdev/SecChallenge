@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  sqlmap:
+    build: ./
+    stdin_open: true
+    volumes:
+      - "./results:/opt/sqlmap/results"
