@@ -1,0 +1,35 @@
+<h1><b>Fuzz Faster U Fools</b></h1>
+
+<h2>1. Objectif de l'outil</h2>
+
+<p>
+    Fuzz Faster U Fools (FFUF) est un outil programmé sous GO. il sert pendant la phase d'exploitation du pentesting. <br>
+    il est l'outils open-source du fuzzing le plus rapide. <br>
+    Le fuzzing est une méthode qui permet d'envoyer des donnée arbitraire (malformé, anormal, corrompu, ...). à un système pour que ce système 
+    fonctionne de la manière souhaitée mais différemment que la façon prévue. cela permet de découvrir de nouvelle vulnérabilité <br>
+    le fuzzing regroupe toutes les activités permettant de trouver des fichiers cachés, envoyer des données aléatoires à un formulaire, tenté de se connecter à une application. 
+    Le brut-force est une forme particulière de Fuzzing. le fuzzing sur un mot de passe peut aussi être de tenté de rentré tout type de donné pour casser le codage. 
+</p>
+<h2>2. Fonctionnement</h2>
+<h3>Installation</h3>
+<p>
+    Télécharger le fichier <a class="link-primary"
+                              href="Docker/tuto_FFUF/docker-compose.yml" download="docker-compose.yml"><U>docker-compose.yml</U></a>
+</p>
+
+<h3>Utilisation</h3>
+<p>
+    Il faut un site local pour faire les tests. de mon côté j'ai utilisé un site local<br>
+    On lance la commande "ffuf -h" affiché les possibilités<br>
+    <img src="help1.PNG" width="700px"><br>
+    <img src="help2.PNG" width="700px"><br>
+    les flags en 2 lettre -m* c'est pour "match", pour obtenir un élément particulier<br>
+    Les flags en 2 lettres -f* c'est pour "filter", pour ne pas obtenir un élément particulier <br>
+
+    On lance la commande "ffuf -w /usr/share/wordlists/rockyou.txt -u http://172.18.0.1/FUZZ" pour trouver les sous-onglets du site. <br>
+    Le FUZZ final est important pour indiquer où le teste doit se faire. <br>
+
+    <img src="1.PNG" width="700px"><br><br>
+    Il est possible de brut force d'autre élément (POST, GET, PUT) selon les paramètre et l'emplacement du "FUZZ" dans l'url. pour obtenir le résultat souhaité, il faut utiliser des "fiter" et des "match"
+
+</p>

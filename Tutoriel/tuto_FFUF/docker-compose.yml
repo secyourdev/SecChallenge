@@ -1,0 +1,8 @@
+version: '2'
+
+services:
+  ffuf:
+    build: ./
+    stdin_open: true
+    volumes:
+      - "./results:/opt/ffuf/results"
