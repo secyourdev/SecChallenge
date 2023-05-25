@@ -1,0 +1,30 @@
+version: '3.7'
+
+services:
+  alice:
+    image: cybersecuriteachg2/arp_alice
+    container_name: reseau1_alice
+    restart: always
+    networks:
+      - reseau_1
+
+  bob:
+    image: cybersecuriteachg2/arp_bob
+    container_name: reseau12_bob
+    restart: always
+    sysctls:
+      - net.ipv4.ip_forward=1
+    networks:
+      - reseau_1
+      - reseau_2
+
+  eve:
+    image: cybersecuriteachg2/arp_eve
+    container_name: reseau2_eve
+    restart: always
+    networks:
+      - reseau_2
+
+networks:
+  reseau_1:
+  reseau_2:

@@ -7,21 +7,17 @@
 </p>
 
 <h2>1. Configuration </h2>
-<p>    
+<p>
+    Il est nécessaire d'installer traceroute via le bash linux 
+    <kbd class="ms-3">bash> sudo apt-get install traceroute</kbd><br>
+    
     Ce tuto met à disposition, par le biais de l'application Docker et docker-compose, trois machines connectées sur un
     même réseau local.
     Les commandes qui permettent de lancer les 3 machines sont les suivantes :
     <kbd class="ms-3">bash> docker-compose up -d</kbd><br>
     Nous avons besoin de nous connecter à celle d'Alice via la commande :
     <kbd class="ms-3">bash> docker exec -it reseau1_alice /bin/bash</kbd><br>
-    <br>
 
-    On doit maintenant définir les routes de routage. Attention a bien les parametrer dans les deux sens. 
-    <kbd class="ms-3">bash> route add default gw 192.168.111.3 eth0 </kbd><br>
-    <br>
-    
-    Il faut ensuite installer traceroute
-    <kbd class="ms-3">bash> sudo apt-get install traceroute</kbd><br>
 </p>
 
 <h2>2. Application</h2>
