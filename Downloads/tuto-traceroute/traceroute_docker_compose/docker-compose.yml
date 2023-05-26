@@ -1,21 +1,25 @@
-version: "3"
+version: "3.7"
+
 services:
   alice:
     image: cybersecuriteachg2/arp_alice:latest
+    container_name: reseau1_alice
     networks:
       reseau1:
         ipv4_address: 192.168.111.2
 
   eve:
     image: cybersecuriteachg2/arp_eve:latest
+    container_name: reseau12_eve
     networks:
       reseau1:
         ipv4_address: 192.168.111.3
       reseau2:
         ipv4_address: 192.168.112.3
 
-  bob:
+  bob:  
     image: cybersecuriteachg2/arp_bob:latest
+    container_name: reseau2_bob
     networks:
       reseau2:
         ipv4_address: 192.168.112.2
