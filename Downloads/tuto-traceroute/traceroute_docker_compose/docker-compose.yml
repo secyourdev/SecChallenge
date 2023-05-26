@@ -4,26 +4,31 @@ services:
   alice:
     image: cybersecuriteachg2/arp_alice
     container_name: reseau1_alice
-    restart: always
-    networks:
-      - reseau_1
-
-  bob:
-    image: cybersecuriteachg2/arp_bob
-    container_name: reseau12_bob
-    restart: always
-    sysctls:
-      - net.ipv4.ip_forward=1
-    networks:
-      - reseau_1
-      - reseau_2
+    restart: unless-stopped
+    networks: 
+      - reseau_1 : 
+        ipv4_address: 192.168.111.2
 
   eve:
     image: cybersecuriteachg2/arp_eve
-    container_name: reseau2_eve
-    restart: always
+    container_name: reseau12_eve
+    restart: unless-stopped
+    sysctls:
+      - net.ipv4.ip_forward=1
+
     networks:
-      - reseau_2
+      - reseau_1 :
+        ipv4_address: 192.168.111.3
+      - reseau_2 :
+        ipv4_address: 192.168.112.3
+
+  bob:
+    image: cybersecuriteachg2/arp_bob
+    container_name: reseau2_bob
+    restart: unless-stopped
+    networks:
+      - reseau_2 :
+        ipv4_address: 192.168.112.2
 
 networks:
   reseau_1:
