@@ -4,32 +4,57 @@
 
 <p>
     L'objectif de ce tutoriel est de vous présenter l'outil de ligne de commande traceroute.
+    <br>
+    traceroute relève le chemin emprunté par les paquets IP à travers un réseau. Cela renvoie les sauts successifs effectués par les paquets depuis la source vers la destination, avec les adresses IP des passerelles ainsi que les temps de réponse.
+    <br>
+    C'est un outil précieux en cybersécurité pour comprendre la topologie d'un réseau, détecter les problèmes de connectivité, identifier les anomalies ou les tentatives d'interception.
+    <br>
 </p>
 
 <h2>2. Configuration </h2>
 <p>    
-    Ce tuto met à disposition, par le biais de l'application Docker et docker-compose, trois machines connectées sur un
-    même réseau local.
-    Les commandes qui permettent de lancer les 3 machines sont les suivantes :
+    Pour ce tutoriel nous allons utiliser trois machines (Alice, Eve et Bob) interconnectées via deux réseaux distincts en utilisant Docker et docker-compose.
+    Téléchargez le <a class="link-primary"
+        href="./Downloads/tuto-traceroute/traceroute_docker_compose/docker-compose.yml"><U>docker-compose.yml</U></a><br>
+    Voici les commandes pour démarrer les trois machines :
     <br>
     <kbd class="ms-3">bash> docker-compose up -d</kbd><br>
     <br>
-    Nous avons besoin de nous connecter à celle d'Alice via la commande :
+    Pour accéder à la machine d'Alice, utilisez la commande suivante.
     <br>
     <kbd class="ms-3">bash> docker exec -it --privileged reseau1_alice /bin/bash</kbd><br>
     <br>
 
-    <kbd class="ms-3">bash> sudo apt-get install net-tools</kbd><br>
-    <kbd class="ms-3">bash> sudo apt-get install iproute2</kbd><br>
-    On doit maintenant définir les routes de routage. Attention a bien les parametrer dans les deux sens. 
+    On installe les paquets utiles pour la suite
+    <kbd class="ms-3">bash> apt-get install net-tools iputils-ping traceroute </kbd><br>
+    <br>
+    On doit maintenant définir les routes de routage. Attention a bien les parametrer sur les deux machines alice et bob. 
+    <br>
+    Dans le cas d'Alice par exemple :
     <kbd class="ms-3">bash> route add default gw 192.168.111.3 eth0 </kbd><br>
+    <!--
+    <kbd class="ms-3">bash> route del default gw 192.168.111.1 </kbd><br> 
+    -->
     <br>
     
-    Il faut ensuite installer traceroute
-    <kbd class="ms-3">bash> sudo apt-get install traceroute</kbd><br>
 </p>
 
-<h2>2. Application</h2>
+<h2>2. Utilisation </h2>
+<p>
+    On ping les machines pour savoir si elles sont atteignables 
+    </br>
+    <img src="Tutoriel/tuto-traceroute/ping_alice_vers_bob.png" alt="" class="img-fluid">
+    </br>
+    On effectue un traceroute sur la machine bob. 
+    </br>
+    <img src="Tutoriel/tuto-traceroute/traceroute_alice_vers_bob.png" alt="" class="img-fluid">
+    </br>
+    On observe que eve est aussi sur le réseau 2 où bob est présent et sert de routeur. 
+
+</p>
+
+
+<h2>3. Application</h2>
 
 <h2 class="mb-3">4. Bonus : vidéo démonstration</h2>
 <p>
@@ -37,7 +62,7 @@
 </p>
 <video controls width="560" height="315">
     <!--  
-    <source src="Tutoriel/tuto-arpspoof/traceroute.mp4" type="video/mp4">
+    <source src="Tutoriel/tuto-traceroute/traceroute.mp4" type="video/mp4">
     -->
     Désolé, votre navigateur ne supporte pas ce format vidéo.
 </video>
