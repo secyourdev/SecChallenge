@@ -20,17 +20,19 @@
     <br>
     <kbd class="ms-3">bash> docker-compose up -d</kbd><br>
     <br>
-    Pour accéder à la machine d'Alice, utilisez la commande suivante.
+    Pour accéder à la machine Alice, utilisez la commande suivante.
     <br>
     <kbd class="ms-3">bash> docker exec -it --privileged reseau1_alice /bin/bash</kbd><br>
     <br>
 
     On installe les paquets utiles pour la suite
+    <br>
     <kbd class="ms-3">bash> apt-get install net-tools iputils-ping traceroute </kbd><br>
     <br>
     On doit maintenant définir les routes de routage. Attention a bien les parametrer sur les deux machines alice et bob. 
     <br>
     Dans le cas d'Alice par exemple :
+    <br>
     <kbd class="ms-3">bash> route add default gw 192.168.111.3 eth0 </kbd><br>
     <!--
     <kbd class="ms-3">bash> route del default gw 192.168.111.1 </kbd><br> 
@@ -43,13 +45,17 @@
 <p>
     On ping les machines pour savoir si elles sont atteignables 
     </br>
+    <kbd class="ms-3">bash> ping -c 3 192.168.112.2 </kbd><br>
+    </br>
     <img src="Tutoriel/tuto-traceroute/ping_alice_vers_bob.png" alt="" class="img-fluid">
     </br>
-    On effectue un traceroute sur la machine bob. 
+    On effectue un traceroute sur la machine Bob. 
+    </br>
+    <kbd class="ms-3">bash> traceroute 192.168.112.2 </kbd><br>
     </br>
     <img src="Tutoriel/tuto-traceroute/traceroute_alice_vers_bob.png" alt="" class="img-fluid">
     </br>
-    On observe que eve est aussi sur le réseau 2 où bob est présent et sert de routeur. 
+    On observe que Eve est sur les réseaux 1 et 2 et sert de routeur. 
 
 </p>
 
