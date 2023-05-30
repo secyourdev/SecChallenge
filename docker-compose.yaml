@@ -1,3 +1,10 @@
+version: "3.3"
+
+
+
+
+
+
 networks:
   secyourdev:
     ipam:
@@ -50,4 +57,4 @@ services:
     volumes:
       - './:/var/www/html/'
 
-version: '3.8'
+
