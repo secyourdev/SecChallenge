@@ -1146,7 +1146,7 @@ CREATE TABLE `presentation` (
   `Description` text NOT NULL,
   `Categorie` text,
   PRIMARY KEY (`Id`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -1155,7 +1155,7 @@ CREATE TABLE `presentation` (
 
 LOCK TABLES `presentation` WRITE;
 /*!40000 ALTER TABLE `presentation` DISABLE KEYS */;
-INSERT INTO `presentation` VALUES (1,'Presentation/pres-mitm/pres-mitm.html','Presentation/pres-mitm/mitm.png','Présentation : L\'attaque de l\'homme du milieu (MITM)','Cette présentation vous expliquera ce qu\'est l\'attaque par l\'homme du milieu, le déroulement d\'une attaque ainsi que comment s\'en protéger.',NULL),(2,'Presentation/pres-phishing/pres-phishing.html','Presentation/pres-phishing/phishing.png','Présentation : Le phishing (hammeçonnage)','Cette présentation vous expliquera ce qu\'est le phishing, comment s\'en protéger et que faire si on en est victime.',NULL),(3,'Presentation/pres-ransomware/pres-ransomware.html','Presentation/pres-ransomware/ransomware.png','Présentation : Le ransomware (rançonlogiciel)','Cette présentation vous expliquera ce qu\'est un ransomware, comment se protéger de ces logiciels et que faire si on en est victime.',NULL),(4,'Presentation/pres-xss/pres-xss.html','Presentation/pres-xss/xss.png','Présentation : Une attaque XSS','Cette présentation vous expliquera ce qu\'est une attaque XSS, l\'impact d\'une telle attaque et comment s\'en protéger.',NULL),(5,'Presentation/pres-firewall/firewall.html','Presentation/pres-firewall/firewall.png','Firewall','Voici une présentation sommaire du fonctionnement d\'un pare-feu Linux.',NULL),(6,'Presentation/pres-heartbleed/pres-heartbleed.html','Presentation/pres-heartbleed/heartbleed-logo.png','Faille Heartbleed','Présentation d\'une faille ssl',NULL),(7,'Presentation/pres-wsus/pres-wsus.html','Presentation/pres-wsus/affiche.png','Windows Server Update Services (wsus)','Outil de gestion de mises à jour de sécurité pour les systèmes d\'exploitation  windows',NULL);
+INSERT INTO `presentation` VALUES (1,'Presentation/pres-mitm/pres-mitm.html','Presentation/pres-mitm/mitm.png','Présentation : L\'attaque de l\'homme du milieu (MITM)','Cette présentation vous expliquera ce qu\'est l\'attaque par l\'homme du milieu, le déroulement d\'une attaque ainsi que comment s\'en protéger.',NULL),(2,'Presentation/pres-phishing/pres-phishing.html','Presentation/pres-phishing/phishing.png','Présentation : Le phishing (hammeçonnage)','Cette présentation vous expliquera ce qu\'est le phishing, comment s\'en protéger et que faire si on en est victime.',NULL),(3,'Presentation/pres-ransomware/pres-ransomware.html','Presentation/pres-ransomware/ransomware.png','Présentation : Le ransomware (rançonlogiciel)','Cette présentation vous expliquera ce qu\'est un ransomware, comment se protéger de ces logiciels et que faire si on en est victime.',NULL),(4,'Presentation/pres-xss/pres-xss.html','Presentation/pres-xss/xss.png','Présentation : Une attaque XSS','Cette présentation vous expliquera ce qu\'est une attaque XSS, l\'impact d\'une telle attaque et comment s\'en protéger.',NULL),(5,'Presentation/pres-firewall/firewall.html','Presentation/pres-firewall/firewall.png','Firewall','Voici une présentation sommaire du fonctionnement d\'un pare-feu Linux.',NULL),(6,'Presentation/pres-heartbleed/pres-heartbleed.html','Presentation/pres-heartbleed/heartbleed-logo.png','Faille Heartbleed','Présentation d\'une faille ssl',NULL),(7,'Presentation/pres-wsus/pres-wsus.html','Presentation/pres-wsus/affiche.png','Windows Server Update Services (wsus)','Outil de gestion de mises à jour de sécurité pour les systèmes d\'exploitation  windows',NULL),(8,'Presentation/pres-vishing/pres-vishing.html','Presentation/pres-vishing/vishing.png ','Vishing','Le phishing vocal, est une attaque de vishing où l’escroc se fait passer pour une source fiable afin d’obtenir des informations sensibles, comme un numéro de carte de crédit ou un numéro d’identité nationale.',NULL);
 /*!40000 ALTER TABLE `presentation` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -1251,4 +1251,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-05-30 15:25:59
+-- Dump completed on 2023-05-30 21:17:52
