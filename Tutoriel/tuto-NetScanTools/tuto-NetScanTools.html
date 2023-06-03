@@ -20,12 +20,46 @@
 <p>
     <h3>L'outil PING </h3>
     <p>
-
+        Cet outil permet de tester l'accessibilité et la réactivité d'un hôte du réseau ou d'une adresse IP.
+        Pour des adresses ipv4 il est possible pour le ping d'envoyer des messages ICMP, UDP, TCP, UDP Socket Xmit et MS ICMP
+        Trois ping utilisent WinPcap pour avoir une réponse plus rapide : ICMP, UDP et TCP
+        <br>
+        Exemple pour ping le site de google : 
+        <br>
+        <img src="Tutoriel/tuto-NetScanTools/netscantools-ping.png"><br>
     </p>
 
     <h3>L'outil DNS CORE</h3>
+    <p>
+        Exemple 
+        <img src="Tutoriel/tuto-NetScanTools/netscantools-ping.png"><br>
+    </p>
+
     <h3>L'outil TCP Traceroute</h3>
+    <p>
+        Cet outil permet d'envoyer des messages TCP à l'adresse cible et renvoie 
+        des messages ICMP et des messages TCP en utilisant WinPcap.
+        L'outil montre le trajet parcourus par les messages 
+        de la machine host vers l'adresse cible.
+        <br>
+        Exemple avec le site de google :
+        <br> 
+        <img src="Tutoriel/tuto-NetScanTools/netscantools-traceroute.png"><br>
+    </p>
+
     <h3>L'outil ARP Scan (scan MAC)</h3>
+    <p>
+        Cet outil permet de découvrir et mapper les adresses MAC (Media Access Control) 
+        associées aux adresses IP sur un réseau local.
+        L'outil fonctionne d'abord en lançant des requêtes ARP à toutes les adresses IP 
+        d'une plage spécifiée sur le réseau local. Ensuite il attend les réponses des appareils du réseau 
+        qui possèdent ces adresses IP et fait une correspondance addresse IP/MAC. 
+        La table MAC est enfin renvoyé à l'utilisateur.
+        <br>
+        Exemple : 
+        <br> 
+        <img src="Tutoriel/tuto-NetScanTools/netscantools-ARP_scan.png"><br>
+    </p>
     <h3>L'outil Port Scan</h3>
 </p>
 
