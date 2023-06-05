@@ -5,7 +5,6 @@
     <meta name="Belén & Louise"/>
     <meta name="keywords" content="Tutorial HTTP Server"/>
     <meta charset="UTF-8">
-    <link rel="stylesheet" type="text/css" href="style.css">
     <title> Tutorial HTTP Server </title>
     
 </head>
@@ -30,8 +29,8 @@
         Therefore, we had to create one Python image to create the server and one Ubuntu to execute the command.
         </br><br>
         <div style="display: flex;">
-            <img src="C:/Users/louis/Desktop/Docker/Page web/dockerfile_ubuntu.png" alt="dockerfile_ubuntu.png" style="margin-right: 10px;">
-            <img src="C:/Users/louis/Desktop/Docker/Page web/dockerfile_python.png" alt="dockerfile_python.png">
+            <img src="Tutoriel/tuto-http-server/dockerfile_ubuntu.png" alt="dockerfile_ubuntu.png" style="margin-right: 10px;">
+            <img src="Tutoriel/tuto-http-server/dockerfile_python.png" alt="dockerfile_python.png">
           </div>          
         <br>
     </p>
@@ -40,14 +39,14 @@
         <h2> 2. Create the docker-compose file </h2>
         This docker-compose.yml file defines two services (myubuntu and mypython) and a network (tuto_wget). The services are built from their respective Dockerfiles and are connected to the custom network with specific IP addresses.
         </br><br>
-        <img src="C:/Users/louis/Desktop/Docker/Page web/docker-compose.png" alt="docker-compose.png">
+        <img src="Tutoriel/tuto-http-server/docker-compose.png" alt="docker-compose.png">
     </p>
 
     <p> 
         <h2> 3. In the command prompt, issue the command: <i> docker-compose build </i> </h2>
         When you run this command, Docker Compose reads the configuration file, searches for the specified services, and executes the corresponding build instructions for each service.
         </br><br>
-        <img src="C:/Users/louis/Desktop/Docker/Page web/docker-build compose.png" alt="docker-build compose.png">
+        <img src="Tutoriel/tuto-http-server/docker-build compose.png" alt="docker-build compose.png">
     </p>
 
     <p> 
@@ -56,11 +55,11 @@
         </br>
         Each container is launched in detached mode, which means it runs in the background without looking at the terminal.
         </br><br>
-        <img src="C:/Users/louis/Desktop/Docker/Page web/docker-compose up -d.png" alt="docker-compose up -d.png">
+        <img src="Tutoriel/tuto-http-server/docker-compose up -d.png" alt="docker-compose up -d.png">
         </br><br>
         We can now see that the containers have been created with the images : 
         </br><br>
-        <img src="C:/Users/louis/Desktop/Docker/Page web/containers.png" alt="containers.png">
+        <img src="Tutoriel/tuto-http-server/containers.png" alt="containers.png">
     </p>
 
     <p> 
@@ -73,18 +72,18 @@
         <h2> 6. In the command prompt, issue the command: <i> wget http://10.5.0.3 </i> </h2>
         We can now make the http request, in order to access the wanted files.
         </br><br>
-        <img src="C:/Users/louis/Desktop/Docker/Page web/wget.png" alt="wget.png">
+        <img src="Tutoriel/tuto-http-server/wget.png" alt="wget.png">
         </br><br>
         <div style="display: flex;">
-            <img src="C:/Users/louis/Desktop/Docker/Page web/cat.png" alt="cat.png" style="margin-right: 10px;">
-            <img src="C:/Users/louis/Desktop/Docker/Page web/directory.png" alt="directory.png">
+            <img src="Tutoriel/tuto-http-server/cat.png" alt="cat.png" style="margin-right: 10px;">
+            <img src="Tutoriel/tuto-http-server/directory.png" alt="directory.png">
         </div>          
         <br>
     </p>
 
     <p> 
         <h2> Video tutorial </h2>
-        <video src="C:/Users/louis/Desktop/Docker/Page web/tuto_wget.mp4" controls width="760" height="515"> </video>
+        <video src="Tutoriel/tuto-http-server/tuto_wget.mp4" controls width="760" height="515"> </video>
     </p>
     
 </body>
