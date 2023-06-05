@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>       
+    <meta name="Belén & Louise"/>
+    <meta name="keywords" content="Tutorial HTTP Server"/>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <title> Tutorial HTTP Server </title>
+    
+</head>
+
+<body>
+
+    <h1> Tutorial HTTP Server </h1>
+
+    <p> 
+        <h2> Objective </h2>
+        Our project involved launching an HTTP server in order to retrieve files through this web server. To do this, we had to create two images on docker, one to launch the server and the second to run the command to retrieve the file.
+        </br>
+        Documentation is available here : <a class="link-primary"
+		href="https://docs.python.org/3/library/http.server.html"><u>https://docs.python.org/3/library/http.server.html</u></a>
+	    </br>
+    </p>
+
+    <p> 
+        <h2> 1. Create the images </h2>
+        The first step was to create the images. To do so, we created a Dockerfile, which is a text configuration file containing a series of instructions for creating a custom Docker image. These instructions specify the steps required to build a Docker image from a base image, adding additional instructions.
+        </br>
+        Therefore, we had to create one Python image to create the server and one Ubuntu to execute the command.
+        </br><br>
+        <div style="display: flex;">
+            <img src="C:/Users/louis/Desktop/Docker/Page web/dockerfile_ubuntu.png" alt="dockerfile_ubuntu.png" style="margin-right: 10px;">
+            <img src="C:/Users/louis/Desktop/Docker/Page web/dockerfile_python.png" alt="dockerfile_python.png">
+          </div>          
+        <br>
+    </p>
+
+    <p> 
+        <h2> 2. Create the docker-compose file </h2>
+        This docker-compose.yml file defines two services (myubuntu and mypython) and a network (tuto_wget). The services are built from their respective Dockerfiles and are connected to the custom network with specific IP addresses.
+        </br><br>
+        <img src="C:/Users/louis/Desktop/Docker/Page web/docker-compose.png" alt="docker-compose.png">
+    </p>
+
+    <p> 
+        <h2> 3. In the command prompt, issue the command: <i> docker-compose build </i> </h2>
+        When you run this command, Docker Compose reads the configuration file, searches for the specified services, and executes the corresponding build instructions for each service.
+        </br><br>
+        <img src="C:/Users/louis/Desktop/Docker/Page web/docker-build compose.png" alt="docker-build compose.png">
+    </p>
+
+    <p> 
+        <h2> 4. In the command prompt, issue the command: <i> docker-compose up -d </i> </h2>
+        It creates and launches containers for all specified services using the corresponding images.
+        </br>
+        Each container is launched in detached mode, which means it runs in the background without looking at the terminal.
+        </br><br>
+        <img src="C:/Users/louis/Desktop/Docker/Page web/docker-compose up -d.png" alt="docker-compose up -d.png">
+        </br><br>
+        We can now see that the containers have been created with the images : 
+        </br><br>
+        <img src="C:/Users/louis/Desktop/Docker/Page web/containers.png" alt="containers.png">
+    </p>
+
+    <p> 
+        <h2> 5. In the command prompt, issue the command: <i> docker exec -ti myubuntu bash </i> </h2>
+        This command is used to run a shell session inside the myubuntu container.
+        </br><br>
+    </p>
+
+    <p> 
+        <h2> 6. In the command prompt, issue the command: <i> wget http://10.5.0.3 </i> </h2>
+        We can now make the http request, in order to access the wanted files.
+        </br><br>
+        <img src="C:/Users/louis/Desktop/Docker/Page web/wget.png" alt="wget.png">
+        </br><br>
+        <div style="display: flex;">
+            <img src="C:/Users/louis/Desktop/Docker/Page web/cat.png" alt="cat.png" style="margin-right: 10px;">
+            <img src="C:/Users/louis/Desktop/Docker/Page web/directory.png" alt="directory.png">
+        </div>          
+        <br>
+    </p>
+
+    <p> 
+        <h2> Video tutorial </h2>
+        <video src="C:/Users/louis/Desktop/Docker/Page web/tuto_wget.mp4" controls width="760" height="515"> </video>
+    </p>
+    
+</body>
+
+</html>
