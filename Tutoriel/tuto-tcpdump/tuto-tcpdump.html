@@ -1,0 +1,110 @@
+<h1>TCPDump</h1>
+
+<h2>1. Objectif</h2>
+
+<p>
+    L'objectif de ce tutoriel est de vous présenter l'outil de ligne de commande TCPDump.
+    <br>
+    TCPDump est un analyseur de paquets en ligne de commande qui capture et analyse le 
+    trafic réseau en temps réel ou à partir de fichiers de capture enregistrés. 
+    <br>
+    Il fournit des informations détaillées sur les paquets réseau individuels, ce qui permet aux administrateurs réseau 
+    et aux professionnels de la sécurité de surveiller et de dépanner l'activité du réseau.
+    <br>
+</p>
+
+<h2>2. Configuration </h2>
+<p>    
+    Pour ce tutoriel nous allons utiliser trois machines (Alice, Eve et Bob) interconnectées via deux réseaux distincts en utilisant Docker et docker-compose.
+    Téléchargez le <a class="link-primary"
+        href="./Downloads/tuto-traceroute/traceroute_docker_compose/docker-compose.yml"><U>docker-compose.yml</U></a><br>
+    Voici les commandes pour démarrer les trois machines :
+    <br>
+    <kbd class="ms-3">bash> docker-compose up -d</kbd><br>
+    <br>
+    Pour accéder à la machine Alice, utilisez la commande suivante.
+    <br>
+    <kbd class="ms-3">bash> docker exec -it --privileged reseau1_alice /bin/bash</kbd><br>
+    <br>
+    
+    On installe les paquets utiles pour la suite
+    <br>
+    <kbd class="ms-3">bash> apt-get install net-tools iputils-ping tcpdump </kbd><br>
+    <br>
+    On doit maintenant définir les routes de routage. Attention a bien les parametrer sur les deux machines Alice et Bob. 
+    <br>
+    Dans le cas d'Alice par exemple :
+    <br>
+    <kbd class="ms-3">bash> route add default gw 192.168.111.3 eth0 </kbd><br>
+    <br>
+    
+</p>
+
+<h2>3. Utilisation </h2>
+<p>
+    Pour lister les interfaces réseaux on utilise l'option -D
+    </br>
+    <kbd class="ms-3">bash> sudo tcmpdump -D </kbd><br>
+    </br>
+    <img src="Tutoriel/tuto-tcpdump/tuto-tcpdump-1.png" alt="" class="img-fluid">
+    </br>
+    On peut ensuite filtrer sur une interface avec l'option -i 
+    </br>
+    <kbd class="ms-3">bash> tcpdump -i eth0 </kbd><br>
+    Note : l'interface any permet d'écouter toutes les interfaces
+    </br>
+    <img src="Tutoriel/tuto-traceroute/traceroute_alice_vers_bob.png" alt="" class="img-fluid">
+    </br>
+    Pour filtrer sur une adresse IP ou un host, utiliser l'option host 
+    </br>
+    <kbd class="ms-3">bash> tcpdump -i eth0 host 192.168.112.2</kbd><br>
+    </br>
+    D'autres options utiles : 
+    </br>
+    <ul> <li> Pour filtrer qu'en source ou destination : 
+    </br>
+        <kbd class="ms-3">bash> tcpdump src 192.168.112.2</kbd><br>
+        <kbd class="ms-3">bash> tcpdump dst 192.168.112.2</kbd><br>
+    </br>  </li> </ul>
+    <ul> <li> Pour filtrer un réseau :  
+    </br>
+        <kbd class="ms-3">bash> tcpdump net 192.168.112.0/24</kbd><br>
+    </br> </li> </ul>
+    <ul> <li> Pour filtrer un port réseau :  
+    </br>
+        <kbd class="ms-3">bash> tcpdump port 8084</kbd><br>
+    </br> </li> </ul>
+</p>
+
+<h2>4. Application </h2>
+<p>
+    Ouvrir deux fenêtres et se connecter respectivement à Bob et à Alice.
+    </br>
+    Depuis le conteneur Alice nous allons lancer une capture.
+    </br>
+    <kbd class="ms-3">bash_alice>  tcpdump -r capture.pcap </kbd><br>
+    </br>
+    Ensuite sur le conteneur Bob nous allons envoyer des pings à Alice. 
+    </br>
+    <kbd class="ms-3">bash_bob>  ping -i 1 -c 9999999 192.168.111.2 </kbd><br>
+    </br>
+    Pour voir la capture on utilise la commande suivante  
+    </br>    
+    <kbd class="ms-3">bash_alice> tcpdump -r capture.pcap </kbd><br>
+    </br>
+    <img src="Tutoriel/tuto-tcpdump/tuto-tcpdump-2.png" alt="" class="img-fluid">
+    </br>   
+    On observe bien les requêtes ICMP du ping venant de Bob. 
+</p>
+
+<h2 class="mb-3">5. Bonus : vidéo démonstration</h2>
+<p>
+    Vous trouverez ci-dessous une vidéo de démonstration :
+</p>
+<video controls width="560" height="315">
+    </br>  
+    <source src="Tutoriel/uto-tcpdump/tuto-tcpdump.mp4" type="video/mp4">
+    </br>
+    Désolé, votre navigateur ne supporte pas ce format vidéo.
+</video>
+
