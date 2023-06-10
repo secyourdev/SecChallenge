@@ -82,7 +82,7 @@
     </br>
     Depuis le conteneur Alice nous allons lancer une capture.
     </br>
-    <kbd class="ms-3">bash_alice>  tcpdump -r capture.pcap </kbd><br>
+    <kbd class="ms-3">bash_alice>  docker exec -it reseau1_alice tcpdump -i eth0 -w capture.pcap </kbd><br>
     </br>
     Ensuite sur le conteneur Bob nous allons envoyer des pings à Alice. 
     </br>
@@ -103,7 +103,7 @@
 </p>
 <video controls width="560" height="315">
     </br>  
-    <source src="Tutoriel/uto-tcpdump/tuto-tcpdump.mp4" type="video/mp4">
+    <source src="Tutoriel/tuto-tcpdump/tuto-tcpdump.mp4" type="video/mp4">
     </br>
     Désolé, votre navigateur ne supporte pas ce format vidéo.
 </video>
