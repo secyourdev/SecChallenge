@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoriel OpenVAS</title>
+</head>
+
+
+<body>
+    <section>
+        <div>
+            <h1>OpenVAS</h1>
+        </div>
+        <br></br>
+
+
+        <div>
+            <h2>1. Objectif</h2>
+            <p>
+            L'objectif de ce tutoriel est de présenter l'outil OpenVAS.
+            </p>
+        </div>
+        <br></br>
+
+
+        <div>
+            <h2>2. Introduction</h2>
+            <p>
+                Mais tout d'abord, qu'est-ce qu'OpenVAS ?
+                <br></br>
+                Il s'agit d'un outil de scanner de vulnérabilités open-source.
+                Cet outil est utilisé pour identifier et évaluer les vulnérabilités potentielles dans les systèmes informatiques.
+                <br>
+                Pour cela, OpenVAS se sert d'une variété de techniques de scan (tests de port, tests de service, tests de configuration et tests de vulnérabilités spécifiques)
+                avant de fournir des rapports détaillés sur les problèmes trouvés, avec des recommandations sur les mesures à prendre pour les corriger.
+            </p>
+        </div>
+        <br></br>
+
+
+        <div>
+            <h2>3. Configuration</h2>
+            <p>
+                Téléchargez le fichier suivant : <a class="link-primary"
+                    href="./Downloads/tutorial_openvas/docker-compose.yml">
+                    <U>docker-compose.yml</U></a>
+                <br>
+                <br>
+                Ouvrez votre invite de commandes
+                <br>
+                <br>
+                Utilisez les commandes suivantes dans l'ordre donné : 
+                <br>
+                <kbd class="ms-3">docker-compose up -d</kbd>
+                <br>
+                <kbd class="ms-3">docker pull greenbone/openvas-scanner</kbd>
+                <br>
+                <kbd class="ms-3">docker run greenbone/openvas-scanner</kbd>
+                <br>
+                <br>
+                Pour accéder au portail d'OpenVAS, tapez l'URL suivant dans votre navigateur de recherche 
+                <kbd class="ms-3">http://127.0.0.1:9392</kbd>
+                <br>
+                <br>
+                Une fois au portail, utilisez les informations suivantes pour vous connecter :
+                <br>
+                Username : admin
+                <br>
+                Password : admin
+            </p>            
+        </div>
+        <br></br>
+
+        <div>
+            <h2>4. Les étapes pour votre premier scan</h2>
+            <p>
+                Bien joué ! 
+                <br>
+                Vous êtes arrivé sur Greenbone Security Assistant :
+                <br>
+                <img src="./Downloads/tutorial_openvas/greenbone_security_assistant.png">
+                <br>
+                <br>
+                Maintenant mettez votre souris sur "Administration" et cliquez sur "feed status",
+                vous devriez voir les lignes suivantes
+                <br>
+                <img src="./Downloads/tutorial_openvas/feed_status.png">
+                <br>
+                <br>
+                Attendez que les "Status" se mettent à jour (s'ils ne le sont pas déjà).
+                <br>
+                Allez ensuite dans la rubrique "Scans", mettez votre souris sur la page étoilée en haut 
+                à gauche et cliquez sur "New Task"
+                <br>
+                <img src="./Downloads/tutorial_openvas/where_to_click_for_a_new_scan.png">
+                <br>
+                <br>
+                Vous devriez voir apparaître la fenêtre suivante
+                <br>
+                <img src="./Downloads/tutorial_openvas/new_scan.png">
+                <br>
+                <br>
+                Renseignez les différentes informations demandées et précisez
+                <br>
+                Scanner : OpenVAS Default
+                Scan Config : Full and fast
+                <br>
+                <br>
+                Il s'agit des paramètres les plus souvent utilisés, ils feront largement l'affaire
+                pour votre premier scan.
+                <img src="./Downloads/tutorial_openvas/precisions_on_the_new_scan.png">
+                <br>
+                <br>
+                Sauvegardez la configuration que vous venez de créer et allez dans l'onglet "Tasks" 
+                (dans le menu déroulant de la rubrique "Scans") vous devriez en voir 
+                apparaître une nouvelle. 
+                <br>
+                Cliquez sur le bouton "Start" en face du test que vous venez de créer pour le lancer.
+                <br>
+                <img src="./Downloads/tutorial_openvas/launching_your_scan.png">
+                <br>
+                <br>
+                Attendez que le scan se finisse pour pouvoir voir les résultats et vulnérabilités de 
+                l'Host que vous avez scanné dans les onglets "Results" et "Vulnerabilities"
+                <br>
+                <img src="./Downloads/tutorial_openvas/results_and_vulnerabilities.png">
+                <br>
+                <br>
+                <br>
+                Félicitations, vous avez fait votre premier scan ! 
+
+            </p>            
+        </div>
+
+    </section>
+</body>
+</html>
+
+

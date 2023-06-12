@@ -1,0 +1,89 @@
+<h1>Network Topology Mapper</h1>
+
+<h2>1. Qu'est-ce que Network Topology Mapper ?</h2>
+<p>
+    Network Topology Mapper (NTM) est un logiciel 
+    développé par SolarWinds. Il permet d'effectuer des scans réseaux
+    et réaliser une vue d'ensemble topologique de son réseau.
+</p>
+
+<h2>2. Comment Network Topology Mapper fonctionne ?</h2>
+<p>
+    NTM utilise les protocoles suivants pour découvrir les noeuds du réseau et la connectivité entre eux :
+    <li>
+        Simple Network Management Protocol (SNMP)
+    </li>
+    <li>
+        Windows Management Instrumentation (WMI)
+    </li>
+    <li>
+        Link Layer Discovery Protocol (LLDP)
+    </li>
+    <li>
+        Cisco Discovery Protocol
+    </li>
+    <li>
+        VMware Management
+    </li>
+    <li>
+        Internet Control Message Protocol (ICMP ping)
+    </li>
+</p>
+
+<h2>3. Comment installer Network Topology Mapper ?</h2>
+<p>    
+    Il faut tout d'abord installer la démo du logiciel Network Topology Mapper.
+    
+    La période d'essai est de 14 jours. 
+    <br>
+    Le lien pour la télécharger est ici: 
+    <br>
+    <a class="link-primary" href="https://www.solarwinds.com/fr/network-topology-mapper">Installation Network Topology Mapper demo</a>
+</p>
+
+<h2>4. Comment utilise-t-on Network Topology Mapper ?</h2>
+<ul>
+    <li>
+        <h3>Créer une map </h3>
+        <p>
+            Pour créer une map, tu dois lancer un scan.
+            Si tu vienx de lancer l'application une fenêtre 
+            t'invitera à lancer un nouveau scan.
+            <br>
+            Ajoute ensuite les informations d'identification SNMP 
+            utilisées pour la découverte et le stockage des appareils réseaux.
+            <br>
+            </p><img src="Tutoriel/tuto-NetworkTopologyMapper/tuto-Network_topology_mapper_photo.png" alt="" class="img-fluid"> <br><br>
+
+            <br>
+            Dans la fenêtre "Network selection" renseigne les parties du réseau que 
+            tu souhaites scanner. Plusieurs possibilités : 
+            <ul>
+                <li>
+                    Ajouter tout un sous réseau avec son adresse et son masque
+                </li>
+                <li>
+                    Ajouter les machines connectés à l'IP donnée
+                </li>
+                <li>
+                    Donner une plage d'adresses
+                </li>
+            </ul>    
+            <br>
+            Vous devriez obtenir ces paramètres-ci dans le cas d'un scan 
+            sur une plage d'adresse de 192.168.1.1 à 192.168.1.254 : 
+            <br>
+            </p><img src="Tutoriel/tuto-NetworkTopologyMapper/tuto-Network_topology_mapper_photo2.png" alt="" class="img-fluid"> <br><br>
+            <br>
+        </p>
+    </li>
+</ul>
+
+<h2 class="mb-3">5. Bonus : vidéo démonstration</h2>
+<p>
+    Vous trouverez ci-dessous une vidéo de démonstration :
+</p><video controls width="560" height="315">
+    <source src="Tutoriel/tuto-NetworkTopologyMapper/tuto-Network_topology_mapper.mp4" type="video/mp4">
+
+    Désolé, votre navigateur ne supporte pas ce format vidéo.
+</video>

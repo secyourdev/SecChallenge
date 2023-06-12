@@ -1,0 +1,154 @@
+<h1>NetScanTools</h1>
+
+<h2>1. Qu'est-ce que NetScanTools ?</h2>
+
+<p>
+    NetScanTools est un logiciel de réseau développé par 
+    Northwest Performance Software.
+    <br>
+    Il regroupe un ensemble d'outils conçus pour l'analyse et 
+    la gestion des réseaux informatiques.
+</p>
+
+<h2>2. Comment installer NetScanTools ?</h2>
+<p>    
+    Il faut tout d'abord installer la démo du logiciel NetScanTools Pro.
+    La période d'essai est de 30 jours. 
+    <br>
+    Le lien pour la télécharger est ici: 
+    <br>
+    <a class="link-primary" href="https://www.netscantools.com/download.html">Installation NetScanTools Pro demo</a>
+</p>
+
+<h2>3. Applications les plus utiles en cybersécurité</h2>
+<ul>
+    <li>
+        <h3>L'outil automatique Enter and Retrieve Data</h3>
+        <p>
+            Cet outil permet de lancer une batterie de tests en même temps 
+            sur une cible qui peut être une adresse IP, un nom de domaine,
+            une adresse email ou encore un URL.  
+            <br>
+            Le rapport est enfin accessible dans l'outil View automated mode reports.
+        </p>
+    </li>
+
+    <li>
+        <h3>L'outil Whois</h3>
+        <p>
+            Cet outil permet de récupérer des informations sur un nom de domaine 
+            ou une adresse IP à partir de la base de données WHOIS.
+            <br>
+            Cette base de données contient des informations sur l'enregistrement
+            et la propriété des noms de domaine et des adresses IP.
+            <br>
+            Exemple avec le nom de domaine microsoft.com:
+        </p>
+        <img src="Tutoriel/tuto-NetScanTools/netscantools-whois.png" alt="Capture d'écran Whois">
+    </li>
+
+    <li>
+        <h3>L'outil PING</h3>
+        <p>
+            Cet outil permet de tester l'accessibilité et 
+            la réactivité d'un hôte du réseau ou d'une adresse IP.
+            <br>
+            Pour des adresses IPv4, il est possible d'envoyer des messages ICMP, 
+            UDP, TCP, UDP Socket Xmit et MS ICMP.
+            <br>
+            Trois ping utilisent WinPcap pour avoir une réponse plus rapide: ICMP, UDP et TCP.
+            <br>
+            Exemple pour pinger le site de Google:
+        </p>
+        <img src="Tutoriel/tuto-NetScanTools/netscantools-ping.png" alt="Capture d'écran Ping">
+    </li>
+
+    <li>
+        <h3>L'outil TCP Traceroute</h3>
+        <p>
+            Cet outil permet d'envoyer des messages TCP à l'adresse cible et renvoie 
+            des messages ICMP et des messages TCP en utilisant WinPcap.
+            <br>
+            L'outil montre le trajet parcouru par les messages 
+            de la machine host vers l'adresse cible.
+            <br>
+            Exemple avec le site de Google:
+        </p>
+        <img src="Tutoriel/tuto-NetScanTools/netscantools-traceroute.png" alt="Capture d'écran TCP Traceroute">
+    </li>
+
+    <li>
+        <h3>L'outil ARP Scan (scan MAC)</h3>
+        <p>
+            Cet outil permet de découvrir et mapper les adresses MAC (Media Access Control) 
+            associées aux adresses IP sur un réseau local.
+            <br>
+            L'outil fonctionne d'abord en lançant des requêtes ARP à toutes les adresses IP 
+            d'une plage spécifiée sur le réseau local. 
+            <br>
+            Ensuite, il attend les réponses des appareils du réseau 
+            qui possèdent ces adresses IP et fait une correspondance adresse IP/MAC. 
+            <br>
+            La table MAC est ensuite renvoyée à l'utilisateur.
+            <br>
+            Exemple:
+        </p>
+        <img src="Tutoriel/tuto-NetScanTools/netscantools-ARP_scan.png" alt="Capture d'écran ARP Scan">
+    </li>
+
+    <li>
+        <h3>L'outil DNS Tools CORE</h3>
+        <p>
+            Cet outil est un ensemble d'utilitaires pouvant effectuer 
+            différentes tâches liées au système de noms de domaine (DNS).
+            <br>
+            Le DNS est un protocole fondamental utilisé sur l'internet 
+            pour traduire les noms de domaine lisibles par l'homme en adresse IP
+            que les ordinateurs peuvent comprendre.
+            <br>
+            Parmi ces utilitaires:
+            <ul>
+                <li>Who am I?</li>
+                <p>
+                    Renvoie les informations WHOIS de ta machine.  
+                </p>
+                <li>DNS Lookup et DNS Lookup</li>
+                <p>
+                    Récupère des informations sur un nom de domaine
+                    et inversement en utilisant son adresse IPv4.
+                    <br>
+                    Exemple avec le nom de domaine microsoft.com en effectuant NSLOOKUP:
+                </p>
+                <img src="Tutoriel/tuto-NetScanTools/netscantools-DNS_core.png" alt="Capture d'écran DNS Lookup">
+                <p>
+                    On constate qu'il y a plusieurs adresses IPv4 associées
+                    au nom de domaine "microsoft.com". 
+                </p>
+            </ul>
+        </p>
+    </li>
+
+    <li>
+        <h3>L'outil Port Scan</h3>
+        <p>
+            Cet outil permet de trouver des ports ouverts correspondant aux 
+            services TCP et UDP en cours sur l'appareil cible.
+            <br>
+            Quatre types de patrons de scan sont disponibles.
+            <br>
+            Il est possible de faire des scans sur une ou plusieurs adresses IP.
+            <br>
+            Exemple:
+        </p>
+        <img src="Tutoriel/tuto-NetScanTools/netscantools-port_scan.png" alt="Capture d'écran Port Scan">
+    </li>
+</ul>
+
+<h2 class="mb-3">4. Bonus : vidéo démonstration</h2>
+<p>
+    Vous trouverez ci-dessous une vidéo de démonstration :
+</p><video controls width="560" height="315">
+    <source src="Tutoriel/tuto-NetScanTools/tuto-netscantools.mp4" type="video/mp4">
+
+    Désolé, votre navigateur ne supporte pas ce format vidéo.
+</video>

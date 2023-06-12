@@ -1,0 +1,70 @@
+<h1>Traceroute</h1>
+
+<h2>1. Objectif</h2>
+
+<p>
+    L'objectif de ce tutoriel est de vous présenter l'outil de ligne de commande traceroute.
+    <br>
+    traceroute relève le chemin emprunté par les paquets IP à travers un réseau. Cela renvoie les sauts successifs effectués par les paquets depuis la source vers la destination, avec les adresses IP des passerelles ainsi que les temps de réponse.
+    <br>
+    C'est un outil précieux en cybersécurité pour comprendre la topologie d'un réseau, détecter les problèmes de connectivité, identifier les anomalies ou les tentatives d'interception.
+    <br>
+</p>
+
+<h2>2. Configuration </h2>
+<p>    
+    Pour ce tutoriel nous allons utiliser trois machines (Alice, Eve et Bob) interconnectées via deux réseaux distincts en utilisant Docker et docker-compose.
+    Téléchargez le <a class="link-primary"
+        href="./Downloads/tuto-traceroute/traceroute_docker_compose/docker-compose.yml"><U>docker-compose.yml</U></a><br>
+    Voici les commandes pour démarrer les trois machines :
+    <br>
+    <kbd class="ms-3">bash> docker-compose up -d</kbd><br>
+    <br>
+    Pour accéder à la machine Alice, utilisez la commande suivante.
+    <br>
+    <kbd class="ms-3">bash> docker exec -it --privileged reseau1_alice /bin/bash</kbd><br>
+    <br>
+
+    On installe les paquets utiles pour la suite
+    <br>
+    <kbd class="ms-3">bash> apt-get install net-tools iputils-ping traceroute </kbd><br>
+    <br>
+    On doit maintenant définir les routes de routage. Attention a bien les parametrer sur les deux machines Alice et Bob. 
+    <br>
+    Dans le cas d'Alice par exemple :
+    <br>
+    <kbd class="ms-3">bash> route add default gw 192.168.111.3 eth0 </kbd><br>
+    <br>
+    
+</p>
+
+<h2>3. Utilisation </h2>
+<p>
+    On ping les machines pour savoir si elles sont atteignables 
+    </br>
+    <kbd class="ms-3">bash> ping -c 3 192.168.112.2 </kbd><br>
+    </br>
+    <img src="Tutoriel/tuto-traceroute/ping_alice_vers_bob.png" alt="" class="img-fluid">
+    </br>
+    On effectue un traceroute sur la machine Bob. 
+    </br>
+    <kbd class="ms-3">bash> traceroute 192.168.112.2 </kbd><br>
+    </br>
+    <img src="Tutoriel/tuto-traceroute/traceroute_alice_vers_bob.png" alt="" class="img-fluid">
+    </br>
+    On observe que Eve est sur les réseaux 1 et 2 et sert de routeur. 
+
+</p>
+
+
+<h2 class="mb-3">4. Bonus : vidéo démonstration</h2>
+<p>
+    Vous trouverez ci-dessous une vidéo de démonstration :
+</p>
+<video controls width="560" height="315">
+    </br>  
+    <source src="Tutoriel/tuto-traceroute/tuto-traceroute.mp4" type="video/mp4">
+    </br>
+    Désolé, votre navigateur ne supporte pas ce format vidéo.
+</video>
+
