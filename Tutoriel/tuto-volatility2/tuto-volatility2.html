@@ -1,0 +1,45 @@
+<html>
+<head></head>
+<body>
+  <h1>Volatility - Outil pour l'Analyse de Mémoire</h1>
+  <p>Volatility est un outil open-source utilisé pour l'analyse forensique de mémoire. Il permet d'extraire des informations
+    précieuses à partir de l'image mémoire d'un système, telles que les processus en cours d'exécution, les connexions réseau,
+    les fichiers ouverts, et bien plus encore..</p>
+
+  <h2>Installation de Volatility sur Windows</h2>
+  <p>Pour installer Volatility sur Windows, suivez ces étapes :</p>
+  <ol>
+    <li>Téléchargez et installez <a href="https://www.python.org/">Python</a> version 3 au minimum.</li>
+    <li>Téléchargez et installez <a href="https://gitforwindows.org/">GitForWindows</a>.</li>
+    <li>Téléchargez et installez <a href="https://visualstudio.microsoft.com/fr/visual-cpp-build-tools/">Microsoft C++ Build Tools</a>.</li>
+    <li>Téléchargez <a href="https://www.lfd.uci.edu/~gohlke/pythonlibs/#python-snappy">Snappy</a> (choisissez la version adaptée à votre système et à votre version Python).</li>
+    <li>Ouvrez un terminal et installez Snappy. <code>pip install chemin-d-acces\python_snappy-xyz.whl</code> (il est important de fournir le chemin d'accès du .whl téléchargé)</li>
+    <li>Toujours dans le terminal rendez vous là où vous voulez installer volatility et clonez le github de volatility<code>git clone https://github.com/volatilityfoundation/volatility3.git</code> puis faites <code>cd .\volatility3\</code></li>
+    <li>Il faut maintenant installer les fichiers requis avec <code>pip install -r requirements.txt</code> Volatility est maintenant prêt à l'emploi, vérifiez cela en faisant <code>python vol.py -v</code></li>
+  </ol>
+
+  <h2>Tutoriel : Visualiser la liste des programmes sur une image mémoire</h2>
+  <p>Dans ce tutoriel, nous allons visualiser la liste des programmes en cours d'exécution sur une image mémoire fournie. La
+    solution finale sera le PID d'une application spécifique. </p>
+
+  <h3>Étapes :</h3>
+  <ol>
+    <li>Téléchargez, extrayez et placez <a href="https://archive.org/download/Africa-DFIRCTF-2021-WK02/20210430-Win10Home-20H2-64bit-memdump.mem.7z">l'image mémoire</a> dans un répertoire accessible depuis votre terminal.</li>
+    <li>Ouvrez un terminal et accédez au répertoire où vous avez extrait les fichiers de Volatility.</li>
+    <li>Exécutez la commande suivante pour visualiser la liste des programmes :</li>
+    <code>python vol.py -f /chemin/vers/l'image_mémoire windows.pslist</code>
+    <li>Recherchez l'application VBoxService.exe dans la liste affichée et notez son PID.</li>
+  </ol>
+
+  <h3>Solution :</h3>
+  <p>Le PID de l'application VBoxService.exe est 1660.</p>
+
+  <h2>Conclusion</h2>
+  <p>Volatility est un outil puissant pour l'analyse de mémoire. Il offre de nombreuses fonctionnalités pour extraire
+    des informations vitales à partir d'images mémoire, ce qui est essentiel dans les investigations numériques.</p>
+
+  <h2>Validation</h2>
+  <p>Pour valider le tutoriel, suivez les étapes décrites et vérifiez si le PID de l'application spécifique correspond à 1660.</p>
+
+</body>
+</html>
