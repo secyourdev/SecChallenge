@@ -4,5 +4,19 @@ services:
   ffuf:
     build: ./
     stdin_open: true
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.6
     volumes:
       - "./results:/opt/ffuf/results"
+
+  pache:
+    image: httpd:latest
+    container_name: my-apache-app
+    ports:
+    - '8080:80'
+    networks:
+      vpcbr:
+        ipv4_address: 10.5.0.5
+    volumes:
+    - ./website:/usr/local/apache2/htdocs

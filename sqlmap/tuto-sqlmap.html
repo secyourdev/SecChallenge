@@ -1,10 +1,10 @@
-<h1><b>sqlmap</b></h1>
+<h1><b>SQLMap</b></h1>
 
 <h2>1. Objectif de l'outil</h2>
 
 <p>
-    Sqlmap est un outil linux qui detect et exploit les attaque injections SQL. <br>
-    Cette outils est acompagné de beaucoup de possibilité <br>
+    Sqlmap est un outil linux qui détecte et exploit les attaque injections SQL. <br>
+    Cet outil est accompagné de beaucoup de possibilité <br>
     <img src="help.PNG" width="700px" > <br>
     
 </p>
@@ -17,13 +17,14 @@
 
 <h3>Utilisation</h3>
 <p>
-    On va faire le test sur une page web prévu pour les test : "http://testphp.vulnweb.com/artists.php?artist=2"<br>
-    On lance la commande "sqlmap -u http://testphp.vulnweb.com/artists.php?artist=2" pour recherché les tables<br>
+    On va faire le test sur une page web prévu pour le test : "http://testphp.vulnweb.com/artists.php?artist=2"<br>
+    On lance la commande "sqlmap -u http://testphp.vulnweb.com/artists.php?artist=2" pour rechercher les tables<br>
     <img src="1.PNG" width="700px"><br><br>
-    On lance la commande "sqlmap -u http://testphp.vulnweb.com/artists.php?artist=2 -D acuart --tables" pour affiché les diférentes tables mySQL de ce site. <br>
+    On lance la commande "sqlmap -u http://testphp.vulnweb.com/artists.php?artist=2 -D acuart --tables" pour afficher les différentes tables MySQL de ce site. <br>
     <img src="2.PNG" width="700px"><br><br>
-    On lance la commande "sqlmap -u http://testphp.vulnweb.com/artists.php?artist=2 -D acuart --dump" pour affiché le contenu de la table user <br>
-    si on ne fait que taper sur entrée sur la commande précédente, sqlmap tente de cacker les hashes trouvé <br>
+    On lance la commande "sqlmap -u http://testphp.vulnweb.com/artists.php?artist=2 -D acuart --dump" pour afficher le contenu de la table user <br>
+    si on ne fait que taper sur entrée sur la commande précédente, sqlmap tente de cracker les hashs trouvé <br>
     <img src="3.PNG" width="700px"><br>
+
 </p>
 
