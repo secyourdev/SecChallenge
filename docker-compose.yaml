@@ -1,13 +1,4 @@
-<<<<<<< HEAD
 version: "3.3"
-
-
-
-
-
-=======
-version: "3.3" 
->>>>>>> 4aa2defe920498e2d5d9f10604363d560e49053c
 
 networks:
   secyourdev:
@@ -21,7 +12,6 @@ services:
       context: .
       dockerfile: Dockerfile-mysql
     command: --default-authentication-plugin=mysql_native_password
-    # restart: always
     container_name: secyourdev_mysql
     env_file: .env
     networks:
@@ -29,6 +19,7 @@ services:
         ipv4_address: 10.10.0.3
     ports:
       - '3306:3306'
+      
   phpmyadmin:
     container_name: secyourdev_phpmyadmin
     depends_on:
@@ -37,12 +28,12 @@ services:
     image: phpmyadmin/phpmyadmin
     links:
       - 'db'
-    # restart: always
     networks:
       secyourdev:
         ipv4_address: 10.10.0.4
     ports:
       - '8081:80'
+      
   server:
     build:
       context: .
@@ -60,5 +51,3 @@ services:
       - '8080:80'
     volumes:
       - './:/var/www/html/'
-
-
