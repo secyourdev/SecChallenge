@@ -1,0 +1,80 @@
+<h1>SnmpWalk</h1>
+
+<h2>1. Objectif</h2>
+
+<p>
+    L'objectif de ce tutoriel est de vous présenter l'outil de ligne de commande SnmpWalk.
+    <br>
+    SnmpWalk est un outil utilisé pour interroger et parcourir une base d'informations de 
+    gestion SNMP (MIB). 
+    <br>
+    La MIB est une base de données hiérarchique qui stocke 
+    les informations gérées par un appareil SNMP. 
+    <br>
+    SNMP (Simple Network Management Protocol) est un protocole très utilisé 
+    pour la gestion et la surveillance des dispositifs de réseau comme les
+    routeurs, les commutateurs et les serveurs. 
+    <br>
+    SNMP permet de récupérer les 
+    informations sur l'état, les performances et la configuration de ces appareils.
+    <br>
+    <br>
+</p>
+
+<h2>2. Configuration </h2>
+<p>    
+    Pour ce tutoriel nous allons utiliser trois machines (Alice, Eve et Bob) interconnectées via deux réseaux distincts en utilisant Docker et docker-compose.
+    Téléchargez le <a class="link-primary"
+        href="./Downloads/tuto-traceroute/traceroute_docker_compose/docker-compose.yml"><U>docker-compose.yml</U></a><br>
+    Voici les commandes pour démarrer les trois machines :
+    <br>
+    <kbd class="ms-3">bash> docker-compose up -d</kbd><br>
+    <br>
+    Pour accéder à la machine Alice, utilisez la commande suivante :
+    <br>
+    <kbd class="ms-3">bash> docker exec -it --privileged reseau1_alice /bin/bash</kbd><br>
+    <br>
+    
+    Installation des paquets utiles pour la suite :
+    <br>
+    <kbd class="ms-3">bash> apt-get install net-tools iputils-ping snmp </kbd><br>
+    <br>
+    On doit maintenant définir les routes de routage. Attention a bien les paramétrer sur les deux machines Alice et Bob. 
+    <br>
+    Dans le cas d'Alice par exemple :
+    <br>
+    <kbd class="ms-3">bash> route add default gw 192.168.111.3 eth0 </kbd><br>
+    <br>
+    
+</p>
+
+<h2>3. Utilisation </h2>
+<p>
+    Pour lister les interfaces réseaux on utilise l'option -D
+    </br>
+    <kbd class="ms-3">bash> sudo tcmpdump -D </kbd><br>
+    </br>
+    <img src="Tutoriel/tuto-tcpdump/tuto-tcpdump-1.png" alt="" class="img-fluid">
+</p>
+
+<h2>4. Application </h2>
+<p>
+    Ouvrir deux fenêtres et se connecter respectivement à Bob et à Alice.
+    </br>
+    Depuis le conteneur Alice nous allons lancer une capture.
+    </br>
+    <kbd class="ms-3">bash_alice>  docker exec -it reseau1_alice tcpdump -i eth0 -w capture.pcap </kbd><br>
+    </br>
+</p>
+
+<h2 class="mb-3">5. Bonus : vidéo démonstration</h2>
+<p>
+    Vous trouverez ci-dessous une vidéo de démonstration :
+</p>
+<video controls width="560" height="315">
+    </br>  
+    <source src="Tutoriel/tuto-tcpdump/tuto-snmpwalk.mp4" type="video/mp4">
+    </br>
+    Désolé, votre navigateur ne supporte pas ce format vidéo.
+</video>
+
