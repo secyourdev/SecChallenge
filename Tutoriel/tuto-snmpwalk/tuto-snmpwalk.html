@@ -23,27 +23,25 @@
 
 <h2>2. Configuration </h2>
 <p>    
-    Pour ce tutoriel nous allons utiliser trois machines (Alice, Eve et Bob) interconnectées via deux réseaux distincts en utilisant Docker et docker-compose.
-    Téléchargez le <a class="link-primary"
-        href="./Downloads/tuto-traceroute/traceroute_docker_compose/docker-compose.yml"><U>docker-compose.yml</U></a><br>
-    Voici les commandes pour démarrer les trois machines :
+    Pour ce tutoriel nous allons utiliser deux machines interconnectées en utilisant Docker et docker-compose.
+    <a href="Downloads/tuto-snmpwalk/snmp_docker.zip">Télécharger le dossier</a><br>
+    Il faut tout d'abord rendre le script ./snmp.sh executable
+    <kbd class="ms-3">bash> chmod +x snmp.sh </kbd><br>
+    Puis executer le script: 
     <br>
-    <kbd class="ms-3">bash> docker-compose up -d</kbd><br>
+    <kbd class="ms-3">bash> sudo ./snmp.sh </kbd><br>
     <br>
-    Pour accéder à la machine Alice, utilisez la commande suivante :
+    <p>Plusieurs choix apparaissent. :</p>
+    <ul>
+        <li><a href="#">1 : Premier démarrage</a></li>
+        <li><a href="#">2 : Accéder au manager</a></li>
+        <li><a href="#">3 : Accéder à l'agent </a></li>
+        <li><a href="#">4 : Arrêter les conteneurs</a></li>
+        <li><a href="#">5 : Supprimer complètement les conteneurs et les images associées</a></li>
+    </ul>
+
     <br>
-    <kbd class="ms-3">bash> docker exec -it --privileged reseau1_alice /bin/bash</kbd><br>
-    <br>
-    
-    Installation des paquets utiles pour la suite :
-    <br>
-    <kbd class="ms-3">bash>  apt-get update && apt-get install snmpd net-tools iputils-ping nano</kbd><br>
-    <br>
-    On doit maintenant définir les routes de routage. Attention a bien les paramétrer sur les deux machines Alice et Bob. 
-    <br>
-    Dans le cas d'Alice par exemple :
-    <br>
-    <kbd class="ms-3">bash> route add default gw 192.168.111.3 eth0 </kbd><br>
+    <kbd class="ms-3">bash> sudo ./snmp.sh</kbd><br>
     <br>
     
 </p>
