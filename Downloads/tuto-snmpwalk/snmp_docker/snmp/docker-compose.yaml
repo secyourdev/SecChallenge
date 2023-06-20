@@ -1,0 +1,30 @@
+version: "3.8"
+
+services:
+  agent:
+    build: ./agent/
+    networks:
+      snmp:
+        # Arbitrary
+        ipv4_address: 192.168.92.21
+    # Stay alive
+    tty: true
+
+  manager:
+    build: ./manager/
+    networks:
+      snmp:
+        # Arbitrary
+        ipv4_address: 192.168.92.20
+    # Stay alive
+    tty: true
+
+networks:
+  # Network to allow containers to communicate
+  snmp: 
+    ipam:
+      # Default driver is bridge
+      driver: default
+      config:
+        # Arbitrary
+        - subnet: "192.168.92.0/24"

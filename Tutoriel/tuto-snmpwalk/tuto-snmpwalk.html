@@ -37,7 +37,7 @@
     
     Installation des paquets utiles pour la suite :
     <br>
-    <kbd class="ms-3">bash> apt-get install net-tools iputils-ping snmp </kbd><br>
+    <kbd class="ms-3">bash>  apt-get update && apt-get install snmpd net-tools iputils-ping nano</kbd><br>
     <br>
     On doit maintenant définir les routes de routage. Attention a bien les paramétrer sur les deux machines Alice et Bob. 
     <br>
@@ -50,9 +50,9 @@
 
 <h2>3. Utilisation </h2>
 <p>
-    Pour lister les interfaces réseaux on utilise l'option -D
+
     </br>
-    <kbd class="ms-3">bash> sudo tcmpdump -D </kbd><br>
+    <kbd class="ms-3">bash> snmpwalk -v 2c -c public 192.168.112.2 </kbd><br>
     </br>
     <img src="Tutoriel/tuto-tcpdump/tuto-tcpdump-1.png" alt="" class="img-fluid">
 </p>
