@@ -76,19 +76,19 @@
     </br>
     <kbd class="ms-3">bash> snmpget -v 2c -c public 192.168.92.21 sysDescr.0</kbd><br>
     </br>
-    <img src="Tutoriel/tuto-tcpdump/Capture7.png" alt="" class="img-fluid">
+    <img src="Tutoriel/tuto-tcpdump/capture1.png" alt="" class="img-fluid">
     </br>
     Pour récupérer toutes les informations relatives au système de la machine agent
     </br>    
     <kbd class="ms-3">bash> snmpwalk -v 2c -c public 192.168.92.21 system</kbd><br>
     </br>
-    <img src="Tutoriel/tuto-tcpdump/capture6.png" alt="" class="img-fluid">
+    <img src="Tutoriel/tuto-tcpdump/capture2.png" alt="" class="img-fluid">
     </br>
     Ou encore, en utilisant une identificaiton, pour avoir des informations sur les interfaces de la machine agent: 
     <br>
     <kbd class="ms-3">bash> snmpwalk -v3 -u admin -l authPriv -a SHA -x AES -A Thalescom01@ -X Thalescom01@ 192.168.92.21 interfaces</kbd><br>
     </br>
-    <img src="Tutoriel/tuto-tcpdump/capture4.png" alt="" class="img-fluid">
+    <img src="Tutoriel/tuto-tcpdump/capture3.png" alt="" class="img-fluid">
 </p>
 
 
