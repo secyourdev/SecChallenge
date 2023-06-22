@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoriel PowerSploit</title>
+</head>
+<body>
+    <section>
+        <div>
+            <h1>PowerSploit</h1>
+        </div>
+        <br></br>
+
+        <div>
+            <h2>1. Objectif</h2>
+            <p>L'objectif de ce tutoriel est de présenter le framework PowerSploit.</p>
+        </div>
+        <br></br>
+
+        <div>
+            <h2>2. Introduction</h2>
+            <p>
+                En premier lieu, qu'est-ce que Powersploit ?
+                <br></br>
+                PowerSploit est un framework (soit une boîte à outils pour un développeur web) open source développé en PowerShell qui vise à faciliter les tests de pénétration et les activités de red teaming sur Windows.
+                <br>
+                Il propose un ensemble d'outils, de modules et de techniques qui exploitent les fonctionnalités et les faiblesses spécifiques de la plateforme Windows.
+                <br>
+                PowerSploit propose une variété de modules qui couvrent différentes facettes de l'attaque (exploration, escalade de privilèges, collecte d'informations...)
+                Ses modules incluent notamment la reconnaissance, l'exploitation et la post-exploitation.
+            </p>
+        </div>
+        <br></br>
+
+        <div>
+            <h2>3. Configuration</h2>
+            <p>
+                <br>
+                <br>
+                <h3>3.1. Création de votre machine virtuelle</h3>
+                <br>
+                <br>
+                Tout d'abord, nous allons créer une machine virtuelle sur laquelle nous ferons toutes
+                nos manipulations.
+                <br>
+                <br>
+                Pour cela vous allez télécharger Oracle VM VirtualBox, le lien suivant permet d'aller sur 
+                le site où est disponible le logiciel : <a class="link-primary"
+                href="https://www.virtualbox.org/wiki/Downloads">
+                <U>Site de téléchargement d'Oracle VM VirtualBox</U></a>
+                <br>
+                Cliquez sur le lien de téléchargement bleu "Windows hosts" juste en 
+                dessous de "VirtualBox 7.0.8 platform packages" pour télécharger le logiciel.
+                <br>
+                <br>
+                Pour les paramètres d'installation, il n'y a rien de particulier, choisissez ce qui vous 
+                arrange le plus.
+                <br>
+                <br>
+                Vous voilà arrivé sur VirtualBox.
+                <br>
+                <br>
+                <img src="./Tutoriel/tutorial_powersploit/virtual_box.png">
+                <br>
+                <br>
+                Maintenant nous allons créer une machine virtuelle, cliquez sur le bouton bleu 
+                "Nouvelle". 
+                <br>
+                Vous arrivez sur la page suivante.
+                <br>
+                <br>
+                <img src="./Tutoriel/tutorial_powersploit/create_VM.png">
+                <br>
+                <br>
+                Avant de commencer à renseigner quoi que ce soit pour la création de votre machine virtuelle, 
+                prêtez attention à la case "ISO image", vous devrez ici donner le support  
+                qu'utilisera votre machine virtuelle.
+                <br>
+                <br>
+                <img src="./Tutoriel/tutorial_powersploit/ISO_image.png">
+                <br>
+                <br>
+                Il est donc nécessaire d'acquérir une image ISO pour faire fonctionner votre machine virtuelle.
+                <br>
+                Dans mon tutoriel, j'utiliserai une image ISO de Windows 10, vous pouvez la télécharger 
+                en cliquant sur le lien suivant : <a class="link-primary"
+                href="https://lecrabeinfo.net/telecharger-iso-windows-10.html">
+                <U>Site de téléchargement d'image ISO Windows 10</U></a>
+                <br>
+                Téléchargez l'image ISO de Windows 10 21H2 (64 bits).
+                <br>
+                <br>
+                Vous pouvez maintenant remplir tout ce qui est demandé dans la première page de création 
+                de votre machine virtuelle comme montré sur la capture d'écran plus haut.
+                <br>
+                Appuyez sur suivant.
+                <br>
+                <br>
+                Vous arrivez sur la page suivante.
+                <br>
+                <br>
+                <img src="./Tutoriel/tutorial_powersploit/create_VM_2.png">
+                <br>
+                <br>
+                Changez le mot de passe si vous le désirez.
+                <br>
+                Cliquez sur suivant.
+                <br>
+                <br>
+                Vous arrivez sur cette page :
+                <br>
+                <br>
+                <img src="./Tutoriel/tutorial_powersploit/create_VM_3.png">
+                <br>
+                <br>
+                Ici, vous choisissez votre hardware.
+                <br>
+                Sélectionnez les paramètres que vous préférez en gardant en tête que 
+                donner trop peu de ressources à votre machine virtuelle provoquera de longs chargements 
+                sur cette dernière et qu'à l'inverse, trop lui en donner pourrait ralentir ce qui 
+                tourne à côté sur votre PC.
+                <br>
+                Une fois vos choix faits, appuyez sur suivant.
+                <br>
+                <br>
+                Vous arrivez ici :
+                <br>
+                <br>
+                <img src="./Tutoriel/tutorial_powersploit/create_VM_4.png">
+                <br>
+                <br>
+                L'idée est la même que sur la page précédente, choisissez les paramètres 
+                qui vous arrangent le plus.
+                <br>
+                Cliquez sur suivant. 
+                <br>
+                <br>
+                Vous arrivez à la dernière étape.
+                <br>
+                <br>
+                <img src="./Tutoriel/tutorial_powersploit/create_VM_5.png">
+                <br>
+                <br>
+                Un simple récapitulatif de la création de votre machine virtuelle, si tous les paramètres vous semblent 
+                corrects, appuyez sur "Finish". 
+                <br>
+                <br>
+                <br>
+                <h3>3.2. Dans la machine virtuelle</h3>
+                <br>
+                <br>
+                Nous y voilà, vous avez créé votre machine virtuelle et vous pouvez la visualiser 
+                dans l'accueil de VirtualBox.
+                <br>
+                Double-cliquez dessus pour l'ouvrir.
+                <br>
+                L'installation de Windows devrait prendre un petit peu de temps.
+                <br>
+                <br>
+                Maintenant, ce qui va nous intéresser, c'est l'installation de PowerSploit sur 
+                votre machine virtuelle.
+                <br>
+                <br>
+                Vous aurez tout d'abord besoin de Winget et Git.
+                <br>
+                Pour les installer, ouvrez Windows PowerShell en tant qu'administrateur et 
+                allez dans le répertoire de modules du système 32 à 
+                l'aide de la commande suivante  
+                <kbd class="ms-3">cd C:\Windows\system32\WindowsPowerShell\v1.0\Modules</kbd>
+                <br>
+                <br>
+                Ensuite tapez les commandes suivantes (et acceptez tout ce qui vous serait 
+                demandé entre deux commandes) :
+                <br>
+                <kbd class="ms-3">Install-Module -Name Microsoft.WinGet.Client</kbd> (une première fois pour pouvoir installer les prérequis)
+                <br>
+                <kbd class="ms-3">Install-Module -Name Microsoft.WinGet.Client</kbd> (une deuxième fois pour installer WinGet)
+                <br>
+                <kbd class="ms-3">winget install --id GitHub.cli</kbd>
+                <br>
+                <kbd class="ms-3">winget install --id GitGit -e --source winget</kbd>
+                <br>
+                <br>
+                <img src="./Tutoriel/tutorial_powersploit/install_winget_github-cli_git.png">
+                <br>
+                <br>
+                Ensuite, vous devez installer PowerSploit à l'aide de cette commande :
+                <br>
+                <kbd class="ms-3">git clone https://github.com/PowerShellMafia/PowerSploit.git</kbd>
+                <br>
+                <br>
+                Enfin, il vous faut importer PowerSploit, pour cela allez d'abord dans le nouveau 
+                répertoire PowerSploit : 
+                <br>
+                <kbd class="ms-3">cd PowerSploit</kbd>
+                <br>
+                <br>
+                Puis tapez les lignes suivantes :
+                <br>
+                <kbd class="ms-3">Import-Module PowerSploit</kbd>
+                <br>
+                <kbd class="ms-3">Get-Command -Module PowerSploit</kbd> (pour voir les commandes disponibles grâce à PowerSploit)
+                <br>
+                <br>
+                <img src="./Tutoriel/tutorial_powersploit/install_powersploit.png">
+                <br>
+                <br>
+                Voilà, PowerSploit est bien installé sur votre 
+                machine virtuelle ! 
+            </p>
+        </div>
+        <br></br>
+
+        <div>
+            <h2>4. Première utilisation simple de PowerSploit</h2>
+            <p>
+                <br>
+                <br>
+                Pour votre première utilisation de PowerSploit vous allez 
+                faire un enregistrement de pointeur DNS (fournit le nom du 
+                domaine associé à une adresse IP).
+                <br>
+                <br>
+                Tout d'abord, vous devez trouver votre adresse IP à l'aide de 
+                la commande suivante : 
+                <br>
+                <kbd class="ms-3">ipconfig</kbd>
+                <br>
+                <br>
+                Ensuite, tapez cette ligne de commande :
+                <br>
+                <kbd class="ms-3">Invoke-ReverseDnsLookup (votre adresse IP)</kbd>
+                <br>
+                <br>
+                Le nom du domaine de votre machine virtuelle s'affiche juste en dessous.
+                <br>
+                <br>
+                <img src="./Tutoriel/tutorial_powersploit/test_a_command.png">
+                <br>
+                <br>
+                Voilà, vous avez réalisé votre première manipulation à l'aide de PowerSploit.
+                <br>
+                Comme les autres manipulations, celle que vous venez d'effectuer 
+                est très simple.
+                <br>
+                Elles le sont en général, PowerSploit est très facile d'utilisation, 
+                alors amusez-vous bien ! 
+            </p>
+        </div>
+
+
+
+    </section>
+</body>
+</html>
