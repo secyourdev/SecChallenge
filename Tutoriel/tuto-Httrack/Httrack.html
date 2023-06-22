@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1><b>HTTrack</b></h1>
+
+        <h2>1. Objectif de l'outil</h2>
+
+        <p>
+            HTTrack est un aspirateur de sites web. Cet outil permet de télécharger l'intégralité d'un site Internet directement sur le disque dur de l'utilisateur, en reconstruisant tous les répertoires. C'est particulièrement utile pour consulter un site en mode hors ligne ou pour archiver des informations. 
+            <br>
+            HTTrack est capable de mettre à jour une copie existante d'un site Web et de reprendre les téléchargements interrompus. Il est entièrement configurable, et possède un système intégré d'aide.
+        </p>
+
+        <h2>2. Configuration</h2>
+
+        <p>
+			Tout d'abord veuller installer le fichier docker ici présent ainsi que le site à copier.
+			
+            Pour utiliser HTTrack, vous pouvez le télécharger et l'installer à partir du <a href="https://www.httrack.com/page/2/fr/index.html">site officiel</a> et ensuite suivre les indication du logiciel ou utiliser les gestionnaires de paquets des distributions Linux. 
+            <br>
+            Tapez la commande suivante pour installer HTTrack sur Ubuntu :
+        </p>
+
+        <kbd class="ms-3">sudo apt-get install httrack</kbd>
+
+        <p>
+            Une fois installé, vous pouvez lancer HTTrack à partir de la ligne de commande, ou utiliser WebHTTrack, une interface Web pour HTTrack.
+        </p>
+
+        <h2>3. Utilisation de HTTrack</h2>
+
+        <p>
+            Tout d'abord veullez telecharger ce fichier docker et cette page html.
+        </p>
+
+        <p>Après avoir télécharger les deux fichier, vous devez mettre les deux fichier dans le même dossier et metre le index.html dans un sousdossier nommé 'html'. 
+        <br> Puis lancer votre cmd aller dans le repertoire ou se trouve les fichier télécharger et lancer le docker-compose avec la commande : 
+        <br> <kbd class="ms-3">docker-compose up -d</kbd>
+        </p>
+        <p>
+          Après cela aller sur votre moteur de recherche et taper : http://localhost/
+        <br>Vous pouvez maintenant lancer HTTRACK et lancer la copie du site web en suivant les étape indiquer sur le logiciel. Vous pourrez ensuite avoir accès au coe du site web dans le répertoire ou vou avez telecharger le site.
+        </p>
+    </body>
+</html>

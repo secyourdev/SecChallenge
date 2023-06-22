@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" lang="fr">
+
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+ <link rel="shortcut icon" href="/favicon.ico" />	<meta name="description" content="HTTrack est un aspirateur de sites web facile d'utilisation et libre (GPL, logiciel libre). Il vous permet de télécharger un site web d'Internet vers votre disque dur, en construisant récursivement tous les répertoires, récupérant html, images et fichiers du serveur vers votre ordinateur. HTTrack réorganise la structure des liens en relatif. Ouvrez simplement une page du site 'aspiré' dans votre navigateur, et vous pourrez naviguer librement à l'intérieur, comme si vous étiez connecté. HTTrack peut aussi mettre à jour un site existant, ou continuer un téléchargement interrompu. Le robot est entièrement configurable, avec un système d'aide intégré. WinHTTrack est la version Windows 2000/XP/Vista/Seven/8 de HTTrack, et WebHTTrack la version pour Linux/Unix/BSD." />
+	<meta name="keywords" content="httrack, winhttrack, webhttrack, aspirateur de sites web, copie de sites sur ordinateur, miroir de sites web, archivage legal, preservation du web, archivage du web, surf hors connexion, capture de sites, logiciel libre, gpl" />
+<title>HTTrack Website Copier - Aspirateur de sites web libre (GNU GPL)</title>
+
+    <script language="javascript">
+    <!--
+    function FOS(host,nom,info) {
+      var s;
+	  var a=64;
+	  var p="&"+"#"+a+";";
+      if (info == "") info=nom+p+host;
+      s="mail";
+      document.write("<a href='"+s+"to:"+nom+p+host+"'>"+info+"</a>");
+    }
+    // -->
+    </script>
+
+	<style type="text/css">
+	<!--
+
+body {
+	margin: 0;  padding: 0;  margin-bottom: 15px;  margin-top: 8px;
+	background: #77b;
+}
+body, td {
+	font: 14px "Trebuchet MS", Verdana, Arial, Helvetica, sans-serif;
+	}
+
+#subTitle {
+	background: #000;  color: #fff;  padding: 4px;  font-weight: bold; 
+	}
+
+#siteNavigation a, #siteNavigation .current {
+	font-weight: bold;  color: #448;
+	}
+#siteNavigation a:link    { text-decoration: none; }
+#siteNavigation a:visited { text-decoration: none; }
+
+#siteNavigation .current { background-color: #ccd; }
+
+#siteNavigation a:hover   { text-decoration: none;  background-color: #fff;  color: #000; }
+#siteNavigation a:active  { text-decoration: none;  background-color: #ccc; }
+
+
+a:link    { text-decoration: underline;  color: #00f; }
+a:visited { text-decoration: underline;  color: #000; }
+a:hover   { text-decoration: underline;  color: #c00; }
+a:active  { text-decoration: underline; }
+
+
+#pageContent {
+	clear: both;
+	border-bottom: 6px solid #000;
+	padding: 10px;  padding-top: 20px;
+	line-height: 1.65em;
+	background-image: url(/images/bg_rings.png);
+	background-repeat: no-repeat;
+	background-position: top right;
+	}
+
+#pageContent, #siteNavigation {
+	background-color: #ccd;
+	}
+
+/* ----------------------------------- */
+
+
+.imgLeft  { float: left;   margin-right: 10px;  margin-bottom: 10px; }
+.imgRight { float: right;  margin-left: 10px;   margin-bottom: 10px; }
+
+hr { height: 1px;  color: #000;  background-color: #000;  margin-bottom: 15px; }
+
+h1 { margin: 0;  font-weight: bold;  font-size: 2em; }
+h2 { margin: 0;  font-weight: bold;  font-size: 1.6em; }
+h3 { margin: 0;  font-weight: bold;  font-size: 1.3em; }
+h4 { margin: 0;  font-weight: bold;  font-size: 1.18em; }
+
+.blak { background-color: #000; }
+.hide { display: none; }
+.tableWidth { min-width: 400px; }
+
+.tblRegular       { border-collapse: collapse; }
+.tblRegular td    { padding: 6px;  background-image: url(/fade.gif);  border: 2px solid #99c; }
+.tblHeaderColor, .tblHeaderColor td { background: #99c; }
+.tblNoBorder td   { border: 0; }
+
+	// -->
+	</style>
+
+<!-- Begin Cookie Consent plugin by Silktide - http://silktide.com/cookieconsent -->
+
+<link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.css" />
+<script src="//cdnjs.cloudflare.com/ajax/libs/cookieconsent2/3.0.3/cookieconsent.min.js"></script>
+<script>
+window.addEventListener("load", function(){
+window.cookieconsent.initialise({
+  "palette": {
+    "popup": {
+      "background": "#000"
+    },
+    "button": {
+      "background": "#f1d600"
+    }
+  },
+  "content": {
+    "message": "We use cookies to personalise content and ads, and to analyse our traffic. We also share information about your use of our site with Google Ads and Google Analytics."
+  }
+})});
+</script>
+
+<!-- End Cookie Consent plugin -->
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=UA-38761127-1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'UA-38761127-1');
+  gtag('config', 'G-L2HDCK51T9');
+</script>
+
+</head>
+
+<body>
+
+<table width="76%" border="0" align="center" cellspacing="0" cellpadding="0" class="tableWidth">
+	<tr>
+	<td><img src="/images/header_title_4.png" width="400" height="34" alt="HTTrack Website Copier" title="" border="0" id="title" /></td>
+	</tr>
+</table>
+<table width="76%" border="0" align="center" cellspacing="0" cellpadding="3" class="tableWidth">
+	<tr>
+	<td id="subTitle">Aspirateur de sites web libre</td>
+	</tr>
+</table>
+<table width="76%" border="0" align="center" cellspacing="0" cellpadding="0" class="tableWidth">
+<tr class="blak">
+<td>
+	<table width="100%" border="0" align="center" cellspacing="1" cellpadding="0">
+	<tr align="center" id="siteNavigation">
+		<td><span class="hide">[</span>
+		<a href="/page/1/fr/index.html" title="A propos de HTTrack: Présentation, Fonctions, Aide">A propos</a>
+		<span class="hide">]</span></td>
+
+		<td><span class="hide">[</span>
+		<a href="/page/2/fr/index.html" title="Télécharger HTTrack Website Copier 3.49-2">Télécharger</a>
+		<span class="hide">]</span></td>
+
+		<td><span class="hide">[</span>
+		<a href="/html/index.html" title="Documentation et aide">Documentation</a>
+		<span class="hide">]</span></td>
+
+		<td><span class="hide">[</span>
+		<a href="https://forum.httrack.com/" title="Forum">Forum</a>
+		<span class="hide">]</span></td>
+
+		<td><span class="hide">[</span>
+		<a href="https://blog.httrack.com/" title="Blog">Blog</a>
+		<span class="hide">]</span></td>
+
+		<td><span class="hide">[</span>
+		<a href="/page/7/fr/index.html" title="Informations diverses, crédits">Informations</a>
+		<span class="hide">]</span></td>
+
+		<td><span class="hide">[</span>
+		<a href="/page/21/en/index.html" title="English version">English</a>
+		<span class="hide">]</span></td>
+
+	</tr>
+
+
+	<tr>
+	<td colspan="7"> 
+		<table width="100%" border="0" align="center" cellspacing="0" cellpadding="10">
+		<tr> 
+		<td id="pageContent"> 
+<h2>Snapshots of WebHTTrack Website Copier</h2>
+
+See also: <a href="/page/20/fr/index.html">WinHTTrack, the Windows 2000/XP/Vista/Seven release</a><br>
+
+<p><b>Easy to use interface and powerful options allows you to control precisely your
+mirror sessions. </b><br>
+</p>
+
+<br><br>
+
+<center>
+  <img src="/htsw/screenshot_w1.jpg" alt="HTTrack Website Copier snapshot #1">
+  <br>
+  Select the desired language...
+  <br><br><hr><br>
+</center>
+
+<center>
+  <img src="/htsw/screenshot_w2.jpg" alt="HTTrack Website Copier snapshot #1">
+  <br>
+  Select a project name to organize your downloads...
+  <br><br><hr><br>
+</center>
+
+<center>
+  <img src="/htsw/screenshot_w3.jpg" alt="HTTrack Website Copier snapshot #2">
+  <br>
+  Type one or several Web addresses...
+  <br><br><hr><br>
+</center>
+
+<center>
+  <img src="/htsw/screenshot_w4.jpg" alt="HTTrack Website Copier snapshot #3">
+  <br>
+  You can use powerful options to precisely define what do you want to do
+  <br><br><hr><br>
+</center>
+
+<center>
+  <img src="/htsw/screenshot_w5.jpg" alt="HTTrack Website Copier snapshot #5">
+  <br>
+  You can, <b>if you want</b>, only save the settings and launch the mirror later
+  <br><br><hr><br>
+</center>
+
+<center>
+  <img src="/htsw/screenshot_w6.jpg" alt="HTTrack Website Copier snapshot #6">
+  <br>
+  Now HTTrack Website Copier is working..
+  <br><br><hr><br>
+</center>
+
+<center>
+  <img src="/htsw/screenshot_w7.jpg" alt="HTTrack Website Copier snapshot #7">
+  <br>
+  And finally, check the result locally!
+  <br><br>
+  You do not need to be online anymore to browse your favorite website.
+  Besides, you can share this Website with your friends, or copy it for them, 
+  and then browse it without the need of installing HTTrack Website Copier.<br>
+  Have fun with HTTrack Website Copier!
+  <br><br><hr><br>
+</center>
+<a href="mailto:piegealoup@httrack.com" onClick="return false" style="visibility:hidden">@</a>
+		</td>
+		</tr>
+		</table>
+	</td>
+	</tr>
+	</table>
+</td>
+</tr>
+</table>
+
+<table width="76%" border="0" align="center" cellspacing="0" cellpadding="0">
+	<tr>
+	<td id="footer"><small>&copy; 2023 Xavier Roche &amp; other contributors - Web Design: Leto Kauler.</small></td>
+<td align="right">
+<a href="http://endsoftpatents.org/innovating-without-patents" target="_new" title="This site is innovating without patents!">
+<img border="0" alt="End Software Patents" style="border-width:0" src="/esp_chicklet.png">
+</a></td>
+	</tr>
+</table>
+
+</body>
+</html>
+

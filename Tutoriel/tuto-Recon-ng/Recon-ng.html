@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <h1><b>Recon-ng</b></h1>
+
+      <h2>1. Objectif de l'outil</h2>
+
+        <p>
+            Recon-ng est un framework de reconnaissance et d'analyse d'informations qui aide les professionnels de la sécurité et les chercheurs en sécurité à collecter et à organiser des informations sur des cibles spécifiques. Cet outil open-source offre une interface en ligne de commande conviviale et prend en charge une variété de modules pour effectuer des tâches de reconnaissance automatisée.
+        </p>
+
+      <h2>2. Tutoriel</h2>
+
+        <p>
+          Tout d'abord veuiller télécharger le docker compose ici et le Dockerfile là. Veiller à bien mettre les deux fichiers dans le même dossier.
+        </p>
+      <h3>2.1. Préparation de l'environement de travail</h3>
+        <p>
+          Premierement vous devez aller dans le répertoire ou ce trouve le fichier docker dans votre cmd puis lancer le docker avec cette commande :
+        <br>
+        <kbd class="ms-3">docker-compose run recon-ng</kbd>
+        </p>
+        <p>
+          Cela va installer le module recon ng sur votre pc et vous permetre de l'utiliser.
+        </p>
+     <h3>2.2 Utilisation de Recon-ng</h3>  
+        <p>
+          Tout il faut préciser que recon-ng peut être utilisé pour faire beaucoup de chose différente, nous allons ici voir une application de cet outil. 
+        </p>
+     <h4>Récupérer les hôtes d'un site web</h4>
+        <p>
+          Pour récupérer les hôtes d'un site web nous allon utiliser le module hackertarget. Nous allons donc commencer par le télécharger : 
+          <br>
+          <kbd class="ms-3">marketplace install hackertarget</kbd>
+        </p>
+        <p>
+          Vous devez maintenant le charger avec cette commande : 
+          <br>
+          <kbd class="ms-3">modules load hackertarget</kbd>
+        </p>
+        <p>
+          Vous pouvez maintenant utiliser hackertarget. Pour ce faire il faut tout d'abord sélectioner la cible sur laquelle on veut avoir des information ici nous utiliseron youtube.com par exemple, pour cela rentrer cette commande :
+          <br>
+          <kbd class="ms-3">options set SOURCE youtube.com</kbd>
+       </p>
+       <p>
+         Maintenant il ne manque plus qu'a lancé la commande run et vous aurez accès à tout les hôtes du site. 
+       </p>
+       <p>
+          Il faut aussi noté que Recon-ng dispose de nombreux autres modules pour effectuer différentes tâches de reconnaissance, y compris la recherche d'informations sur les domaines, les adresses IP, les vulnérabilités, etc. Vous pouvez explorer ces modules, configurer leurs options et les utiliser selon vos besoins spécifiques.
+        </p>
+    </body>
+</html>
