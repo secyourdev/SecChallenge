@@ -1,0 +1,113 @@
+<h1>Tutoriel : HTTrack<span class="m_1"></span></h1>
+
+
+<h2 class="mb-3">1. Objectif</h2>
+<p>
+	HTTrack est un aspirateur de site web. Il permet de télécharger un site web internet. Il permet de ne plus avoir besoin d’une connexion pour pouvoir visiter le site.
+	</br>
+	Le logiciel est téléchargeable sur le site : <a  class="link-primary" href="https://www.httrack.com/">https://www.httrack.com/</a>
+	</br>
+</p>
+
+<h2 class="mb-3">2. Configuration</h2>
+<p>
+	Pour ce tutoriel, nous utiliserons docker pour avoir une machine et un serveur HTTP apache.
+	</br>
+	</br>
+	Récupérer le dockerfile dans le lien ci-après : <a  class="link-primary" download="docker-compose.yml" href="Docker/httrack/docker-compose.yml">docker-compose.yml</a>
+	</br>
+	Dans un bash (linux) ou cmd (windows) aller dans le répertoire où vous avez télécharger le fichier docker-compose.yml : 
+	</br>
+	<kbd class="ms-3">bash> docker-compose up -d</kbd>
+	</br>
+	</br>
+	Vous disposez maintenant d’une machine configurée avec HTTrack et un serveur HTTP apache.
+	</br>
+</p>
+
+<h2 class="mb-3">3. Les étapes de copie de site web</h2>
+<p>
+	Une fois le conteneur lancé, connectez-vous à la machine avec la commande :
+	</br>
+	<kbd class="ms-3">bash> docker exec -ti tuto-httrack /bin/bash</kbd>
+	</br>
+	</br>
+	Vous pouvez vérifier que le répertoire dans httrack dans lequel vous êtes est vide avec la commande :
+	</br>
+	<kbd class="ms-3">bash> ls</kbd>
+	</br>
+	</br>
+	Pour copier le site web du serveur la commande est :
+	</br>
+	<kbd class="ms-3">bash> httrack <URLs> [-options] <nom_du_répertoire></kbd>
+	</br>
+	<kbd class="ms-3">bash> httrack <URLs> [-option] [+<URL_FILTER>] [-<URL_FILTER>] [+<mime:MIME_FILTER>] [-<mime:MIME_FILTER>]</kbd>
+	</br>
+	</br>
+	Ici nous utilisons l’option -O pour choisir le répertoire dans lequel copié le site web.
+	</br>
+	<kbd class="ms-3">bash> httrack http://10.5.0.3 -O ~/httrack</kbd>
+	</br>
+	<img class="mw-100" src="Tutoriel/tuto-httrack/httrack1.png" alt="" class="img-fluid">
+	</br>
+	</br>
+	Pour copier seulement les fichiers HTML on utilise l’option –get :
+	</br>
+	</br>
+	<kbd class="ms-3">bash> httrack –get http://10.5.0.3 -O ~/httrack2</kbd>
+	</br>
+</p>
+
+<h2 class="mb-3">4. Vérification du téléchargement du site web</h2>
+<p>
+	Vous pouvez vérifier que le répertoire httrack est bien créer avec :
+	</br>
+	<kbd class="ms-3">bash> ls</kbd>
+	</br>
+	</br>
+	Puis aller dedans :
+	</br>
+	<kbd class="ms-3">bash> cd httrack</kbd>
+	</br>
+	</br>
+	Allez ensuite dans le répertoire de l’adresse IP du site que vous avez copié :
+	</br>
+	<kbd class="ms-3">bash> cd 10.5.0.3</kbd>
+	</br>
+	</br>
+	Vous pouvez vérifier que le fichier index.html du site est bien télécharger :
+	</br>
+	<kbd class="ms-3">bash> ls</kbd>
+	</br>
+	</br>
+	<img class="mw-100" src="Tutoriel/tuto-httrack/httrack2.png" alt="" class="img-fluid">
+	</br>
+	</br>
+	Ouvrez le fichier avec la commande :
+	</br>
+	<kbd class="ms-3">bash> cat index.html</kbd>
+	</br>
+	</br>
+	Ou vous pouvez aller dans le répertoire httrack2 :
+	</br>
+	<kbd class="ms-3">bash> cd httrack2</kbd>
+	</br>
+	<kbd class="ms-3">bash> ls</kbd>
+	</br>
+	</br>
+	<img class="mw-100" src="Tutoriel/tuto-httrack/httrack3.png" alt="" class="img-fluid">
+	</br>
+	</br>
+	<kbd class="ms-3">bash> cat index-2.html</kbd>
+	</br>
+	</br>
+	Ceci conclut ce tutoriel. Pour quitter le docker entrez la commande :
+	</br>
+	<kbd class="ms-3">bash> exit</kbd>
+	</br>
+</p>
+
+<h2 class="mb-3">5. Validation</h2>
+<p>
+	Pour valider le tutoriel, il faut entrer le mot secret contenu dans le fichier index.html ou index-2.html
+</p>

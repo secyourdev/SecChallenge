@@ -1,0 +1,115 @@
+<h1>Tutoriel : The Sleuth Kit<span class="m_1"></span></h1>
+
+
+<h2 class="mb-3">1. Objectif</h2>
+<p>
+	L’objectif de ce tutoriel est de vous présenter le logiciel TheSleuthKit.
+	</br>
+	The Sleuth Kit est une collection de logicielle utilisés dans le domaine de la cybercriminalité pour effectuer l’analyse et la récupération de données sur les systèmes de fichiers. Il est utilisé par les professionnels de la sécurité, les chercheurs en informatique forensique, les forces de l'ordre et d'autres experts pour examiner les systèmes informatiques compromis et recueillir des preuves numériques.
+	</br>
+</p>
+
+<h2 class="mb-3">2. Configuration</h2>
+<p>
+	Pour ce tutoriel, nous utiliserons docker pour avoir une machine configurée avec The Sleuth Kit et divers fichiers sur lesquelles tester le logiciel.
+	</br>
+	</br>
+	Récupérer le dockerfile dans le lien ci-après : <a  class="link-primary" download="docker-compose.yml" href="Docker/thesleuthkit/docker-compose.yml">docker-compose.yml</a>
+	</br>
+	Dans un bash (linux) ou cmd (windows) aller dans le répertoire où vous avez télécharger le fichier docker-compose.yml : 
+	</br>
+	<kbd class="ms-3">bash> docker-compose up -d</kbd>
+	</br>
+	</br>
+	Vous disposez maintenant d’une machine configurée avec The Sleuth Kit.
+	</br>
+</p>
+
+<h2 class="mb-3">3. Les premières étapes</h2>
+<p>
+	Une fois le conteneur lancé, connectez-vous à la machine avec la commande :
+	</br>
+	<kbd class="ms-3">bash> docker exec -ti tuto-thesleuthkit /bin/bash</kbd>
+	</br>
+	</br>
+	Pour calculer la valeur de hachage d'un fichier :
+	</br>
+	<kbd class="ms-3">bash> md5sum [nom_fichier]</kbd>
+	</br>
+	Ici nous utilisons les fichiers texte.txt et fichier.dd.
+	</br>
+	<kbd class="ms-3">bash> md5sum texte.txt</kbd>
+	</br>
+	<kbd class="ms-3">bash> md5sum fichier.dd</kbd>
+	</br>
+	</br>
+	Pour afficher le volume des fichiers avec d'autres caractéristiques :
+	</br>
+	<kbd class="ms-3">bash> img_stat texte.txt </kbd>
+	</br>
+	<kbd class="ms-3">bash> img_stat fichier.dd </kbd>
+</p>
+
+<h2 class="mb-3">4. Recherches plus en profondeur</h2>
+<p>
+	Vous pouvez afficher l'ensemble des disques et leur stockage utilisé/restant.
+	</br>
+	<kbd class="ms-3">bash> mmls [nom_image]</kbd>
+	</br>
+	</br>
+	Cependant, fichier.dd a une extension dd ce qui signifie que c'est une image ou une partition d'un disque dur sous Linux. Celui présent dans la machine du conteneur docker est une image d'un disque dur virtuelle.
+	</br>
+	La commande mmsl <nom_fichier> affichera donc un code d'erreur. Elle ne fonctionne que pour les images de disque dur physique.
+	</br>
+	Voici un exemple de ce que l'on peut obtenir :
+	</br>
+	</br>
+	<img class="mw-100" src="Tutoriel/tuto-thesleuthkit/thesleuthkit1.png" alt="" class="img-fluid">
+	</br>
+	</br>
+	Vous pouvez afficher les détails et les statistiques du système de fichiers, y compris la disposition, les tailles et les étiquettes.
+	</br>
+	<kbd class="ms-3">bash> fsstat fichier.dd</kbd>
+	</br>
+	</br>
+	Vous pouvez afficher l'ensemble des répertoires et des fichiers présent dans l'image du disque dur.
+	</br>
+	<kbd class="ms-3">bash> fls fichier.dd</kbd>
+	</br>
+	</br>
+	L'option -o [nb_secteur] vous permet de sélectionner à partir de quel secteur vous voulez commencer à afficher les informations de l'image disque. Cependant dans le cas du fichier.dd, cette fonctionnalité est incompatible.
+	</br>
+	Voici ce que vous devriez obtenir :
+	</br>
+	<kbd class="ms-3">bash> fsstat -o 11264 fichier.dd</kbd>
+	</br>
+	<img class="mw-100" src="Tutoriel/tuto-thesleuthkit/thesleuthkit2.png" alt="" class="img-fluid">
+	</br>
+	</br>
+	Vous pouvez également récupérer les fichiers stockés dans fichier.dd
+	</br>
+	<kbd class="ms-3">bash> tsk_recover -i raw -e fichier.dd ../TheSleuthKit/001</kbd>
+	</br>
+	</br>
+	Aller ensuite dans le dossier 001
+	</br>
+	<kbd class="ms-3">bash> cd 001</kbd>
+	</br>
+	</br>
+	Vous pouvez voir tous les fichiers présents dans fichier.dd qui ont pu être récupérer. Le fichier réponse n'a pu être récupérer car il est dommagé. Cela est du à la copie partielle du disque dur virtuel effectué pour la réalisation de ce tutoriel.
+	</br>
+	<kbd class="ms-3">bash> ls</kbd>
+	</br>
+	</br>
+	Ceci conclut ce tutoriel. Pour quitter le docker entrez la commande :
+	</br>
+	<kbd class="ms-3">bash> exit</kbd>
+	</br>
+	</br>
+	Pour plus d'information sur le logiel The Sleuth Kit vous pouvez visiter le site internet : <a href="http://wiki.sleuthkit.org/index.php?title=TSK_Tool_Overview">http://wiki.sleuthkit.org/index.php?title=TSK_Tool_Overview</a>
+</p>
+
+<h2 class="mb-3">5. Validation</h2>
+<p>
+	Pour valider le tutoriel, il faut entrer la deuxième partie du titre du fichier texte commençant par reponse->(mot secret).txt
+</p>

@@ -1,0 +1,32 @@
+version: '3'
+
+services:
+  tuto-httrack:
+    container_name: tuto-httrack
+    image: tuto-httrack
+    build: ./machine
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    networks:
+      tuto_xxx_network:
+        ipv4_address: "10.5.0.2"
+
+  tuto-apache:
+    container_name: tuto-apache
+    image: tuto-apache
+    build: ./serveurhttp
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    networks:
+      tuto_xxx_network:
+        ipv4_address: "10.5.0.3"
+
+networks:
+  tuto_xxx_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/24
+          gateway: 10.5.0.1

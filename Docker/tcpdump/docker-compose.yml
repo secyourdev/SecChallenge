@@ -1,0 +1,31 @@
+version: '3'
+services:
+  tuto_tcpdump:
+    container_name: tuto_machine_tcpdump
+    image: machine:1
+    build: .\machine
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    networks:
+      tuto_network:
+        ipv4_address: "10.5.0.2"
+
+  tuto_serv:
+    container_name: tuto_serveur_tcpdump
+    image: serveur:1
+    build: .\serveur
+    stdin_open: true
+    tty: true
+    restart: unless-stopped
+    networks:
+      tuto_network:
+        ipv4_address: "10.5.0.3"
+
+networks:
+  tuto_network:
+    driver: bridge
+    ipam:
+      config:
+        - subnet: 10.5.0.0/24
+          gateway: 10.5.0.1

@@ -1,0 +1,108 @@
+<h1>Tutoriel : Knockd<span class="m_1"></span></h1>
+
+
+<h2 class="mb-3">1. Qu’est-ce que Knockd ?</h2>
+<p>
+	Knock est programme qui sert à faire port-knocking sur un serveur.
+	</br>
+</p>
+
+<h2 class="mb-3">2. Qu’est-ce que le port knocking ?</h2>
+<p>
+	Le port knocking est une méthode qui permet de modifier le comportement d’un pare-feu  en provoquant l’ouverture d’un port particulier par l’intermédiaire d’une séquence de knock particulière.
+	</br>
+</p>
+
+<h2 class="mb-3">3. Installation de knockd sur linux</h2>
+<p>
+	Pour installer knockd il faut taper la commande : 
+	</br>
+	<kbd class="ms-3">bash> apt-get install knockd</kbd>
+	</br>
+</p>
+
+<h2 class="mb-3">4. Configuration du port knocking avec knockd</h2>
+<p>
+	Ouvrons le fichier « /etc/knockd.conf ». Nous pouvons avoir plusieurs fichers de configuration on peut spécifier lequel utiliser grâce à la commande : 
+	</br>
+	<kbd class="ms-3">bash> knockd -c [file]</kbd>
+	</br>
+	</br>
+	Par défaut le fichier « /etc/knockd.conf » est utilisé et ressemble à ceci :
+	</br>
+	<img class="mw-100" src="Tutoriel/tuto-knockd/knockd_conf1.png" alt="" class="img-fluid">
+	</br>
+	</br>
+	Dans le block option :
+	</br>
+	</br>
+		- UseSyslog indique l’utilisation de syslog pour les logs.
+		</br>
+		</br>
+	Dans le block openSSH: 
+	</br>
+	</br>
+		- sequence indique la séquence de port qui doit recevoir des signaux (l’ordre est important).
+		</br>
+		- seq_timeout indique le temps dans lequel la sequence doit s’effectuer en seconde (ici 5s)
+		</br>
+		- command est la commande que knockd lancera une fois la séquence est détecter (ici l’ouverture du port 22 ).
+		</br>
+		-tcpflags indique le type de flag que les packets doit avoir pour être détecté (ici syn).
+	</br>
+	</br>
+	Dans le block closeSSH:
+	</br>
+	</br>
+	Ce block sert à fermer l’accès au port 22 en envoyant la séquence inverse.
+	</br>
+	</br>
+	On peut aussi utiliser un autre type de configuration : 
+	</br>
+	<img class="mw-100" src="Tutoriel/tuto-knockd/knockd_conf2.png" alt="" class="img-fluid">
+	</br>
+	</br>
+	La commande cmd_timeout permet d’ouvrir le port pour une durée déterminée (ici 10s) ce qui est plus sûr car on pourrait oublier de refermer le port que l’on a ouvert.
+	</br>
+	Il faut vérifier que la séquence correspond bien aux règles de votre pare-feu.
+	</br>
+	Il faut ensuite lancer knockd en arrière-plan avec la commande :
+	</br>
+	<kbd class="ms-3">bash> knockd -d</kbd>
+	</br>
+</p>
+
+<h2 class="mb-3">5. Accès et utilisation en tant que client</h2>
+<p>
+	Pour se connecter à un serveur SSH on utilise la commande : 
+	</br>
+	<kbd class="ms-3">bash> ssh user@ip_adress</kbd>
+	</br>
+	</br>
+	La connexion ne devrait pas aboutir car le port ssh est toujours fermer. Il faut donc utiliser knockd pour effectuer la séquence qui ouvrira le port 22, la commande de base est:
+	</br>
+	<kbd class="ms-3">bash> knock ip_adress [ports :protocole] [ports :protocole] [ports :protocole]</kbd>
+	</br>
+	</br>
+	Par défaut le protocole utiliser est tcp.
+	</br>
+	Dans notre cas la commande pour débloquer le port 22 est :
+	</br>
+	</br>
+	<kbd class="ms-3">bash> knock ip_serveur 5000 6000 7000</kbd>
+	</br>
+	</br>
+	Ou
+	</br>
+	</br>
+	<kbd class="ms-3">bash> knock ip_serveur 5000:tcp 6000:tcp 7000:tcp</kbd>
+	</br>
+	</br>
+	On pourra ensuite utiliser la commande précédente pour se connecter au serveur.
+	</br>
+</p>
+
+<h2 class="mb-3">6. Validation</h2>
+<p>
+	Pour valider le tutoriel, il faut entrer le mot vanille.
+</p>

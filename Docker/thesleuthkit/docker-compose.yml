@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  tuto-thesleuthkit:
+    container_name: tuto-thesleuthkit
+    image: tuto-thesleuthkit
+    build: ./machine
+    stdin_open: true
+    tty: true
+    restart: unless-stopped

@@ -1,0 +1,55 @@
+<h1>Tutoriel : crunch<span class="m_1"></span></h1>
+
+<h2 class="mb-3">1. Crunch 101</h2>
+
+<p >
+Crunch est un outil permettant de générer des listes de mots, ou plus généralement de caractères.
+</br>
+Il peut générer ces listes à partir de lignes de commandes spécifiant le nombre de caractères, les caractères à utiliser et même certains paternes de ces caractères.
+</p>    
+				
+<h2 class="mb-3">2. A quoi ça sert tout ça ?</h2>
+<p >
+Dans le contexte de la cybersécurité, les listes générées par crunch seront souvent des mots de passe, que ce soit pour choisir un mot de passe pour un site quelconque ou pour avoir une liste de mots de passe potentiels pour faire du bruteforce et gagner ainsi l'accès à une machine ou à des données protégées.
+</p>   
+
+<h2 class="mb-3">3. Configuration et execution</h2>
+<p >
+Récupérer le dockerfile dans le lien ci-après : <a  class="link-primary" download="docker-compose.yml" href="Docker/crunch/docker-compose.yml">docker-compose.yml</a>
+</br>
+</br>
+Lancer le docker avec :
+</br>
+<kbd class="ms-3">bash> docker compose up -d</kbd>
+</br>
+</br>
+Accéder à l’invite de commande avec :
+</br>
+<kbd class="ms-3">bash> docker exec -it tuto_xxx-syd-crunch bash</kbd>
+</br>
+</br>
+On va créer une liste de mots de passe de 3 caractères dont les caractères sont “azerty” avec:
+</br>
+<kbd class="ms-3">bash> crunch 3 3 azerty -o liste</kbd>
+</br>
+<img class="mw-100" src="Tutoriel/tuto-crunch/crunch1.png" alt="" class="img-fluid">
+</br>
+</br>
+On a donc une liste de mots de passe dans un fichier liste. Pour vérifier on va afficher la ligne 36 du fichier avec:
+</br>
+<kbd class="ms-3">bash> sed -n '36 p' ./liste</kbd>
+</br>
+<img class="mw-100" src="Tutoriel/tuto-crunch/crunch2.png" alt="" class="img-fluid">
+</br>
+</br>
+Pour quitter:
+</br>
+<kbd class="ms-3">bash> exit</kbd>
+</br>
+<kbd class="ms-3">bash> docker compose down</kbd>
+</p> 
+
+<h2 class="mb-3">4. Validation</h2>
+<p>
+Pour valider le tutoriel, indiquez le contenu de la ligne 36.
+</p>

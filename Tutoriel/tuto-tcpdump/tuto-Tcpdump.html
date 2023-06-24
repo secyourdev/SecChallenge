@@ -1,0 +1,199 @@
+<h1>Tutoriel : Tcpdump<span class="m_1"></span></h1>
+
+
+<h2 class="mb-3">1. 1	Qu’est-ce que tcpdump ?</h2>
+<p>
+	Tcpdump est un analyseur de paquet en ligne de commande. Cet outil est utilisé pour capturer et analyser des packets TCP/IP, ce qui peut être une grande aide pour résoudre des problèmes de mise en réseau.
+	</br>
+</p>
+
+<h2 class="mb-3">2.	Installation</h2>
+<p>
+	Pour installer tcpdump sur debian ou ubunty on utilise la commande :
+	</br>
+	<kbd class="ms-3">bash> sudo apt-get install tcpdump [file]</kbd>
+	</br>
+</p>
+
+<h2 class="mb-3">3. 3	Utilisation</h2>
+<p>
+	Pour utiliser tcpdump vous devez être sur un session root ou utiliser sudo. Tcpdump possède de nombreuses options mais exécuter tcpdump sans option capturera tous les paquets passant par l’interface par défaut jusqu’à ce qu’on l’arrête avec ctrl + c :
+	</br>
+	</br>
+	<img class="mw-100" src="Tutoriel/tuto-tcpdump/tcpdump_sans_options.png" alt="" class="img-fluid">
+	</br>
+	</br>
+	Pour avoir la liste des interfaces réseau sur lesquelles tcpdump peut capturer des pacquets, il faut taper la commande :
+	</br>
+	<kbd class="ms-3">bash> tcpdump -D</kbd>
+	</br>
+	</br>
+	<img class="mw-100" src="Tutoriel/tuto-tcpdump/tcpdump_interface.png" alt="" class="img-fluid">
+	</br>
+	</br>
+	Comme on peut le voir, quand tcpdump nous donne la liste des interfaces, il nous donne aussi leurs status.
+	</br>
+	</br>
+	Pour choisir l’interface il suffit d’entrer la commande :
+	</br>
+	<kbd class="ms-3">bash> tcpdump -i nom_interface</kbd>
+	</br>
+	</br>
+	L’option -v donne plus d’information sur les paquets et -vv donne encore plus de détail, tandis que -A affiche les paquets en code ASCII.
+	</br>
+	</br>
+	Par défaut, tcpdump affiche les adresses IP, les protocoles et numéros de ports sous forme de nom pour éviter cela il existe deux options. La première est -n qui permet d’éviter d’avoir les adresses IP sous forme de nom et la deuxième est -nn qui en plus de faire la même chose que la première empêche que les numéros de ports et les protocoles d’être converti en nom.
+	</br>
+	</br>
+	Pour capturer un certain nombre de paquets (ex : 5) on utilise l’option -c :
+	</br>
+	<kbd class="ms-3">bash> tcpdump -c 5</kbd>
+	</br>
+	</br>
+	Il est aussi possible de filtrer les paquets qui seront attachés :
+	</br>
+	</br>
+	-	On peut filtrer les ports pour n’avoir que les paquets arrivant sur un port spécifique avec le filtre port :
+	</br>
+	<kbd class="ms-3">bash> tcpdump port 80</kbd>
+	</br>
+	</br>
+	-	On peut filtrer les hôtes pour n’avoir que les paquets arrivant ou partant d’un hôte avec par exemple l’adresse IP 10.5.0.3 avec le filtre host:
+	</br>
+	<kbd class="ms-3">bash> tcpdump host 10.5.0.3</kbd>
+	</br>
+	</br>
+	-	On peut aussi filtrer le type de protocole en utilisant le filtre portant le nom du protocole (exemple tcp, icmp, udp) :
+	</br>
+	<kbd class="ms-3">bash> tcpdump icmp</kbd>
+	</br>
+	</br>
+	-	On peut aussi filtrer un réseau avec le filtre net en indiquant le réseau à l’aide du masque :
+	</br>
+	<kbd class="ms-3">bash> tcpdump net 10.5.0.3/24</kbd>
+	</br>
+	</br>
+	-	On peut aussi utiliser les filtre src (source) et dst (destination) en combinaison avec d’autre filtre pour préciser si on veut par exemple recevoir seulement les paquets qui ont pour destination le port 80 :
+	</br>
+	<kbd class="ms-3">bash> tcpdump dst port 80</kbd>
+	</br>
+	</br>
+	-	On peut aussi combiner plusieurs types de filtres à l’aide des opérateurs logiques and, or et not :
+	</br>
+	<kbd class="ms-3">bash> tcpdump scr host 10.5.0.3 and dst port 80</kbd>
+	</br>
+	</br>
+	Dans cet exemple on demande à tcpdump de nous donner que les paquets provenant de l’adresse IP 10.5.0.3 et à destination du port 80. Si dans la commande and était remplacé par or tcpdump donnerait que les paquets provenant de l’adresse IP 10.5.0.3 ou les paquets qui ont pour destination le port 80. 
+	</br>
+	</br>
+	Pour capturer tous les paquets sauf par exemple les paquets tcp on utilise la commande :
+	</br>
+	<kbd class="ms-3">bash> tcpdump not tcp</kbd>
+	</br>
+	</br>
+	Tcpdump permet aussi d’enregistrer la capture dans un fichier pour pouvoir l’analyser ultérieurement grâce à l’option -w. Le fichier est sous forma .pcap.
+	</br>
+	<kbd class="ms-3">bash> tcpdump -i eth1 -c 5 -w exemple.pcap</kbd>
+	</br>
+	</br>
+	Cette commande va enregistrer les 5 premiers paquets de l’interface eth1 dans le fichier exemple.pcap. 
+	</br>
+	</br>
+	Pour le lire il suffit d’entrer la commande :
+	</br>
+	<kbd class="ms-3">bash> tcpdump -r exemple.pcap</kbd>
+	</br>
+</p>
+
+<h2 class="mb-3">4. 4	Interprétation</h2>
+<p>
+	Examinons une ligne de sortie de tcpdump :
+	</br>
+	<kbd class="ms-3">bash> 10:49:35.638157 IP 10.5.0.3.22 > 10.5.0.2.32778: Flags [S.], seq 3501673804, ack 3304250392, win 65160, options [mss 1460,sackOK,TS val 1097707193 ecr 2103487554,nop,wscale 7], length 0</kbd>
+	</br>
+	</br>
+	Chaque ligne de sortie comprend :
+	</br>
+	</br>
+	Horodatage Unix (10:49:35.638157) que l’on peut avoir sous une forme lisible par l’homme avec l’option -tttt
+	</br>
+	</br>
+	Le protocole (IP)
+	</br>
+	</br>
+	Le nom de l’hôte ou l’adresse IP source et le numéro de port source (10.5.0.3.22)
+	</br>
+	</br>
+	Le nom de l’hôte ou l’adresse IP de destination et le numéro de port de destination (10.5.0.2.32778)
+	</br>
+	</br>
+	Les drapeaux (Flags [S.]). Ils indiquent l’état de connexion et peut prendre plusieurs valeurs parmi les suivantes :
+	</br>
+	</br>
+		- 	S – SYN. La première étape de connexion
+	</br>
+		- 	F – FIN. La fin de la connection.
+	</br>
+		- 	. – ACK. L’accusé de réception reçu avec succès.
+		</br>
+		- 	P – POUSSER. Indique au récepteur de traiter les paquets au lieu de les mettre en mémoire tampon.
+		</br>
+		- 	R – RST. La communication s’est arrêtée.
+		</br>
+		</br>
+	Le numéro de séquence des données du paquet (seq 3501673804) 
+	</br>
+	</br>
+	Le numéro d’aquittement (ack 3304250392)
+	</br>
+	</br>
+	La taille de la fenêtre (win 65160). C’est suivi par des options TCP
+	</br>
+	</br>
+	La longueur de la charge utile de données (length 0).
+	</br>
+</p>
+
+<h2 class="mb-3">5. Tutoriel</h2>
+<p>
+	Pour ce tutoriel, nous utiliserons docker pour avoir une machine et un serveur SSH.
+	</br>
+	Récupérés d'abort le dockerfile dans le lien ci-après : <a  class="link-primary" download="docker-compose.yml" href="Docker/tcpdump/docker-compose.yml">docker-compose.yml</a>
+	</br>
+	</br>
+	Dans un bash (linux) ou cmd (windows) aller dans le répertoire où vous avez télécharger le fichier docker-compose.yml : 
+	</br>
+	<kbd class="ms-3">bash> docker-compose up -d</kbd>
+	</br>
+	</br>
+	Puis entrée la commande :
+	</br>
+	<kbd class="ms-3">bash> docker exec -ti tuto_serveur_tcpdump bash</kbd>
+	</br>
+	</br>
+	Vous êtes maintenant connectés au serveur, dans celui-ci vous pourrez tester les commandes de tcpdump expliqué dans ce tutoriel. Comme nous sommes dans un docker il n'y a pas vraiment d'échange de pacquets, donc pour simuler ces échanges vous pouvez utiliser docker desktop pour vous connecter au terminal de la machine et utiliser la commande :
+	</br>
+	<kbd class="ms-3">bash> ssh test@10.5.0.3</kbd>
+	</br>
+	</br>
+	Puis entrer le mot de passe test pour vous connecter au serveur. Vous pouvez ensuite taper la commande :
+	</br>
+	<kbd class="ms-3">bash> exit</kbd>
+	</br>
+	</br>
+	Pour vous déconecter. En faisant cela vous pourrez observer les paquets communiqués avec tcpdump sur le serveur.
+	</br>
+	</br>
+	Remarque : sur docker l'option -n -nn n'a pas d'effet avec l'option -w.
+	</br>
+</p>
+<h2 class="mb-3">6. Validation</h2>
+<p>
+	Dans le répertoire de connection du serveur vous trouverez un fichier tuto.pcap qui est la copie d'un fichier .pcap sous la forme d'un fichier texte. Pour l'ouvrir utiliser la commande :
+	</br>
+	<kbd class="ms-3">bash> cat tuto.pcap</kbd>
+	</br>
+	</br>
+	Pour valider ce tutoriel vous devez entrer la commande de tcpdump qui aurait donné ce fichier.
+	</br>
+</p>

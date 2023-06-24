@@ -1,0 +1,6 @@
+reading from file tuto.pcap, link-type EN10MB (Ethernet), snapshot length 262144
+10:49:35.638088 IP 10.5.0.2.32778 > 10.5.0.3.22: Flags [S], seq 3304250391, win 64240, options [mss 1460,sackOK,TS val 2103487554 ecr 0,nop,wscale 7], length 0
+10:49:35.638157 IP 10.5.0.3.22 > 10.5.0.2.32778: Flags [S.], seq 3501673804, ack 3304250392, win 65160, options [mss 1460,sackOK,TS val 1097707193 ecr 2103487554,nop,wscale 7], length 0
+10:49:35.638176 IP 10.5.0.2.32778 > 10.5.0.3.22: Flags [.], ack 1, win 502, options [nop,nop,TS val 2103487554 ecr 1097707193], length 0
+10:49:35.638365 IP 10.5.0.2.32778 > 10.5.0.3.22: Flags [P.], seq 1:42, ack 1, win 502, options [nop,nop,TS val 2103487555 ecr 1097707193], length 41: SSH: SSH-2.0-OpenSSH_7.9p1 Debian-10+deb10u2
+10:49:35.638369 IP 10.5.0.3.22 > 10.5.0.2.32778: Flags [.], ack 42, win 509, options [nop,nop,TS val 1097707194 ecr 2103487555], length 0
