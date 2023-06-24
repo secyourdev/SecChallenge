@@ -1,0 +1,92 @@
+<h1>Tutoriel : Shellter<span class="m_1"></span></h1>
+
+
+<h2 class="mb-3">1. Objectif</h2>
+<p>
+	L'objectif de ce tutoriel est de vous présenter l’outil Shellter. Cet outil permet d'injecter des payloads dans des .exe sains en 32bits.
+	<br>
+	Le site officiel est accessible derrière à ce <a class="link-primary"href="https://www.shellterproject.com/"><u>lien</u></a>.
+	<br>
+
+</p>
+
+<h2 class="mb-3">2. Installation et prérequis</h2>
+<p>
+	Ce tutoriel devra s'effectuer à l'aide du logiciel <a class="link-primary"href="https://www.virtualbox.org/"><u>VirtualBox</u></a>.
+	<br>
+	Ensuite téléchargez les deux machines virtuelles depuis <a class="link-primary"href="https://mega.nz/folder/ZGVDwaja#DHylpc7G2YX81s8Sc5m5eg"><u>Mega</u></a> et importez les dans virtualbox 
+    (Fichier > Importer un appareil virtuel...)
+	<br>
+
+</p>
+
+<h2 class="mb-3">3. Préparation de la machine attaquante</h2>
+<p>
+	Pour ce tutoriel, nous utiliserons virtualbox pour avoir deux machines : la machine attaquante sous Kali-Linux (identifiant et mot de passe : kali) 
+    et l'attquée sous Windows Server 16 (identifiant et mot de passe : tuto).
+<br>
+	Dans la machine Kali, se placer dans le répertoire /home/Kali/Desktop/Shellter/ et ouvrir un terminal : <kbd class="ms-3">shellter</kbd>
+<br>
+	
+<br>
+	Puis, on sélectionne le mode automatique (A) et on indique l'emplacement de notre .exe sain (ici l'installateur d'Opera). 
+<br>
+	<img src="./Tutoriel/tuto-shellter/shellter.png" align="middle">
+<br>
+    On n'active pas l'option stealth (N), et on indique (L) pour dire que l'on sélectionne un payload de la liste :
+<br>
+    <img src="./Tutoriel/tuto-shellter/shellter2.png" align="middle">
+<br>
+    On sélection le payload "Meterpreter_Reverse_TCP" (1), on indique l'adresse IP de la machine (obtenable avec la commande <kbd class="ms-3">ifconfig</kbd>)
+    en tant que LHOST.
+<br>
+    On indique le port 8080 en tant que LPORT.
+<br>
+    <img src="./Tutoriel/tuto-shellter/shellter3.png" align="middle">
+<br>
+    Notre exécutable est maintenant prêt, pour le transmettre à la machine Windows on va pouvoir utiliser Apache qui devrait être activé, 
+    vérifiez cela avec <kbd class="ms-3">sudo systemctl status apache2</kbd>) 
+<br>
+    Si le serveur n'est pas activé, réglez cela avec <kbd class="ms-3">sudo systemctl restart apache2</kbd>.
+<br>
+    Maintenant déplacez l'exécutable dans le répertoire du serveur apache avec <kbd class="ms-3">mv OperaSetup.exe /var/www/html/</kbd>
+<br> 
+    La dernière chose à faire sur la machine Kali est de démarrer une console msf6 avec <kbd class="ms-3">msfconsole</kbd>
+<br>
+    Puis entrez les commandes comme suit : (avec les mêmes LPORT et LHOST que dans shellter)
+<br>
+<img src="./Tutoriel/tuto-shellter/shellter5.png" align="middle">
+<br>
+    Il ne reste maintenant plus qu'à éxécuter notre .exe depuis la machine Windows Server.
+<br>
+</p>
+
+<h2 class="mb-3">4. Infection de la machine Windows</h2>
+<p>
+    Malheureusement pour nous, cette version gratuite de shellter ne permet pas d'encodage qui puisse dûper la plupart des antivirus comme l'on
+    peut le voir ci-dessous avec un scan virustotal :
+<br>
+    <img src="./Tutoriel/tuto-shellter/shellter6.png" align="middle">
+<br>
+    Vous devrez donc très certainement désactiver Windows Defender sur la machine virtuelle afin de pouvoir exécuter notre payload 
+    (ce qui doit être dejà fait sur la VM).
+<br>
+	Enfin, on récupère le .exe en tapant dans un navigateur Internet l'adresse IP
+    de la machine Kali suivi de "/OperaSetup.exe". Le navigateur vous demandra si vous voulez éxécuter 
+    le fichier, validez et c'est fait !
+<br>
+</p>
+
+<h2 class="mb-3">5. Contrôle de la machine grâce à la console msf6</h2>
+<p>
+    Une notification devrait être apparue sur la console msf6 et il suffit de se connecter à la session
+    en rentrant la commande suivante : <kbd class="ms-3">sessions -i 1</kbd> 
+    <br>
+    Vous avez maintenant les pleins pouvoirs sur la machine attaquée, 
+    pour voir toutes les options disponibles il est possible de taper <kbd class="ms-3">help </kbd> 
+</p>
+
+<h2 class="mb-3">6. Validation</h2>
+<p>
+	Pour valider le tutoriel, il vous faut taper "Shellter".
+</p>
