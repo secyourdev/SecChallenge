@@ -62,7 +62,7 @@
                 Vous voilà arrivé sur VirtualBox.
                 <br>
                 <br>
-                <img src="./Tutoriel/tuto-pwsplt/virtual_box.png">
+                <img src="./Tutoriel/tuto-powersploit/virtual_box.png">
                 <br>
                 <br>
                 Maintenant nous allons créer une machine virtuelle, cliquez sur le bouton bleu 
@@ -71,7 +71,7 @@
                 Vous arrivez sur la page suivante.
                 <br>
                 <br>
-                <img src="./Tutoriel/tuto-pwsplt/create_VM.png">
+                <img src="./Tutoriel/tuto-powersploit/create_VM.png">
                 <br>
                 <br>
                 Avant de commencer à renseigner quoi que ce soit pour la création de votre machine virtuelle, 
@@ -79,7 +79,7 @@
                 qu'utilisera votre machine virtuelle.
                 <br>
                 <br>
-                <img src="./Tutoriel/tuto-pwsplt/ISO_image.png">
+                <img src="./Tutoriel/tuto-powersploit/ISO_image.png">
                 <br>
                 <br>
                 Il est donc nécessaire d'acquérir une image ISO pour faire fonctionner votre machine virtuelle.
@@ -101,7 +101,7 @@
                 Vous arrivez sur la page suivante.
                 <br>
                 <br>
-                <img src="./Tutoriel/tuto-pwsplt/create_VM_2.png">
+                <img src="./Tutoriel/tuto-powersploit/create_VM_2.png">
                 <br>
                 <br>
                 Changez le mot de passe si vous le désirez.
@@ -112,7 +112,7 @@
                 Vous arrivez sur cette page :
                 <br>
                 <br>
-                <img src="./Tutoriel/tuto-pwsplt/create_VM_3.png">
+                <img src="./Tutoriel/tuto-powersploit/create_VM_3.png">
                 <br>
                 <br>
                 Ici, vous choisissez votre hardware.
@@ -128,7 +128,7 @@
                 Vous arrivez ici :
                 <br>
                 <br>
-                <img src="./Tutoriel/tuto-pwsplt/create_VM_4.png">
+                <img src="./Tutoriel/tuto-powersploit/create_VM_4.png">
                 <br>
                 <br>
                 L'idée est la même que sur la page précédente, choisissez les paramètres 
@@ -140,7 +140,7 @@
                 Vous arrivez à la dernière étape.
                 <br>
                 <br>
-                <img src="./Tutoriel/tuto-pwsplt/create_VM_5.png">
+                <img src="./Tutoriel/tuto-powersploit/create_VM_5.png">
                 <br>
                 <br>
                 Un simple récapitulatif de la création de votre machine virtuelle, si tous les paramètres vous semblent 
@@ -163,27 +163,46 @@
                 votre machine virtuelle.
                 <br>
                 <br>
-                Vous aurez tout d'abord besoin de Winget et Git.
+                Tout d'abord, il vous faut aller dans le Microsoft Store et mettre à jour le 
+                "Programme d'installation d'application".
+                <br>
+                <br>
+                Vous aurez par la suite besoin de Winget et Git.
                 <br>
                 Pour les installer, ouvrez Windows PowerShell en tant qu'administrateur et 
                 allez dans le répertoire de modules du système 32 à 
-                l'aide de la commande suivante  
+                l'aide de la commande suivante :
+                <br>
                 <kbd class="ms-3">cd C:\Windows\system32\WindowsPowerShell\v1.0\Modules</kbd>
                 <br>
                 <br>
                 Ensuite tapez les commandes suivantes (et acceptez tout ce qui vous serait 
                 demandé entre deux commandes) :
                 <br>
-                <kbd class="ms-3">Install-Module -Name Microsoft.WinGet.Client</kbd> (une première fois pour pouvoir installer les prérequis)
+                <kbd class="ms-3">Install-Module -Name Microsoft.WinGet.Client</kbd>
                 <br>
-                <kbd class="ms-3">Install-Module -Name Microsoft.WinGet.Client</kbd> (une deuxième fois pour installer WinGet)
+                <kbd class="ms-3">Install-Module -Name Microsoft.WinGet.Client</kbd> (une deuxième fois pour s'assurer de la bonne installation de WinGet)
                 <br>
                 <kbd class="ms-3">winget install --id GitHub.cli</kbd>
                 <br>
-                <kbd class="ms-3">winget install --id GitGit -e --source winget</kbd>
+                <kbd class="ms-3">winget install --id Git.Git -e --source winget</kbd>
                 <br>
                 <br>
-                <img src="./Tutoriel/tuto-pwsplt/install_winget_github-cli_git.png">
+                <img src="./Tutoriel/tuto-powersploit/install_winget_github-cli_git.png">
+                <br>
+                <br>
+                Après cela, vous allez modifier les paramètres de sécurité, recherchez "Sécurité" dans votre barre de recherches Windows 
+                et ouvrez "Sécurité Windows".
+                <br>
+                Cliquez sur "Protection contre les virus et menaces", puis en dessous de "Paramètres de 
+                protection contre les virus et menaces", cliquez sur "Gérer les paramètres" et désactivez la 
+                "Protection en temps réel" . 
+                <br>
+                <br>
+                <img src="./Tutoriel/tuto-powersploit/security.png">
+                <br>
+                <br>
+                Fermez et relancez Windows PowerShell.
                 <br>
                 <br>
                 Ensuite, vous devez installer PowerSploit à l'aide de cette commande :
@@ -197,6 +216,11 @@
                 <kbd class="ms-3">cd PowerSploit</kbd>
                 <br>
                 <br>
+                Par la suite, rentrez cette commande pour autoriser les scritps bloqués par défaut :
+                <br>
+                <kbd class="ms-3">Set-ExecutionPolicy -ExecutionPolicy Bypass -Scope LocalMachine</kbd>
+                <br>
+                <br>
                 Puis tapez les lignes suivantes :
                 <br>
                 <kbd class="ms-3">Import-Module PowerSploit</kbd>
@@ -204,7 +228,7 @@
                 <kbd class="ms-3">Get-Command -Module PowerSploit</kbd> (pour voir les commandes disponibles grâce à PowerSploit)
                 <br>
                 <br>
-                <img src="./Tutoriel/tuto-pwsplt/install_powersploit.png">
+                <img src="./Tutoriel/tuto-powersploit/install_powersploit.png">
                 <br>
                 <br>
                 Voilà, PowerSploit est bien installé sur votre 
@@ -214,39 +238,40 @@
         <br></br>
 
         <div>
-            <h2>4. Première utilisation simple de PowerSploit</h2>
+            <h2>4. Prêt à tout casser ?</h2>
             <p>
                 <br>
                 <br>
-                Pour votre première utilisation de PowerSploit vous allez 
-                faire un enregistrement de pointeur DNS (fournit le nom du 
-                domaine associé à une adresse IP).
+                Je vous rassure tout de suite, vous n'allez que casser ce que VOUS 
+                avez sué à créer ces dernières minutes. Mais après tout ce n'est pas grave, 
+                c'est même très drôle.
                 <br>
                 <br>
-                Tout d'abord, vous devez trouver votre adresse IP à l'aide de 
-                la commande suivante : 
+                Allez-y, tapez cette ligne de commande et répondez Oui (o) à la question posée :
                 <br>
-                <kbd class="ms-3">ipconfig</kbd>
-                <br>
-                <br>
-                Ensuite, tapez cette ligne de commande :
-                <br>
-                <kbd class="ms-3">Invoke-ReverseDnsLookup (votre adresse IP)</kbd>
+                <kbd class="ms-3">Set-CriticalProcess</kbd>
                 <br>
                 <br>
-                Le nom du domaine de votre machine virtuelle s'affiche juste en dessous.
+                <img src="./Tutoriel/tuto-powersploit/mayhem.png">
                 <br>
                 <br>
-                <img src="./Tutoriel/tuto-pwsplt/test_a_command.png">
+                Puis quittez le Windows PowerShell.
                 <br>
                 <br>
-                Voilà, vous avez réalisé votre première manipulation à l'aide de PowerSploit.
+                <img src="./Tutoriel/tuto-powersploit/blue_screen.png">
                 <br>
-                Comme les autres manipulations, celle que vous venez d'effectuer 
-                est très simple.
                 <br>
-                Elles le sont en général, PowerSploit est très facile d'utilisation, 
-                alors amusez-vous bien ! 
+                En voilà un bel écran bleu ! Bon ne vous inquiétez pas votre machine virtuelle n'est 
+                pas vraiment cassée et tous vos efforts ne sont pas réduits à néant... 
+                <br>
+                Votre machine virtuelle redémarrera à la fin de la collecte d'informations relatives aux erreurs.
+                <br>
+                Après quelques minutes (normalement), vous êtes de retour sur votre bureau Windows.
+                <br>
+                Voilà pour ce qui est du bref aperçu de PowerSploit.
+                <br>
+                Maintenant amusez-vous bien avec toutes les commandes 
+                disponibles (rappel : tapez <kbd class="ms-3">Get-Command -Module PowerSploit</kbd>) !
             </p>
         </div>
 
