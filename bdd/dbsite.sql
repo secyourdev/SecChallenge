@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.2
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
--- Hôte : localhost:3306
--- Généré le : lun. 20 juin 2022 à 14:26
--- Version du serveur : 5.7.24
--- Version de PHP : 8.0.1
+-- Hôte : mysql
+-- Généré le : dim. 25 juin 2023 à 07:31
+-- Version du serveur : 5.7.41
+-- Version de PHP : 8.1.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -60,6 +60,7 @@ INSERT INTO `challenge` (`IdChallenge`, `Emplacement`, `Reponse`, `NomChallenge`
 (14, 'Challenge/challenge-nikto/challenge-nikto.html', '877', 'Nikto', 'Analyse serveur web', 'Reconnaissance', NULL, 'Scanner de vulnérabilité', 5),
 (15, 'Challenge/challenge-sqlmap/Challenge-sqlmap.html', '0924086489ca5a44e71715a6c00832cb', 'Sql injection', 'SQL', 'SQLMap', 'PHP', NULL, 5),
 (16, 'Challenge/challenge-cyberchef/challenge-cyberchef.html', '22/12/1973', 'RoDate', 'CyberChef', 'Brute force', NULL, 'Collecte d\'information', 5);
+
 -- --------------------------------------------------------
 
 --
@@ -105,7 +106,6 @@ INSERT INTO `cours` (`Id`, `Titre`, `Description`, `EmplacementCours`, `LienImag
 (25, 'Faille XXE', 'Qu\'est-ce que la faille XXE ? Que permet-elle de réaliser ?', 'Cours/cours-xxe/cours-failleXXE.html', 'Cours/cours-xxe/images/image.png', 'Faille'),
 (26, 'Les antivirus', 'Dans ce cours nous allons décourvir les méthodes employées pars les antivirus pour analyser les fichiers', 'Cours/cours-av/cours-av.html', 'Cours/cours-av/av.jpeg', 'Outil'),
 (27, 'Foremost', 'Vous trouverez ici une introduction sur un logiciel permettant la récupération de données.', 'Cours/cours-foremost/cours-foremost.html', 'Cours/cours-foremost/image-premiere-page.jpg', 'Outil'),
-
 (28, 'NETCAT', 'Un outil permettant de créer une connexion entre deux ou plusieur machines', 'Cours/cours-netcat/cours-netcat.html', 'Cours/cours-netcat/affiche.png', 'Outil');
 
 -- --------------------------------------------------------
@@ -318,7 +318,39 @@ INSERT INTO `rela_challenge_utilisateur` (`IdChallenge`, `IdUtilisateur`, `Score
 (14, 10, 0),
 (14, 11, 0),
 (14, 12, 0),
-(14, 13, 0);
+(14, 13, 0),
+(1, 14, 0),
+(2, 14, 0),
+(3, 14, 0),
+(4, 14, 0),
+(5, 14, 0),
+(6, 14, 0),
+(7, 14, 0),
+(8, 14, 0),
+(9, 14, 0),
+(10, 14, 0),
+(11, 14, 0),
+(12, 14, 0),
+(13, 14, 0),
+(14, 14, 0),
+(15, 14, 0),
+(16, 14, 0),
+(1, 14, 0),
+(2, 14, 0),
+(3, 14, 0),
+(4, 14, 0),
+(5, 14, 0),
+(6, 14, 0),
+(7, 14, 0),
+(8, 14, 0),
+(9, 14, 0),
+(10, 14, 0),
+(11, 14, 0),
+(12, 14, 0),
+(13, 14, 0),
+(14, 14, 0),
+(15, 14, 0),
+(16, 14, 0);
 
 -- --------------------------------------------------------
 
@@ -380,7 +412,16 @@ INSERT INTO `tutoriel` (`IdTutoriel`, `Titre`, `Description`, `Reponse`, `Emplac
 (38, 'GNU Debugger', 'Apprendre à debugger un programme avec GDB', NULL, 'Tutoriel/tuto-gdb/tuto-gdb.html', 'Tutoriel/tuto-gdb/gdb.png', NULL),
 (39, 'RAT', 'C\'est un software malveillant qui a pour but de prendre contrôle de l\'appareil infecté', NULL, 'Tutoriel/tuto-rat/tuto_rat.html', 'Tutoriel/tuto-rat/affiche.png', NULL),
 (40, 'Volatility', 'Comment analyser la ram d\'un ordinateur', NULL, 'Tutoriel/tuto-volatility/tuto-volatility.html', 'Tutoriel/tuto-volatility/affiche.png', NULL),
-(41, 'fcrackzip', 'Attaquer un dossier .zip protégé', NULL, 'Tutoriel/tuto-fcrackzip/tuto-fcrackzip.html', 'Tutoriel/tuto-fcrackzip/affiche.png', NULL);
+(41, 'fcrackzip', 'Attaquer un dossier .zip protégé', NULL, 'Tutoriel/tuto-fcrackzip/tuto-fcrackzip.html', 'Tutoriel/tuto-fcrackzip/affiche.png', NULL),
+(42, 'Crunch', 'Crunch est un outil permettant de générer des listes de mots, ou plus généralement de caractères.', 'ayy', 'Tutoriel/tuto-crunch/tuto-crunch.html', 'Tutoriel/tuto-crunch/crunch-logo.png', NULL),
+(43, 'Proxy', 'Un proxy est un serveur servant d’intermédiaire entre un ou plusieurs client et un ou des serveur(s).', NULL, 'Tutoriel/tuto-proxy/tuto-proxy.html', 'Tutoriel/tuto-proxy/proxy-logo.png', NULL),
+(44, 'Proxy switcher', 'Proxy Switcher sert à simplifier plusieurs éléments tels que le passage de l’utilisation d’un proxy à celle d’un autre, la configuration des proxy, la gestion des profils dans les proxy, ou même leurs performances.', NULL, 'Tutoriel/tuto-proxyswitcher/tuto-proxyswitcher.html', 'Tutoriel/tuto-proxyswitcher/proxyswitcher-logo.png', NULL),
+(45, 'Knockd', 'Knockd est un programme qui sert à faire port-knocking sur un serveur. ', 'vanille', 'Tutoriel/tuto-knockd/tuto-knockd.html', 'Tutoriel/tuto-knockd/knockd-logo.png', NULL),
+(46, 'Typosquattage', 'Typosquattage est une forme de cyberattaque basé sur de l’ingénierie sociale. En utilisant des noms de domaine proche d’un site le typosquattage permet d’attirer des utilisateurs qui font les fautes d’orthographe et/ou de frappe lors de la recherche de sites Web, vers un autre site Web malveillant.', 'camomille', 'Tutoriel/tuto-typosquattage/tuto-typosquattage.html', 'Tutoriel/tuto-typosquattage/typosquattage-logo.png', NULL),
+(47, 'HTTrack', 'HTTrack est un aspirateur de site web. Il permet de télécharger un site web internet.', 'verveine', 'Tutoriel/tuto-httrack/tuto-httrack.html', 'Tutoriel/tuto-httrack/httrack-logo.png', NULL),
+(48, 'The Sleuth Kit', 'The Sleuth Kit est une collection de logiciels utilisés dans le domaine de la cybercriminalité pour effectuer l’analyse et la récupération de données sur les systèmes de fichiers.', 'citronelle', 'Tutoriel/tuto-thesleuthkit/tuto-thesleuthkit.html', 'Tutoriel/tuto-thesleuthkit/thesleuthkit-logo.png', NULL),
+(49, 'TCPdump', 'Tcpdump est un analyseur de paquet en ligne de commande.', 'tcpdump -i eth0 -c 5 host 10.5.0.3 and port 22 -w tuto.pcap', 'Tutoriel/tuto-tcpdump/tuto-tcpdump.html', 'Tutoriel/tuto-tcpdump/tcpdump-logo.png', NULL);
+
 -- --------------------------------------------------------
 
 --
@@ -457,13 +498,13 @@ ALTER TABLE `utilisateur`
 -- AUTO_INCREMENT pour la table `challenge`
 --
 ALTER TABLE `challenge`
-  MODIFY `IdChallenge` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `IdChallenge` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT pour la table `cours`
 --
 ALTER TABLE `cours`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT pour la table `presentation`
@@ -475,13 +516,13 @@ ALTER TABLE `presentation`
 -- AUTO_INCREMENT pour la table `tutoriel`
 --
 ALTER TABLE `tutoriel`
-  MODIFY `IdTutoriel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
+  MODIFY `IdTutoriel` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=50;
 
 --
 -- AUTO_INCREMENT pour la table `utilisateur`
 --
 ALTER TABLE `utilisateur`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
