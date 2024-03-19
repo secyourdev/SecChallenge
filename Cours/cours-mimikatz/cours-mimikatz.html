@@ -1,0 +1,35 @@
+<h1><b>Mimikatz</b></h1>
+<br><br>
+<img src="Mimikatz_logo.jpg">
+
+<h2 class="mb-3"><b>Qu'est-ce-que c'est ?</b></h2>
+<br>
+<p>
+    Mimikatz est un outil de sécurité informatique open-source, créé par Benjamin Delpy, qui peut être utilisé pour extraire des informations d'identification ou de l’escalade de privilèges à partir de systèmes Windows en cours d'exécution. Il est composé d’un programme principal et de modules, le tout en C.
+<br>
+Les modules de mimikatz permettent l’extraction de secrets comme des clés, hashes, certificats ou mots de passe, et même l’injection de bibliotheques.
+
+</p>
+<br>
+<h2 class="mb-3"><b>Extraire des secrets. Oui. Mais d’où?</b></h2>
+<br>
+<p>
+Les machines Windows stockent leurs secret, sous forme de hash, dans la base SAM et lsass.exe
+<br>
+La base SAM contient donc les hash LM:NT des mots de passe, aussi bien ceux des utilisateurs que des administrateurs…
+Celle-ci est stocké dans C:\Windows\System32\config 
+<br>
+lsass.exe, lui, stock seulement les hash des mots de passe des sessions ouvertes mais n’a pas de persistance dans sa mémoire .
+</p>
+<br>
+<h2 class="mb-3"><b>Pour quoi faire ?</b></h2>
+<br>
+<p>
+    Offensivement, il permet par exemple de voir et de sauvegarder des crédits d’authentification et d’exploiter différents types de vulnérabilité sur les machines windows mais aussi en environnement Active Directory. 
+<br> 
+Par exemple :
+Pass-the-hash, Pass-the-ticket, Over-pass-the-hash, Kerberos silver ticket, Kerberos golden ticket, pass-the-cache
+<br>
+Mimikatz est cependant désormais connu du grand public et est souvent bloqué par des logiciels de protections de terminaux ou par les antivirus. De plus, il est imperatif pour utiliser mimikatz, d’avoir au préalable un compte sur la machine, des droits administrateurs et eventuellement d’avoir les droits de debug.
+<br>
+Defensivement cependant, il permet aussi de découvrir d’eventuels rootkits ou encore des tentatives d’authentification d’attaquants passant par differents vecteurs 

@@ -1,0 +1,225 @@
+<h1><b>Mimikatz</b></h1>
+<br><br>
+<h2 class="mb-3"><b>Objectif</b></h2>
+<br>
+<p>
+    L’objectif de ce tutoriel est de vous apprendre à utiliser mimikatz. Vous allez découvrir comment installer Mimikatz et utiliser certains de ses modules. Vous allez essayer de récuperer les secrets présents sur votre machine.
+</p>
+
+<a href="mimikatz1.png"></a>
+</p>
+<br>
+<h2 class="mb-3"><b>Les modules de mimikatz</b></h2>
+<br>
+<p>
+Comme dit précedemment, mimikatz fonctionne à l’aide de differents modules.
+ Voici un résumé de ce qu'ils peuvent faire : 
+<br><br>
+standard: <br>
+Fournit une série de Commandes de base pour la gestion des comptes utilisateur et des groupes, la création de certificats, la gestion des tokens d'authentification et la suppression des fichiers journaux. Ce module en particulier n’a pas besoins du nom du module en prefix de la commande.
+<br>
+
+
+<br><br>
+<b>Privilege</b>: <br>
+Permet d'obtenir ou d'élever des privilèges administratifs sur le système en exploitant des vulnérabilités de Windows.
+<br>
+<b>Commandes</b>: <br>
+- privilege::security : cette fonction active le privilège de sécurité, qui permet d'accéder à des informations sensibles sur la sécurité du système.
+<br>
+- privilege::tcb : cette fonction active le privilège de "prendre possession de la machine", qui permet d'accéder à des ressources système sensibles.
+
+<br><br>
+<b>sekurlsa</b>: <br>
+Permet de récupérer des informations d'identification stockées en mémoire, telles que les mots de passe en clair, les jetons d'accès et les clés de chiffrement.
+<br>
+<b>Commandes</b>: <br>
+- sekurlsa::logonpasswords : cette fonction récupère les mots de passe stockés pour chaque utilisateur connecté au système.
+<br>- sekurlsa::ekeys : cette fonction récupère les clés de chiffrement EFS (Encrypting File System) stockées sur le système.
+<br>- sekurlsa::tickets : cette fonction récupère les tickets Kerberos stockés sur le système.
+<br>- sekurlsa::pth : cette fonction permet de lancer une attaque Pass-The-Hash, qui permet à un attaquant de se connecter à un système distant sans connaître le mot de passe réel de l'utilisateur.
+<br><br>
+<b>lsadump</b>: <br>
+Permet de récupérer les données stockées dans les bases de données de Windows, telles que les informations de compte, les politiques de sécurité, les clés de chiffrement, etc.
+<br>
+<b>Commandes</b>: <br>
+- lsadump::lsa : cette fonction récupère les informations stockées dans la base de données LSA, notamment les noms d'utilisateurs et les mots de passe hashés.
+<br>- lsadump::sam : cette fonction récupère les informations stockées dans la base de données SAM (Security Account Manager), qui contient également des informations sur les comptes d'utilisateurs.
+<br>- lsadump::secrets : cette fonction récupère les secrets stockés dans le système, tels que les clés de chiffrement BitLocker et les clés WiFi.
+<br><br>
+<b>kerberos</b>: <br>
+Permet d'intercepter et de manipuler les tickets Kerberos pour se faire passer pour un utilisateur légitime ou pour accéder à des ressources protégées par Kerberos.
+<br>
+<b>Commandes</b>: <br>
+- "kerberos::list" : affiche les tickets Kerberos enregistrés sur le système.
+<br>- "kerberos::ptt ticket.kirbi" : importe un ticket Kerberos dans le système.
+<br><br>
+ts: <br>
+Permet de récupérer des informations sur les sessions Terminal Server, telles que les noms d'utilisateur, les ID de session, etc.
+<br>
+<b>Commandes</b>: <br>
+- ts::status : affiche le statut des sessions Terminal Services actives sur le système cible.
+<br>- ts::logonpasswords : récupère les informations d'identification des sessions Terminal Services ou RDP actives sur le système cible.
+<br>- ts::sessions : affiche une liste des sessions Terminal Services actives sur le système cible.
+<br><br>
+crypto: <br>
+Permet de récupérer des clés de chiffrement stockées en mémoire, telles que les clés BitLocker et les certificats de chiffrement.
+<br>
+<b>Commandes</b>: <br>
+- crypto::capi : cette fonction récupère les clés de chiffrement stockées dans le magasin de certificats local.
+<br>- crypto::certificates : cette fonction récupère les certificats stockés sur le système.
+<br>- crypto::dpapi : cette fonction permet de décrypter les données chiffrées avec le Data Protection API (DPAPI).
+<br><br>
+process:<br> 
+Permet de manipuler des processus Windows en injectant des DLL malveillantes ou en exécutant du code arbitraire.
+<br>
+<b>Commandes</b>: <br>
+
+<br><br>
+service: <br>
+Permet de manipuler des services Windows en créant des services malveillants ou en exploitant des services vulnérables.
+<br>
+<b>Commandes</b>: <br>
+
+<br><br>
+vault: <br>
+Permet de récupérer les informations stockées dans le coffre-fort Windows Vault, telles que les mots de passe, les certificats et les clés d'application.
+<br>
+<b>Commandes</b>: <br>
+
+<br><br>
+token: <br>
+Permet de manipuler les jetons d'authentification et les tickets Kerberos pour se faire passer pour un utilisateur légitime ou pour accéder à des ressources protégées.
+<br>
+<b>Commandes</b>: <br>
+
+<br><br>
+event: <br>
+Permet de manipuler les journaux d'événements Windows pour effacer des traces d'activités malveillantes ou pour récupérer des informations sensibles.
+<br>
+<b>Commandes</b>: <br>
+
+<br><br>
+net: <br>
+Permet d'intercepter et de manipuler le trafic réseau pour récupérer des informations d'identification ou pour réaliser des attaques de type man-in-the-middle.
+<br>
+<b>Commandes</b>: <br>
+
+<br><br>
+misc: <br>
+Fournit une série de fonctionnalités supplémentaires, telles que la manipulation des entrées de registre, la récupération des informations système et des adresses IP, la gestion des processus et des services, et la récupération des clés de chiffrement stockées dans le fichier de configuration de RDP
+<br>
+<b>Commandes</b>: <br>
+
+<br><br><br>
+Mimikatz comprend également deux modules supplémentaires qui ne sont pas destinés à être utilisés directement par les utilisateurs finaux, mais plutôt à être intégrés dans d'autres outils ou frameworks :
+<br><br>
+library: <br>
+Fournit une API en C pour permettre aux développeurs de créer des modules personnalisés basés sur les fonctionnalités de Mimikatz.
+<br><br>
+driver: <br>
+Fournit un pilote de kernel qui permet à Mimikatz d'accéder directement à la mémoire physique du système, ce qui lui permet de contourner certaines des protections de sécurité de Windows et d'extraire des informations sensibles.
+<br>
+</p>
+
+ <h2 class="mb-3" > Environnement</h2>
+<p>
+    Afin de réaliser ce tutoriel, vous aurez besoins d'une machine tournant sur Windows. 
+    Malheureusement le Docker n'est pas disponible pour ce challenge pour des raisons de compatibilité et de licence, une VM windows est à votre disposition pour les tests.
+    Vous pouvez utiliser la VM ou votre propore machine. Dans le cas ou vous utiliserez votre machine, n'oubliez pas de sésactivé votre antivirus le temps de la manipulation et de lancer votre terminal en administrateur.
+</p>
+
+
+<p> <h2 class="mb-3" >Installation:</h2>
+<br>
+    Premierement, téléchargez mimikatz, par exemple via le github
+    <br>
+    <a class="link-primary"
+                href="https://github.com/gentilkiwi/mimikatz/releases"><u> github</u></a>.
+    <br>
+    ou directement par la commande : 
+    <br> Placez vous dans le repertoire de votre choix (par exemple Downloads)
+    `Invoke-WebRequest -Uri https://github.com/gentilkiwi/mimikatz/releases/download/2.2.0-20220919/mimikatz_trunk.zip -outfile mimikatz.zip`
+    
+</p>
+<br><br>
+
+<p>Rendez vous dans le répertoire où à été telechargé mimikatz, dézippez le fichier ) puis exectuez mimikatz en prenant soint de bien choisir la version x32 ou x64 en fonction de votre systeme.
+    <br><br>
+    <kbd class="ms-3">>cd Downloads</kbd>
+        <br> si vous utiilisez powershell: <br>
+    
+    <kbd class="ms-3">>expand-Archive .\mimikatz.zip</kbd>
+    
+    <br>
+    <kbd class="ms-3">>cd mimikatz</kbd>
+    
+    <br>
+    <kbd class="ms-3">>cd x64</kbd>
+    
+    <br>
+    <kbd class="ms-3">> .\mimikatz.exe</kbd>
+   
+    <br>
+</p>
+
+ <h2 class="mb-3" >Lancement:</h2>
+<p>
+    Mimikatz ouvre alors une console interactive où les commandes peuvent être exécuté en temps réel.
+    <br><br>
+    
+        Mimikatz possede plus d’une dizaine de module differents, tous plus utile les uns que les autres. 
+    
+        Il faut specifier le module et la fonction de la maniere suivante
+        <br>
+        <kbd class="ms-3">mimikatz # module::fonction options</kbd>
+        <br>
+        sans module spécifié, le module standard est activé par defaut
+    </p>
+ <p>   
+    Premièrement, la commande suivante permet de savoir si vous avez les droits pour utiliser Mimikatz, elle essaiera de vous accorder les privileges de debogage au processus afin de contourner certaines mesures de sécurités
+    <kbd class="ms-3"> >mimikatz # privilege::debug</kbd>
+    Vous devriez avoir un message "privilege '20' ok", si le message est different, executez mimikatz en tant qu'administrateur.+
+    <br><br>
+    Puis lancer la fonction de journalisation afin de garder une trace de vos actions et de leurs résultats
+    <kbd class="ms-3"> >mimikatz # log mimikatz_j.log</kbd>
+   
+    <br><br>
+    <b>Vous pouvez maintenant utiliser mimikatz</b>
+</p>
+<br> 
+
+<h2 class="mb-3" >Utilisation:</h2>
+
+<p>
+    Nous allons essayer de récuperer les secrets stockés sur votre machine.
+
+    La commande suivante du module lsadump permet de recuperer la base SAM.
+    Celle-ci sera affiché dans votre terminal et sauvegardé dans le fichier de log précédement spécifié 
+    <br>
+    <kbd class="ms-3">>mimikatz # lsadump::sam</kbd>
+    
+    <br>
+    Pas de resultat concluant ?
+
+    La commande suivante vous permet d’elever vos privileges et vous permettra d'avoir plus de résultats:
+    <br>
+    <kbd class="ms-3">  >mimikatz # token::elevate</kbd>
+  
+    <br>
+    Réessayer la commande précedente
+
+Vous avez maintenant devant vous une liste d’utilisateur et les hash NTLM associés
+
+Vous pourrez par la suite utiliser des outils comme hashcat ou jhontheripper afin de retrouver les mots de passe en clair à partir des hash trouvés
+</p>
+<p>
+    Pour finir vous pouvez effacer les evenments journalisé generé par mimikatz grace au module event:
+    <br>
+    <kbd class="ms-3">>mimikatz # event::drop </kbd>
+    <br>
+
+</p>
+<p>
+    Nous n’avons montré ici qu’une partie de ce qu’il est possible de faire avec mimikatz et ses modules. Mimikatz permet aussi bien de lister des comptes et leurs mots de passe que creer des faux tickets d’authentifiaction utilisable pour attaquer kerberos par exemple. 
+</p>

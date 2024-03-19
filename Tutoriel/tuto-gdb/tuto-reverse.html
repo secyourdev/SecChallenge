@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tutoriel reverse-engenering - gdb</title>
+</head>
+
+<body>
+    <h1>Comment récupérer un mot de passe d'un simple programme.</h1>
+    <img src="gdb_logo.png" alt="gdb_logo.png">
+
+<h2>1. Objectif</h2>
+<p>
+    L'objectif de ce tutoriel est de vous présentez rapidement gdb la fonction de décompilateur de gdb.
+    </br>
+    Pour rappel, un décompilateur est un outil qui permet de transformer un programme compilé en code lisible. Il peut être utilisé pour comprendre le fonctionnement d'un programme, le débugger, ou en apprendre davantage sur sa structure interne.
+    <br>
+    Durant ce tuto et le challenge nous allons décompiler 2 executables, basé sur du code c.
+    </br>
+    Ces deux programmes prennent chacun un mot de passe en entré et renvoie un méssage en fonction de si le mot de pass est correcte.
+    <br> Le but étant de récuperer le mot de passe en analysant le code assembleur des programmes.
+</p>
+
+<h2>2. Installation et Configuration</h2>
+    <p>
+        Ce tutoriel met à disposition, par le biais de Docker-compose, une machine déjà configurée avec gdb déjà installer avec 2 executables "gdb-exo.exe" et "gdb-chall.exe".
+        Le docker-compose sera réutiliser pour le challenge.
+        <br>
+        Récupérez le dockerfile dans le lien suivant, si vous avez déjà installer le docker-compose.yml du challenge, passer à l'étape 3 : 
+        <a class="link-primary"
+            href="Docker/gdb/Tutoriel/docker-compose.yml" download="docker-compose.yml"><U>docker-compose.yml</U></a><br>
+        <br> 
+        Dans un interpréteur de commande,bash (Linux) ou cmd (Windows), allez dans le répertoire où vous avez téléchargé le fichier docker-compose.yml et effectuez la commande suivante : 
+        <br>
+        <kbd class="ms-3"><bash> docker compose up -d</kbd><br>
+        <kbd class="ms-3"><bash> docker exec -it gdb /bin/sh</kbd><br>
+        <br> 
+        Vous disposez maintenant d'une machine alpine avec gdb d'installer. Pour mettre en pause ou arreter la machine faite: 
+        <br>
+        <kbd class="ms-3"><bash> docker compose pause/unpause</kbd><br>  
+        <kbd class="ms-3"><bash> docker compose stop/start</kbd><br>  
+        <br>
+    </p>
+
+    <h2>2. Pas à pas</h2>
+    <p>
+        Lancez gdb :<br>
+        <kbd class="ms-3"><bash>gdb gdb-exo.exe</kbd><br>
+        Changer le format d'AT&T d'écriture au format Intel. (optionel)<br>
+        <kbd class="ms-3"><bash>set disassembly-flavor intel</kbd><br>
+        Executez le programme, lancez le au moins une fois pour initiliser correctement les adresses mémoires.
+        <kbd class="ms-3"><bash>run</kbd><br>
+        Décompiler le programme.<br>
+        <kbd class="ms-3"><bash>disas main</kbd><br>
+        Insérer des break-points pour voir l'état des registres pendant l'éxecution du programme.<br>
+        <kbd class="ms-3"><bash>break *main+{numéro de l’offset}</kbd><br>
+        Pour voir l'état d'un registre faite par exemple :<br>
+        <kbd class="ms-3"><bash>x/s $rdi</kbd><br>
+        Vous retrouvez normalement le mot de passe que vous avez rentré. Si vous avez mis un break-point (offset +96)<br>
+        <kbd class="ms-3"><bash>x/s $rdi</kbd><br>
+        Vous retrouvez le mot de passe attendu par le programme. Maintenant essayez de comprendre comment le programme fonctionne.<br>
+        Le flag est le mot de passe.<br>
+    <h2>3. Question</h2>
+    <p>
+        <body>
+            <form>
+            <!-- Ajout autant de zones de texte et de boutons que nécessaire -->
+            <label for="zone-t1">1. Quelle est le mot de passe ? </label>
+                <input type="text" id="zone-t1" name="zone-t1">
+                <button type="button" onclick="verifierTexte('zone-t1')">Valider la réponse</button>
+                <p id="message-1"></p>
+        
+            </form>
+            <script>
+                function verifierTexte(idZoneTexte) {
+                    var zoneTexte = document.getElementById(idZoneTexte);
+                    var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+        
+                    if (zoneTexte.value.toLowerCase() === "SYD-ACADEMY") {
+                        message.innerHTML = "Bonne réponse !";
+                        message.style.color = "green";
+                    } else {
+                        message.innerHTML = "Ce n'est pas la réponse attendu ...";
+                        message.style.color = "red";
+                    }
+                }
+            </script>
+    </p>
+</body>
+</html>

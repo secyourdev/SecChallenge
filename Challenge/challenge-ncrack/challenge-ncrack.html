@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Challenge brut-force - Ncrack</title>
+</head>
+    <body>
+        <h1>Challenge brut-force - Ncrack</h1>
+        <img src="ncrack_logo.png" alt="ncrack_logo.png">
+
+    <h2>1. Objectif</h2>
+    <p>
+        L'objectif de ce challenge est de trouver le mot de passe d'une utilisatrice.
+        </br>
+        Vous allez attaquez la machine 192.172.20.4, vous n'aurez pas besoin d'attaquer le serveur web. Cette machine à deux utilisateurs dont l'un avec un nom d'utilisateur vraiment générique<br> 
+        Au hasard guest ou user.
+        <br>
+    </p>
+
+    <h2>2. Installation et Configuration</h2>
+    <p>
+        Si vous avez déjà installer le docker-compose du tutorial passer cette section
+        Ce challenge met à disposition, par le biais de Docker-compose, une machine déjà configurée avec un dictionnaire de mot de passe "rockyoulite.txt".
+        En plus du client ncrack, la liste des machines fournies à qui seront attaqué durant le tutoriel et le challenge.
+
+        <br>
+        Récupérez le dockerfile dans le lien suivant, si vous avez déjà installer le docker-compose.yml du challenge, passer à l'étape 3 : 
+        <a class="link-primary"
+            href="Docker/ncrack/Challenge/docker-compose.yml" download="docker-compose.yml"><U>docker-compose.yml</U></a><br>
+        <br> 
+        Dans un interpréteur de commande,bash (Linux) ou cmd (Windows), allez dans le répertoire où vous avez téléchargé le fichier docker-compose.yml et effectuez la commande suivante : 
+        <br>
+        <kbd class="ms-3"><bash> docker compose up -d</kbd><br>
+        <kbd class="ms-3"><bash> docker exec -it ncrack /bin/bash</kbd><br>
+        <br> 
+        Vous disposez maintenant d'une machine ubuntu avec ncrack d'installer. Ainsi que plusieurs autres machines à attaquer. Pour mettre en pause ou arreter les machine faite: 
+        <br>
+        <kbd class="ms-3"><bash> docker compose pause/unpause</kbd><br>  
+        <kbd class="ms-3"><bash> docker compose stop/start</kbd><br>  
+        <br>
+        Cartographie du réseau :<br> 
+        <kbd class="ms-3"><bash> ncrack-client 192.172.20.2</kbd><br>  
+        <kbd class="ms-3"><bash> serveur pure-ftpd 192.172.20.3</kbd><br>
+        <kbd class="ms-3"><bash> serveur ssh 192.172.20.4</kbd><br>
+        <kbd class="ms-3"><bash> serveur web 192.172.20.5</kbd><br>
+        <br>
+    </p>
+    <h2>3. Questions</h2>
+    <p>
+    <body>
+        <form>
+        <!-- Ajout autant de zones de texte et de boutons que nécessaire -->
+        <label for="zone-t1">1. Quelle est le flag du 1er utilisateur ? </label>
+            <input type="text" id="zone-t1" name="zone-t1">
+            <button type="button" onclick="verifierTexte('zone-t1')">Valider la réponse</button>
+            <p id="message-1"></p>
+    
+            <label for="zone-t2">2. Quelle est le couple login/password du 2ème utilisateur ?</label>
+            <input type="text" id="zone-t2" name="zone-t2">
+            <button type="button" onclick="verifierTexte2('zone-t2')">Valider la réponse</button>
+            <p id="message-2"></p>
+    	</form>
+        <script>
+            function verifierTexte(idZoneTexte) {
+                var zoneTexte = document.getElementById(idZoneTexte);
+                var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+    
+                if (zoneTexte.value.toLowerCase() === "89905749") {
+                    message.innerHTML = "Bonne réponse !";
+                    message.style.color = "green";
+                } else {
+                    message.innerHTML = "Ce n'est pas la réponse attendu ...";
+                    message.style.color = "red";
+                }
+            }
+        function verifierTexte2(idZoneTexte) {
+                var zoneTexte = document.getElementById(idZoneTexte);
+                var message = document.getElementById("message-" + idZoneTexte.substr(-1));
+    
+                if (zoneTexte.value.toLowerCase() === "alice/LUCYISARETARD") {
+                    message.innerHTML = "Bonne réponse !";
+                    message.style.color = "green";
+                } else {
+                    message.innerHTML = "Ce n'est pas la réponse attendu ...";
+                    message.style.color = "red";
+                }
+            }
+        </script>
+<h2>Fin du challenge</h2>
+<p>
+    Le challenge est terminé, et vous vous êtes familiarisé avec ncrack. Flag du Challenge est <s style="color: red; font-size: 16px; font-style: italic;">LucyIsLazyAf</s> la concaténation des deux flags.
+
+</p>
+</body>
+</html>

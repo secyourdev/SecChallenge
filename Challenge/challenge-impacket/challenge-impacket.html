@@ -1,0 +1,57 @@
+<h3>Challenge Impacket</h3>
+
+<p>
+Pour voir si vous avez bien compris le cours, je vous propose de vous entraîner sur un docker que j’ai créé
+spécialement pour cela.
+</p>
+
+<h2>Que devez-vous faire ?</h2>
+
+<h3>Étape 1 : récupérer le docker proposé</h3>
+
+<p>
+Pour cela, il vous faut Docker installé lorsque  Docker
+et docker-compose sont installés sur votre machine, vous pouvez commencer.
+<br>
+Il faut d'abord télécharger le fichier <a href=""><U>docker-compose.yml</U></a>
+<br>
+Ensuite, il vous suffit de taper la commande docker-compose dans le répertoire où se trouve le fichier.
+</p>
+ <h3>Challenge John the Ripper</h3>
+        <!--Titre-->
+    </div>
+</div>
+
+
+<p>
+    Pour voir si vous avez bien compris le cours, je vous propose de vous entraîner sur un docker que j’ai créé
+    spécialement pour cela.
+</p>
+
+<h2>Que devez-vous faire ?</h2>
+
+<h3>Étape 1 : récupérer le docker proposé</h3>
+
+<p>
+    Pour cela, il vous faut Docker installé (il existe tout un tas de tutoriels qui vous expliqueront comment le
+    télécharger.) quand Docker
+    et docker-compose sont installés sur votre machine, vous pouvez commencer.
+    <br>
+    Il faut d'abord télécharger le fichier <a href="Downloads/Challenge_john/docker-compose.yml"
+        download="docker-compose.yml"><U>docker-compose.yml</U></a>
+    <br>
+    Ensuite, il vous suffit de taper la commande (en étant dans le bon répertoire où se trouve le fichier que vous venez
+    de télécharger):
+</p>
+<kbd class="ms-3">docker-compose up -d</kbd>
+<p>Vous allez maintenant acceder au docker attaquant depuis lequel vous tenterez d'utiliser impacket</p>
+<kbd class="ms-3">docker exec -it smb_attacker bash</kbd>
+
+
+<h2>Situation</h2>
+
+<p>
+    Vous êtes connécté sur le même réseaux qu'un serveur smb et un client. Il y a un share réseaux auquel le client accede régulierement.
+    <br>
+    Vous devez intercepter la connexion entre le client et le serveur afin de récuperer les log vous permettant d'acceder au share dans lequel se situe le flag.
+</p>
